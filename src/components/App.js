@@ -17,12 +17,12 @@ export function App() {
               />
             );
           })} */}
-      {/* <Route>
-        <PageNotFound>
-          <h1>PageNotFound</h1>
-        </PageNotFound>
-      </Route> */}
-      {/* </Switch> */}
+      {/* <Route> */}
+      {/* <PageNotFound>
+        <h1>PageNotFound</h1>
+      </PageNotFound> */}
+      {/* </Route>
+      </Switch> */}
       {/* </Suspense> */}
     </>
   );
