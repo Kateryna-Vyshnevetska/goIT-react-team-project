@@ -13,7 +13,6 @@ export function BasicInput({ label, value, name, handleChange }) {
         variant="outlined"
         onChange={({ target: { value } }) => handleChange(value)}
       />
-      <br></br>
     </>
   );
 }
