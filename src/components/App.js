@@ -9,12 +9,6 @@ import  PublicRoute  from "./publicRoute/PublicRoute";
 //   NotificationsPage,
 //   AchievementsPage,
 //   ProfilePage,
-//   DailyResultModal,
-//   HabitTemplateModal,
-//   HabitChoiceModal,
-//   CustomHabitModal,
-//   CongratulationModal,
-//   InterviewModal,
 //   CheckListPage,
 //   SignUp,
 //   LogIn,
@@ -33,26 +27,7 @@ export function App() {
           <PrivateRoute
             path="/checkListPage/" /*  component={CheckListPage}  */
           />
-
-          <PrivateRoute
-            path="/checkListPage/interviewModal" /*  component={InterviewModal}  */
-          />
-          <PrivateRoute
-            path="/checkListPage/congratulationModal" /*  component={CongratulationModal}  */
-          />
-          <PrivateRoute
-            path="/checkListPage/customHabitModal" /*  component={CustomHabitModal}  */
-          />
-          <PrivateRoute
-            path="/checkListPage/habitChoiceModal" /*  component={HabitChoiceModal}  */
-          />
-          <PrivateRoute
-            path="/checkListPage/habitTemplateModal" /*  component={HabitTemplateModal}  */
-          />
-          <PrivateRoute
-            path="/checkListPage/dailyResultModal" /*  component={DailyResultModal}  */
-          />
-
+          
           <PrivateRoute path="/profilePage" /*  component={ProfilePage}  */ />
           <PrivateRoute
             path="/achievementsPage" /*  component={AchievementsPage}  */

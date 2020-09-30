@@ -14,36 +14,6 @@ import { lazy } from "react";
 //     "./components/checkListPage/checkListPage" /* webpackChunkName: "checkListPage" */
 //   )
 // );
-// const InterviewModal = lazy(() =>
-//   import(
-//     "./components/interviewModal/interviewModal" /* webpackChunkName: "interviewModal" */
-//   )
-// );
-// const CongratulationModal = lazy(() =>
-//   import(
-//     "./components/congratulationModal/congratulationModal" /* webpackChunkName: "congratulationModal" */
-//   )
-// );
-// const CustomHabitModal = lazy(() =>
-//   import(
-//     "./components/customHabitModal/customHabitModal" /* webpackChunkName: "customHabitModal" */
-//   )
-// );
-// const HabitChoiceModal = lazy(() =>
-//   import(
-//     "./components/habitChoiceModal/habitChoiceModal" /* webpackChunkName: "habitChoiceModal" */
-//   )
-// );
-// const HabitTemplateModal = lazy(() =>
-//   import(
-//     "./components/habitTemplateModal/habitTemplateModal" /* webpackChunkName: "habitTemplateModal" */
-//   )
-// );
-// const DailyResultModal = lazy(() =>
-//   import(
-//     "./components/dailyResultModal/dailyResultModal" /* webpackChunkName: "dailyResultModal" */
-//   )
-// );
 // const ProfilePage = lazy(() =>
 //   import(
 //     "./components/profilePage/profilePage" /* webpackChunkName: "profilePage" */
@@ -82,12 +52,6 @@ import { lazy } from "react";
 //   NotificationsPage,
 //   AchievementsPage,
 //   ProfilePage,
-//   DailyResultModal,
-//   HabitTemplateModal,
-//   HabitChoiceModal,
-//   CustomHabitModal,
-//   CongratulationModal,
-//   InterviewModal,
 //   CheckListPage,
 //   SignUp,
 //   LogIn,

@@ -15,7 +15,9 @@ const PrivateRoute = ({
             }
         />
     );
+
 const mapStateToProps = state => ({
     isAuthenticated: true,
 });
+
 export default connect(mapStateToProps)(PrivateRoute);
