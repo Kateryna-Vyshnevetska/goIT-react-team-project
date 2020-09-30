@@ -1,7 +1,9 @@
 import React, { Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { HomePage } from "../pages/homePage/HomePage";
 import PrivateRoute  from "./privateRoute/PrivateRoute";
 import  PublicRoute  from "./publicRoute/PublicRoute";
+import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -14,6 +16,7 @@ import  PublicRoute  from "./publicRoute/PublicRoute";
 //   LogIn,
 //   HomePage,
 // } from "../routes";
+
 
 export function App() {
   return (
@@ -42,12 +45,9 @@ export function App() {
             path="/chooseAvatarPage" /*  component={ChooseAvatarPage}  */
           />
           <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */ />
-
-         
-
-         
         </Switch>
       </Suspense>
+      {/* <HomePage /> */}
     </>
   );
 }
