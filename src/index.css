@@ -362,3 +362,9 @@ template {
 [hidden] {
   display: none;
 }
+
+button {
+  height: 44px;
+  width: 220px;
+  border-radius: 5px;
+}

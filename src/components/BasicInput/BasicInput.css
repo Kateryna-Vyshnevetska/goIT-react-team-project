@@ -1,0 +1,10 @@
+.basic-input {
+  display: block;
+  height: 44px;
+  width: 345px;
+  border-radius: 5px;
+}
+
+.basic-input:hover {
+  border: 1px solid #4f4f4f;
+}
