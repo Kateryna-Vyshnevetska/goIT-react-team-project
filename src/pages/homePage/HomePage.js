@@ -7,14 +7,13 @@ export const HomePage = () => {
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
-            «Курение ослабляет силу мысли
-            <br /> и делает неясным её выражение».
+            «Курение ослабляет силу мысли и делает неясным её выражение».
           </h1>
           <p className={styles.secondtitle}> Л.Н.Толстой</p>
         </div>
         <div className={styles.logoContainer}>
           <img
-            src={require("../../components/images/logo.svg")}
+            src={require("../../images/homePage/logo.svg")}
             alt="logo"
             className={styles.logo}
           />
@@ -23,8 +22,8 @@ export const HomePage = () => {
             Войдите или зарегистрируйтесь, чтобы начать использовать наше
             приложение
           </p>
-          <button>Войти</button>
-          <button>Зарегистрироваться</button>
+          <button className={styles.logInButton}>Войти</button>
+          <button className={styles.registerButton}>Регистрация</button>
         </div>
       </div>
     </div>

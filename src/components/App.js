@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import PublicRoute from "./publicRoute/PublicRoute";
 import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
-import { LeftSideBar } from './leftSideBar/LeftSideBar';
+import { LeftSideBar } from "./leftSideBar/LeftSideBar";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
@@ -29,12 +29,13 @@ import {
 //   LogIn,
 //   HomePage,
 // } from "../routes";
+import RegisterPage from "../pages/registerPage/RegisterPage";
 
 export function App() {
   return (
     <>
-      <LeftSideBar/>
-      <CustomHabitModal />
+      {/* <LeftSideBar/>
+      <CustomHabitModal /> */}
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
@@ -45,27 +46,19 @@ export function App() {
           {/* <PublicRoute path="/signUp" /*  component={SignUp}  */
       /*/}
 
-          {/* <PrivateRoute */}
-      {/* path="/checkListPage/" /*  component={CheckListPage}  */}
-      {/* /> */}
-
-      {/* <PrivateRoute path="/profilePage" /*  component={ProfilePage}  */
-      /*/}
-          {/* <PrivateRoute */}
-      {/* path="/achievementsPage" /*  component={AchievementsPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute */}
-      {/* path="/notificationsPage" /*  component={NotificationsPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute */}
-      {/* path="/subscriptionsPage" /*  component={SubscriptionsPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute */}
-      {/* path="/chooseAvatarPage" /*  component={ChooseAvatarPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */}
-      {/* </Switch> */}
-      {/* </Suspense> */}
+          <PrivateRoute path="/achievementsPage" component={AchievementsPage} />
+          <PrivateRoute
+            path="/notificationsPage"
+            component={NotificationsPage}
+          />
+          <PrivateRoute
+            path="/subscriptionsPage"
+            component={SubscriptionsPage}
+          />
+          <PrivateRoute path="/chooseAvatarPage" component={ChooseAvatarPage} />
+          <PrivateRoute path="/pageNotFound" component={PageNotFound} />
+        </Switch>
+      </Suspense> */}
     </>
   );
 }
