@@ -1,9 +1,7 @@
-
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { isAuthUser } from "../redux/selectors";
 import { CheckStartPage } from "../helpers/checkStartPage";
-
 
 export function App() {
   const state = useSelector((state) => state);
@@ -20,6 +18,7 @@ export function App() {
   return (
     <>
       {page}
+      {/* <HomePage /> */}
     </>
   );
 }
