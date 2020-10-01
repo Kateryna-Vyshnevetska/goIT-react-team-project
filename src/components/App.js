@@ -1,4 +1,5 @@
-import React, { Suspense, useState } from "react";
+
+import React, { Suspense, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { HomePage } from "../pages/homePage/HomePage";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,6 +60,8 @@ export function App() {
 
   return (
     <>
+
+//       <CustomHabitModal />
       {/* <LogInPage /> */}
       {/* <RegisterPage /> */}
 
