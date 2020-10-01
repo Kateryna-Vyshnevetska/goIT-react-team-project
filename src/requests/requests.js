@@ -2,44 +2,16 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
-const registration = () => {
-  axios
-    .post("/auth/registration", {
-      email: "qwert23y@gmail.com",
-      password: "Qwerty123",
-    })
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
-const login = () => {
-  axios
-    .post("/auth/login", {
-      email: "qwerty@gmail.com",
-      password: "Qwerty123",
-    })
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
-const passChange = () => {
+export const changeUserPassword = (token, newPassword) => {
   axios
     .post(
       "/auth/updatePassword",
       {
         headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNzQzZDQwM2E1NzQ0MDAxNzNiOTI5MCIsImlhdCI6MTYwMTQ1NTc2NiwiZXhwIjoxNjAyMDYwNTY2fQ.PDCcQieHi5omGlXVf3TXogcUmug-nfV3buqF-taAFx0",
+          Authorization: token,
         },
       },
-      {
-        password: "NewPassword123",
-        confirmPassword: "NewPassword123",
-      }
+      newPassword
     )
     .then((response) => console.log(response))
     .catch(function (error) {
@@ -61,14 +33,14 @@ const getHabbits = async () => {
     });
 };
 
-const createHabbits = async () => {
+export const createHabbits = async () => {
   await axios
     .post(
       "/habits",
       {
-        name: "My Habit",
-        planningTime: "plan time",
-        iteration: "Some iteration",
+        name: "some",
+        planningTime: "some",
+        iteration: "Some ",
       },
       {
         headers: {

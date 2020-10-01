@@ -1,0 +1,27 @@
+.rightSideBarContainer {
+  width: 378px;
+  margin-left: auto;
+}
+
+.rightSideBarHeader {
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+  color: #4f4f4f;
+  border-left: 1px solid #d5e1dc;
+  width: 378px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-transform: capitalize; */
+}
+
+.headerWeekDay {
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: capitalize;
+}

@@ -1,0 +1,329 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.check-list-section {
+  justify-content: stretch;
+  display: flex;
+}
+
+.rightSideBar {
+  width: 378px;
+  height: 900px;
+  background-color: tomato;
+}
+.leftSideBar {
+  width: 378px;
+  height: 900px;
+  background-color: tomato;
+}
+
+.habit-container {
+  width: 100%;
+  padding-top: 40px 62px;
+  background-color: #f6f6f6;
+}
+
+.habit-header {
+  max-height: 110px;
+  background-color: #fff;
+  outline: 1px solid #d5e1dc;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 33px 60px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.19;
+}
+.habit-header-title {
+  color: #4f4f4f;
+}
+.habit-header-button {
+  padding: 12px 18px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  color: #43d190;
+  border: 2px solid #43d190;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.habit-list {
+  font-family: "Rubik", sans-serif;
+  list-style: none;
+  padding: 20px 62px;
+}
+
+.habit-item {
+  font-size: 14px;
+  line-height: 1.21;
+  color: #bdbdbd;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  padding: 20px 45px 0 20px;
+  margin-bottom: 30px;
+  border-left: 10px solid blueviolet;
+}
+
+.habit-title {
+  color: #4f4f4f;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.17;
+}
+
+.habit-scale {
+  display: flex;
+}
+
+.btn {
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  background-color: transparent;
+  border-radius: 5px;
+}
+.btn.done {
+  background-image: url(../../images/checkListPage/checkmark.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 54px;
+}
+
+.btn.missed {
+  background-image: url(../../images/checkListPage/missed1.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 15px;
+}
+.btn.done:hover,
+.btn.done:focus {
+  background-image: url(../../images/checkListPage/done1.svg);
+  background-color: #e9faf7;
+}
+.btn.missed:hover,
+.btn.missed:focus {
+  background-image: url(../../images/checkListPage/missed.svg);
+  background-color: #e9faf7;
+}
+
+.btn.done.active {
+  background-image: url(../../images/checkListPage/done.svg);
+  background-color: #43d190;
+}
+
+.btn.missed.active {
+  background-image: url(../../images/checkListPage/missed2.svg);
+  border-color: #fe6083;
+}
+
+.btn-settings {
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  background-color: transparent;
+  border-radius: 5px;
+
+  position: absolute;
+  top: -25px;
+  right: -50px;
+  border: none;
+  background-image: url(../../images/checkListPage/settings.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn.done:hover,
+.btn.done:focus {
+  fill: #4f4f4f;
+}
+
+.habit-done {
+  margin-right: 50px;
+}
+.habit-done-number {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.17;
+  color: #43d190;
+  padding-top: 5px;
+}
+.habit-missed-number {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.17;
+  color: #fe6083;
+}
+.MuiBox-root.MuiBox-root-2 {
+  width: 80%;
+}
+.MuiTypography-root.MuiTypography-body2.MuiTypography-colorTextSecondary {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.17;
+  color: #43d190;
+}
+
+.MuiLinearProgress-bar.MuiLinearProgress-barColorPrimary.MuiLinearProgress-bar1Determinate {
+  background-color: #43d190;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px 0px #43d190;
+}
+.MuiLinearProgress-root.MuiLinearProgress-colorPrimary.MuiLinearProgress-determinate {
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  height: 6px;
+  overflow-x: visible;
+}
+
+.habit-scale-container {
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.habit-scale-text {
+  bottom: 30px;
+  position: absolute;
+}
+
+.habit-number-counter {
+  display: none;
+  border-top: 1px dashed #e0e0e0;
+  padding: 20px 0 20px;
+}
+.habit-number-counter.isVisible {
+  display: flex;
+}
