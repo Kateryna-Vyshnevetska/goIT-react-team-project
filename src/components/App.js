@@ -1,12 +1,20 @@
 import React, { Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { HomePage } from "../pages/homePage/HomePage";
+import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import PublicRoute from "./publicRoute/PublicRoute";
 import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
+import { getDefaultMiddleware } from "@reduxjs/toolkit";
+import {
+  createHabitAndGetAllHabits,
+  getAllUserDataForState,
+  deleteHabitAndGetAllHabits,
+  signUp,
+} from "../redux/operations";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -23,7 +31,8 @@ import CustomButton from "./CustomButton/CustomButton";
 export function App() {
   return (
     <>
-      <CheckListPage />
+      {/* <HomePage /> */}
+      {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* <PublicRoute exact path="/" /* component={HomePage} */}
@@ -53,7 +62,6 @@ export function App() {
       {/* <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */}
       {/* </Switch> */}
       {/* </Suspense> */}
-      {/* <HomePage /> */}
     </>
   );
 }
