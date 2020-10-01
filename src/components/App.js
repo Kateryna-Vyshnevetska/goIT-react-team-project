@@ -25,7 +25,6 @@ export function App() {
     <>
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
-
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* <PublicRoute exact path="/" /* component={HomePage} */}
