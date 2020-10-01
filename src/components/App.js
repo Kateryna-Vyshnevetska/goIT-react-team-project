@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { HomePage } from "../pages/homePage/HomePage";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,9 @@ import { LeftSideBar } from "./leftSideBar/LeftSideBar";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
+import { modalBackDrop } from "./modalBackDrop/ModalBackDrop";
+import InterviewModal from "./interviewModal/InterviewModal";
+
 import CustomHabitModal from "./Modals/CustomHabitModal/CustomHabitModal";
 import HabitTemplateModal from "./Modals/HabitTemplateModal/HabitTemplateModal";
 import { getDefaultMiddleware } from "@reduxjs/toolkit";
@@ -45,40 +48,49 @@ export function App() {
   //     token
   //   )
   // );
+
+  // const [modalShow, setModalShow] = useState(false);
+
+  // const close = () => {
+  //   setModalShow((prev) => !prev);
+  // };
+
   return (
     <>
+      {/* <button onClick={() => setModalShow(true)}>InterviewModal</button>
+      {modalShow && <InterviewModal close={close} />} */}
       {/* <CustomHabitModal /> */}
       {/* <HabitTemplateModal /> */}
       {/* <HomePage /> */}
       <CheckListPage />
       {/* <Suspense fallback={<Spinner />}> */}
-      {/* <Switch> */}
-      {/* <PublicRoute exact path="/" /* component={HomePage} */}
-      {/* <PublicRoute path="/logIn" /*  component={LogIn}  */
-      /*/}
+      <Switch>
+        {/* <PublicRoute exact path="/" /* component={HomePage} */}
+        {/* <PublicRoute path="/logIn" /*  component={LogIn}  */
+        /*/}
           {/* <PublicRoute path="/signUp" /*  component={SignUp}  */
-      /*/}
+        /*/}
 
           {/* <PrivateRoute */}
-      {/* path="/checkListPage/" /*  component={CheckListPage}  */}
-      {/* /> */}
+        {/* path="/checkListPage/" /*  component={CheckListPage}  */}
+        {/* /> */}
 
-      {/* <PrivateRoute path="/profilePage" /*  component={ProfilePage}  */
-      /*/}
+        {/* <PrivateRoute path="/profilePage" /*  component={ProfilePage}  */
+        /*/}
           {/* <PrivateRoute */}
-      {/* path="/achievementsPage" /*  component={AchievementsPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute */}
-      {/* path="/notificationsPage" /*  component={NotificationsPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute */}
-      {/* path="/subscriptionsPage" /*  component={SubscriptionsPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute */}
-      {/* path="/chooseAvatarPage" /*  component={ChooseAvatarPage}  */}
-      {/* /> */}
-      {/* <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */}
-      {/* </Switch> */}
+        {/* path="/achievementsPage" /*  component={AchievementsPage}  */}
+        {/* /> */}
+        {/* <PrivateRoute */}
+        {/* path="/notificationsPage" /*  component={NotificationsPage}  */}
+        {/* /> */}
+        {/* <PrivateRoute */}
+        {/* path="/subscriptionsPage" /*  component={SubscriptionsPage}  */}
+        {/* /> */}
+        {/* <PrivateRoute */}
+        {/* path="/chooseAvatarPage" /*  component={ChooseAvatarPage}  */}
+        {/* /> */}
+        {/* <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */}
+      </Switch>
       {/* </Suspense> */}
     </>
   );
