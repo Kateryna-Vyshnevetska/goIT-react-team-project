@@ -6,8 +6,10 @@ import { quizInfo } from "./quizInfo/quizInfoReducers";
 import { userHabits } from "./habits/habitsReducers";
 import { userCigarettes } from "./cigarettes/cigarettesReducers";
 import { authToken } from "./authToken/authTokenReducer";
+import { isAuthUser } from "./isAuthUser/isAuthUserReducer";
 
 export const rootReducer = combineReducers({
+  isAuthUser,
   authToken,
   userInfo,
   quizInfo,

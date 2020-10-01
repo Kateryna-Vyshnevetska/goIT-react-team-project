@@ -128,25 +128,14 @@ table {
   display: flex;
 }
 
-.rightSideBar {
-  width: 378px;
-  height: 900px;
-  background-color: tomato;
-}
-.leftSideBar {
-  width: 378px;
-  height: 900px;
-  background-color: tomato;
-}
-
 .habit-container {
-  width: 100%;
+  width: 100vh;
   padding-top: 40px 62px;
   background-color: #f6f6f6;
 }
 
 .habit-header {
-  max-height: 110px;
+  max-height: 109px;
   background-color: #fff;
   outline: 1px solid #d5e1dc;
   margin-bottom: 30px;

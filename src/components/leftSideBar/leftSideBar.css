@@ -1,11 +1,15 @@
 .leftSideBar {
   max-height: 900px;
   width: 378px;
+  height: 100vh;
+  border-left: 1px solid #d5e1dc;
+  border-bottom: 1px solid #d5e1dc;
+  border-right: 1px solid #d5e1dc;
 }
 .leftSideBar-block {
   margin: 0 auto;
-  border-right: 1px solid #d5e1dc;
-  border-left: 1px solid #d5e1dc;
+  /* border-right: 1px solid #d5e1dc; */
+  /* border-left: 1px solid #d5e1dc; */
   background-color: rgb(255, 255, 255);
 }
 .logo-block {
