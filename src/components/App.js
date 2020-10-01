@@ -1,15 +1,26 @@
 import React, { Suspense, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { HomePage } from "../pages/homePage/HomePage";
+import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import PublicRoute from "./publicRoute/PublicRoute";
 import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
+import { LeftSideBar } from "./leftSideBar/LeftSideBar";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
 import { modalBackDrop } from "./modalBackDrop/ModalBackDrop";
 import InterviewModal from "./interviewModal/InterviewModal";
-// import modalBackDrop from "./interviewModal/InterviewModal";
+
+import CustomHabitModal from "./Modals/CustomHabitModal/CustomHabitModal";
+import HabitTemplateModal from "./Modals/HabitTemplateModal/HabitTemplateModal";
+import { getDefaultMiddleware } from "@reduxjs/toolkit";
+import {
+  createHabitAndGetAllHabits,
+  getAllUserDataForState,
+  deleteHabitAndGetAllHabits,
+  signUp,
+} from "../redux/operations";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -33,9 +44,10 @@ export function App() {
     <>
       {/* <button onClick={() => setModalShow(true)}>InterviewModal</button>
       {modalShow && <InterviewModal close={close} />} */}
+      {/* <CustomHabitModal /> */}
+      {/* <HabitTemplateModal /> */}
       {/* <HomePage /> */}
-      {/* <CheckListPage /> */}
-
+      <CheckListPage />
       {/* <Suspense fallback={<Spinner />}> */}
       <Switch>
         {/* <PublicRoute exact path="/" /* component={HomePage} */}

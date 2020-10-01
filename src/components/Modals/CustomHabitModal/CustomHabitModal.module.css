@@ -1,0 +1,153 @@
+.wrapper {
+  width: 784px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+.title {
+  font-family: Rubik;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.text {
+  margin-bottom: 40px;
+  font-family: Rubik;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #bdbdbd;
+}
+
+/* .form {
+} */
+
+.row {
+  margin-bottom: 20px;
+}
+
+.label {
+  width: 200px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+.row:last-child {
+  margin-bottom: 0px;
+}
+
+.input {
+  padding: 5px 20px 5px 20px;
+
+  background: #ffffff;
+  /* Gray 5 */
+
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+
+.inputFirst {
+  padding: 5px 20px 5px 20px;
+
+  width: 55%;
+
+  background: #ffffff;
+  /* Gray 5 */
+
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+
+.btnDelete {
+  display: flex;
+  margin: auto;
+
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #bdbdbd;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.btnDelete,
+.btnDelete:active,
+.btnDelete:focus {
+  outline: none;
+}
+
+.btnDeleteIcon {
+  display: inline-block;
+  width: 14px;
+  height: 16px;
+  background-image: url(../../../images/customHabitModal/trash.svg);
+  background-repeat: no-repeat;
+  margin-right: 15px;
+}
+
+.actionBtnContainer {
+  text-align: center;
+}
+/*
+.labelContainer {
+  display: flex;
+}
+
+.labelList {
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+ 
+
+  color: #4f4f4f;
+}
+
+.label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.label:last-child {
+  margin-bottom: 0px;
+}
+
+.input {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.inputList {
+    
+} */

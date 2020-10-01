@@ -1,11 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { addUserHabits } from "./habitsActions";
+import { addUserHabits, uppdateUserHabits } from "./habitsActions";
 
 const userHabitsState = [];
 
-export const userHabits = createReducer(
-  { ...userHabitsState },
-  {
-    [addUserHabits]: (state, { payload }) => payload,
-  }
-);
+export const userHabits = createReducer(userHabitsState, {
+  [addUserHabits]: (state, { payload }) => payload,
+  [uppdateUserHabits]: (state, { payload }) => payload,
+});
