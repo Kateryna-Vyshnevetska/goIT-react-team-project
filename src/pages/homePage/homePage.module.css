@@ -1,0 +1,80 @@
+.section {
+  height: 100vh;
+  width: 100vw;
+  background-color: #43d190;
+  background-image: url(../../components/images/frame.svg),
+    url(../../components/images/frame2.svg),
+    url(../../components/images/frame1.svg),
+    url(../../components/images/frame3.svg);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: top 13px left 115px, right 67px top 121px,
+    bottom 20px left 129px, right 65px bottom 65px;
+}
+.container {
+  width: 720px;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+.title {
+  margin: 0;
+  padding-top: 140px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 43px;
+  text-align: center;
+
+  color: #ffffff;
+}
+.mainText {
+  padding-top: 50px;
+  margin: 0;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+  text-align: center;
+
+  color: #ffffff;
+}
+.secondText {
+  margin-top: 0;
+  margin-bottom: 48px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  color: #ffffff;
+}
+.logo {
+  display: flex;
+  margin: 0 auto;
+}
+.secondtitle {
+  margin: 0;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+
+  color: #ffffff;
+}
+.titleContainer {
+  width: 620px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+.logoContainer {
+  width: 455px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
