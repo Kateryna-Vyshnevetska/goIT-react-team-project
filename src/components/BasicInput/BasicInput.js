@@ -28,7 +28,7 @@ export function BasicInput({
         name={name}
         placeholder={placeholder}
         style={{ width: inputWidth }}
-        // onChange={({ target: { value } }) => handleChange(value)}
+        onChange={({ target: { value } }) => handleChange(value)}
       />
     </div>
   );

@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useStore } from "react-redux";
+
+import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./InterviewModal.module.css";
+
 function InterviewModal({ close }) {
+  const [smokeYears, setsmokeYears] = useState("");
+  const [smokeInDay, setsmokeInDay] = useState("");
+  const [timeOnOneSig, settimeOnOneSig] = useState("");
+  const [sigCost, setsigCost] = useState("");
+
+  function handleSubmit(evt) {
+    close();
+    evt.preventDefault();
+    const sigInfo = { smokeYears, smokeInDay, timeOnOneSig, sigCost };
+    console.log(sigInfo);
+  }
   return (
     <>
       <div className={styles.modalHead}>
@@ -30,12 +45,41 @@ function InterviewModal({ close }) {
               </h2>
             </li>
           </ul>
-          <form className={styles.modalBodyForm}>
-            <input className={styles.modalBodyInput}></input>
-            <input className={styles.modalBodyInput}></input>
-            <input className={styles.modalBodyInput}></input>
-            <input className={styles.modalBodyInput}></input>
-            <button className={styles.modalBodyButton} onClick={() => close()}>
+          <form className={styles.modalBodyForm} onSubmit={handleSubmit}>
+            <BasicInput
+              name={"smokeYears"}
+              value={smokeYears}
+              placeholder={"0"}
+              handleChange={setsmokeYears}
+              inputWidth={220}
+            />
+            <BasicInput
+              name={"smokeInDay"}
+              value={smokeInDay}
+              placeholder={"0"}
+              handleChange={setsmokeInDay}
+              inputWidth={220}
+            />
+            <BasicInput
+              name={"timeOnOneSig"}
+              value={timeOnOneSig}
+              placeholder={"__min"}
+              handleChange={settimeOnOneSig}
+              inputWidth={220}
+            />
+            <BasicInput
+              name={"sigCost"}
+              value={sigCost}
+              placeholder={"__.__grn"}
+              handleChange={setsigCost}
+              inputWidth={220}
+            />
+
+            <button
+              type="submit"
+              className={styles.modalBodyButton}
+              //   onClick={() => close()}
+            >
               Сохранить
             </button>
           </form>

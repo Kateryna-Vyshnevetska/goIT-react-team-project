@@ -21,6 +21,7 @@ import {
   deleteHabitAndGetAllHabits,
   signUp,
 } from "../redux/operations";
+import DailyResultModal from "./dailyResultModal/DailyResultModal";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -43,11 +44,11 @@ export function App() {
   return (
     <>
       {/* <button onClick={() => setModalShow(true)}>InterviewModal</button>
-      {modalShow && <InterviewModal close={close} />} */}
+      {modalShow && <DailyResultModal close={close} />} */}
       {/* <CustomHabitModal /> */}
       {/* <HabitTemplateModal /> */}
       {/* <HomePage /> */}
-      <CheckListPage />
+      {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       <Switch>
         {/* <PublicRoute exact path="/" /* component={HomePage} */}
