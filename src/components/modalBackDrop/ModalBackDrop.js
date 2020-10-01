@@ -3,6 +3,7 @@ import { CSSTransition } from "react-transition-group";
 
 const ModalBackDrop = (WrappedComponent) => {
   return class HOC extends React.Component {
+    
     state = {
       isOpen: false,
     };

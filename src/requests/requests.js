@@ -2,30 +2,6 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
-const registration = () => {
-  axios
-    .post("/auth/registration", {
-      email: "qwert23y@gmail.com",
-      password: "Qwerty123",
-    })
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
-const login = () => {
-  axios
-    .post("/auth/login", {
-      email: "qwerty@gmail.com",
-      password: "Qwerty123",
-    })
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
 const passChange = () => {
   axios
     .post(
