@@ -35,9 +35,9 @@ export function App() {
   return (
     <>
       {/* <CustomHabitModal /> */}
-      {/* <HabitTemplateModal /> */}
+      <HabitTemplateModal />
       {/* <HomePage /> */}
-      <CheckListPage />
+      {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* <PublicRoute exact path="/" /* component={HomePage} */}
