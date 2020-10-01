@@ -23,7 +23,7 @@ export const CheckStartPage = (isAuthUser) => {
     <Switch>
       <PublicRoute restricted path="/login" component={LogInPage} />
       <PublicRoute restricted path="/registration" component={RegisterPage} />
-      <Route exact path="/" component={HomePage} />
+      <Route path="/" component={HomePage} />
       <Redirect to="/" />
     </Switch>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
-import "../../../index.css"
+import "../../../index.css";
 import style from "./CustomHabitModal.module.css";
 
 // const birthdayStyle = `
@@ -19,12 +19,9 @@ import style from "./CustomHabitModal.module.css";
 
 //   }
 
- 
 // `;
- 
-  
-function CustomHabitModal() {
 
+function CustomHabitModal() {
   return (
     <>
       {/* < style > { birthdayStyle }</style> */}

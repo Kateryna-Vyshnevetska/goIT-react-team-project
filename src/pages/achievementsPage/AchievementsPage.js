@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import achievementAction from "../../redux/achievementAction/achievementAction";
 import style from "./AchievementsPage.module.css";
 
-const AchievementsPage = ({
+export const AchievementsPage = ({
   achievements,
   achievementAction,
   smokedCigarettes,
