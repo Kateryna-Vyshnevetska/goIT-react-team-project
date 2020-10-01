@@ -1,0 +1,19 @@
+.leftSideBar {
+  max-height: 900px;
+  width: 378px;
+}
+.leftSideBar-block {
+  margin: 0 auto;
+  border-right: 1px solid #d5e1dc;
+  border-left: 1px solid #d5e1dc;
+  background-color: rgb(255, 255, 255);
+}
+.logo-block {
+  border-bottom: 1px solid #d5e1dc;
+  width: 100%;
+  height: 110px;
+}
+.imageLogo {
+  display: block;
+  padding:30px 132px 30px 100px;
+}
