@@ -13,7 +13,8 @@
   width: 100%;
   height: 110px;
 }
-.imageLogo {
+.imageLogoLeftSideBar {
   display: block;
-  padding:30px 132px 30px 100px;
+  padding: 30px 132px 30px 100px;
+  width: 100%;
 }

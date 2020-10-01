@@ -12,7 +12,12 @@ export const LeftSideBar = () => {
       <section className="leftSideBar">
         <div className="leftSideBar-block">
           <div className="logo-block">
-            <img src={logo} alt="logo" width="145" className="imageLogo" />
+            <img
+              src={logo}
+              alt="logo"
+              width="145"
+              className="imageLogoLeftSideBar"
+            />
           </div>
           <UserData />
           <CounterEconomy />

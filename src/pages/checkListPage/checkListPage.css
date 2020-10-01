@@ -226,13 +226,11 @@ table {
   background-position: center;
   margin-left: 15px;
 }
-.btn.done:hover,
-.btn.done:focus {
+.btn.done:hover {
   background-image: url(../../images/checkListPage/done1.svg);
   background-color: #e9faf7;
 }
-.btn.missed:hover,
-.btn.missed:focus {
+.btn.missed:hover {
   background-image: url(../../images/checkListPage/missed.svg);
   background-color: #e9faf7;
 }
@@ -265,6 +263,12 @@ table {
   background-position: center;
 }
 
+.btn-settings,
+.btn-settings:active,
+.btn-settings:focus {
+  outline: none;
+}
+
 .btn.done:hover,
 .btn.done:focus {
   fill: #4f4f4f;
@@ -286,8 +290,8 @@ table {
   line-height: 1.17;
   color: #fe6083;
 }
-.MuiBox-root.MuiBox-root-2 {
-  width: 80%;
+.MuiBox-root {
+  width: 100%;
 }
 .MuiTypography-root.MuiTypography-body2.MuiTypography-colorTextSecondary {
   font-family: "Rubik", sans-serif;
