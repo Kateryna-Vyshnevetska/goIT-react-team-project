@@ -7,6 +7,7 @@ import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
+import CustomHabitModal from "./Modals/CustomHabitModal/CustomHabitModal";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -23,6 +24,7 @@ import CustomButton from "./CustomButton/CustomButton";
 export function App() {
   return (
     <>
+      <CustomHabitModal />
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
 
