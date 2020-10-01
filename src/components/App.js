@@ -1,4 +1,3 @@
-
 import React, { Suspense, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { HomePage } from "../pages/homePage/HomePage";
@@ -60,20 +59,19 @@ export function App() {
 
   return (
     <>
-
-//       <CustomHabitModal />
+      {/* <CustomHabitModal /> */}
       {/* <LogInPage /> */}
       {/* <RegisterPage /> */}
 
       {/* <LeftSideBar/>
       <CustomHabitModal /> */}
-      <HomePage />
+      {/* <HomePage /> */}
       {/* <CheckListPage /> */}
       {/* <button onClick={() => setModalShow(true)}>InterviewModal</button>
       {modalShow && <InterviewModal close={close} />} */}
       {/* <CustomHabitModal /> */}
       {/* <HabitTemplateModal /> */}
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
