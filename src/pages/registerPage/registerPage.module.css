@@ -1,0 +1,123 @@
+.container {
+  margin-right: 0;
+  margin-left: auto;
+  height: 100vh;
+  background: #f6f6f6;
+  width: 1035px;
+}
+
+.logo {
+  padding-top: 80px;
+  display: flex;
+  margin-bottom: 60px;
+  margin-left: 448px;
+  margin-right: 382px;
+}
+.form {
+  text-align: center;
+  width: 469px;
+  margin-left: 316px;
+  margin-right: 250px;
+}
+.title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+  text-align: center;
+  color: #4f4f4f;
+}
+.text {
+  margin-bottom: 30px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  color: #4f4f4f;
+}
+.formText {
+  margin-left: auto;
+  margin-right: auto;
+  width: 220px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #bdbdbd;
+}
+.logInButton {
+  width: 220px;
+  margin-bottom: 15px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #43d190;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #43d190;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #ffffff;
+}
+.registerButton {
+  margin-bottom: 10px;
+  width: 220px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  background-color: #ffffff;
+  color: #43d190;
+  border: 2px solid #43d190;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.logInButton:hover {
+  background-color: #ffffff;
+  color: #43d190;
+}
+.registerButton:hover {
+  background-color: #43d190;
+  color: #ffffff;
+}
+.buttonGoogle {
+  border: none;
+  margin-bottom: 15px;
+  width: 276px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  background: #ec4541;
+  border-radius: 5px;
+  border-color: #ec4541;
+  color: #ffffff;
+}
+.buttonFacebook {
+  border: none;
+  margin-bottom: 40px;
+  width: 276px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  background: #305b94;
+  border-radius: 5px;
+  border-color: #305b94;
+  color: #ffffff;
+}
