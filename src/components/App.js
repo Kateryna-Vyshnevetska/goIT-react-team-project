@@ -35,11 +35,26 @@ import {
 // } from "../routes";
 
 export function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.authToken);
+  // dispatch(signUp({ email: "olivka@gmail.com", password: "qwerty123" }));
+  // dispatch(
+  //   createHabitAndGetAllHabits(
+  //     {
+  //       name: "new",
+  //       planningTime: "new",
+  //       iteration: "some",
+  //     },
+  //     token
+  //   )
+  // );
+
   // const [modalShow, setModalShow] = useState(false);
 
   // const close = () => {
   //   setModalShow((prev) => !prev);
   // };
+
   return (
     <>
       {/* <button onClick={() => setModalShow(true)}>InterviewModal</button>
