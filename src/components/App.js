@@ -1,10 +1,12 @@
 import React, { Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
+import { LeftSideBar } from './leftSideBar/LeftSideBar';
 
 export function App() {
   return (
     <>
+      <LeftSideBar/>
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* {routes.map(({ path, name, exact, component }) => {
