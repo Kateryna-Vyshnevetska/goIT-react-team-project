@@ -1,0 +1,32 @@
+<svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" id="done">
+    <path d="M22 2L9.5 14 2 6.8" stroke="#4F4F4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" id="done1">
+    <path d="M22 2L9.5 14 2 6.8" stroke="#D5E1DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="missed">
+    <path d="M3 3l16 16M3 19L19 3" stroke="#4F4F4F" stroke-width="3" stroke-linecap="round"></path>
+  </symbol>
+  <symbol viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" id="missed1">
+    <path d="M3 3l16 16M3 19L19 3" stroke="#D5E1DC" stroke-width="3" stroke-linecap="round"></path>
+  </symbol>
+  <symbol viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" id="settings">
+   </symbol>
+</svg>
+
+<svg class="icon">
+  <use xlink:href="#done"></use>
+</svg>
+<svg class="icon">
+  <use xlink:href="#done1"></use>
+</svg>
+<svg class="icon">
+  <use xlink:href="#missed"></use>
+</svg>
+<svg class="icon">
+  <use xlink:href="#missed1"></use>
+</svg>
+<svg class="icon">
+  <use xlink:href="#settings"></use>
+</svg>
