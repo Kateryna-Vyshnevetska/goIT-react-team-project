@@ -8,6 +8,7 @@ import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
+import CustomHabitModal from "./Modals/CustomHabitModal/CustomHabitModal";
 import { getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
   createHabitAndGetAllHabits,
@@ -31,6 +32,7 @@ import {
 export function App() {
   return (
     <>
+      <CustomHabitModal />
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
