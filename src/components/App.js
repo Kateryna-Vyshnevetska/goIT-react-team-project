@@ -31,11 +31,24 @@ import {
 // } from "../routes";
 
 export function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.authToken);
+  // dispatch(signUp({ email: "olivka@gmail.com", password: "qwerty123" }));
+  // dispatch(
+  //   createHabitAndGetAllHabits(
+  //     {
+  //       name: "new",
+  //       planningTime: "new",
+  //       iteration: "some",
+  //     },
+  //     token
+  //   )
+  // );
   return (
     <>
       {/* <CustomHabitModal /> */}
       {/* <HomePage /> */}
-      {/* <CheckListPage /> */}
+      <CheckListPage />
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* <PublicRoute exact path="/" /* component={HomePage} */}
