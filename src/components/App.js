@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { HomePage } from "../pages/homePage/HomePage";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,6 +33,7 @@ import {
 export function App() {
   return (
     <>
+      <CustomHabitModal />
       {/* <CustomHabitModal /> */}
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}

@@ -11,9 +11,11 @@ export function BasicInput({
   placeholder,
   labelWidth,
   inputWidth,
+  type,
+  marginBottom,
 }) {
   return (
-    <div>
+    <div style={{ marginBottom: marginBottom }}>
       <label
         for={forLabel}
         className={style.label}
@@ -28,6 +30,7 @@ export function BasicInput({
         name={name}
         placeholder={placeholder}
         style={{ width: inputWidth }}
+        type={type}
         // onChange={({ target: { value } }) => handleChange(value)}
       />
     </div>
