@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import PublicRoute from "./publicRoute/PublicRoute";
 import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
-import { LeftSideBar } from './leftSideBar/LeftSideBar';
+import { LeftSideBar } from "./leftSideBar/LeftSideBar";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
@@ -33,8 +33,7 @@ import {
 export function App() {
   return (
     <>
-      <LeftSideBar/>
-      <CustomHabitModal />
+      {/* <CustomHabitModal /> */}
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}

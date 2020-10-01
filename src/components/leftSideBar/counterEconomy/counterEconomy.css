@@ -17,7 +17,7 @@
   height: 18px;
   content: " ";
   position: absolute;
-  left: 198px;
+  /* left: 198px; */
 }
 .leftSideBar-economyList {
   list-style: none;
@@ -33,11 +33,9 @@
   margin: 0px 0px 0px 25px;
 }
 
-.leftSideBar-economyTitle{
-font-size: 14px;
-line-height: 1.19;
-color: #BDBDBD;
-margin: 0px 0px 15px 0px;
-
+.leftSideBar-economyTitle {
+  font-size: 14px;
+  line-height: 1.19;
+  color: #bdbdbd;
+  margin: 0px 0px 15px 0px;
 }
-
