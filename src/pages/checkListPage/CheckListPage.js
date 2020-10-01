@@ -30,7 +30,6 @@ export function CheckListPage() {
 
   return (
     <div className="check-list-section">
-      <div className="rightSideBar"></div>
       <div className="habit-container">
         <div className="habit-header">
           <h2 className="habit-header-title">Чек-лист привычек</h2>
@@ -49,7 +48,6 @@ export function CheckListPage() {
           ))}
         </ul>
       </div>
-      <div className="leftSideBar"></div>
     </div>
   );
 }

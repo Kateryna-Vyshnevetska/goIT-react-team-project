@@ -18,10 +18,10 @@ import RegisterPage from "../registerPage/RegisterPage";
 export const HomePage = () => {
   return (
     <div className={styles.section}>
-      <Switch>
+      {/* <Switch>
         <Route exact path="/login" component={LogInPage} />
         <Route exact path="/registration" component={RegisterPage} />
-      </Switch>
+      </Switch> */}
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
