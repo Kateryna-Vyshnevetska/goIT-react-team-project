@@ -33,6 +33,8 @@ import {
 //   LogIn,
 //   HomePage,
 // } from "../routes";
+import RegisterPage from "../pages/registerPage/RegisterPage";
+import LogInPage from "../pages/logInPage/LogInPage";
 
 export function App() {
   const dispatch = useDispatch();
@@ -57,6 +59,14 @@ export function App() {
 
   return (
     <>
+
+      {/* <LogInPage /> */}
+      {/* <RegisterPage /> */}
+
+      {/* <LeftSideBar/>
+      <CustomHabitModal /> */}
+      <HomePage />
+      {/* <CheckListPage /> */}
       {/* <button onClick={() => setModalShow(true)}>InterviewModal</button>
       {modalShow && <InterviewModal close={close} />} */}
       {/* <CustomHabitModal /> */}
@@ -70,6 +80,21 @@ export function App() {
         /*/}
           {/* <PublicRoute path="/signUp" /*  component={SignUp}  */
         /*/}
+
+
+          <PrivateRoute path="/achievementsPage" component={AchievementsPage} />
+          <PrivateRoute
+            path="/notificationsPage"
+            component={NotificationsPage}
+          />
+          <PrivateRoute
+            path="/subscriptionsPage"
+            component={SubscriptionsPage}
+          />
+          <PrivateRoute path="/chooseAvatarPage" component={ChooseAvatarPage} />
+          <PrivateRoute path="/pageNotFound" component={PageNotFound} />
+        </Switch>
+      </Suspense> */}
 
           {/* <PrivateRoute */}
         {/* path="/checkListPage/" /*  component={CheckListPage}  */}
@@ -92,6 +117,7 @@ export function App() {
         {/* <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */}
       </Switch>
       {/* </Suspense> */}
+
     </>
   );
 }
