@@ -2,13 +2,13 @@
   height: 100vh;
   width: 100vw;
   background-color: #43d190;
-  background-image: url(../../components/images/frame.svg),
-    url(../../components/images/frame2.svg),
-    url(../../components/images/frame1.svg),
-    url(../../components/images/frame3.svg);
+  background-image: url(../../images/homePage/frame.svg),
+    url(../../images/homePage/frame2.svg), url(../../images/homePage/frame1.svg),
+    url(../../images/homePage/frame3.svg);
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-  background-position: top 13px left 115px, right 67px top 121px,
-    bottom 20px left 129px, right 65px bottom 65px;
+  background-position: top -20px left 20px, right 20px top 50px,
+    bottom 5px left 20px, right 30px bottom 25px;
+  position: relative;
 }
 .container {
   width: 720px;
@@ -67,7 +67,7 @@
   color: #ffffff;
 }
 .titleContainer {
-  width: 620px;
+  width: 720px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 50px;
@@ -77,4 +77,45 @@
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+}
+.logInButton {
+  padding: 10px 40px 10px 40px;
+  width: 220px;
+  height: 44px;
+  margin-right: 15px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #43d190;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #ffffff;
+}
+.registerButton {
+  padding: 10px 40px 10px 40px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  background-color: #43d190;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.logInButton:hover {
+  background-color: #ffffff;
+  color: #43d190;
+}
+.registerButton:hover {
+  background-color: #ffffff;
+  color: #43d190;
 }

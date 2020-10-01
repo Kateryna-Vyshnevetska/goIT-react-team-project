@@ -5,7 +5,7 @@
   border: 1px solid #e0e0e0;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 44px;
+
   font-family: Rubik;
   font-style: normal;
   font-weight: normal;
@@ -27,3 +27,8 @@
   line-height: 21px;
   color: #4f4f4f;
 }
+
+.datepicker__month{
+  background-color: red;
+}
+
