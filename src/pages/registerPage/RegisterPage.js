@@ -1,8 +1,21 @@
 import React from "react";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import styles from "./registerPage.module.css";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../redux/operations";
 
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+  const newUser = {};
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    dispatch(signUp(newUser));
+  };
+
+  const handleChange = ({ target: { name, value } }) => {
+    newUser[name] = value;
+  };
   return (
     <div className={styles.container}>
       <div>
@@ -12,7 +25,7 @@ const RegisterPage = () => {
           className={styles.logo}
         />
 
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <h1 className={styles.title}>Добро пожаловать!</h1>
           <p className={styles.text}>
             Введите свои данные, чтобы <br /> продолжить использовать наше
@@ -24,10 +37,11 @@ const RegisterPage = () => {
             forLabel="E-mail"
             id="e-mail"
             labelText="E-mail"
-            name="e-mail"
+            name="email"
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="15px"
+            handleChange={handleChange}
           />
           <BasicInput
             placeholder="Введите свой пароль"
@@ -35,13 +49,16 @@ const RegisterPage = () => {
             forLabel="Пароль"
             id="Пароль"
             labelText="Пароль"
-            name="passsword"
+            name="password"
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="40px"
+            handleChange={handleChange}
           />
           <div className={styles.buttonContaineer}>
-            <button className={styles.logInButton}>Зарегистрироваться</button>
+            <button type="Submit" className={styles.logInButton}>
+              Зарегистрироваться
+            </button>
             <button className={styles.buttonGoogle}>
               Войти с помощью Google
             </button>

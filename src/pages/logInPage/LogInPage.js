@@ -1,8 +1,22 @@
 import React from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
+import { logIn } from "../../redux/operations";
+import { useDispatch } from "react-redux";
 
 const LogInPage = () => {
+  const dispatch = useDispatch();
+  const userDataForLogin = {};
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    dispatch(logIn(userDataForLogin));
+  };
+
+  const handleChange = ({ target: { name, value } }) => {
+    userDataForLogin[name] = value;
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -11,7 +25,7 @@ const LogInPage = () => {
           alt="logo"
           className={styles.logo}
         />
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <h1 className={styles.title}>C возвращением!</h1>
           <p className={styles.text}>
             Введите свои данные, чтобы <br /> продолжить использовать наше
@@ -22,30 +36,36 @@ const LogInPage = () => {
             forLabel="Логин"
             id="Логин"
             labelText="Логин"
-            name="login"
+            name="email"
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="15px"
+            handleChange={handleChange}
           />
           <BasicInput
             type="password  "
             forLabel="Пароль"
             id="Пароль"
             labelText="Пароль"
-            name="passsword"
+            name="password"
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="40px"
+            handleChange={handleChange}
           />
           <div className={styles.buttonContaineer}>
-            <button className={styles.logInButton}>Войти</button>
-            <button className={styles.buttonGoogle}>
+            <button type="Submit" className={styles.logInButton}>
+              Войти
+            </button>
+            <button type="button" className={styles.buttonGoogle}>
               Войти с помощью Google
             </button>
-            <button className={styles.buttonFacebook}>
+            <button type="button" className={styles.buttonFacebook}>
               Войти с помощью Facebook
             </button>
-            <button className={styles.registerButton}>Регистрация</button>
+            <button type="button" className={styles.registerButton}>
+              Регистрация
+            </button>
             <p className={styles.formText}>
               By signing up you agree to our Terms & Conditions
             </p>
