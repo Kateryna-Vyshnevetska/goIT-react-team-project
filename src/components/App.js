@@ -11,6 +11,7 @@ import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
 import CustomHabitModal from "./Modals/CustomHabitModal/CustomHabitModal";
 import { getDefaultMiddleware } from "@reduxjs/toolkit";
+import AchievementsPage from "../pages/achievementsPage/AchievementsPage";
 import {
   createHabitAndGetAllHabits,
   getAllUserDataForState,
@@ -33,6 +34,7 @@ import {
 export function App() {
   return (
     <>
+      {/* {<AchievementsPage />} */}
       {/* <CustomHabitModal /> */}
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
