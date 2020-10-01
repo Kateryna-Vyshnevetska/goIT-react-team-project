@@ -32,7 +32,7 @@ export function BasicInput({
         placeholder={placeholder}
         style={{ width: inputWidth }}
         type={type}
-        // onChange={({ target: { value } }) => handleChange(value)}
+        onChange={handleChange}
       />
     </div>
   );

@@ -1,7 +1,15 @@
 import React from "react";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./userData.css";
+import { logOut } from "../../../redux/operations";
+
 export const UserData = () => {
+  const dispatch = useDispatch();
+
+  const clickTologOut = () => {
+    dispatch(logOut());
+  };
   return (
     <>
       <div className="leftSideBar-userData">
@@ -12,9 +20,15 @@ export const UserData = () => {
             </div>
             <p className="leftSideBar-user-name">Name surname</p>
           </Link>
-                  <Route path="#" />
+          <Route path="#" />
         </Router>
-        <button type="button" className="leftSideBar-user-button">Logout</button>
+        <button
+          type="button"
+          onClick={clickTologOut}
+          className="leftSideBar-user-button"
+        >
+          Logout
+        </button>
       </div>
     </>
   );
