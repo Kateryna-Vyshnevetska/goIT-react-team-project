@@ -226,13 +226,11 @@ table {
   background-position: center;
   margin-left: 15px;
 }
-.btn.done:hover,
-.btn.done:focus {
+.btn.done:hover {
   background-image: url(../../images/checkListPage/done1.svg);
   background-color: #e9faf7;
 }
-.btn.missed:hover,
-.btn.missed:focus {
+.btn.missed:hover {
   background-image: url(../../images/checkListPage/missed.svg);
   background-color: #e9faf7;
 }
@@ -263,6 +261,12 @@ table {
   background-image: url(../../images/checkListPage/settings.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.btn-settings,
+.btn-settings:active,
+.btn-settings:focus {
+  outline: none;
 }
 
 .btn.done:hover,
