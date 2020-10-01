@@ -133,11 +133,11 @@ table {
   height: 900px;
   background-color: tomato;
 }
-/* .leftSideBar {
+.leftSideBar {
   width: 378px;
   height: 900px;
   background-color: tomato;
-} */
+}
 
 .habit-container {
   width: 100%;
@@ -290,8 +290,8 @@ table {
   line-height: 1.17;
   color: #fe6083;
 }
-.MuiBox-root.MuiBox-root-2 {
-  width: 80%;
+.MuiBox-root {
+  width: 100%;
 }
 .MuiTypography-root.MuiTypography-body2.MuiTypography-colorTextSecondary {
   font-family: "Rubik", sans-serif;
