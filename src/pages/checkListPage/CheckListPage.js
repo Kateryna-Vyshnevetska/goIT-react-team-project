@@ -5,9 +5,9 @@ import { LinearProgressWithLabel } from "../../ui/ProgressBar";
 
 export function CheckListPage() {
   function Colors() {
-    let color = `rgb(${Math.round(Math.random() * 255)}, ${Math.round(
+    let color = `rgba(${Math.round(Math.random() * 255)}, ${Math.round(
       Math.random() * 255
-    )},${Math.round(Math.random() * 255)}) `;
+    )},${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 50)}) `;
     return color;
   }
   return (
