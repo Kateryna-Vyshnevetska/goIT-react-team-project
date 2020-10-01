@@ -11,24 +11,30 @@ export const HomePage = () => {
   const [registerOpenPage, setregisterOpenPage] = useState(false);
   return (
     <div className={styles.section}>
-      <Switch>
-        <CSSTransition
-          in={logInOpenPage}
-          timeout={2000}
-          classNames="title-contacts"
-          unmountOnExit
-        >
-          <Route exact path="/login" component={LogInPage} />
-        </CSSTransition>
-        <CSSTransition
-          in={registerOpenPage}
-          timeout={2000}
-          classNames="title-contacts"
-          unmountOnExit
-        >
-          <Route exact path="/registration" component={RegisterPage} />
-        </CSSTransition>
-      </Switch>
+//       <Switch>
+//         <CSSTransition
+//           in={logInOpenPage}
+//           timeout={2000}
+//           classNames="title-contacts"
+//           unmountOnExit
+//         >
+//           <Route exact path="/login" component={LogInPage} />
+//         </CSSTransition>
+//         <CSSTransition
+//           in={registerOpenPage}
+//           timeout={2000}
+//           classNames="title-contacts"
+//           unmountOnExit
+//         >
+//           <Route exact path="/registration" component={RegisterPage} />
+//         </CSSTransition>
+//       </Switch>
+
+      {/* <Switch>
+        <Route exact path="/login" component={LogInPage} />
+        <Route exact path="/registration" component={RegisterPage} />
+      </Switch> */}
+
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>

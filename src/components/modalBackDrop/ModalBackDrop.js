@@ -14,7 +14,6 @@ const modalBackDrop = (WrappedComponent) => {
       window.addEventListener("keydown", this.closeModalKeydown);
       document.addEventListener("click", this.closeModalOverlay);
       document.styleSheets.overflow = "hidden";
-      console.log(this.props);
     }
 
     componentWillUnmount() {
@@ -47,11 +46,7 @@ const modalBackDrop = (WrappedComponent) => {
             classname={stylesTransition}
             unmountOnExit
           >
-            <WrappedComponent
-              {...this.props}
-              classname={styles.component}
-              onClick={this.closeModal}
-            />
+            <WrappedComponent {...this.props} onClick={this.closeModal} />
           </CSSTransition>
         </div>
       );
