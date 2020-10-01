@@ -4,6 +4,7 @@ import { HomePage } from "../pages/homePage/HomePage";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import PublicRoute from "./publicRoute/PublicRoute";
 import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
+import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
 // import {
@@ -22,7 +23,8 @@ import CustomButton from "./CustomButton/CustomButton";
 export function App() {
   return (
     <>
-      {/* <Suspense fallback={<h2>Загружаем...</h2>}> */}
+      <CheckListPage />
+      {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* <PublicRoute exact path="/" /* component={HomePage} */}
       {/* <PublicRoute path="/logIn" /*  component={LogIn}  */
