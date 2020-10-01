@@ -26,8 +26,8 @@
   color: #bdbdbd;
 }
 
-.form {
-}
+/* .form {
+} */
 
 .row {
   margin-bottom: 20px;
@@ -36,11 +36,11 @@
 .label {
   width: 200px;
   font-family: Rubik;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 21px;
-color: #4F4F4F;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
 }
 .row:last-child {
   margin-bottom: 0px;
@@ -56,17 +56,16 @@ color: #4F4F4F;
   box-sizing: border-box;
   border-radius: 5px;
 
-
   font-family: Rubik;
-font-style: normal;
-font-weight: normal;
-font-size: 18px;
-line-height: 21px;
-color: #4F4F4F;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
 }
 
 .inputFirst {
-      padding: 5px 20px 5px 20px;
+  padding: 5px 20px 5px 20px;
 
   width: 55%;
 
@@ -77,19 +76,17 @@ color: #4F4F4F;
   box-sizing: border-box;
   border-radius: 5px;
 
-
   font-family: Rubik;
-font-style: normal;
-font-weight: normal;
-font-size: 18px;
-line-height: 21px;
-color: #4F4F4F;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
 }
 
 .btnDelete {
-      display: flex;
-    margin: auto;
- 
+  display: flex;
+  margin: auto;
 
   font-family: Rubik;
   font-style: normal;
@@ -118,9 +115,8 @@ color: #4F4F4F;
   margin-right: 15px;
 }
 
-
 .actionBtnContainer {
-    text-align: center;
+  text-align: center;
 }
 /*
 .labelContainer {
