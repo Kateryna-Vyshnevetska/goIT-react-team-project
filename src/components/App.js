@@ -30,13 +30,17 @@ import {
 //   HomePage,
 // } from "../routes";
 import RegisterPage from "../pages/registerPage/RegisterPage";
+import LogInPage from "../pages/logInPage/LogInPage";
 
 export function App() {
   return (
     <>
+      {/* <LogInPage /> */}
+      {/* <RegisterPage /> */}
+
       {/* <LeftSideBar/>
       <CustomHabitModal /> */}
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}

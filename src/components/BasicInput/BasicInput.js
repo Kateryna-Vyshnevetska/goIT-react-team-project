@@ -11,9 +11,11 @@ export function BasicInput({
   placeholder,
   labelWidth,
   inputWidth,
+  marginBottom,
+  type,
 }) {
   return (
-    <div>
+    <div style={{ marginBottom: marginBottom }}>
       <label
         for={forLabel}
         className={style.label}
@@ -22,6 +24,7 @@ export function BasicInput({
         {labelText}
       </label>
       <input
+        type={type}
         id={id}
         className={style.basicInput}
         value={value}

@@ -1,22 +1,22 @@
 .container {
-  display: table-cell;
   height: 100vh;
   background: #f6f6f6;
   width: 1035px;
+  position: absolute;
 }
 
 .logo {
   padding-top: 80px;
   display: flex;
   margin-bottom: 60px;
-  margin-left: 448px;
-  margin-right: 382px;
+  margin-left: auto;
+  margin-right: 315px;
 }
 .form {
   text-align: center;
-  width: 469px;
-  margin-left: 316px;
-  margin-right: 250px;
+  width: 700px;
+  margin-left: auto;
+  margin-right: 70px;
 }
 .title {
   margin-top: 0;
@@ -87,8 +87,8 @@
   color: #43d190;
 }
 .registerButton:hover {
-  background-color: #43d190;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #43d190;
 }
 .buttonGoogle {
   border: none;
@@ -119,4 +119,9 @@
   border-radius: 5px;
   border-color: #305b94;
   color: #ffffff;
+}
+.buttonContaineer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
