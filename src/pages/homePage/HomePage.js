@@ -1,27 +1,40 @@
-import React, { useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  // __RouterContext,
-} from "react-router-dom";
-import { animated, useTransition } from "react-spring";
+import React, { useState } from "react";
+import { Switch, Route, Link } from "react-router-dom";
 import styles from "./homePage.module.css";
 import LogInPage from "../logInPage/LogInPage";
 import RegisterPage from "../registerPage/RegisterPage";
-
-// function useRouter() {
-//   return useContext(__RouterContext);
-// }
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "./homePage.css";
 
 export const HomePage = () => {
+  const [logInOpenPage, setlogInOpenPage] = useState(false);
+  const [registerOpenPage, setregisterOpenPage] = useState(false);
   return (
     <div className={styles.section}>
+//       <Switch>
+//         <CSSTransition
+//           in={logInOpenPage}
+//           timeout={2000}
+//           classNames="title-contacts"
+//           unmountOnExit
+//         >
+//           <Route exact path="/login" component={LogInPage} />
+//         </CSSTransition>
+//         <CSSTransition
+//           in={registerOpenPage}
+//           timeout={2000}
+//           classNames="title-contacts"
+//           unmountOnExit
+//         >
+//           <Route exact path="/registration" component={RegisterPage} />
+//         </CSSTransition>
+//       </Switch>
+
       {/* <Switch>
         <Route exact path="/login" component={LogInPage} />
         <Route exact path="/registration" component={RegisterPage} />
       </Switch> */}
+
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>
@@ -40,10 +53,20 @@ export const HomePage = () => {
             Войдите или зарегистрируйтесь, чтобы начать использовать наше
             приложение
           </p>
-          <Link to="/login" className={styles.logInButton}>
+          <Link
+            to="/login"
+            className={styles.logInButton}
+            onClick={() => setlogInOpenPage((logInOpenPage) => !logInOpenPage)}
+          >
             Войти
           </Link>
-          <Link to="/registration" className={styles.registerButton}>
+          <Link
+            to="/registration"
+            className={styles.registerButton}
+            onClick={() =>
+              setregisterOpenPage((registerOpenPage) => !registerOpenPage)
+            }
+          >
             Регистрация
           </Link>
         </div>
