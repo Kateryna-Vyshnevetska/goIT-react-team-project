@@ -214,19 +214,48 @@ table {
   border-radius: 5px;
 }
 .btn.done {
-  background-image: url(../../images/checkListPage/done1.svg);
+  background-image: url(../../images/checkListPage/checkmark.svg);
   background-repeat: no-repeat;
   background-position: center;
   margin-left: 54px;
-  fill: #d5e1dc;
 }
+
 .btn.missed {
   background-image: url(../../images/checkListPage/missed1.svg);
   background-repeat: no-repeat;
   background-position: center;
   margin-left: 15px;
 }
-.btn.settings {
+.btn.done:hover,
+.btn.done:focus {
+  background-image: url(../../images/checkListPage/done1.svg);
+  background-color: #e9faf7;
+}
+.btn.missed:hover,
+.btn.missed:focus {
+  background-image: url(../../images/checkListPage/missed.svg);
+  background-color: #e9faf7;
+}
+
+.btn.done.active {
+  background-image: url(../../images/checkListPage/done.svg);
+  background-color: #43d190;
+}
+
+.btn.missed.active {
+  background-image: url(../../images/checkListPage/missed2.svg);
+  border-color: #fe6083;
+}
+
+.btn-settings {
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  background-color: transparent;
+  border-radius: 5px;
+
   position: absolute;
   top: -25px;
   right: -50px;
@@ -234,6 +263,11 @@ table {
   background-image: url(../../images/checkListPage/settings.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.btn.done:hover,
+.btn.done:focus {
+  fill: #4f4f4f;
 }
 
 .habit-done {
@@ -244,6 +278,7 @@ table {
   font-size: 18px;
   line-height: 1.17;
   color: #43d190;
+  padding-top: 5px;
 }
 .habit-missed-number {
   font-weight: 500;
@@ -261,6 +296,7 @@ table {
   line-height: 1.17;
   color: #43d190;
 }
+
 .MuiLinearProgress-bar.MuiLinearProgress-barColorPrimary.MuiLinearProgress-bar1Determinate {
   background-color: #43d190;
   border-radius: 10px;
@@ -270,6 +306,7 @@ table {
   background-color: #f6f6f6;
   border-radius: 10px;
   height: 6px;
+  overflow-x: visible;
 }
 
 .habit-scale-container {
@@ -283,7 +320,10 @@ table {
 }
 
 .habit-number-counter {
+  display: none;
   border-top: 1px dashed #e0e0e0;
+  padding-top: 20px;
+}
+.habit-number-counter.isVisible {
   display: flex;
-  padding: 20px 0;
 }
