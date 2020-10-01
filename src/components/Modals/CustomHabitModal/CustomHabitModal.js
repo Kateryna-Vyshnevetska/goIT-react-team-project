@@ -1,9 +1,9 @@
 import React from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
-import "../../../index.css"
+import "../../../index.css";
 import style from "./CustomHabitModal.module.css";
-
+import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 // const birthdayStyle = `
 //   .react-datepicker__month-container {
 // 	font-family: Montserrat;
@@ -19,12 +19,9 @@ import style from "./CustomHabitModal.module.css";
 
 //   }
 
- 
 // `;
- 
-  
-function CustomHabitModal() {
 
+function CustomHabitModal({ close }) {
   return (
     <>
       {/* < style > { birthdayStyle }</style> */}
@@ -74,7 +71,9 @@ function CustomHabitModal() {
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>
-            <button className={style.btnSecondary}>Отмена</button>
+            <button onClick={() => close()} className={style.btnSecondary}>
+              Отмена
+            </button>
             <button className={style.btnMain}>Сохранить</button>
           </div>
         </form>
@@ -83,4 +82,4 @@ function CustomHabitModal() {
   );
 }
 
-export default CustomHabitModal;
+export default modalBackDrop(CustomHabitModal);

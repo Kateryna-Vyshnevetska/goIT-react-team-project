@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./checkListPage.css";
 import { useSelector } from "react-redux";
 import { HabitItem } from "../../pages/checkListPage/HabitItem";
 import { userHabits } from "../../redux/selectors";
+import DailyResultModal from "../../components/dailyResultModal/DailyResultModal";
 
 export function CheckListPage() {
   const state = useSelector((state) => state);
   console.log(userHabits(state));
+
+  const [modalShow, setModalShow] = useState(false);
+
+  const close = () => {
+    setModalShow((prev) => !prev);
+  };
 
   const handleClickHabitButtonDone = (id) => {
     const habitNumberCounter = document.getElementById(id);
@@ -33,7 +40,13 @@ export function CheckListPage() {
       <div className="habit-container">
         <div className="habit-header">
           <h2 className="habit-header-title">Чек-лист привычек</h2>
-          <button className="habit-header-button">+ Сигареты за сегодня</button>
+          <button
+            onClick={() => setModalShow(true)}
+            className="habit-header-button"
+          >
+            + Сигареты за сегодня
+          </button>
+          {modalShow && <DailyResultModal close={close} />}
         </div>
         <ul className="habit-list">
           {userHabits(state).map((el) => (
