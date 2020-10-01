@@ -7,6 +7,7 @@ import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
 import { CheckListPage } from "../pages/checkListPage/CheckListPage";
 import { BasicInput } from "./BasicInput/BasicInput";
 import CustomButton from "./CustomButton/CustomButton";
+import { RightSideBar } from "./RightSideBar/RightSideBar";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -24,6 +25,7 @@ export function App() {
   return (
     <>
       {/* <HomePage /> */}
+      <RightSideBar />
       {/* <CheckListPage /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
