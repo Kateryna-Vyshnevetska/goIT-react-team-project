@@ -24,6 +24,7 @@ export function BasicInput({
         {labelText}
       </label>
       <input
+        type={type}
         id={id}
         className={style.basicInput}
         value={value}
