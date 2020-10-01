@@ -23,7 +23,9 @@ import CustomButton from "./CustomButton/CustomButton";
 export function App() {
   return (
     <>
-      <CheckListPage />
+      {/* <HomePage /> */}
+      {/* <CheckListPage /> */}
+
       {/* <Suspense fallback={<Spinner />}> */}
       {/* <Switch> */}
       {/* <PublicRoute exact path="/" /* component={HomePage} */}
@@ -53,7 +55,6 @@ export function App() {
       {/* <PrivateRoute path="/pageNotFound" /*  component={PageNotFound}  */}
       {/* </Switch> */}
       {/* </Suspense> */}
-      {/* <HomePage /> */}
     </>
   );
 }
