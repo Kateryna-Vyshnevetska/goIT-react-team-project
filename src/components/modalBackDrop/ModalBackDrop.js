@@ -1,8 +1,10 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
+import styles from "./ModalBackDrop.module.css";
+import stylesTransition from "./ModalBackDropTransition.module.css";
 
 const modalBackDrop = (WrappedComponent) => {
-  return class HOC extends React.Component {
+  return class ModalBackDrop extends React.Component {
     state = {
       isOpen: false,
     };
@@ -12,6 +14,7 @@ const modalBackDrop = (WrappedComponent) => {
       window.addEventListener("keydown", this.closeModalKeydown);
       document.addEventListener("click", this.closeModalOverlay);
       document.styleSheets.overflow = "hidden";
+      console.log(this.props);
     }
 
     componentWillUnmount() {
@@ -35,20 +38,25 @@ const modalBackDrop = (WrappedComponent) => {
         this.closeModal();
       }
     };
-
     render() {
       return (
-        <div data-type="modal" classname={}>
+        <div cdata-type="modal" className={styles.modal}>
           <CSSTransition
             in={this.state.isOpen}
             timeout={250}
-            classname={}
+            classname={stylesTransition}
             unmountOnExit
           >
-            <WrappedComponent {...this.props} classname={} />
+            <WrappedComponent
+              {...this.props}
+              classname={styles.component}
+              onClick={this.closeModal}
+            />
           </CSSTransition>
         </div>
       );
     }
   };
 };
+
+export default modalBackDrop;
