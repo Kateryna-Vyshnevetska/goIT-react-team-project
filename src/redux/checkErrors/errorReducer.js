@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { errors } from "./errorActions";
 import { addUserInfo } from "../user/userActions";
 import { addUserQuizInfo } from "../quizInfo/quizInfoActions";
-import { addUserHabits } from "../habits/habitsActions";
+import { addUserHabits, uppdateUserHabits } from "../habits/habitsActions";
 import { addUserCigarettes } from "../cigarettes/cigarettesActions";
 
 export const errorReducer = createReducer("", {
@@ -11,4 +11,5 @@ export const errorReducer = createReducer("", {
   [addUserQuizInfo]: (_) => "",
   [addUserHabits]: (_) => "",
   [addUserCigarettes]: (_) => "",
+  [uppdateUserHabits]: (_) => "",
 });
