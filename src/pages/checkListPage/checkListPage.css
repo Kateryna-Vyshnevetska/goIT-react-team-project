@@ -173,6 +173,8 @@ table {
   font-family: "Rubik", sans-serif;
   list-style: none;
   padding: 20px 62px;
+  max-height: 750px;
+  overflow-y: scroll;
 }
 
 .habit-item {
