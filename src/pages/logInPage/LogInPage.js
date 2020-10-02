@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
+import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
+
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import { logIn } from "../../redux/operations";
 import { useDispatch } from "react-redux";
@@ -45,10 +48,21 @@ const LogInPage = () => {
             marginBottom="15px"
             handleChange={handleChange}
           />
-          <BasicInput
-            type="password  "
-            forLabel="Пароль"
-            id="Пароль"
+          {/* <BasicInput
+            type="password"
+            forLabel="password-input"
+            id="password-input"
+            labelText="Пароль"
+            name="password"
+            labelWidth="120px"
+            inputWidth="345px"
+            marginBottom="40px"
+            handleChange={handleChange}
+          /> */}
+          <PasswordInput
+            type="password"
+            forLabel="password-input"
+            id="password-input"
             labelText="Пароль"
             name="password"
             labelWidth="120px"
