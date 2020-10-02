@@ -8,8 +8,6 @@
 }
 .leftSideBar-block {
   margin: 0 auto;
-  /* border-right: 1px solid #d5e1dc; */
-  /* border-left: 1px solid #d5e1dc; */
   background-color: rgb(255, 255, 255);
 }
 .logo-block {
@@ -22,3 +20,7 @@
   padding: 30px 132px 30px 100px;
   width: 100%;
 }
+/* .leftSideBar-habits {
+  max-height: 270px;
+  overflow-y: scroll;
+} */
