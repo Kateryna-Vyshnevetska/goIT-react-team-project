@@ -44,6 +44,10 @@ const Congratulations = ({ fromCheckList, habitName, close }) => {
             Добавить новую
           </button>
         </div>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
       {isShowModal && (
         <CustomHabitModal

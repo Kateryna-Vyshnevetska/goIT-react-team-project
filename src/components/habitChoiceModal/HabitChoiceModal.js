@@ -12,10 +12,12 @@ function HabitChoiceModal({ close }) {
 
   const [modalShowTemplate, setModalShowTemplate] = useState(false);
   const [modalShowNew, setModalShowNew] = useState(false);
+
   const closeModalTemplate = () => {
     setModalShowTemplate((prev) => !prev);
   };
   const closeModalNew = () => {
+    close();
     setModalShowNew((prev) => !prev);
   };
   return (
@@ -55,6 +57,10 @@ function HabitChoiceModal({ close }) {
         >
           Отмена
         </button>
+        <button
+          onClick={() => close()}
+          className={styles.modalBodyButtonclose}
+        ></button>
       </div>
     </>
   );

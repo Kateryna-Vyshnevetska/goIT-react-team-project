@@ -6,6 +6,7 @@ import { HomePage } from "../pages/homePage/HomePage";
 import { Redirect, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import { MainPage } from "../pages/mainPage/MainPage";
+import { Notifiacation } from "../pages/notification/Notification";
 import Achievements from "../pages/achievementsPage/AchievementsPage";
 
 export function App() {
@@ -25,7 +26,8 @@ export function App() {
         </Switch>
       ) : (
         <>
-          <HomePage />
+          {/* <HomePage /> */}
+          <Notifiacation />
         </>
       )}
       {/* <Achievements /> */}

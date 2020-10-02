@@ -5,6 +5,7 @@
   text-align: center;
   box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
+  position: relative;
 }
 .modalTitle {
   margin: 0;
@@ -87,4 +88,19 @@
   color: #fff;
   margin-left: 15px;
   border: none;
+}
+
+.modalBodyButtonSubmit:disabled {
+  background-color: #e0e0e0;
+}
+
+.modalBodyButtonclose {
+  background-image: url("../../images/close/close.svg");
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
 }
