@@ -7,6 +7,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import { MainPage } from "../pages/mainPage/MainPage";
 import Achievements from "../pages/achievementsPage/AchievementsPage";
+import { CreateHabbitDataArr } from "../helpers/createHabbitDataArr";
 
 export function App() {
   const state = useSelector((state) => state);
@@ -18,6 +19,7 @@ export function App() {
 
   return (
     <>
+      {/* <CreateHabbitDataArr /> */}
       {isAuthUser(state) ? (
         <Switch>
           <PrivateRoute path="/make-it-habit" component={MainPage} />
