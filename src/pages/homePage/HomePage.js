@@ -9,6 +9,7 @@ import { CSSTransition } from "react-transition-group";
 export const HomePage = () => {
   const [logInOpenPage, setlogInOpenPage] = useState(false);
   const [registerOpenPage, setregisterOpenPage] = useState(false);
+
   return (
     <div className={styles.section}>
       <CSSTransition
@@ -17,7 +18,14 @@ export const HomePage = () => {
         classNames="item-login"
         unmountOnExit
       >
-        <Route exact path="/login" component={LogInPage} />
+        <Route
+          exact
+          path="/login"
+          // component={LogInPage}
+          render={(props) => (
+            <LogInPage {...props} setlogInOpenPage={setlogInOpenPage} />
+          )}
+        />
       </CSSTransition>
       <CSSTransition
         in={registerOpenPage}
@@ -25,7 +33,17 @@ export const HomePage = () => {
         classNames="item-register"
         unmountOnExit
       >
-        <Route exact path="/registration" component={RegisterPage} />
+        <Route
+          exact
+          path="/registration"
+          // component={RegisterPage}
+          render={(props) => (
+            <RegisterPage
+              {...props}
+              setregisterOpenPage={setregisterOpenPage}
+            />
+          )}
+        />
       </CSSTransition>
       <div className={styles.container}>
         <div className={styles.titleContainer}>
