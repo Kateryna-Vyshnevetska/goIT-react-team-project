@@ -1,26 +1,26 @@
 .rightSideBarContainer {
-  width: 378px;
-  margin-left: auto;
+  font-family: "Rubik", sans-serif;
+  width: 381px;
+  height: 100%;
+  border-left: 1px solid #d5e1dc;
+  border-bottom: 1px solid #d5e1dc;
 }
 
 .rightSideBarHeader {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 26px;
   line-height: 31px;
   color: #4f4f4f;
-  border-left: 1px solid #d5e1dc;
-  width: 378px;
   height: 110px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-transform: capitalize; */
 }
 
 .headerWeekDay {
-  font-family: "Rubik";
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 600;
   text-transform: capitalize;
@@ -45,27 +45,25 @@
 .calendarChecklistItemProgressDone {
   margin-left: 26px;
   margin-right: 40px;
-
   width: 31px;
   height: 30px;
   background-image: url(../images/done_icon.svg);
 }
 
 .calendarChecklistItemText {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   display: flex;
-  white-space: ;
   align-items: center;
   color: #4f4f4f;
   max-width: 211px;
 }
 
 .calendarChecklistItemTextDone {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -84,7 +82,6 @@
   height: 16px;
   margin-left: 13px;
   margin-right: 42px;
-
   border: none;
   background-color: #fff;
   background-image: url(../images/trash_bin.svg);
