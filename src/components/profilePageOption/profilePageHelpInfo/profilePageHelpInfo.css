@@ -1,0 +1,55 @@
+.ProfilePageHelpInfo-infoContainer {
+  display: flex;
+  margin-bottom: 27px;
+}
+.ProfilePageHelpInfo-infoImg {
+  width: 238px;
+  height: 150px;
+  border-radius: 10px 0px 0px 10px;
+  box-shadow: 0px 10px 16px rgba(254, 96, 131, 0.04);
+  background: #43d190;
+  background-image: url(../../../images/profilePage/infoImg.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ProfilePageHelpInfo-infoSecondBlock {
+  width: 356px;
+  height: 150px;
+  background: #ffffff;
+  box-shadow: 0px 10px 16px rgba(254, 96, 131, 0.04);
+  border-radius: 0px 10px 10px 0px;
+  padding: 20px 30px;
+}
+.ProfilePageHelpInfo-infoText {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.17;
+  color: #4f4f4f;
+  margin-bottom: 10px;
+}
+.ProfilePageHelpInfo-infoMail {
+  font-size: 14px;
+  line-height: 1.19;
+  color: #4f4f4f;
+  margin-bottom: 12px;
+}
+.ProfilePageHelpInfo-infoIconTelegram {
+  background-image: url(../../../images/profilePage/iconTelegram.svg);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ProfilePageHelpInfo-infoIconTelegram:hover,
+.ProfilePageHelpInfo-infoIconTelegram:focus {
+  box-shadow: 0px 0px 10px rgba(83, 172, 61, 0.884);
+}
+.ProfilePageHelpInfo-infoIconLink {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
