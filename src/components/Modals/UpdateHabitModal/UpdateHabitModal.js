@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
 import "../../../index.css";
-import style from "./CustomHabitModal.module.css";
+import style from "./UpdateHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-import { getRandomColor } from "../../../helpers/CheckListPage";
+import FindHabitById from "../../../helpers/FindHabitById";
 // const birthdayStyle = `
 //   .react-datepicker__month-container {
 // 	font-family: Montserrat;
@@ -25,27 +25,28 @@ import { getRandomColor } from "../../../helpers/CheckListPage";
 
 // `;
 
-function CustomHabitModal({ close }) {
-  const newHabit = {};
+function UpdateHabitModal({ close, idOfHabit }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+
+  const newHabit = {};
+
+  const [habit, setHabit] = useState({
+    name: "",
+    planningTime: { time: "08:08" },
+  });
+
+  useEffect(() => {
+    const objectHabit = FindHabitById(state.userHabits, idOfHabit);
+
+    setHabit(objectHabit);
+  }, [idOfHabit, state.userHabits]);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     newHabit.iteration = "1 per day";
     console.log(newHabit);
-
-    // newHabit.planningTime = { }
-
-    dispatch(
-      createHabitAndGetAllHabits(
-        {
-          ...newHabit,
-          planningTime: `${newHabit.planningTime} ${getRandomColor()}`,
-        },
-        authToken(state)
-      )
-    );
+    dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
     close();
   };
 
@@ -57,7 +58,7 @@ function CustomHabitModal({ close }) {
     <>
       {/* < style > { birthdayStyle }</style> */}
       <div className={style.wrapper}>
-        <h3 className={style.title}>Настройте привычку под себя</h3>
+        <h3 className={style.title}>Update привычку под себя</h3>
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
 
         <form className={style.form} onSubmit={handleSubmit}>
@@ -70,6 +71,7 @@ function CustomHabitModal({ close }) {
               labelWidth={"200px"}
               inputWidth={"400px"}
               handleChange={handleChange}
+              placeholder={habit.name}
             />
           </div>
           {/* <div className={style.row}>
@@ -78,7 +80,6 @@ function CustomHabitModal({ close }) {
           </label>
           <input className={style.input} id="date-of-start" type="date" />
         </div> */}
-
           <DateInput
             forLabel={"date"}
             id={"date"}
@@ -89,7 +90,6 @@ function CustomHabitModal({ close }) {
             type={"date"}
             marginBottom={"20px"}
           />
-
           <div className={style.row}>
             <label className={style.label} for="date">
               Время *
@@ -98,6 +98,7 @@ function CustomHabitModal({ close }) {
               className={style.input}
               id="date"
               type="time"
+              value={habit.planningTime.time}
               onChange={(ev) => {
                 newHabit.planningTime = ev.target.value;
               }}
@@ -128,4 +129,4 @@ function CustomHabitModal({ close }) {
   );
 }
 
-export default modalBackDrop(CustomHabitModal);
+export default modalBackDrop(UpdateHabitModal);
