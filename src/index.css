@@ -367,6 +367,9 @@ template {
   display: none;
 }
 
+li {
+  list-style: none;
+}
 button {
   height: 44px;
   width: 220px;
