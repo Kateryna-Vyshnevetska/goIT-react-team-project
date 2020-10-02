@@ -3,10 +3,9 @@ import style from "./AchievementsPage.module.css";
 
 export const AchievementsPage = () => {
   return (
-    <>
+    <div className={style.achievementsPageWrapper}>
       <div className={style.achievementsWrapper}>
         <p className={style.achievementsTitle}>Достижения</p>
-        <p className={style.achievementsCount}>Счет: 2020</p>
       </div>
       <div className={style.achievementsContainer}>
         <ul className={style.achievementsPageList}>
@@ -66,6 +65,6 @@ export const AchievementsPage = () => {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
