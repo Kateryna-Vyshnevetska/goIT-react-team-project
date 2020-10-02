@@ -12,7 +12,7 @@ function DailyResultModal({ close }) {
   const dispatch = useDispatch();
   const store = useStore();
   const token = store.getState().authToken;
-  const data = store.getState().userCigarettes;
+  const data = store.getState().userCigarettes.data;
 
   const updateCigarettesInfo = async (sigCount) => {
     try {
@@ -30,7 +30,12 @@ function DailyResultModal({ close }) {
           }
         )
         .then(() => {
-          dispatch(addUserCigarettes([...data, sigCount]));
+          dispatch(
+            addUserCigarettes({
+              startedAt: "2020-09-14T09:11:03.448Z",
+              data: [...data, sigCount],
+            })
+          );
         });
     } catch (error) {
       console.log(error);
