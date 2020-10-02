@@ -4,7 +4,6 @@
   height: 100%;
   border-left: 1px solid #d5e1dc;
   border-bottom: 1px solid #d5e1dc;
-  /* border-right: 1px solid #d5e1dc; */
 }
 
 .rightSideBarHeader {
@@ -14,12 +13,10 @@
   font-size: 26px;
   line-height: 31px;
   color: #4f4f4f;
-  /* border-left: 1px solid #d5e1dc; */
   height: 110px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-transform: capitalize; */
 }
 
 .headerWeekDay {
@@ -30,7 +27,6 @@
 }
 
 .calendarChecklist {
-  /* border-left: 1px solid #d5e1dc; */
   list-style-type: none;
 }
 
@@ -49,7 +45,6 @@
 .calendarChecklistItemProgressDone {
   margin-left: 26px;
   margin-right: 40px;
-
   width: 31px;
   height: 30px;
   background-image: url(../images/done_icon.svg);
@@ -62,7 +57,6 @@
   font-size: 14px;
   line-height: 17px;
   display: flex;
-  white-space: ;
   align-items: center;
   color: #4f4f4f;
   max-width: 211px;
@@ -88,7 +82,6 @@
   height: 16px;
   margin-left: 13px;
   margin-right: 42px;
-
   border: none;
   background-color: #fff;
   background-image: url(../images/trash_bin.svg);
