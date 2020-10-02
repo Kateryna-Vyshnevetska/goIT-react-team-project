@@ -13,18 +13,19 @@ export const MainPage = () => {
     <>
       <div style={{ display: "flex" }}>
         <LeftSideBar />
-        {/* <Switch>
+
+        <Switch>
           <PrivateRoute
-            path={`${match.path}/check-list`}
+            path={`/make-it-habit/check-list`}
             component={CheckListPage}
           />
           <PrivateRoute
-            path={`${match.path}/achievements`}
+            path={`/make-it-habit/achievements`}
             component={AchievementsPage}
           />
-        </Switch> */}
+        </Switch>
 
-        <CheckListPage />
+        {/* <CheckListPage /> */}
         <RightSideBar />
       </div>
     </>
