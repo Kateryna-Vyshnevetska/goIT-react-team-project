@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./AchievementsPage.module.css";
 
-const Achievements = () => {
+export const AchievementsPage = () => {
   return (
     <>
       <div className={style.achievementsWrapper}>
@@ -69,5 +69,3 @@ const Achievements = () => {
     </>
   );
 };
-
-export default Achievements;
