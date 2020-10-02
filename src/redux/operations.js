@@ -9,11 +9,12 @@ import {
 import { addUserCigarettes } from "../redux/cigarettes/cigarettesActions";
 import { addUserAuthToken } from "../redux/authToken/authTokenAction";
 import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
-
+import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
+  dispatch(isLoadingAction(true));
   try {
     const { data } = await axios.get("/habits", {
       headers: {
@@ -26,6 +27,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(isAuthCurrentUser(true));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -74,6 +76,7 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
   //    planningTime: "andrewHabit",
   //    iteration: "andrewHabit ",
   //  }
+  dispatch(isLoadingAction(true));
   try {
     await axios.post("/habits", newHabit, {
       headers: {
@@ -86,12 +89,14 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
       },
     });
     dispatch(uppdateUserHabits(data.habits));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
 };
 
 export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
   try {
     await axios.delete(`/habits/${id}`, {
       headers: {
@@ -104,6 +109,7 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
       },
     });
     dispatch(uppdateUserHabits(data.habits));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }

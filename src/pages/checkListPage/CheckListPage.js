@@ -6,7 +6,6 @@ import { userHabits } from "../../redux/selectors";
 import DailyResultModal from "../../components/dailyResultModal/DailyResultModal";
 export function CheckListPage() {
   const state = useSelector((state) => state);
-  console.log(userHabits(state));
 
   const [modalShow, setModalShow] = useState(false);
 

@@ -8,22 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import FindHabitById from "../../../helpers/FindHabitById";
-// const birthdayStyle = `
-//   .react-datepicker__month-container {
-// 	font-family: Montserrat;
-// font-style: normal;
-// font-weight: normal;
-// font-size: 14px;
-// line-height: 17px;
-// display: flex;
-// align-items: center;
-// text-align: center;
-
-// color: #181C27;
-
-//   }
-
-// `;
 
 function UpdateHabitModal({ close, idOfHabit }) {
   const dispatch = useDispatch();
