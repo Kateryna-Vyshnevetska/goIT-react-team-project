@@ -35,7 +35,7 @@ function CustomHabitModal({ close }) {
         authToken(state)
       )
     );
-    dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
+    // dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
     close();
   };
 
