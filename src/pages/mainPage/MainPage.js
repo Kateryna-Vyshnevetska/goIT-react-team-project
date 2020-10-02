@@ -1,22 +1,30 @@
-import React, { Suspense } from "react";
+import React, { useEffect } from "react";
 import { LeftSideBar } from "../../components/leftSideBar/LeftSideBar";
 import { CheckListPage } from "../checkListPage/CheckListPage";
 import { RightSideBar } from "../../components/RightSideBar/RightSideBar";
-import { Redirect, Switch, useRouteMatch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import PrivateRoute from "../../components/privateRoute/PrivateRoute";
 import { AchievementsPage } from "../achievementsPage/AchievementsPage";
 
 import "../checkListPage/checkListPage.css";
+import { Spinner } from "../../ui/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUserDataForState } from "../../redux/operations";
+import { authToken } from "../../redux/selectors";
 
 export const MainPage = () => {
-  const match = useRouteMatch();
-  console.log(match.path);
+  const isLoading = useSelector((state) => state.isLoading);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllUserDataForState(authToken(state)));
+  }, []);
   return (
     <>
+      {isLoading && <Spinner />}
       <div className="main-container">
-        <Suspense fallback={<h2>Loading...</h2>}>
-          <LeftSideBar />
-        </Suspense>
+        <LeftSideBar />
 
         <Switch>
           <PrivateRoute

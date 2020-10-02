@@ -18,9 +18,8 @@ export function PasswordInput({
   function show_hide_password(target) {
     const input = document.getElementById("password-input");
     const icon = document.getElementById("iconPasswordView");
-    
 
-    if (input.getAttribute("type") == "password") {
+    if (input.getAttribute("type") === "password") {
       target.classList.add("view");
 
       icon.setAttribute("src", "https://snipp.ru/demo/495/view.svg");

@@ -1,5 +1,3 @@
-import { createSelector } from "@reduxjs/toolkit";
-
 // Как вызывать селекторы в своем файле
 
 // import { useSelector } from 'react-redux';

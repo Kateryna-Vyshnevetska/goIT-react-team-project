@@ -39,7 +39,10 @@ function DateInput({
 
       <DatePicker
         selected={date}
-        onChange={(date) => handleChangeDate(date)}
+        onChange={(date) => {
+          setDate(date);
+          handleChangeDate(date);
+        }}
         onCalendarClose={handleCalendarClose}
         onCalendarOpen={handleCalendarOpen}
       />

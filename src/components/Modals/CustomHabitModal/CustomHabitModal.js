@@ -9,39 +9,37 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
+
 function CustomHabitModal({ close, textOfHabit }) {
-  // console.log("textOfHabit", textOfHabit);
-  const newHabit = {};
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [date, setDate] = useState(new Date());
+  const [name, setName] = useState("");
+  const [iteration, setIteration] = useState("");
+  const [planningTime, setPlanningTime] = useState("");
 
   const handleChangeInput = (date) => {
-    setDate(date);
+    setDate(date.toLocaleDateString("en-GB"));
     console.log(date);
   };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    newHabit.iteration = "1 per day";
-
-    // newHabit.planningTime = { }
-
     dispatch(
       createHabitAndGetAllHabits(
         {
-          ...newHabit,
-          planningTime: `${newHabit.planningTime} ${getRandomColor()}`,
+          name: name,
+          planningTime: `${date} ${planningTime} ${getRandomColor()}`,
+          iteration: iteration,
         },
         authToken(state)
       )
     );
-    // dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
     close();
   };
 
   const handleChange = ({ target: { name, value } }) => {
-    newHabit.name = value;
+    setName(value);
   };
 
   return (
@@ -66,7 +64,7 @@ function CustomHabitModal({ close, textOfHabit }) {
           <DateInput
             forLabel={"date"}
             id={"date"}
-            labelText={"Дата начала"}
+            labelText={"Дата начала *"}
             name={"date"}
             labelWidth={"200px"}
             inputWidth={"400px"}
@@ -84,7 +82,7 @@ function CustomHabitModal({ close, textOfHabit }) {
               id="date"
               type="time"
               onChange={(ev) => {
-                newHabit.planningTime = ev.target.value;
+                setPlanningTime(ev.target.value);
               }}
             />
           </div>
@@ -92,8 +90,16 @@ function CustomHabitModal({ close, textOfHabit }) {
             <label className={style.label} htmlFor="repeat">
               Повторение *
             </label>
-            <select>
-              <option value="once">1 per day</option>
+            <select
+              onChange={({ target: { value } }) => {
+                setIteration(value);
+              }}
+            >
+              <option></option>
+              <option value="1">Ежедневно</option>
+              <option value="2">Раз в 2 дня</option>
+              <option value="3">ПН, СР, ПТ</option>
+              <option value="4">ВТ, ЧТ, СБ</option>
             </select>
           </div>
           <button className={style.btnDelete}>
