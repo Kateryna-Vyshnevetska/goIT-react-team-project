@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { LeftSideBar } from "../../components/leftSideBar/LeftSideBar";
 import { CheckListPage } from "../checkListPage/CheckListPage";
 import { RightSideBar } from "../../components/RightSideBar/RightSideBar";
-import { Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 import PrivateRoute from "../../components/privateRoute/PrivateRoute";
 import { AchievementsPage } from "../achievementsPage/AchievementsPage";
-
+import { Notifiacation } from "../notification/Notification";
+import { ProfilePage } from "../profilePage/ProfilePage";
 import "../checkListPage/checkListPage.css";
 import { Spinner } from "../../ui/Spinner";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,12 +15,6 @@ import { authToken } from "../../redux/selectors";
 
 export const MainPage = () => {
   const isLoading = useSelector((state) => state.isLoading);
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllUserDataForState(authToken(state)));
-  }, []);
   return (
     <>
       {isLoading && <Spinner />}
@@ -37,6 +32,17 @@ export const MainPage = () => {
             path={`/make-it-habit/achievements`}
             component={AchievementsPage}
           />
+          <PrivateRoute
+            exact
+            path={`/make-it-habit/notification`}
+            component={Notifiacation}
+          />
+          <PrivateRoute
+            exact
+            path={`/make-it-habit/profile`}
+            component={ProfilePage}
+          />
+          <Redirect to="/make-it-habit/check-list" />
         </Switch>
 
         <RightSideBar />

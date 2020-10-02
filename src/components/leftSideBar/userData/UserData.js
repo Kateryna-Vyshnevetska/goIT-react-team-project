@@ -8,22 +8,18 @@ import { userInfoEmail } from "../../../redux/selectors";
 
 export const UserData = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
   const clickTologOut = () => {
     dispatch(logOut());
   };
   return (
     <>
       <div className="leftSideBar-userData">
-        <Router>
-          <Link to="#" className="leftSideBar-user-link">
-            <div className="leftSideBar-user-avatar">
-              <img alt="avatar" src={avatar} />
-            </div>
-            <p className="leftSideBar-user-name">{userInfoEmail(state)}</p>
-          </Link>
-          <Route path="#" />
-        </Router>
+        <Link to="/make-it-habit/profile" className="leftSideBar-user-link">
+          <div className="leftSideBar-user-avatar">
+            <img alt="avatar" src={avatar} />
+          </div>
+          <p className="leftSideBar-user-name">NickName</p>
+        </Link>
         <button
           type="button"
           onClick={clickTologOut}
