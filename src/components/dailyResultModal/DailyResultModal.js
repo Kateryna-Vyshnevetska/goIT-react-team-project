@@ -22,7 +22,7 @@ function DailyResultModal({ close }) {
           Сколько сигарет за сегодня Вы выкурили?{" "}
         </h1>
         <p className={styles.modalText}>
-          Даавайте вместе постараемся свести это число к нулю.
+          Давайте вместе постараемся свести это число к нулю.
         </p>
         <div className={styles.modalBody}>
           <ul className={styles.modalBodyList}>

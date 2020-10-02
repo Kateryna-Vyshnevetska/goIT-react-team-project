@@ -8,6 +8,7 @@ import { HomePage } from "../pages/homePage/HomePage";
 import LogInPage from "../pages/logInPage/LogInPage";
 import RegisterPage from "../pages/registerPage/RegisterPage";
 import { MainPage } from "../pages/mainPage/MainPage";
+import { PageNotFound } from "../pages/pageNotFound/PageNotFound";
 
 export const CheckStartPage = (isAuthUser) => {
   if (isAuthUser) {
@@ -23,7 +24,8 @@ export const CheckStartPage = (isAuthUser) => {
     <Switch>
       <PublicRoute restricted path="/login" component={LogInPage} />
       <PublicRoute restricted path="/registration" component={RegisterPage} />
-      <Route path="/" component={HomePage} />
+      <Route exact path="/" component={HomePage} />
+      <Route path="*" component={PageNotFound} />
       <Redirect to="/" />
     </Switch>
   );
