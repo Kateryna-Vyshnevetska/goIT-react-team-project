@@ -52,7 +52,7 @@
 }
 
 .modalBodyForm {
-  margin-top: -30px;
+  margin-top: -10px;
   margin-left: 20px;
   width: 220px;
 }
@@ -64,8 +64,8 @@
   border: 1px solid #4f4f4f;
 }
 
-.modalBodyInput + .modalBodyInput {
-  margin-top: 20px;
+form div + div {
+  margin-top: 15px;
 }
 
 .modalBodyButton {
@@ -74,6 +74,9 @@
   background: #43d190;
   border-radius: 5px;
   color: #fff;
-  margin-left: 15px;
   border: none;
+}
+
+.modalBodyButton:disabled {
+  background-color: #e0e0e0;
 }

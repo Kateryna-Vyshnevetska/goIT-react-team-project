@@ -15,18 +15,19 @@ export const MainPage = () => {
     <>
       <div className="main-container">
         <LeftSideBar />
-        {/* <Switch>
+
+        <Switch>
           <PrivateRoute
-            path={`${match.path}/check-list`}
+            path={`/make-it-habit/check-list`}
             component={CheckListPage}
           />
           <PrivateRoute
-            path={`${match.path}/achievements`}
+            path={`/make-it-habit/achievements`}
             component={AchievementsPage}
           />
-        </Switch> */}
+        </Switch>
 
-        <CheckListPage />
+        {/* <CheckListPage /> */}
         <RightSideBar />
       </div>
     </>

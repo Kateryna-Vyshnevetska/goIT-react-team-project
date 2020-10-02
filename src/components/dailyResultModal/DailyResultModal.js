@@ -1,25 +1,53 @@
 import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
-
+import axios from "axios";
 import { BasicInput } from "../BasicInput/BasicInput";
 import CustomButton from "../CustomButton/CustomButton";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./DailyResultModal.module.css";
+import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";
 
 function DailyResultModal({ close }) {
   const [sigCount, setsigCount] = useState("");
+  const dispatch = useDispatch();
+  const store = useStore();
+  const token = store.getState().authToken;
+  const data = store.getState().userCigarettes;
+
+  const updateCigarettesInfo = async (sigCount) => {
+    try {
+      await axios
+        .post(
+          `/users/updateCigarettes`,
+          {
+            startedAt: "2020-09-14T09:11:03.448Z",
+            data: [...data, sigCount],
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(addUserCigarettes([...data, sigCount]));
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function handleSubmit(evt) {
     close();
     evt.preventDefault();
-    const sigInfo = { sigCount };
-    console.log(sigInfo);
+    const sigInfo = sigCount;
+    updateCigarettesInfo(sigCount);
   }
   return (
     <>
       <div className={styles.modalHead}>
         <h1 className={styles.modalTitle}>
-          Сколько сигарет за сегодня Вы выкурили?{" "}
+          Сколько сигарет за сегодня Вы выкурили?
         </h1>
         <p className={styles.modalText}>
           Давайте вместе постараемся свести это число к нулю.
@@ -34,8 +62,8 @@ function DailyResultModal({ close }) {
             <BasicInput
               name={"sigCount"}
               value={sigCount}
-              placeholder={"__.__шт"}
-              handleChange={setsigCount}
+              placeholder={"__шт"}
+              handleChange={({ target: { value } }) => setsigCount(value)}
               inputWidth={220}
             />
             <div className={styles.modalButtons}>
@@ -47,11 +75,15 @@ function DailyResultModal({ close }) {
               </button>
               <button
                 type="submit"
+                disabled={!sigCount}
                 className={styles.modalBodyButtonSubmit}
-                //   onClick={() => close()}
               >
                 Сохранить
               </button>
+              <button
+                onClick={() => close()}
+                className={styles.modalBodyButtonclose}
+              ></button>
             </div>
           </form>
         </div>

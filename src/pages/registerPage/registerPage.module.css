@@ -1,23 +1,22 @@
 .container {
-  margin-right: 0;
-  margin-left: auto;
   height: 100vh;
   background: #f6f6f6;
-  width: 1035px;
+  width: 1030px;
   position: absolute;
+  right: 0;
 }
 
 .logo {
-  padding-top: 80px;
+  padding-top: 70px;
   display: flex;
-  margin-bottom: 60px;
-  margin-left: auto;
+  margin-bottom: 45px;
+  margin-left: 370px;
   margin-right: auto;
 }
 .form {
   text-align: center;
   width: 700px;
-  margin-left: auto;
+  margin-left: 155px;
   margin-right: auto;
 }
 .title {
@@ -70,6 +69,8 @@
   color: #ffffff;
 }
 .registerButton {
+  padding: 10px 40px 10px 40px;
+  height: 44px;
   margin-bottom: 10px;
   width: 220px;
   font-family: Rubik;
