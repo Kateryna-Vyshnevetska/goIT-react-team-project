@@ -31,7 +31,7 @@ export const NavigationBar = () => {
         </li>
         <li className="leftSideBar-navBarList">
           <Link
-            to="#"
+            to="/make-it-habit/notification"
             className="leftSideBar-navBar-link"
             onClick={handleClickHabitButtonNotification}
           >

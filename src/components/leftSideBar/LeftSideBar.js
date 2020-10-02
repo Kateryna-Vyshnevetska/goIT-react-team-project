@@ -10,16 +10,8 @@ import { quizInfo } from "../../redux/selectors";
 import { useSelector } from "react-redux";
 
 export const LeftSideBar = () => {
-  const [modalShow, setModalShow] = useState(false);
-  const state = useSelector((state) => state);
-  // let count = 0;
-  // Object.values(quizInfo(state)).forEach((el) => (el > 0 ? count++ : ""));
-  console.log(Object.values(quizInfo(state)));
-  // console.log(count);
-
-  // useEffect(() => {
-  //   console.log("effect");
-  // }, []);
+  const firstModalForUser = useSelector((state) => state.firstModalForUser);
+  const [modalShow, setModalShow] = useState(firstModalForUser);
 
   const close = () => {
     setModalShow((prev) => !prev);
@@ -27,7 +19,7 @@ export const LeftSideBar = () => {
 
   return (
     <>
-      {modalShow && <InterviewModal close={close} />}
+      {firstModalForUser && <InterviewModal close={close} />}
       <section className="leftSideBar">
         <div className="leftSideBar-block">
           <div className="logo-block">
