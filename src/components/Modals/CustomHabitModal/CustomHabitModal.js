@@ -9,7 +9,8 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
-function CustomHabitModal({ close }) {
+
+function CustomHabitModal({ close, textOfHabit }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [date, setDate] = useState(new Date());
@@ -57,6 +58,7 @@ function CustomHabitModal({ close }) {
               labelWidth={"200px"}
               inputWidth={"400px"}
               handleChange={handleChange}
+              value={textOfHabit}
             />
           </div>
           <DateInput
@@ -72,7 +74,7 @@ function CustomHabitModal({ close }) {
           />
 
           <div className={style.row}>
-            <label className={style.label} for="date">
+            <label className={style.label} htmlFor="date">
               Время *
             </label>
             <input
@@ -85,7 +87,7 @@ function CustomHabitModal({ close }) {
             />
           </div>
           <div className={style.row}>
-            <label className={style.label} for="repeat">
+            <label className={style.label} htmlFor="repeat">
               Повторение *
             </label>
             <select

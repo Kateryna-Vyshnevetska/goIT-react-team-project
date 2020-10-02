@@ -17,7 +17,7 @@ export function BasicInput({
   return (
     <div style={{ marginBottom: marginBottom }}>
       <label
-        for={forLabel}
+        htmlFor={forLabel}
         className={style.label}
         style={{ width: labelWidth }}
       >
