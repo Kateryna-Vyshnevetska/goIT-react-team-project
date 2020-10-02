@@ -5,11 +5,11 @@
   height: 18px;
   content: " ";
   position: absolute;
-  right: 94.5%;
-  margin-left: 30px;
+  /* right: 94.5%; */
+  /* margin-left: 30px; */
   /* background-position: center; */
-/*   left: 41px;
-  margin-left: 22px; */
+  left: 41px;
+  margin-left: 22px;
 }
 .leftSideBar-sandclock::before {
   background-image: url(../../../images/leftSideBar/sandClock.svg);
@@ -18,8 +18,8 @@
   height: 18px;
   content: " ";
   position: absolute;
-  right: 86%;
-/*   left: 192px; */
+  /* right: 86%; */
+  left: 192px;
 }
 .leftSideBar-economyList {
   list-style: none;
