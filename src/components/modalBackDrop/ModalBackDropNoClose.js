@@ -3,22 +3,19 @@ import { CSSTransition } from "react-transition-group";
 import styles from "./ModalBackDrop.module.css";
 import stylesTransition from "./ModalBackDropTransition.module.css";
 
-const modalBackDrop = (WrappedComponent) => {
-  return class ModalBackDrop extends React.Component {
+const modalBackDropNoClose = (WrappedComponent) => {
+  return class ModalBackDropNoClose extends React.Component {
     state = {
       isOpen: false,
     };
 
     componentDidMount() {
       this.setState({ isOpen: true });
-      window.addEventListener("keydown", this.closeModalKeydown);
-      document.addEventListener("click", this.closeModalOverlay);
+
       document.styleSheets.overflow = "hidden";
     }
 
     componentWillUnmount() {
-      window.removeEventListener("keydown", this.closeModalKeydown);
-      document.removeEventListener("click", this.closeModalOverlay);
       document.styleSheets.overflow = "auto";
     }
 
@@ -26,20 +23,9 @@ const modalBackDrop = (WrappedComponent) => {
       this.props.close();
     };
 
-    closeModalKeydown = (evt) => {
-      if (evt.code === "Escape") {
-        this.closeModal();
-      }
-    };
-
-    closeModalOverlay = (evt) => {
-      if (evt.target.dataset.type === "modal") {
-        this.closeModal();
-      }
-    };
     render() {
       return (
-        <div data-type="modal" className={styles.modal}>
+        <div className={styles.modal}>
           <CSSTransition
             in={this.state.isOpen}
             timeout={250}
@@ -54,4 +40,4 @@ const modalBackDrop = (WrappedComponent) => {
   };
 };
 
-export default modalBackDrop;
+export default modalBackDropNoClose;

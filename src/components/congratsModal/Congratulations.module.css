@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .congratulationTitle {
@@ -40,4 +41,15 @@
   background-color: #ffffff;
   color: #43d190;
   outline: 0;
+}
+
+.modalBodyButtonclose {
+  background-image: url("../../images/close/close.svg");
+  width: 20px;
+  height: 20px;
+  background-color: #43d190;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
 }

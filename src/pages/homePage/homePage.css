@@ -1,22 +1,3 @@
-.title-contacts-enter {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-.title-contacts-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 500ms ease-in-out, transform 1000ms ease-in-out;
-}
-.title-contacts-exit {
-  opacity: 1;
-  transform: translateX(0);
-}
-.title-contacts-exit-active {
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 500ms ease-in-out, transform 1000ms ease-in-out;
-}
-
 .item-login-enter {
   opacity: 0;
   transform: translateX(-100%);
@@ -47,10 +28,10 @@
 }
 .item-register-exit {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 .item-register-exit-active {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(100%);
   transition: all 1500ms cubic-bezier(1, 0, 0, 1);
 }
