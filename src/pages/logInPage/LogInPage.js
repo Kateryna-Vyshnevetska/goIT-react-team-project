@@ -11,6 +11,7 @@ const LogInPage = () => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
+    console.log(userDataForLogin);
     dispatch(logIn(userDataForLogin));
   };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import styles from "./homePage.module.css";
+import "./homePage.css";
 import LogInPage from "../logInPage/LogInPage";
 import RegisterPage from "../registerPage/RegisterPage";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -11,29 +12,26 @@ export const HomePage = () => {
   const [registerOpenPage, setregisterOpenPage] = useState(false);
   return (
     <div className={styles.section}>
-//       <Switch>
-//         <CSSTransition
-//           in={logInOpenPage}
-//           timeout={2000}
-//           classNames="title-contacts"
-//           unmountOnExit
-//         >
-//           <Route exact path="/login" component={LogInPage} />
-//         </CSSTransition>
-//         <CSSTransition
-//           in={registerOpenPage}
-//           timeout={2000}
-//           classNames="title-contacts"
-//           unmountOnExit
-//         >
-//           <Route exact path="/registration" component={RegisterPage} />
-//         </CSSTransition>
-//       </Switch>
-
-      {/* <Switch>
-        <Route exact path="/login" component={LogInPage} />
-        <Route exact path="/registration" component={RegisterPage} />
-      </Switch> */}
+      <Switch>
+        <TransitionGroup component="ul">
+          <CSSTransition
+            in={logInOpenPage}
+            timeout={2000}
+            classNames="item-login"
+            unmountOnExit
+          >
+            <Route exact path="/login" component={LogInPage} />
+          </CSSTransition>
+          <CSSTransition
+            in={registerOpenPage}
+            timeout={2000}
+            classNames="item-register"
+            unmountOnExit
+          >
+            <Route exact path="/registration" component={RegisterPage} />
+          </CSSTransition>
+        </TransitionGroup>
+      </Switch>
 
       <div className={styles.container}>
         <div className={styles.titleContainer}>
