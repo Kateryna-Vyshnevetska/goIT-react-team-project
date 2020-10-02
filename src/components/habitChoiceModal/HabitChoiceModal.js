@@ -20,6 +20,7 @@ function HabitChoiceModal({ close }) {
     close();
     setModalShowNew((prev) => !prev);
   };
+  
   return (
     <>
       <div className={styles.modalHead}>

@@ -38,7 +38,7 @@ export function PasswordInput({
       className={style.inputPasswordWrapper}
     >
       <label
-        for={forLabel}
+        htmlFor={forLabel}
         className={style.label}
         style={{ width: labelWidth }}
       >
