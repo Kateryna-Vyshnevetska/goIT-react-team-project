@@ -25,12 +25,8 @@ export function App() {
           <Redirect to="/make-it-habit/check-list" />
         </Switch>
       ) : (
-        <>
-          {/* <HomePage /> */}
-          <Notifiacation />
-        </>
+        <HomePage />
       )}
-      {/* <Achievements /> */}
     </>
   );
 }
