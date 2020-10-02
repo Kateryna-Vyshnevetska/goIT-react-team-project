@@ -70,9 +70,9 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
 
   //  формат объекта newHabit
   // {
-  //    name: "newhabit",
-  //    planningTime: "newsome",
-  //    iteration: "somenew ",
+  //    name: "andrewHabit",
+  //    planningTime: "andrewHabit",
+  //    iteration: "andrewHabit ",
   //  }
   try {
     await axios.post("/habits", newHabit, {

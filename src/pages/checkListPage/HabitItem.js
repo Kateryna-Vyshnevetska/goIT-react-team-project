@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { LinearProgressWithLabel } from "../../ui/ProgressBar";
 import { getRandomColor } from "../../helpers/CheckListPage";
+import CustomHabitModal from "../../components/Modals/CustomHabitModal/CustomHabitModal";
+import UpdateHabitModal from "../../components/Modals/UpdateHabitModal/UpdateHabitModal";
+import { useSelector } from "react-redux";
+import FindHabitById from "../../helpers/FindHabitById";
+
 
 export const HabitItem = ({
   clickDone,
@@ -11,9 +16,20 @@ export const HabitItem = ({
   habitTitle = "Утренняя зарядка 10-15 мин",
   linearProgressValue = 10,
 }) => {
+  const [modalShow, setModalShow] = useState(false);
+
+  const userHabits = useSelector(state => state.userHabits)
+
+   const needElementColor = FindHabitById(userHabits, id).planningTime.split(" ")[1];
+
+   const close = () => {
+    setModalShow((prev) => !prev);
+  };
+
   return (
     <>
-      <li className="habit-item" style={{ borderColor: getRandomColor() }}>
+      {/* style={{ borderColor: `${}` }} */}
+      <li className="habit-item" style={{ borderColor: `${needElementColor}` }}>
         <div className="habit-scale-container">
           <h3 className="habit-title">{habitTitle}</h3>
           <div className="habit-scale">
@@ -30,7 +46,13 @@ export const HabitItem = ({
             ></button>
           </div>
           <p className="habit-scale-text">Прогресс привития привычки</p>
-          <button className="btn-settings"></button>
+
+          <button
+            className="btn-settings"
+            onClick={() => setModalShow(true)}
+          ></button>
+
+          {modalShow && <UpdateHabitModal close={close} idOfHabit={id} />}
         </div>
         <div id={id} className="habit-number-counter">
           <div className="habit-done">
