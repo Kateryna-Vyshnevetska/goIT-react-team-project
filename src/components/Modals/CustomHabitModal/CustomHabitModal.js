@@ -77,6 +77,10 @@ function CustomHabitModal({ close }) {
             <button className={style.btnMain}>Сохранить</button>
           </div>
         </form>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
     </>
   );

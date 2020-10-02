@@ -1,21 +1,44 @@
 import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
+import axios from "axios";
 
 import { BasicInput } from "../BasicInput/BasicInput";
-import modalBackDrop from "../modalBackDrop/ModalBackDrop";
+import modalBackDropNoClose from "../modalBackDrop/ModalBackDropNoClose";
 import styles from "./InterviewModal.module.css";
-
+import { addUserQuizInfo } from "../../redux/quizInfo/quizInfoActions";
 function InterviewModal({ close }) {
   const [smokeYears, setsmokeYears] = useState("");
-  const [smokeInDay, setsmokeInDay] = useState("");
-  const [timeOnOneSig, settimeOnOneSig] = useState("");
-  const [sigCost, setsigCost] = useState("");
+  const [cigarettePerDay, setcigarettePerDay] = useState("");
+  const [cigarettePerTime, setcigarettePerTime] = useState("");
+  const [cigarettePackPrice, setcigarettePackPrice] = useState("");
+  const dispatch = useDispatch();
+  const store = useStore();
+  const token = store.getState().authToken;
+
+  const updateQuizeInfo = async (sigInfo) => {
+    try {
+      await axios
+        .post(`/users/updateQuizInfo`, sigInfo, {
+          headers: {
+            Authorization: token,
+          },
+        })
+        .then(dispatch(addUserQuizInfo(sigInfo)));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function handleSubmit(evt) {
     close();
     evt.preventDefault();
-    const sigInfo = { smokeYears, smokeInDay, timeOnOneSig, sigCost };
-    console.log(sigInfo);
+    const sigInfo = {
+      smokeYears,
+      cigarettePerDay,
+      cigarettePerTime,
+      cigarettePackPrice,
+    };
+    updateQuizeInfo(sigInfo);
   }
   return (
     <>
@@ -50,35 +73,46 @@ function InterviewModal({ close }) {
               name={"smokeYears"}
               value={smokeYears}
               placeholder={"0"}
-              handleChange={setsmokeYears}
+              handleChange={({ target: { value } }) => setsmokeYears(value)}
               inputWidth={220}
             />
             <BasicInput
-              name={"smokeInDay"}
-              value={smokeInDay}
+              name={"cigarettePerDay"}
+              value={cigarettePerDay}
               placeholder={"0"}
-              handleChange={setsmokeInDay}
+              handleChange={({ target: { value } }) =>
+                setcigarettePerDay(value)
+              }
               inputWidth={220}
             />
             <BasicInput
-              name={"timeOnOneSig"}
-              value={timeOnOneSig}
+              name={"cigarettePerTime"}
+              value={cigarettePerTime}
               placeholder={"__min"}
-              handleChange={settimeOnOneSig}
+              handleChange={({ target: { value } }) =>
+                setcigarettePerTime(value)
+              }
               inputWidth={220}
             />
             <BasicInput
-              name={"sigCost"}
-              value={sigCost}
+              name={"cigarettePackPrice"}
+              value={cigarettePackPrice}
               placeholder={"__.__grn"}
-              handleChange={setsigCost}
+              handleChange={({ target: { value } }) =>
+                setcigarettePackPrice(value)
+              }
               inputWidth={220}
             />
 
             <button
+              disabled={
+                !smokeYears ||
+                !cigarettePerDay ||
+                !cigarettePerTime ||
+                !cigarettePackPrice
+              }
               type="submit"
               className={styles.modalBodyButton}
-              //   onClick={() => close()}
             >
               Сохранить
             </button>
@@ -89,4 +123,4 @@ function InterviewModal({ close }) {
   );
 }
 
-export default modalBackDrop(InterviewModal);
+export default modalBackDropNoClose(InterviewModal);

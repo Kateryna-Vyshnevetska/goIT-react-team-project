@@ -11,6 +11,7 @@ function HabitTemplateModal({ modalTitle = "Шаблонные привычки"
       <button onClick={() => close()} className="btn-back">
         Назад
       </button>
+      <button onClick={() => close()} className="modalBodyButtonclose"></button>
     </div>
   );
 }

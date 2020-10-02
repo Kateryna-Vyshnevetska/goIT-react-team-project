@@ -10,6 +10,7 @@
   padding: 60px;
   border-radius: 10px;
   background-color: #fff;
+  position: relative;
 }
 
 .title {
@@ -96,4 +97,15 @@
 ::-webkit-scrollbar-thumb {
   background-color: #43d190;
   border-radius: 10px;
+}
+
+.modalBodyButtonclose {
+  background-image: url("../../../images/close/close.svg");
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
 }
