@@ -7,22 +7,6 @@ import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-// const birthdayStyle = `
-//   .react-datepicker__month-container {
-// 	font-family: Montserrat;
-// font-style: normal;
-// font-weight: normal;
-// font-size: 14px;
-// line-height: 17px;
-// display: flex;
-// align-items: center;
-// text-align: center;
-
-// color: #181C27;
-
-//   }
-
-// `;
 
 function CustomHabitModal({ close }) {
   const newHabit = {};
@@ -48,7 +32,6 @@ function CustomHabitModal({ close }) {
 
   return (
     <>
-      {/* < style > { birthdayStyle }</style> */}
       <div className={style.wrapper}>
         <h3 className={style.title}>Настройте привычку под себя</h3>
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
@@ -62,14 +45,9 @@ function CustomHabitModal({ close }) {
               name={"name-of-habit"}
               labelWidth={"200px"}
               inputWidth={"400px"}
+              handleChange={handleChange}
             />
           </div>
-          {/* <div className={style.row}>
-          <label className={style.label} for="date-of-start">
-            Дата старта
-          </label>
-          <input className={style.input} id="date-of-start" type="date" />
-        </div> */}
           <DateInput
             forLabel={"date"}
             id={"date"}

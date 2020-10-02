@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { LeftSideBar } from "../../components/leftSideBar/LeftSideBar";
 import { CheckListPage } from "../checkListPage/CheckListPage";
 import { RightSideBar } from "../../components/RightSideBar/RightSideBar";
@@ -14,20 +14,23 @@ export const MainPage = () => {
   return (
     <>
       <div className="main-container">
-        <LeftSideBar />
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <LeftSideBar />
+        </Suspense>
 
         <Switch>
           <PrivateRoute
+            exact
             path={`/make-it-habit/check-list`}
             component={CheckListPage}
           />
           <PrivateRoute
+            exact
             path={`/make-it-habit/achievements`}
             component={AchievementsPage}
           />
         </Switch>
 
-        {/* <CheckListPage /> */}
         <RightSideBar />
       </div>
     </>
