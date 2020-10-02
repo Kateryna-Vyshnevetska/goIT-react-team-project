@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Link } from "react-router-dom";
 import { logIn } from "../../redux/operations";
 import { useDispatch } from "react-redux";
 
 const LogInPage = () => {
+  const [homeOpenPage, sethomeOpenPage] = useState(false);
   const dispatch = useDispatch();
   const userDataForLogin = {};
 
@@ -78,9 +80,13 @@ const LogInPage = () => {
             <button type="button" className={styles.buttonFacebook}>
               Войти с помощью Facebook
             </button>
-            <button type="button" className={styles.registerButton}>
-              Регистрация
-            </button>
+            <Link
+              to="/"
+              className={styles.registerButton}
+              onClick={() => sethomeOpenPage((homeOpenPage) => !homeOpenPage)}
+            >
+              На главную
+            </Link>
             <p className={styles.formText}>
               By signing up you agree to our Terms & Conditions
             </p>
