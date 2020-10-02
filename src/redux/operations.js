@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { errors } from "../redux/checkErrors/errorActions";
 import { addUserInfo } from "../redux/user/userActions";
 import { addUserQuizInfo } from "../redux/quizInfo/quizInfoActions";
@@ -9,6 +8,7 @@ import {
 } from "../redux/habits/habitsActions";
 import { addUserCigarettes } from "../redux/cigarettes/cigarettesActions";
 import { addUserAuthToken } from "../redux/authToken/authTokenAction";
+import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
@@ -25,6 +25,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
+    dispatch(isAuthCurrentUser(true));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -35,15 +36,30 @@ export const signUp = (userData) => async (dispatch) => {
   axios
     .post("/auth/registration", userData)
     .then((res) => axios.post("/auth/login", userData))
-    .then((res) => dispatch(addUserAuthToken(res.data.access_token)))
+    .then((res) => {
+      dispatch(isAuthCurrentUser(true));
+      dispatch(addUserAuthToken(res.data.access_token));
+    })
     .catch((error) => dispatch(errors(error)));
+};
+
+export const logOut = () => (dispatch) => {
+  dispatch(isAuthCurrentUser(false));
+  dispatch(addUserAuthToken({}));
+  dispatch(addUserInfo({}));
+  dispatch(addUserQuizInfo({}));
+  dispatch(addUserHabits([]));
+  dispatch(addUserCigarettes([]));
 };
 
 export const logIn = (userData) => async (dispatch) => {
   // Вход существующего юзера, возвращает токен в стейт
   axios
     .post("/auth/login", userData)
-    .then((res) => dispatch(addUserAuthToken(res.data.access_token)))
+    .then((res) => {
+      dispatch(isAuthCurrentUser(true));
+      dispatch(addUserAuthToken(res.data.access_token));
+    })
     .catch((error) => dispatch(errors(error)));
 };
 
@@ -54,9 +70,9 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
 
   //  формат объекта newHabit
   // {
-  //    name: "newhabit",
-  //    planningTime: "newsome",
-  //    iteration: "somenew ",
+  //    name: "andrewHabit",
+  //    planningTime: "andrewHabit",
+  //    iteration: "andrewHabit ",
   //  }
   try {
     await axios.post("/habits", newHabit, {

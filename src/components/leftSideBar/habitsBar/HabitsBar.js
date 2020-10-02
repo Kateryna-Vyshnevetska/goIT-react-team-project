@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./habitsBar.css";
-import { HabitItem } from "./habitItem/HabitItem"
+import { HabitItem } from "./habitItem/HabitItem";
+import HabitChoiceModal from "../../habitChoiceModal/HabitChoiceModal";
+
 export const HabitsBar = () => {
-    return (
-        <>
-            <div className="leftSideBar-habits">
-                <h3 className="leftSideBar-habitsTitle">Привычки</h3>
-                <ul className="leftSideBar-habits-list">
-                    <HabitItem />
-                </ul>
-                <button className="leftSideBar-habits-btn"> Добавить привычку <span className="leftSideBar-habits-plus">+</span></button>
-            </div>
-        </>
-    )
-}
+  const [modalShow, setModalShow] = useState(false);
+
+  const userHabits = useSelector((state) => state.userHabits);
+
+  const close = () => {
+    setModalShow((prev) => !prev);
+  };
+
+  return (
+    <>
+      <div className="leftSideBar-habits">
+        <h3 className="leftSideBar-habitsTitle">Привычки</h3>
+        <ul className="leftSideBar-habits-list">
+          {userHabits.map((el) => (
+            <HabitItem nameOfHabit={el.name} elemId={el._id} key={el._id} />
+          ))}
+        </ul>
+
+        <button
+          onClick={() => setModalShow(true)}
+          className="leftSideBar-habits-btn"
+        >
+          Добавить привычку <span className="leftSideBar-habits-plus">+</span>
+        </button>
+        {modalShow && <HabitChoiceModal close={close} />}
+      </div>
+    </>
+  );
+};

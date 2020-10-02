@@ -25,7 +25,11 @@ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
-
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 /* Sections
    ========================================================================== */
 
@@ -367,4 +371,46 @@ button {
   height: 44px;
   width: 220px;
   border-radius: 5px;
+}
+
+.btn-main {
+  display: flex;
+  justify-content: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  padding: 12px 18px;
+
+  color: white;
+  border: none;
+  outline: none;
+  background-color: #43d190;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  height: 44px;
+  width: 220px;
+}
+
+.btn-secondary {
+  display: flex;
+  justify-content: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  padding: 12px 18px;
+
+  color: #43d190;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #43d190;
+  border-radius: 5px;
+  height: 44px;
+  width: 220px;
+}
+
+.actionBtnContainer .btn-secondary {
+  margin-left: 10px;
 }

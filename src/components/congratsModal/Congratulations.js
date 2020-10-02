@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import congratsPicture from "../../images/congratsPicture/congratulations.png";
 import style from "./Congratulations.module.css";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
-import CustomHabitModal from "../customHabitModal/CustomHabitModal";
+import CustomHabitModal from "../Modals/CustomHabitModal/CustomHabitModal";
 
 const Congratulations = ({ fromCheckList, habitName, close }) => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -44,6 +44,10 @@ const Congratulations = ({ fromCheckList, habitName, close }) => {
             Добавить новую
           </button>
         </div>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
       {isShowModal && (
         <CustomHabitModal

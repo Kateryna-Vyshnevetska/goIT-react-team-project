@@ -123,30 +123,24 @@ table {
   border-spacing: 0;
 }
 
-.check-list-section {
-  justify-content: stretch;
+.main-container {
+  width: 100%;
+  height: 100vh;
   display: flex;
 }
 
-.rightSideBar {
-  width: 378px;
-  height: 900px;
-  background-color: tomato;
+.check-list-section {
+  display: flex;
+  width: 100%;
 }
-/* .leftSideBar {
-  width: 378px;
-  height: 900px;
-  background-color: tomato;
-} */
 
 .habit-container {
   width: 100%;
-  padding-top: 40px 62px;
   background-color: #f6f6f6;
 }
 
 .habit-header {
-  max-height: 110px;
+  height: 110px;
   background-color: #fff;
   outline: 1px solid #d5e1dc;
   margin-bottom: 30px;
@@ -290,8 +284,8 @@ table {
   line-height: 1.17;
   color: #fe6083;
 }
-.MuiBox-root.MuiBox-root-2 {
-  width: 80%;
+.MuiBox-root {
+  width: 100%;
 }
 .MuiTypography-root.MuiTypography-body2.MuiTypography-colorTextSecondary {
   font-family: "Rubik", sans-serif;

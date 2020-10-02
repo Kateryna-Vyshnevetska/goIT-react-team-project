@@ -1,0 +1,33 @@
+.basicInput {
+  padding: 5px 20px 5px 20px;
+
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+
+.basic-input:hover {
+  border: 1px solid #4f4f4f;
+}
+
+.label {
+  /* width: 200px; */
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+
+/* .datepicker__month {
+  background-color: red;
+} */

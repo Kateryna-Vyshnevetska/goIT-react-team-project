@@ -1,0 +1,106 @@
+.modalHead {
+  width: 784px;
+  height: 368px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  position: relative;
+}
+.modalTitle {
+  margin: 0;
+  margin-top: 60px;
+  font-family: Rubik;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.modalText {
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #c7c7c7;
+}
+
+.modalBody {
+  display: flex;
+  text-align: left;
+  margin: 40px 157px;
+}
+
+.modalBodyText {
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.modalBodyList {
+  width: 317px;
+}
+.modalBodyItem + .modalBodyItem {
+  margin-top: 20px;
+}
+
+.modalBodyForm {
+  margin-top: -10px;
+  margin-left: 20px;
+  width: 220px;
+}
+
+.modalBodyInput {
+  width: 220px;
+  height: 44px;
+  border-radius: 5px;
+  border: 1px solid #4f4f4f;
+}
+
+.modalBodyInput + .modalBodyInput {
+  margin-top: 20px;
+}
+
+.modalButtons {
+  display: inline-flex;
+  margin-top: 80px;
+  margin-left: -250px;
+}
+
+.modalBodyButtonCancle {
+  background: #ffffff;
+  color: #43d190;
+  border-radius: 5px;
+  border: 2px solid #43d190;
+}
+
+.modalBodyButtonSubmit {
+  background: #43d190;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 15px;
+  border: none;
+}
+
+.modalBodyButtonSubmit:disabled {
+  background-color: #e0e0e0;
+}
+
+.modalBodyButtonclose {
+  background-image: url("../../images/close/close.svg");
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
