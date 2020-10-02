@@ -11,7 +11,7 @@ function DateInput({
   labelText,
   value,
   name,
-  handleChange,
+  handleChangeDate,
   placeholder,
   labelWidth,
   inputWidth,
@@ -20,8 +20,12 @@ function DateInput({
 }) {
   const [date, setDate] = useState(new Date());
 
-  const handleCalendarClose = () => console.log("Calendar closed");
-  const handleCalendarOpen = () => console.log("Calendar opened");
+  const handleCalendarClose = () => {
+    console.log("Calendar closed");
+  };
+  const handleCalendarOpen = () => {
+    console.log("Calendar opened");
+  };
 
   return (
     <div style={{ marginBottom: marginBottom }}>
@@ -35,7 +39,7 @@ function DateInput({
 
       <DatePicker
         selected={date}
-        onChange={(date) => setDate(date)}
+        onChange={(date) => handleChangeDate(date)}
         onCalendarClose={handleCalendarClose}
         onCalendarOpen={handleCalendarOpen}
       />
