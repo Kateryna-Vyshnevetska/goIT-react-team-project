@@ -16,13 +16,17 @@ export const CalendarChecklist = () => {
         <div className={calendarChecklistItem}>
           <span
             className={
-              false ? calendarChecklistItemProgress : calendarChecklistItemProgressDone
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
             }
           >
             {false && "time"}
           </span>
           <span
-            className={false ? calendarChecklistItemText : calendarChecklistItemTextDone}
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
           >
             Привычкаарп пладвадвламд вмовт млжоватм жвамтва
           </span>
