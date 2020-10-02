@@ -6,7 +6,6 @@ import UpdateHabitModal from "../../components/Modals/UpdateHabitModal/UpdateHab
 import { useSelector } from "react-redux";
 import FindHabitById from "../../helpers/FindHabitById";
 
-
 export const HabitItem = ({
   clickDone,
   clickMissed,
@@ -18,11 +17,13 @@ export const HabitItem = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
 
-  const userHabits = useSelector(state => state.userHabits)
+  const userHabits = useSelector((state) => state.userHabits);
 
-   const needElementColor = FindHabitById(userHabits, id).planningTime.split(" ")[1];
+  const needElementColor = FindHabitById(userHabits, id).planningTime.split(
+    " "
+  )[2];
 
-   const close = () => {
+  const close = () => {
     setModalShow((prev) => !prev);
   };
 

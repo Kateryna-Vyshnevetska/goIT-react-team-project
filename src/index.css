@@ -414,3 +414,9 @@ button {
 .actionBtnContainer .btn-secondary {
   margin-left: 10px;
 }
+
+.spinner {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+}

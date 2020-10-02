@@ -5,11 +5,12 @@ import "./habitItem.css";
 // import {color} f rom "./colors"
 
 export const HabitItem = ({ nameOfHabit, elemId }) => {
-  
-    const userHabits = useSelector(state => state.userHabits)
+  const userHabits = useSelector((state) => state.userHabits);
 
-  const needElementColor = FindHabitById(userHabits, elemId).planningTime.split(" ")[1];
-  
+  const needElementColor = FindHabitById(userHabits, elemId).planningTime.split(
+    " "
+  )[2];
+
   return (
     <li className="leftSideBar-habits-listItem" key={elemId}>
       <span
