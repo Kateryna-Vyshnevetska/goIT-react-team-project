@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/operations";
 import { Link } from "react-router-dom";
 
-const RegisterPage = () => {
-  const [homeOpenPage, sethomeOpenPage] = useState(false);
+const RegisterPage = ({ setregisterOpenPage }) => {
+  // const [homeOpenPage, sethomeOpenPage] = useState(false);
   const dispatch = useDispatch();
   const newUser = {};
 
@@ -70,7 +70,7 @@ const RegisterPage = () => {
             <Link
               to="/"
               className={styles.registerButton}
-              onClick={() => sethomeOpenPage((homeOpenPage) => !homeOpenPage)}
+              onClick={() => setregisterOpenPage(false)}
             >
               На главную
             </Link>

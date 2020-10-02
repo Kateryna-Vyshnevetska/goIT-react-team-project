@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import { logIn } from "../../redux/operations";
 import { useDispatch } from "react-redux";
 
-const LogInPage = () => {
-  const [homeOpenPage, sethomeOpenPage] = useState(false);
+const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
+  // const [homeOpenPage, sethomeOpenPage] = useState();
+
   const dispatch = useDispatch();
   const userDataForLogin = {};
 
@@ -83,7 +84,7 @@ const LogInPage = () => {
             <Link
               to="/"
               className={styles.registerButton}
-              onClick={() => sethomeOpenPage((homeOpenPage) => !homeOpenPage)}
+              onClick={() => setlogInOpenPage(false)}
             >
               На главную
             </Link>

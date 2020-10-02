@@ -5,7 +5,7 @@
 .item-login-enter-active {
   opacity: 1;
   transform: translateX(0);
-  transition: all 1500ms cubic-bezier(1, 0, 0, 1);
+  transition: all 1000ms linear;
 }
 .item-login-exit {
   opacity: 1;
@@ -14,7 +14,7 @@
 .item-login-exit-active {
   opacity: 0;
   transform: translateY(-100%);
-  transition: all 1500ms cubic-bezier(1, 0, 0, 1);
+  transition: all 1000ms linear;
 }
 
 .item-register-enter {
@@ -24,7 +24,7 @@
 .item-register-enter-active {
   opacity: 1;
   transform: translateX(0);
-  transition: all 1500ms cubic-bezier(1, 0, 0, 1);
+  transition: all 1000ms linear;
 }
 .item-register-exit {
   opacity: 1;
@@ -33,5 +33,5 @@
 .item-register-exit-active {
   opacity: 0;
   transform: translateX(100%);
-  transition: all 1500ms cubic-bezier(1, 0, 0, 1);
+  transition: all 1000ms linear;
 }
