@@ -1,61 +1,73 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import achievementAction from "../../redux/achievementAction/achievementAction";
+import React from "react";
 import style from "./AchievementsPage.module.css";
 
-export const AchievementsPage = ({
-  achievements,
-  achievementAction,
-  smokedCigarettes,
-  quizInfoPerDay,
-  quizInfoPerTime,
-}) => {
-  useEffect(() => {
-    achievementAction({
-      smokedCigarettes,
-      quizInfoPerDay,
-      quizInfoPerTime,
-    });
-  });
-
+const Achievements = () => {
   return (
     <>
       <div className={style.achievementsWrapper}>
         <p className={style.achievementsTitle}>Достижения</p>
+        <p className={style.achievementsCount}>Счет: 2020</p>
       </div>
       <div className={style.achievementsContainer}>
         <ul className={style.achievementsPageList}>
-          {achievements.map((achievement) => (
-            <li
-              key={achievement.name}
-              className={
-                achievement.status
-                  ? style.activeClass
-                  : style.achievementsPageItem
-              }
-            >
-              <p className={style.achievementsPageText}>{achievement.text}</p>
-            </li>
-          ))}
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Отказ от 1 сигареты</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Отказ от 3 сигарет</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Отказ от 5 сигарет</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 1 день</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 3 дня</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 1 неделю</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 2 недели</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 1 месяц</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 3 месяца</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 6 месяцев</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Не курю 1 год</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>+1 год без сигарет</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>3 года без сигарет</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Уже 5. Дай пять!</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Вперед к мечте!</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 1 час</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 3 часа</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
         </ul>
       </div>
     </>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    achievements: state.achievement,
-    smokedCigarettes: state.cigarettes,
-    quizInfoPerDay: state.quizInfo.cigarettesPerDay,
-    quizInfoPerTime: state.quizInfo.cigarettesPerTime,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    achievementAction: (data) => dispatch(achievementAction(data)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AchievementsPage);
+export default Achievements;
