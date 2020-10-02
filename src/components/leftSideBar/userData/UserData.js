@@ -1,12 +1,14 @@
 import React from "react";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import avatar from "../../../images/avatars/Avatar-1.png";
 import "./userData.css";
 import { logOut } from "../../../redux/operations";
+import { userInfoEmail } from "../../../redux/selectors";
 
 export const UserData = () => {
   const dispatch = useDispatch();
-
+  const state = useSelector((state) => state);
   const clickTologOut = () => {
     dispatch(logOut());
   };
@@ -16,9 +18,9 @@ export const UserData = () => {
         <Router>
           <Link to="#" className="leftSideBar-user-link">
             <div className="leftSideBar-user-avatar">
-              <img alt="avatar" />
+              <img alt="avatar" src={avatar} />
             </div>
-            <p className="leftSideBar-user-name">Name surname</p>
+            <p className="leftSideBar-user-name">{userInfoEmail(state)}</p>
           </Link>
           <Route path="#" />
         </Router>

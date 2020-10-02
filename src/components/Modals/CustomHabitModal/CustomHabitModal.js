@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
 import "../../../index.css";
@@ -7,32 +7,21 @@ import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-// const birthdayStyle = `
-//   .react-datepicker__month-container {
-// 	font-family: Montserrat;
-// font-style: normal;
-// font-weight: normal;
-// font-size: 14px;
-// line-height: 17px;
-// display: flex;
-// align-items: center;
-// text-align: center;
-
-// color: #181C27;
-
-//   }
-
-// `;
 
 function CustomHabitModal({ close }) {
   const newHabit = {};
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const [date, setDate] = useState(new Date());
+
+  const handleChangeInput = (date) => {
+    setDate(date);
+    console.log(date);
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     newHabit.iteration = "1 per day";
-    console.log(newHabit);
     dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
     close();
   };
@@ -43,7 +32,6 @@ function CustomHabitModal({ close }) {
 
   return (
     <>
-      {/* < style > { birthdayStyle }</style> */}
       <div className={style.wrapper}>
         <h3 className={style.title}>Настройте привычку под себя</h3>
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
@@ -60,12 +48,6 @@ function CustomHabitModal({ close }) {
               handleChange={handleChange}
             />
           </div>
-          {/* <div className={style.row}>
-          <label className={style.label} for="date-of-start">
-            Дата старта
-          </label>
-          <input className={style.input} id="date-of-start" type="date" />
-        </div> */}
           <DateInput
             forLabel={"date"}
             id={"date"}
@@ -75,6 +57,7 @@ function CustomHabitModal({ close }) {
             inputWidth={"400px"}
             type={"date"}
             marginBottom={"20px"}
+            handleChangeDate={handleChangeInput}
           />
           <div className={style.row}>
             <label className={style.label} for="date">
@@ -109,6 +92,10 @@ function CustomHabitModal({ close }) {
             </button>
           </div>
         </form>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
     </>
   );

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { HabitItem } from "../../pages/checkListPage/HabitItem";
 import { userHabits } from "../../redux/selectors";
 import DailyResultModal from "../../components/dailyResultModal/DailyResultModal";
-
 export function CheckListPage() {
   const state = useSelector((state) => state);
   console.log(userHabits(state));

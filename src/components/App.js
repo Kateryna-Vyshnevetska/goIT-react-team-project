@@ -7,6 +7,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import { MainPage } from "../pages/mainPage/MainPage";
 import { Notifiacation } from "../pages/notification/Notification";
+import Achievements from "../pages/achievementsPage/AchievementsPage";
 
 export function App() {
   const state = useSelector((state) => state);
@@ -14,7 +15,7 @@ export function App() {
 
   useEffect(() => {
     setPage(CheckStartPage(isAuthUser(state)));
-  }, [isAuthUser(state)]);
+  }, [state]);
 
   return (
     <>
@@ -29,6 +30,7 @@ export function App() {
           <Notifiacation />
         </>
       )}
+      {/* <Achievements /> */}
     </>
   );
 }
