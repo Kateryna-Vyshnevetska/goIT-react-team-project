@@ -33,6 +33,174 @@ export const CalendarChecklist = () => {
           <button className={calendarChecklistItemButton}></button>
         </div>
       </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
+      <li>
+        <div className={calendarChecklistItem}>
+          <span
+            className={
+              false
+                ? calendarChecklistItemProgress
+                : calendarChecklistItemProgressDone
+            }
+          >
+            {false && "time"}
+          </span>
+          <span
+            className={
+              false ? calendarChecklistItemText : calendarChecklistItemTextDone
+            }
+          >
+            Привычкаарп пладвадвламд вмовт млжоватм жвамтва
+          </span>
+          <button className={calendarChecklistItemButton}></button>
+        </div>
+      </li>
     </ul>
   );
 };

@@ -14,6 +14,14 @@ export const HabitsBar = () => {
         <h3 className="leftSideBar-habitsTitle">Привычки</h3>
         <ul className="leftSideBar-habits-list">
           <HabitItem />
+          <HabitItem />
+          <HabitItem />
+          <HabitItem />
+          <HabitItem />
+          <HabitItem />
+          <HabitItem />
+          <HabitItem />
+          <HabitItem />
         </ul>
 
         <button
