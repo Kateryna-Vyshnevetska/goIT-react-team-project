@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
 import "../../../index.css";
@@ -28,11 +28,16 @@ function CustomHabitModal({ close }) {
   const newHabit = {};
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const [date, setDate] = useState(new Date());
+
+  const handleChangeInput = (date) => {
+    setDate(date);
+    console.log(date);
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     newHabit.iteration = "1 per day";
-    console.log(newHabit);
     dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
     close();
   };
@@ -57,7 +62,6 @@ function CustomHabitModal({ close }) {
               name={"name-of-habit"}
               labelWidth={"200px"}
               inputWidth={"400px"}
-              handleChange={handleChange}
             />
           </div>
           {/* <div className={style.row}>
@@ -75,6 +79,7 @@ function CustomHabitModal({ close }) {
             inputWidth={"400px"}
             type={"date"}
             marginBottom={"20px"}
+            handleChangeDate={handleChangeInput}
           />
           <div className={style.row}>
             <label className={style.label} for="date">

@@ -10,6 +10,7 @@ import { createSelector } from "@reduxjs/toolkit";
 export const authToken = (state) => state.authToken;
 export const isAuthUser = (state) => state.isAuthUser;
 export const userInfo = (state) => state.userInfo;
+export const userInfoEmail = (state) => state.userInfo.email;
 export const quizInfo = (state) => state.quizInfo;
 export const userHabits = (state) => state.userHabits;
 export const userCigarettes = (state) => state.userCigarettes;
