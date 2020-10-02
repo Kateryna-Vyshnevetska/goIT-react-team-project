@@ -5,19 +5,17 @@
   height: 18px;
   content: " ";
   position: absolute;
-  /* background-position: center; */
-  left: 41px;
+  right: 94.5%;
   margin-left: 30px;
 }
 .leftSideBar-sandclock::before {
   background-image: url(../../../images/leftSideBar/sandClock.svg);
   background-repeat: no-repeat;
-  /* background-position: center; */
   width: 20px;
   height: 18px;
   content: " ";
   position: absolute;
-  /* left: 198px; */
+  right: 86%;
 }
 .leftSideBar-economyList {
   list-style: none;

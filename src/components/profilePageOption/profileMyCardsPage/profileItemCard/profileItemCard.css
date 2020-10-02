@@ -1,0 +1,47 @@
+.ProfileItemCard-cardBlock {
+  position: relative;
+  /* margin-right: 30px; */
+  width: 344px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  background: #655de6;
+  box-shadow: 0px 10px 16px rgba(101, 93, 230, 0.04);
+}
+.ProfileItemCard-cardName {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.ProfileItemCard-cardNamber {
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.39em;
+  margin-bottom: 65px;
+}
+.ProfileItemCard-lowerCardBlock{
+  display: flex;
+  justify-content: space-between;
+}
+.ProfileItemCard-cardDate {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+}
+.ProfileItemCard-btnDelete{
+  background-image: url(../../../../images/profilePage/btnDelite.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
+  
+}
+
+.ProfileItemCard-btnDelete:hover,
+.ProfileItemCard-btnDelete:focus{
+  box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.884);
+}

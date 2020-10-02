@@ -1,0 +1,137 @@
+
+.profilePage-container {
+  width: 842px;
+  height: 900px;
+}
+
+.ProfilePage-header {
+  border-bottom: 1px solid #d5e1dc;
+  background-color: #ffffff;
+  height: 110px;
+  padding: 40px 62px;
+}
+
+.ProfilePage-mainTitle {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.19;
+  color: #4f4f4f;
+}
+.ProfilePage-main {
+  height: 790px;
+  padding: 60px 62px;
+}
+.ProfilePage-priwetTitle {
+  font-size: 26px;
+  line-height: 1.19;
+  color: #4f4f4f;
+  margin-bottom: 30px;
+}
+.profilePage-formAvatar-block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+.profilePage-inputs {
+  margin-bottom: 20px;
+}
+
+/* avatar-block */
+
+.profilePage-AvatarBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 220px;
+  height: 236px;
+  /* margin-bottom: 20px; */
+}
+.profilePage-AvatarLink {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 50%;
+  width: 108px;
+  height: 108px;
+  margin-bottom: 10px;
+}
+.profilePage-AvatarLink:hover,
+.profilePage-AvatarLink:focus {
+  box-shadow: 0px 6px 10px rgba(14, 13, 13, 0.1);
+}
+.profilePage-Avatar {
+  width: 108px;
+  height: 108px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.profilePage-AvatarTextLink{
+text-decoration: none;
+}
+.profilePage-AvatarText {
+  font-size: 14px;
+  line-height: 1.19px;
+  color: #bdbdbd;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* profilePage-subscription */
+
+.profilePage-subscriptionArea{
+  min-width: 52px;
+  height: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 8px 3px;
+  margin-bottom: 15px;
+ background: linear-gradient(222.27deg, #F8C102 3.75%, #FE6083 94.69%);
+}
+.profilePage-subscriptionText{
+    font-size: 14px;
+  line-height: 1.42;
+}
+.profilePage-subscriptionNoob-color{
+background: #43D190;
+}
+.profilePage-subscriptionBasic-color{
+background: linear-gradient(222.27deg, #2EEBDA 3.75%, #7CF7A3 94.69%);
+}
+.profilePage-subscriptionStandart-color{
+background: linear-gradient(222.27deg, #F8C102 3.75%, #FE6083 94.69%);
+}
+.profilePage-subscriptionPremium-color{
+background: linear-gradient(222.27deg, #FE6083 3.75%, #B469FA 94.69%);
+}
+.profilePage-subscriptionUltra-color{
+background: linear-gradient(222.27deg, #B469FA 3.75%, #655DE6 94.69%);
+}
+
+/* btn */
+
+.profilePage-subscription-btn{
+     width: 220px;
+  height: 44px;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  background:white;
+  border-radius: 5px;
+  color: #43d190;
+  border: 2px solid#43d190;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  cursor: pointer;
+}
+.profilePage-subscription-btn:hover,
+.profilePage-subscription-btn:focus{
+    background: rgba(203, 240, 223, 0.651);
+  box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.2);
+}
+.profilePage-subscription-btn.confirmPasword{
+margin-left: 53%;
+}
+

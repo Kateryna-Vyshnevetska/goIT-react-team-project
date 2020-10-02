@@ -17,6 +17,7 @@ import {
   deleteHabitAndGetAllHabits,
   signUp,
 } from "../redux/operations";
+// import { ProfilePage } from "../pages/profilePage/ProfilePage";
 // import {
 //   SubscriptionsPage,
 //   PageNotFound,
@@ -33,6 +34,7 @@ import {
 export function App() {
   return (
     <>
+      {/* <ProfilePage /> */}
       {/* <CustomHabitModal /> */}
       {/* <HomePage /> */}
       {/* <CheckListPage /> */}
