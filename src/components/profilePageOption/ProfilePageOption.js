@@ -77,7 +77,7 @@ export const ProfilePageOption = () => {
                 />
               </div>
               <button className="profilePage-subscription-btn confirmPasword">
-                Подтвердить парооль
+                Подтвердить пароль
               </button>
             </form>
             <div className="profilePage-AvatarBlock">
@@ -98,8 +98,8 @@ export const ProfilePageOption = () => {
             <Route path="#" />
           </Router>
         </div>
-              <ProfileMyCardsPage />
-              <ProfilePageHelpInfo />
+        <ProfileMyCardsPage />
+        <ProfilePageHelpInfo />
       </div>
     </>
   );

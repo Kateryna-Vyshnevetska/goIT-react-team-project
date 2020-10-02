@@ -1,10 +1,11 @@
 .ProfileMyCardsPage-mainTitle {
+  font-family: Rubik;
   font-size: 26px;
   line-height: 1.19px;
   color: #4f4f4f;
   margin-bottom: 30px;
 }
-.ProfileMyCardsPage-block{
+.ProfileMyCardsPage-block {
   margin-bottom: 60px;
 }
 .ProfileMyCardsPage-cardBlock {
