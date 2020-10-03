@@ -39,6 +39,7 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             приложение
           </p>
           <BasicInput
+            placeholder="Введите свой E-mail"
             type="text"
             forLabel="Логин"
             id="Логин"
@@ -61,6 +62,7 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             handleChange={handleChange}
           /> */}
           <PasswordInput
+            placeholder="Введите свой password"
             type="password"
             forLabel="password-input"
             id="password-input"
