@@ -31,7 +31,6 @@ export function BasicInput({
         name={name}
         placeholder={placeholder}
         style={{ width: inputWidth }}
-        type={type}
         onChange={handleChange}
       />
     </div>

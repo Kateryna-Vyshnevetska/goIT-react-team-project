@@ -38,25 +38,23 @@ export function CheckListPage() {
       <div className="habit-container">
         <div className="habit-header">
           <h2 className="habit-header-title">Чек-лист привычек</h2>
-          <button
-            onClick={() => setModalShow(true)}
-            className="habit-header-button"
-          >
+          <button onClick={() => setModalShow(true)} className="habit-header-button">
             + Сигареты за сегодня
           </button>
           {modalShow && <DailyResultModal close={close} />}
         </div>
         <ul className="habit-list">
-          {userHabits(state).map((el) => (
-            <HabitItem
-              clickDone={handleClickHabitButtonDone}
-              clickMissed={handleClickHabitButtonMissed}
-              key={el._id}
-              id={el._id}
-              habitTitle={el.name}
-              linearProgressValue={el.efficiency}
-            />
-          ))}
+          {false &&
+            userHabits(state).map((el) => (
+              <HabitItem
+                clickDone={handleClickHabitButtonDone}
+                clickMissed={handleClickHabitButtonMissed}
+                key={el._id}
+                id={el._id}
+                habitTitle={el.name}
+                linearProgressValue={el.efficiency}
+              />
+            ))}
         </ul>
       </div>
     </div>

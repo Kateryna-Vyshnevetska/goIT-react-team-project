@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
 import DatePicker from "react-datepicker";
+import { registerLocale } from "react-datepicker";
+import ru from "date-fns/locale/ru";
 
-import "react-datepicker/dist/react-datepicker.css";
+import "./react-datepicker.css";
 import style from "./DateInput.module.css";
+
+registerLocale("ru", ru);
 
 function DateInput({
   forLabel,
@@ -36,16 +40,18 @@ function DateInput({
       >
         {labelText}
       </label>
-
-      <DatePicker
-        selected={date}
-        onChange={(date) => {
-          setDate(date);
-          handleChangeDate(date);
-        }}
-        onCalendarClose={handleCalendarClose}
-        onCalendarOpen={handleCalendarOpen}
-      />
+      <div className="habitsCalendar" style={{ borderRadius: "10px" }}>
+        <DatePicker
+          locale="ru"
+          selected={date}
+          onChange={(date) => {
+            setDate(date);
+            handleChangeDate(date);
+          }}
+          onCalendarClose={handleCalendarClose}
+          onCalendarOpen={handleCalendarOpen}
+        />
+      </div>
     </div>
   );
 }

@@ -18,6 +18,10 @@
   border: 1px solid #4f4f4f;
 }
 
+.habitsCalendar {
+  border-radius: 10px;
+}
+
 .label {
   /* width: 200px; */
   font-family: "Rubik", sans-serif;
@@ -26,6 +30,10 @@
   font-size: 18px;
   line-height: 21px;
   color: #4f4f4f;
+}
+
+.datepicker__month {
+  background-color: red;
 }
 
 /* .datepicker__month {
