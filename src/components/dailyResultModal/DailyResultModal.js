@@ -14,6 +14,7 @@ function DailyResultModal({ close }) {
   const token = store.getState().authToken;
   const [date, setDate] = useState(new Date());
   const data = store.getState().userCigarettes.data;
+  const dataDate = store.getState().userCigarettes.startedAt;
 
   const updateCigarettesInfo = async (sigCount) => {
     try {
@@ -34,7 +35,7 @@ function DailyResultModal({ close }) {
           console.log(dataReg);
           dispatch(
             addUserCigarettes({
-              startedAt: "2020-09-14T09:11:03.448Z",
+              startedAt: date,
               data: [...data, sigCount],
             })
           );
@@ -83,7 +84,10 @@ function DailyResultModal({ close }) {
               </button>
               <button
                 type="submit"
-                disabled={!sigCount}
+                disabled={
+                  !sigCount ||
+                  (dataDate && dataDate.toDateString() === date.toDateString())
+                }
                 className={styles.modalBodyButtonSubmit}
               >
                 Сохранить
