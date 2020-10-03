@@ -12,6 +12,7 @@ function DailyResultModal({ close }) {
   const dispatch = useDispatch();
   const store = useStore();
   const token = store.getState().authToken;
+  const [date, setDate] = useState(new Date());
   const data = store.getState().userCigarettes.data;
 
   const updateCigarettesInfo = async (sigCount) => {
@@ -20,7 +21,7 @@ function DailyResultModal({ close }) {
         .post(
           `/users/updateCigarettes`,
           {
-            startedAt: "2020-09-14T09:11:03.448Z",
+            startedAt: date,
             data: [...data, sigCount],
           },
           {
@@ -29,7 +30,8 @@ function DailyResultModal({ close }) {
             },
           }
         )
-        .then(() => {
+        .then((dataReg) => {
+          console.log(dataReg);
           dispatch(
             addUserCigarettes({
               startedAt: "2020-09-14T09:11:03.448Z",
@@ -43,6 +45,7 @@ function DailyResultModal({ close }) {
   };
 
   function handleSubmit(evt) {
+    setDate(date.toLocaleDateString("en-GB"));
     close();
     evt.preventDefault();
     const sigInfo = sigCount;

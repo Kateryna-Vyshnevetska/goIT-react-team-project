@@ -15,7 +15,7 @@ function InterviewModal({ close }) {
   const store = useStore();
   const token = store.getState().authToken;
 
-  const updateQuizeInfo = async (sigInfo) => {
+  const updateQuizeInfo = async (sigInfo, token) => {
     try {
       await axios
         .post(`/users/updateQuizInfo`, sigInfo, {
@@ -38,7 +38,7 @@ function InterviewModal({ close }) {
       cigarettePerTime,
       cigarettePackPrice,
     };
-    updateQuizeInfo(sigInfo);
+    updateQuizeInfo(sigInfo, token);
   }
   return (
     <>

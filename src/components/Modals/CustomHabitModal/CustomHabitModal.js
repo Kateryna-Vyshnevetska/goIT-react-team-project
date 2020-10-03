@@ -9,7 +9,6 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
-
 function CustomHabitModal({ close, textOfHabit }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -19,7 +18,7 @@ function CustomHabitModal({ close, textOfHabit }) {
   const [planningTime, setPlanningTime] = useState("");
 
   const handleChangeInput = (date) => {
-    setDate(date.toLocaleDateString("en-GB"));
+    setDate(date);
     console.log(date);
   };
 
