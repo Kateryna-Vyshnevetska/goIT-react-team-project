@@ -22,7 +22,9 @@ function DateInput({
   type,
   marginBottom,
 }) {
-  const [date, setDate] = useState(new Date());
+  // если что то дропнется то в юз стейт был  => new Date()
+
+  const [date, setDate] = useState(null);
 
   const handleCalendarClose = () => {
     console.log("Calendar closed");
@@ -34,6 +36,7 @@ function DateInput({
   return (
     <div
       style={{
+        marginTop: "0px",
         marginBottom: marginBottom,
         display: "flex",
         alignItems: "center",
@@ -56,6 +59,7 @@ function DateInput({
           }}
           onCalendarClose={handleCalendarClose}
           onCalendarOpen={handleCalendarOpen}
+          placeholderText="Select a weekday"
         />
       </div>
     </div>
