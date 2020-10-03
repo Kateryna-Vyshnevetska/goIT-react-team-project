@@ -12,6 +12,7 @@ import { Spinner } from "../../ui/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDataForState } from "../../redux/operations";
 import { authToken } from "../../redux/selectors";
+import { AvatarsPage } from "../avatarsPage/AvatarsPage";
 
 export const MainPage = () => {
   const isLoading = useSelector((state) => state.isLoading);
@@ -42,6 +43,12 @@ export const MainPage = () => {
             path={`/make-it-habit/profile`}
             component={ProfilePage}
           />
+          <PrivateRoute
+            exact
+            path={`/make-it-habit/change-avatar`}
+            component={AvatarsPage}
+          />
+
           <Redirect to="/make-it-habit/check-list" />
         </Switch>
 
