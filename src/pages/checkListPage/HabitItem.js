@@ -21,7 +21,7 @@ export const HabitItem = ({
 
   const needElementColor = FindHabitById(userHabits, id).planningTime.split(
     " "
-  )[2];
+  )[11];
 
   const close = () => {
     setModalShow((prev) => !prev);

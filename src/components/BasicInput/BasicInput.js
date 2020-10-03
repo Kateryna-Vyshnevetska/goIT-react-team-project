@@ -2,6 +2,7 @@ import React from "react";
 import style from "./basicInput.module.css";
 
 export function BasicInput({
+  register,
   forLabel,
   id,
   labelText,
@@ -24,6 +25,7 @@ export function BasicInput({
         {labelText}
       </label>
       <input
+        ref={register}
         type={type}
         id={id}
         className={style.basicInput}
