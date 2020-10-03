@@ -145,7 +145,12 @@ export const ProfilePageOption = () => {
             </div>
 
             <button type="Submit" className="profilePage-subscription-btn">
-              Изменить подписку
+              <Link
+                to="/make-it-habit/subscription"
+                className="profilePage-AvatarTextLink"
+              >
+                Изменить подписку
+              </Link>
             </button>
           </div>
           <Route path="#" />

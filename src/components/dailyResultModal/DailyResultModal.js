@@ -46,6 +46,7 @@ function DailyResultModal({ close }) {
   };
 
   function handleSubmit(evt) {
+    console.log(dataDate.toDateString());
     setDate(date.toLocaleDateString("en-GB"));
     close();
     evt.preventDefault();
