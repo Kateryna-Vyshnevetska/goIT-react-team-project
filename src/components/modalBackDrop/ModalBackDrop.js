@@ -39,7 +39,7 @@ const modalBackDrop = (WrappedComponent) => {
     };
     render() {
       return (
-        <div cdata-type="modal" className={styles.modal}>
+        <div data-type="modal" className={styles.modal}>
           <CSSTransition
             in={this.state.isOpen}
             timeout={250}

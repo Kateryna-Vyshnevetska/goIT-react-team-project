@@ -1,9 +1,13 @@
+.achievementsPageWrapper {
+  font-family: "Rubik", sans-serif;
+  /* display: "flex";
+  flex-direction: "column"; */
+}
 .achievementsWrapper {
+  height: 111px;
+  width: 100%;
   display: flex;
-  height: 110px;
-  width: 842px;
   justify-content: space-between;
-  background-color: #fff;
   align-items: center;
   padding: 0 62px 0 79px;
   border-bottom: 1px solid #d5e1dc;
@@ -15,27 +19,36 @@
   line-height: 31px;
   color: #4f4f4f;
 }
+
+/* .achievementsCount {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #43d190;
+} */
+
 .achievementsContainer {
   display: flex;
-  width: 842px;
-  height: 100vh;
-  padding: 40px;
+  width: 100%;
+  padding: 35px;
   background-color: #f6f6f6;
 }
+
 .achievementsPageList {
   display: flex;
   flex-wrap: wrap;
   height: 750px;
-  justify-content: flex-start;
+  width: 100%;
+  justify-content: center;
   align-content: space-between;
+  overflow-y: scroll;
 }
 
 .achievementsPageItem {
   display: flex;
+  align-items: center;
   width: 220px;
   height: auto;
-  align-items: center;
-  line-height: 20px;
   background: #e0e0e0;
   box-shadow: 0px 8px 16px rgba(67, 209, 144, 0.15);
   border-radius: 10px;
@@ -47,15 +60,18 @@
   margin-right: 30px;
 }
 
+.achievementsPageItem:hover,
+.achievementsPageItem:focus {
+  background: #43d190;
+  outline: 0;
+}
+
 .achievementsPageText {
   font-weight: 500;
   font-size: 18px;
+  line-height: 80px;
   text-align: center;
   color: #ffffff;
+  text-align: center;
   width: inherit;
-  padding: 30px 20px;
-  word-wrap: break-word;
-}
-.activeClass {
-  background: #43d190;
 }

@@ -25,7 +25,11 @@ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
-
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 /* Sections
    ========================================================================== */
 
@@ -370,7 +374,6 @@ button {
 }
 
 .btn-main {
-   
   display: flex;
   justify-content: center;
 
@@ -387,7 +390,6 @@ button {
   border-radius: 5px;
   height: 44px;
   width: 220px;
-
 }
 
 .btn-secondary {
@@ -411,4 +413,10 @@ button {
 
 .actionBtnContainer .btn-secondary {
   margin-left: 10px;
+}
+
+.spinner {
+  position: absolute;
+  left: 45%;
+  top: 50%;
 }

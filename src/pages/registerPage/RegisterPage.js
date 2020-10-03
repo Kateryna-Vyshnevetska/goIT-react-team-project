@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import styles from "./registerPage.module.css";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/operations";
+import { Link } from "react-router-dom";
 
-const RegisterPage = () => {
+const RegisterPage = ({ setregisterOpenPage }) => {
+  // const [homeOpenPage, sethomeOpenPage] = useState(false);
   const dispatch = useDispatch();
   const newUser = {};
 
@@ -65,7 +67,13 @@ const RegisterPage = () => {
             <button className={styles.buttonFacebook}>
               Войти с помощью Facebook
             </button>
-            <button className={styles.registerButton}>Вход</button>
+            <Link
+              to="/"
+              className={styles.registerButton}
+              onClick={() => setregisterOpenPage(false)}
+            >
+              На главную
+            </Link>
             <p className={styles.formText}>
               By signing up you agree to our Terms & Conditions
             </p>

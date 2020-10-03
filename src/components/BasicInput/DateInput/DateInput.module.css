@@ -6,7 +6,7 @@
   box-sizing: border-box;
   border-radius: 5px;
 
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -24,7 +24,7 @@
 
 .label {
   /* width: 200px; */
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -35,3 +35,7 @@
 .datepicker__month {
   background-color: red;
 }
+
+/* .datepicker__month {
+  background-color: red;
+} */

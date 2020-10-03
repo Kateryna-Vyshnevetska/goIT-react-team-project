@@ -1,38 +1,50 @@
 import React, { useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import styles from "./homePage.module.css";
 import "./homePage.css";
 import LogInPage from "../logInPage/LogInPage";
 import RegisterPage from "../registerPage/RegisterPage";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import "./homePage.css";
+import { CSSTransition } from "react-transition-group";
 
 export const HomePage = () => {
   const [logInOpenPage, setlogInOpenPage] = useState(false);
   const [registerOpenPage, setregisterOpenPage] = useState(false);
+
   return (
     <div className={styles.section}>
-      <Switch>
-        <TransitionGroup component="ul">
-          <CSSTransition
-            in={logInOpenPage}
-            timeout={2000}
-            classNames="item-login"
-            unmountOnExit
-          >
-            <Route exact path="/login" component={LogInPage} />
-          </CSSTransition>
-          <CSSTransition
-            in={registerOpenPage}
-            timeout={2000}
-            classNames="item-register"
-            unmountOnExit
-          >
-            <Route exact path="/registration" component={RegisterPage} />
-          </CSSTransition>
-        </TransitionGroup>
-      </Switch>
-
+      <CSSTransition
+        in={logInOpenPage}
+        timeout={2000}
+        classNames="item-login"
+        unmountOnExit
+      >
+        <Route
+          exact
+          path="/login"
+          // component={LogInPage}
+          render={(props) => (
+            <LogInPage {...props} setlogInOpenPage={setlogInOpenPage} />
+          )}
+        />
+      </CSSTransition>
+      <CSSTransition
+        in={registerOpenPage}
+        timeout={2000}
+        classNames="item-register"
+        unmountOnExit
+      >
+        <Route
+          exact
+          path="/registration"
+          // component={RegisterPage}
+          render={(props) => (
+            <RegisterPage
+              {...props}
+              setregisterOpenPage={setregisterOpenPage}
+            />
+          )}
+        />
+      </CSSTransition>
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>

@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
+import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
+
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Link } from "react-router-dom";
 import { logIn } from "../../redux/operations";
 import { useDispatch } from "react-redux";
 
-const LogInPage = () => {
+const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
+  // const [homeOpenPage, sethomeOpenPage] = useState();
+
   const dispatch = useDispatch();
   const userDataForLogin = {};
 
@@ -44,10 +49,21 @@ const LogInPage = () => {
             marginBottom="15px"
             handleChange={handleChange}
           />
-          <BasicInput
-            type="password  "
-            forLabel="Пароль"
-            id="Пароль"
+          {/* <BasicInput
+            type="password"
+            forLabel="password-input"
+            id="password-input"
+            labelText="Пароль"
+            name="password"
+            labelWidth="120px"
+            inputWidth="345px"
+            marginBottom="40px"
+            handleChange={handleChange}
+          /> */}
+          <PasswordInput
+            type="password"
+            forLabel="password-input"
+            id="password-input"
             labelText="Пароль"
             name="password"
             labelWidth="120px"
@@ -65,9 +81,13 @@ const LogInPage = () => {
             <button type="button" className={styles.buttonFacebook}>
               Войти с помощью Facebook
             </button>
-            <button type="button" className={styles.registerButton}>
-              Регистрация
-            </button>
+            <Link
+              to="/"
+              className={styles.registerButton}
+              onClick={() => setlogInOpenPage(false)}
+            >
+              На главную
+            </Link>
             <p className={styles.formText}>
               By signing up you agree to our Terms & Conditions
             </p>

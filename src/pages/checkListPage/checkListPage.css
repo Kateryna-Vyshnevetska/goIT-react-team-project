@@ -123,19 +123,24 @@ table {
   border-spacing: 0;
 }
 
-.check-list-section {
-  justify-content: stretch;
+.main-container {
+  width: 100%;
+  height: 100vh;
   display: flex;
 }
 
+.check-list-section {
+  display: flex;
+  width: 100%;
+}
+
 .habit-container {
-  width: 100vh;
-  padding-top: 40px 62px;
+  width: 100%;
   background-color: #f6f6f6;
 }
 
 .habit-header {
-  max-height: 109px;
+  height: 110px;
   background-color: #fff;
   outline: 1px solid #d5e1dc;
   margin-bottom: 30px;
@@ -168,6 +173,8 @@ table {
   font-family: "Rubik", sans-serif;
   list-style: none;
   padding: 20px 62px;
+  max-height: 750px;
+  overflow-y: scroll;
 }
 
 .habit-item {

@@ -9,11 +9,14 @@ import {
 import { addUserCigarettes } from "../redux/cigarettes/cigarettesActions";
 import { addUserAuthToken } from "../redux/authToken/authTokenAction";
 import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
+import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
+import { isFirstModal } from "../redux/flagForFirsModal/flagFirstModalAction";
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
+  dispatch(isLoadingAction(true));
   try {
     const { data } = await axios.get("/habits", {
       headers: {
@@ -26,10 +29,28 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(isAuthCurrentUser(true));
+    dispatch(isLoadingAction(false));
+    Object.values(data.user.quizInfo).map((el) =>
+      el >= 1 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true))
+    );
   } catch (error) {
     dispatch(errors(error.message));
   }
 };
+// export const checkFirstModal = (token) => async (dispatch) => {
+//   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
+//   dispatch(isLoadingAction(true));
+//   try {
+//     const { data } = await axios.get("/habits", {
+//       headers: {
+//         Authorization: token,
+//       },
+//     });
+//     Object.values(data.user.quizInfo).map((el) => console.log(typeof el));
+//   } catch (error) {
+//     dispatch(errors(error.message));
+//   }
+// };
 
 export const signUp = (userData) => async (dispatch) => {
   // Регистрация и логин, вовращает токен в стейт
@@ -39,6 +60,7 @@ export const signUp = (userData) => async (dispatch) => {
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
+      dispatch(getAllUserDataForState(res.data.access_token));
     })
     .catch((error) => dispatch(errors(error)));
 };
@@ -54,11 +76,14 @@ export const logOut = () => (dispatch) => {
 
 export const logIn = (userData) => async (dispatch) => {
   // Вход существующего юзера, возвращает токен в стейт
+  dispatch(isLoadingAction(true));
   axios
     .post("/auth/login", userData)
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
+      dispatch(getAllUserDataForState(res.data.access_token));
+      dispatch(isLoadingAction(false));
     })
     .catch((error) => dispatch(errors(error)));
 };
@@ -70,10 +95,11 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
 
   //  формат объекта newHabit
   // {
-  //    name: "newhabit",
-  //    planningTime: "newsome",
-  //    iteration: "somenew ",
+  //    name: "andrewHabit",
+  //    planningTime: "andrewHabit",
+  //    iteration: "andrewHabit ",
   //  }
+  dispatch(isLoadingAction(true));
   try {
     await axios.post("/habits", newHabit, {
       headers: {
@@ -86,12 +112,14 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
       },
     });
     dispatch(uppdateUserHabits(data.habits));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
 };
 
 export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
   try {
     await axios.delete(`/habits/${id}`, {
       headers: {
@@ -104,6 +132,7 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
       },
     });
     dispatch(uppdateUserHabits(data.habits));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }

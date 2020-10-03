@@ -7,9 +7,13 @@ import { userHabits } from "./habits/habitsReducers";
 import { userCigarettes } from "./cigarettes/cigarettesReducers";
 import { authToken } from "./authToken/authTokenReducer";
 import { isAuthUser } from "./isAuthUser/isAuthUserReducer";
+import { isLoading } from "./isLoading/isLoadingReducer";
+import { firstModalForUser } from "./flagForFirsModal/flagFirstModalReducer";
 
 export const rootReducer = combineReducers({
+  firstModalForUser,
   isAuthUser,
+  isLoading,
   authToken,
   userInfo,
   quizInfo,
