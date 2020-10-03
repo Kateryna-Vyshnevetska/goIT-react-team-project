@@ -5,7 +5,10 @@ import "../../../index.css";
 import style from "./UpdateHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
-import { createHabitAndGetAllHabits, updateOneUserHabitFromChecklistPage } from "../../../redux/operations";
+import {
+  createHabitAndGetAllHabits,
+  updateOneUserHabitFromChecklistPage,
+} from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 import FindHabitById from "../../../helpers/FindHabitById";
@@ -14,7 +17,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const userHabits = useSelector((state) => state.userHabits);
- 
+
   const [date, setDate] = useState(new Date());
   const [name, setName] = useState("");
   const [iteration, setIteration] = useState("");
@@ -31,12 +34,11 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
     }
   }, []);
 
-   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
+  const oneUserHabit = FindHabitById(userHabits, idOfHabit);
 
-console.log(oneUserHabit._id);
+  console.log(oneUserHabit._id);
 
   const handleSubmit = (ev) => {
-
     ev.preventDefault();
 
     dispatch(
@@ -45,12 +47,6 @@ console.log(oneUserHabit._id);
         authToken(state)
       )
     );
-
-   
-  
-
-    
-
     close();
   };
 

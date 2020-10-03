@@ -146,13 +146,49 @@ export const updateOneUserHabitFromChecklistPage = (newHabit, token) => async (
   }
 };
 
-export const updateQuizeInfo = (newHabit, token) => async (
-  dispatch,
-  getState
-) => {
+export const updateUserInfo = (newData, token) => async (dispatch) => {
   dispatch(isLoadingAction(true));
 
   try {
+    const { data } = await axios.patch("/users", newData, {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    dispatch(addUserInfo(data));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
+  try {
+    const { data } = await axios.post(`/users/updateQuizInfo`, newInfo, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log(data);
+    dispatch(addUserQuizInfo(data));
+    dispatch(isFirstModal(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const changeUserPassword = (newPassword, token) => async (dispatch) => {
+  try {
+    axios.post(
+      "/auth/updatePassword",
+      {
+        headers: {
+          Authorization: token,
+        },
+      },
+      newPassword
+    );
   } catch (error) {
     dispatch(errors(error.message));
   }
