@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
 import "../../../index.css";
@@ -16,6 +16,13 @@ function CustomHabitModal({ close, textOfHabit }) {
   const [name, setName] = useState("");
   const [iteration, setIteration] = useState("");
   const [planningTime, setPlanningTime] = useState("");
+
+
+  useEffect(() => {
+    if (textOfHabit) {
+     setName(textOfHabit);
+   }
+  }, [])
 
   const handleChangeInput = (date) => {
     setDate(date);
@@ -70,6 +77,7 @@ function CustomHabitModal({ close, textOfHabit }) {
             type={"date"}
             marginBottom={"20px"}
             handleChangeDate={handleChangeInput}
+            
           />
 
           <div className={style.row}>
