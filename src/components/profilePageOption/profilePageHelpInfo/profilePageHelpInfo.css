@@ -21,7 +21,8 @@
   padding: 20px 30px;
 }
 .ProfilePageHelpInfo-infoText {
-  font-weight: 700;
+  font-family: Rubik;
+  font-weight: 500;
   font-size: 18px;
   line-height: 1.17;
   color: #4f4f4f;

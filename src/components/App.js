@@ -9,6 +9,7 @@ import { MainPage } from "../pages/mainPage/MainPage";
 import { Notifiacation } from "../pages/notification/Notification";
 import Achievements from "../pages/achievementsPage/AchievementsPage";
 import { CreateHabbitDataArr } from "../helpers/createHabbitDataArr";
+import { SubscriptionsPage } from "../pages/subscriptionsPage/SubscriptionsPage";
 
 export function App() {
   const state = useSelector((state) => state);
@@ -29,6 +30,7 @@ export function App() {
       ) : (
         <HomePage />
       )}
+      {/* <SubscriptionsPage /> */}
     </>
   );
 }
