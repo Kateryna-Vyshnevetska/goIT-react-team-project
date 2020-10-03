@@ -16,7 +16,6 @@ import { authToken } from "../../redux/selectors";
 export const MainPage = () => {
   const state = useSelector((state) => state);
   const isLoading = useSelector((state) => state.isLoading);
-  console.log(authToken(state));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllUserDataForState(authToken(state)));
