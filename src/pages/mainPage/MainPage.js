@@ -12,6 +12,7 @@ import { Spinner } from "../../ui/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDataForState } from "../../redux/operations";
 import { authToken } from "../../redux/selectors";
+import { SubscriptionsPage } from "../subscriptionsPage/SubscriptionsPage";
 
 export const MainPage = () => {
   const state = useSelector((state) => state);
@@ -46,6 +47,11 @@ export const MainPage = () => {
             exact
             path={`/make-it-habit/profile`}
             component={ProfilePage}
+          />
+          <PrivateRoute
+            exact
+            path={`/make-it-habit/subscription`}
+            component={SubscriptionsPage}
           />
           <Redirect to="/make-it-habit/check-list" />
         </Switch>

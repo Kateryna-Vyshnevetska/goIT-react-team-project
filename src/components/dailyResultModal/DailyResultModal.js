@@ -46,6 +46,7 @@ function DailyResultModal({ close }) {
   };
 
   function handleSubmit(evt) {
+    console.log(dataDate.toDateString());
     setDate(date.toLocaleDateString("en-GB"));
     close();
     evt.preventDefault();
@@ -84,10 +85,10 @@ function DailyResultModal({ close }) {
               </button>
               <button
                 type="submit"
-                disabled={
-                  !sigCount ||
-                  (dataDate && dataDate.toDateString() === date.toDateString())
-                }
+                // disabled={
+                //   !sigCount ||
+                //   (dataDate && dataDate.toDateString() === date.toDateString())
+                // }
                 className={styles.modalBodyButtonSubmit}
               >
                 Сохранить
