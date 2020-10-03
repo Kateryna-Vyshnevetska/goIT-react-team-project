@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
 import axios from "axios";
-
+import { updateQuizeInfo } from "../../redux/operations";
 import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDropNoClose from "../modalBackDrop/ModalBackDropNoClose";
 import styles from "./InterviewModal.module.css";
@@ -15,20 +15,6 @@ function InterviewModal({ close }) {
   const store = useStore();
   const token = store.getState().authToken;
 
-  const updateQuizeInfo = async (sigInfo) => {
-    try {
-      await axios
-        .post(`/users/updateQuizInfo`, sigInfo, {
-          headers: {
-            Authorization: token,
-          },
-        })
-        .then(dispatch(addUserQuizInfo(sigInfo)));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   function handleSubmit(evt) {
     close();
     evt.preventDefault();
@@ -38,7 +24,7 @@ function InterviewModal({ close }) {
       cigarettePerTime,
       cigarettePackPrice,
     };
-    updateQuizeInfo(sigInfo);
+    dispatch(updateQuizeInfo(sigInfo, token));
   }
   return (
     <>

@@ -23,7 +23,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
         Authorization: token,
       },
     });
-    console.log(data);
+    let count = 0;
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
@@ -31,26 +31,13 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(isAuthCurrentUser(true));
     dispatch(isLoadingAction(false));
     Object.values(data.user.quizInfo).map((el) =>
-      el >= 1 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true))
+      el >= 1 ? (count += 1) : ""
     );
+    count === 4 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true));
   } catch (error) {
     dispatch(errors(error.message));
   }
 };
-// export const checkFirstModal = (token) => async (dispatch) => {
-//   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
-//   dispatch(isLoadingAction(true));
-//   try {
-//     const { data } = await axios.get("/habits", {
-//       headers: {
-//         Authorization: token,
-//       },
-//     });
-//     Object.values(data.user.quizInfo).map((el) => console.log(typeof el));
-//   } catch (error) {
-//     dispatch(errors(error.message));
-//   }
-// };
 
 export const signUp = (userData) => async (dispatch) => {
   // Регистрация и логин, вовращает токен в стейт
@@ -133,6 +120,22 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
     });
     dispatch(uppdateUserHabits(data.habits));
     dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
+  try {
+    const { data } = await axios.post(`/users/updateQuizInfo`, newInfo, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log(data);
+    dispatch(addUserQuizInfo(data));
+    dispatch(isFirstModal(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
