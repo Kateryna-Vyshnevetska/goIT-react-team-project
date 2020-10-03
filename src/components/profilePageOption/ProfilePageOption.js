@@ -11,7 +11,8 @@ import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 export const ProfilePageOption = () => {
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
-
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
 
   const newDataForUser = {};
@@ -24,8 +25,8 @@ export const ProfilePageOption = () => {
 
   const handleSubmitPass = (ev) => {
     ev.preventDefault();
-    console.log(newPass);
-    // dispatch(changeUserPassword(newPass, authToken));
+
+    // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
   };
 
   return (
@@ -107,9 +108,7 @@ export const ProfilePageOption = () => {
                   labelText={"Пароль"}
                   labelWidth={"125px"}
                   inputWidth={"345px"}
-                  handleChange={({ target: { value } }) =>
-                    (newPass.password = value)
-                  }
+                  handleChange={({ target: { value } }) => setPassword(value)}
                 />
               </div>
 
@@ -121,7 +120,7 @@ export const ProfilePageOption = () => {
                   labelWidth={"125px"}
                   inputWidth={"345px"}
                   handleChange={({ target: { value } }) =>
-                    (newPass.confirmPassword = value)
+                    setConfirmPassword(value)
                   }
                 />
               </div>

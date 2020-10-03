@@ -10,6 +10,7 @@ import style from "./DateInput.module.css";
 registerLocale("ru", ru);
 
 function DateInput({
+  register,
   forLabel,
   id,
   labelText,

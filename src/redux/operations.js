@@ -182,15 +182,11 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
 
 export const changeUserPassword = (newPassword, token) => async (dispatch) => {
   try {
-    axios.post(
-      "/auth/updatePassword",
-      {
-        headers: {
-          Authorization: token,
-        },
+    axios.post("/auth/updatePassword", newPassword, {
+      headers: {
+        Authorization: token,
       },
-      newPassword
-    );
+    });
   } catch (error) {
     dispatch(errors(error.message));
   }

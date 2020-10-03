@@ -12,6 +12,7 @@ export const userInfo = (state) => state.userInfo;
 export const userInfoEmail = (state) => state.userInfo.email;
 export const quizInfo = (state) => state.quizInfo;
 export const userHabits = (state) => state.userHabits;
+export const usersHabitsDates = (state) => state.usersHabitsDates;
 export const userCigarettes = (state) => state.userCigarettes;
 
 export const checkFirstModal = createSelector([quizInfo], (items) => {

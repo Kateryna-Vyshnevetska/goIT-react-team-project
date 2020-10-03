@@ -9,7 +9,7 @@ export const HabitItem = ({ nameOfHabit, elemId }) => {
 
   const needElementColor = FindHabitById(userHabits, elemId).planningTime.split(
     " "
-  )[2];
+  )[11];
 
   return (
     <li className="leftSideBar-habits-listItem" key={elemId}>
