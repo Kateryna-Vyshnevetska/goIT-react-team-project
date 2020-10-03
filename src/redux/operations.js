@@ -126,19 +126,34 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
   }
 };
 
-export const updateOneUserHabitFromChecklistPage = (newHabit, token) => async (dispatch ,getState) => {
-   dispatch(isLoadingAction(true));
+export const updateOneUserHabitFromChecklistPage = (newHabit, token) => async (
+  dispatch,
+  getState
+) => {
+  dispatch(isLoadingAction(true));
 
-   try {
-     const { data } = await axios.patch("/habits", newHabit, {
-       headers: {
-         Authorization: token,
-       },
-     });
+  try {
+    const { data } = await axios.patch("/habits", newHabit, {
+      headers: {
+        Authorization: token,
+      },
+    });
 
-     dispatch(updateOneUserHabitFromSettings(data.updatedHabit));
-     dispatch(isLoadingAction(false));
-   } catch (error) {
-     dispatch(errors(error.message));
-   }
- };
+    dispatch(updateOneUserHabitFromSettings(data.updatedHabit));
+    dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateQuizeInfo = (newHabit, token) => async (
+  dispatch,
+  getState
+) => {
+  dispatch(isLoadingAction(true));
+
+  try {
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
