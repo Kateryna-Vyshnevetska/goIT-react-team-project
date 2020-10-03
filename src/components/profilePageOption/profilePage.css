@@ -135,3 +135,6 @@
 .profilePage-subscription-btn.confirmPasword {
   margin-left: 53%;
 }
+.profilePage-subscription-btn.confirmPasword.email {
+  margin-bottom: 20px;
+}
