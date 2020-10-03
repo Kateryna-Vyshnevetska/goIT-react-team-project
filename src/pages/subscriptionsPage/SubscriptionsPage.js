@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./SubscriptionsPage.module.css";
 import { ProfileItemCard } from "../../components/profilePageOption/profileMyCardsPage/profileItemCard/ProfileItemCard";
 import { ProfilePageHelpInfo } from "../../components/profilePageOption/profilePageHelpInfo/ProfilePageHelpInfo";
+import  AddNewCard  from "../../components/Modals/AddNewCardModal/AddNewCardModal";
 
 export function SubscriptionsPage() {
+  const [modalShow, setModalShow] = useState(false);
+
+  const close = () => {
+    setModalShow((prev) => !prev);
+  };
+
   return (
     <div className={style.subscriptionsContainer}>
       <div className={style.subscriptionsHeader}>
@@ -108,12 +115,14 @@ export function SubscriptionsPage() {
 
         <div className={style.subscriptionsSectionCardsButtons}>
           <button
+            onClick={() => setModalShow(true)}
             className={["profilePage-subscription-btn", style.buttonAdd].join(
               " "
             )}
           >
             + Добавить карту
           </button>
+          {modalShow && <AddNewCard close={close} />}
           <button
             className={["profilePage-subscription-btn", style.buttonPay].join(
               " "
