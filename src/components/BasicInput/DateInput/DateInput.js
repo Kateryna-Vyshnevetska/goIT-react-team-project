@@ -32,7 +32,13 @@ function DateInput({
   };
 
   return (
-    <div style={{ marginBottom: marginBottom }}>
+    <div
+      style={{
+        marginBottom: marginBottom,
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <label
         htmlFor={forLabel}
         className={style.label}
@@ -40,7 +46,7 @@ function DateInput({
       >
         {labelText}
       </label>
-      <div className="habitsCalendar" style={{ borderRadius: "10px" }}>
+      <div className="habitsCalendar">
         <DatePicker
           locale="ru"
           selected={date}
