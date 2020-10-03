@@ -9,6 +9,7 @@ import { authToken } from "./authToken/authTokenReducer";
 import { isAuthUser } from "./isAuthUser/isAuthUserReducer";
 import { isLoading } from "./isLoading/isLoadingReducer";
 import { firstModalForUser } from "./flagForFirsModal/flagFirstModalReducer";
+import { usersHabitsDates } from "./habitsDates/habitsDatesReducer";
 
 export const rootReducer = combineReducers({
   firstModalForUser,
@@ -20,4 +21,5 @@ export const rootReducer = combineReducers({
   userHabits,
   userCigarettes,
   errors: errorReducer,
+  usersHabitsDates,
 });

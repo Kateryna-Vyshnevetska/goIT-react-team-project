@@ -12,7 +12,7 @@ import { addUserAuthToken } from "../redux/authToken/authTokenAction";
 import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
 import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
 import { isFirstModal } from "../redux/flagForFirsModal/flagFirstModalAction";
-
+import { createHabbitDataArr } from "../helpers/createHabbitDataArr";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -31,6 +31,8 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(isAuthCurrentUser(true));
     dispatch(isLoadingAction(false));
+    createHabbitDataArr(data.habits);
+
     Object.values(data.user.quizInfo).map((el) =>
       el >= 1 ? (count += 1) : ""
     );
@@ -48,7 +50,6 @@ export const signUp = (userData) => async (dispatch) => {
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
-      dispatch(getAllUserDataForState(res.data.access_token));
     })
     .catch((error) => dispatch(errors(error)));
 };
