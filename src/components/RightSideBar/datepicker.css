@@ -680,7 +680,7 @@
 .react-datepicker__month-text--in-selecting-range,
 .react-datepicker__quarter-text--in-selecting-range,
 .react-datepicker__year-text--in-selecting-range {
-  background-color: orange;
+  background-color: white;
 }
 
 .react-datepicker__month--selecting-range .react-datepicker__day--in-range,
