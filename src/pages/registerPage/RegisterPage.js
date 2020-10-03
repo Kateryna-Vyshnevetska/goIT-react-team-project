@@ -4,6 +4,7 @@ import styles from "./registerPage.module.css";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/operations";
 import { Link } from "react-router-dom";
+import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 
 const RegisterPage = ({ setregisterOpenPage }) => {
   // const [homeOpenPage, sethomeOpenPage] = useState(false);
@@ -45,11 +46,11 @@ const RegisterPage = ({ setregisterOpenPage }) => {
             marginBottom="15px"
             handleChange={handleChange}
           />
-          <BasicInput
-            placeholder="Введите свой пароль"
-            type="password  "
-            forLabel="Пароль"
-            id="Пароль"
+          <PasswordInput
+            placeholder="Введите свой password"
+            type="password"
+            forLabel="password-input"
+            id="password-input"
             labelText="Пароль"
             name="password"
             labelWidth="120px"
