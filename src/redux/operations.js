@@ -25,13 +25,14 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
+    console.log(data);
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(isAuthCurrentUser(true));
     dispatch(isLoadingAction(false));
-    createHabbitDataArr(data.habits);
+    dispatch(createHabbitDataArr(data.habits));
 
     Object.values(data.user.quizInfo).map((el) =>
       el >= 1 ? (count += 1) : ""
