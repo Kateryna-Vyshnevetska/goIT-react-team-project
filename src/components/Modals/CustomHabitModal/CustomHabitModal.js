@@ -110,7 +110,7 @@ function CustomHabitModal({ close, textOfHabit }) {
               <option value="4">ВТ, ЧТ, СБ</option>
             </select>
           </div>
-          <button className={style.btnDelete}>
+          <button disabled className={style.btnDelete}>
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>

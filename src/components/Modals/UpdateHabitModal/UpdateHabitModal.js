@@ -5,16 +5,19 @@ import "../../../index.css";
 import style from "./UpdateHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
-import { createHabitAndGetAllHabits, updateOneUserHabitFromChecklistPage } from "../../../redux/operations";
+import {
+  deleteOneHabitFromUpdateModal,
+  updateOneUserHabitFromChecklistPage,
+} from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-import { getRandomColor } from "../../../helpers/CheckListPage";
+// import { getRandomColor } from "../../../helpers/CheckListPage";
 import FindHabitById from "../../../helpers/FindHabitById";
 
 function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const userHabits = useSelector((state) => state.userHabits);
- 
+
   const [date, setDate] = useState(new Date());
   const [name, setName] = useState("");
   const [iteration, setIteration] = useState("");
@@ -25,18 +28,21 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
     console.log(date);
   };
 
+  const oneUserHabit = FindHabitById(userHabits, idOfHabit);
+
   useEffect(() => {
-    if (habitTitle) {
-      setName(habitTitle);
-    }
-  }, []);
+    setName(habitTitle);
 
-   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
+    setIteration(oneUserHabit.iteration);
 
-console.log(oneUserHabit._id);
+    const timeOfstart = oneUserHabit.planningTime.split(" ")[1];
+    setPlanningTime(timeOfstart);
+
+    const dateOfStart = oneUserHabit.planningTime.split(" ")[0];
+    // setDate(dateOfStart.toLocaleDateString("en-GB"));
+  }, [habitTitle, oneUserHabit.iteration, oneUserHabit.planningTime]);
 
   const handleSubmit = (ev) => {
-
     ev.preventDefault();
 
     dispatch(
@@ -45,11 +51,6 @@ console.log(oneUserHabit._id);
         authToken(state)
       )
     );
-
-   
-  
-
-    
 
     close();
   };
@@ -86,6 +87,7 @@ console.log(oneUserHabit._id);
             inputWidth={"400px"}
             type={"date"}
             marginBottom={"20px"}
+            value={date}
             handleChangeDate={handleChangeInput}
           />
 
@@ -94,11 +96,13 @@ console.log(oneUserHabit._id);
               Время *
             </label>
             <input
+              value={planningTime}
               className={style.input}
               id="date"
               type="time"
               onChange={(ev) => {
                 setPlanningTime(ev.target.value);
+                console.log("время", ev.target.value);
               }}
             />
           </div>
@@ -107,6 +111,7 @@ console.log(oneUserHabit._id);
               Повторение *
             </label>
             <select
+              value={iteration}
               onChange={({ target: { value } }) => {
                 setIteration(value);
               }}
@@ -118,7 +123,14 @@ console.log(oneUserHabit._id);
               <option value="4">ВТ, ЧТ, СБ</option>
             </select>
           </div>
-          <button className={style.btnDelete}>
+          <button
+            className={style.btnDelete}
+            onClick={() =>
+              dispatch(
+                deleteOneHabitFromUpdateModal(oneUserHabit, authToken(state))
+              )
+            }
+          >
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>
