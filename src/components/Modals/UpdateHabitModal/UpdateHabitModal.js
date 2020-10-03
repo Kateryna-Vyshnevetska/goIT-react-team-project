@@ -5,42 +5,61 @@ import "../../../index.css";
 import style from "./UpdateHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
-import { createHabitAndGetAllHabits } from "../../../redux/operations";
+import { createHabitAndGetAllHabits, updateOneUserHabitFromChecklistPage } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
+import { getRandomColor } from "../../../helpers/CheckListPage";
 import FindHabitById from "../../../helpers/FindHabitById";
 
-function UpdateHabitModal({ close, idOfHabit }) {
+function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const userHabits = useSelector((state) => state.userHabits);
+ 
+  const [date, setDate] = useState(new Date());
+  const [name, setName] = useState("");
+  const [iteration, setIteration] = useState("");
+  const [planningTime, setPlanningTime] = useState("");
 
-  const newHabit = {};
-
-  const [habit, setHabit] = useState({
-    name: "",
-    planningTime: { time: "08:08" },
-  });
+  const handleChangeInput = (date) => {
+    setDate(date.toLocaleDateString("en-GB"));
+    console.log(date);
+  };
 
   useEffect(() => {
-    const objectHabit = FindHabitById(state.userHabits, idOfHabit);
+    if (habitTitle) {
+      setName(habitTitle);
+    }
+  }, []);
 
-    setHabit(objectHabit);
-  }, [idOfHabit, state.userHabits]);
+   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
+
+console.log(oneUserHabit._id);
 
   const handleSubmit = (ev) => {
+
     ev.preventDefault();
-    newHabit.iteration = "1 per day";
-    console.log(newHabit);
-    dispatch(createHabitAndGetAllHabits(newHabit, authToken(state)));
+
+    dispatch(
+      updateOneUserHabitFromChecklistPage(
+        { id: oneUserHabit._id, name: name, data: oneUserHabit.data },
+        authToken(state)
+      )
+    );
+
+   
+  
+
+    
+
     close();
   };
 
   const handleChange = ({ target: { name, value } }) => {
-    newHabit.name = value;
+    setName(value);
   };
 
   return (
     <>
-      {/* < style > { birthdayStyle }</style> */}
       <div className={style.wrapper}>
         <h3 className={style.title}>Update привычку под себя</h3>
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
@@ -55,45 +74,48 @@ function UpdateHabitModal({ close, idOfHabit }) {
               labelWidth={"200px"}
               inputWidth={"400px"}
               handleChange={handleChange}
-              placeholder={habit.name}
+              value={name}
             />
           </div>
-          {/* <div className={style.row}>
-          <label className={style.label} for="date-of-start">
-            Дата старта
-          </label>
-          <input className={style.input} id="date-of-start" type="date" />
-        </div> */}
           <DateInput
             forLabel={"date"}
             id={"date"}
-            labelText={"Дата начала"}
+            labelText={"Дата начала *"}
             name={"date"}
             labelWidth={"200px"}
             inputWidth={"400px"}
             type={"date"}
             marginBottom={"20px"}
+            handleChangeDate={handleChangeInput}
           />
+
           <div className={style.row}>
-            <label className={style.label} for="date">
+            <label className={style.label} htmlFor="date">
               Время *
             </label>
             <input
               className={style.input}
               id="date"
               type="time"
-              value={habit.planningTime.time}
               onChange={(ev) => {
-                newHabit.planningTime = ev.target.value;
+                setPlanningTime(ev.target.value);
               }}
             />
           </div>
           <div className={style.row}>
-            <label className={style.label} for="repeat">
+            <label className={style.label} htmlFor="repeat">
               Повторение *
             </label>
-            <select>
-              <option value="once">1 per day</option>
+            <select
+              onChange={({ target: { value } }) => {
+                setIteration(value);
+              }}
+            >
+              <option></option>
+              <option value="1">Ежедневно</option>
+              <option value="2">Раз в 2 дня</option>
+              <option value="3">ПН, СР, ПТ</option>
+              <option value="4">ВТ, ЧТ, СБ</option>
             </select>
           </div>
           <button className={style.btnDelete}>
@@ -108,6 +130,10 @@ function UpdateHabitModal({ close, idOfHabit }) {
             </button>
           </div>
         </form>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
     </>
   );

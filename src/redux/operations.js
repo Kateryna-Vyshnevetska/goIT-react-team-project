@@ -4,6 +4,7 @@ import { addUserInfo } from "../redux/user/userActions";
 import { addUserQuizInfo } from "../redux/quizInfo/quizInfoActions";
 import {
   addUserHabits,
+  updateOneUserHabitFromSettings,
   uppdateUserHabits,
 } from "../redux/habits/habitsActions";
 import { addUserCigarettes } from "../redux/cigarettes/cigarettesActions";
@@ -132,6 +133,24 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
       },
     });
     dispatch(uppdateUserHabits(data.habits));
+    dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+
+export const updateOneUserHabitFromChecklistPage = (newHabit, token) => async (dispatch ,getState) => {
+  dispatch(isLoadingAction(true));
+
+  try {
+    const { data } = await axios.patch("/habits", newHabit, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  
+    dispatch(updateOneUserHabitFromSettings(data.updatedHabit));
     dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
