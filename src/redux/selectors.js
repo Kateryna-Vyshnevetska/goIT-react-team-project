@@ -21,3 +21,20 @@ export const checkFirstModal = createSelector([quizInfo], (items) => {
   //   el.name.toLowerCase().includes(filter.toLowerCase())
   // );
 });
+
+export const getConstAmountOfCigarettesPerDay = (state) => {
+  return state.quizInfo.cigarettePerDay;
+};
+export const getCigarettePackPrice = (state) => {
+  return state.quizInfo.cigarettePackPrice;
+};
+export const getCurrentAmountOfCigarettes = (state) => {
+  const cig = state.cigarettes.data.filter((el) => el !== null);
+  return cig[cig.length - 1];
+};
+export const allCigarettes = (state) => {
+  const cig = state.cigarettes.data.filter((el) => el !== null);
+  return cig;
+};
+export const getTimeForOneCigarette = (state) =>
+  state.quizInfo.cigarettePerTime;
