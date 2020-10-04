@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Link,
-  useRouteMatch,
-  useLocation,
-  useHistory,
-  NavLink,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./navigation.css";
 
 export const NavigationBar = () => {

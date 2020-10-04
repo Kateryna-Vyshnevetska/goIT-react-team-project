@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
 import axios from "axios";
 import { BasicInput } from "../BasicInput/BasicInput";
-import CustomButton from "../CustomButton/CustomButton";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./DailyResultModal.module.css";
 import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";

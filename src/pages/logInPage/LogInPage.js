@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";

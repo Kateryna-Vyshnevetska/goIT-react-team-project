@@ -13,7 +13,11 @@ import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
 import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
 import { isFirstModal } from "../redux/flagForFirsModal/flagFirstModalAction";
 import { createHabbitDataArr } from "../helpers/createHabbitDataArr";
-import { userHabitsDatesUppdate } from "../redux/habitsDates/habitsDatesAction";
+import {
+  userHabitsDatesDelete,
+  userHabitsDatesUppdate,
+} from "../redux/habitsDates/habitsDatesAction";
+import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -26,14 +30,14 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
-    console.log(data);
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
-    data.habits.forEach((el) => {
-      dispatch(createHabbitDataArr(el));
-    });
     dispatch(addUserCigarettes(data.user.cigarettes));
+    let arrHabitsDates = data.habits.map((el) => {
+      return createHabbitDataArr(el);
+    });
+    dispatch(userHabitsDatesUppdate(arrHabitsDates));
     dispatch(isAuthCurrentUser(true));
     dispatch(isLoadingAction(false));
 
@@ -84,17 +88,8 @@ export const logIn = (userData) => async (dispatch) => {
 export const createHabitAndGetAllHabits = (newHabit, token) => async (
   dispatch
 ) => {
-  // Операция для создания новой привычки и сразу обновления привычек в стейт
-
-  //  формат объекта newHabit
-  // {
-  //    name: "andrewHabit",
-  //    planningTime: "andrewHabit",
-  //    iteration: "andrewHabit ",
-  //  }
-  // dispatch(isLoadingAction(true));
   try {
-    await axios.post("/habits", newHabit, {
+    const habit = await axios.post("/habits", newHabit, {
       headers: {
         Authorization: token,
       },
@@ -106,11 +101,8 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
     });
     dispatch(uppdateUserHabits(data.habits));
     dispatch(isLoadingAction(false));
-    // dispatch(userHabitsDatesUppdate());
-
-    data.habits.forEach((el) => {
-      dispatch(createHabbitDataArr(el));
-    });
+    const newhabitDates = createHabbitDataArr(habit.data);
+    dispatch(userHabitsDatesCreate(newhabitDates));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -129,6 +121,7 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
         Authorization: token,
       },
     });
+    dispatch(userHabitsDatesDelete(id));
     dispatch(uppdateUserHabits(data.habits));
     dispatch(isLoadingAction(false));
   } catch (error) {

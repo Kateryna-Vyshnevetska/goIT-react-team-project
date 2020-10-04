@@ -1,7 +1,7 @@
 import React from "react";
 import { Calendar } from "./Calendar";
 import { CalendarChecklist } from "./CalendarChecklist";
-import  style from "./rightSideBar.module.css";
+import style from "./rightSideBar.module.css";
 import { RightSideBarHeader } from "./RightSideBarHeader";
 
 export const RightSideBar = () => {

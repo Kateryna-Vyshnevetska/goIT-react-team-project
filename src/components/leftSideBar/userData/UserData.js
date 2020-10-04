@@ -1,17 +1,13 @@
 import React from "react";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import avatar from "../../../images/avatars/Avatar-1.png";
 import "./userData.css";
 import { logOut } from "../../../redux/operations";
-// import { userInfoEmail } from "../../../redux/selectors";
 import FindAvatarById from "../../../helpers/FindAvatarById";
 
 export const UserData = () => {
-  const avatarDefault = avatar;
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
-  const avatarById = useSelector((state) => state.userInfo.avatar);
   const clickTologOut = () => {
     dispatch(logOut());
   };

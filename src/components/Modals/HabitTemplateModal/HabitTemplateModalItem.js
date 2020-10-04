@@ -5,21 +5,18 @@ import { v4 as uuidv4 } from "uuid";
 import CustomHabitModal from "../CustomHabitModal/CustomHabitModal";
 
 function HabitTemplateModalItem() {
-  
   const [modalShow, setModalShow] = useState(false);
-  const [valueOfButton, setValueOfButton] = useState("")
+  const [valueOfButton, setValueOfButton] = useState("");
 
-   const close = () => {
-     setModalShow((prev) => !prev);
-   };
+  const close = () => {
+    setModalShow((prev) => !prev);
+  };
 
   const handleClickBtn = (target) => {
     setModalShow(true);
     // console.log("target.textContent", target.textContent);
     setValueOfButton(target.textContent);
-  }
-  
- 
+  };
 
   return (
     <ul className="habit-template-list">

@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { isAuthCurrentUser, isNotAuthCurrentUser } from "./isAuthUserAction";
+import { isAuthCurrentUser } from "./isAuthUserAction";
 
 const userCigarettesState = false;
 

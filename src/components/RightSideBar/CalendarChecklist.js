@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAndGetAllHabits } from "../../redux/operations";
 import style from "./rightSideBar.module.css";
 import { authToken, userHabits, usersHabitsDates } from "../../redux/selectors";
+import moment from "moment";
 
 export const CalendarChecklist = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const userHabitsDates = useSelector((state) => state.usersHabitsDates);
-  const dateNow = new Date();
+  const userHabitsDates = usersHabitsDates(state);
+  const dateToday = new Date();
+  const dateNow = moment(dateToday).format();
   const arr = [];
-  const userHabits = useSelector((state) => state.userHabits);
+  const allUserHabits = userHabits(state);
 
-  // userHabits.map((habites) =>
-  //   userHabitsDates.map((dates) => {
-  //     if (habites._id === dates.habitId) {
-  //       dates.dates.map((date) => {
-  //         if (dateNow.toDateString() === date.toDateString()) {
-  //           arr.push(habites);
-  //           return;
-  //         }
-  //       });
-  //     }
-  //   })
-  // );
+  allUserHabits.map((habites) =>
+    userHabitsDates.map((dates) => {
+      if (habites._id === dates.habitId) {
+        dates.dates.map((date) => {
+          if (dateNow.split("T")[0] === date.split("T")[0]) {
+            arr.push(habites);
+            return;
+          }
+        });
+      }
+    })
+  );
+
   const deleteHabit = (id) => {
     dispatch(deleteHabitAndGetAllHabits(id, authToken(state)));
   };
