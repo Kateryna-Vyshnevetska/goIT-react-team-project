@@ -92,13 +92,13 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
           />
 
           <div className={style.row}>
-            <label className={style.label} htmlFor="date">
+            <label className={style.label} htmlFor="time">
               Время *
             </label>
             <input
               value={planningTime}
               className={style.input}
-              id="date"
+              id="time"
               type="time"
               onChange={(ev) => {
                 setPlanningTime(ev.target.value);

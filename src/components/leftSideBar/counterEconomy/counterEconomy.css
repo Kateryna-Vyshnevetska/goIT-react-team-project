@@ -5,11 +5,12 @@
   height: 18px;
   content: " ";
   position: absolute;
-  /* right: 94.5%; */
-  /* margin-left: 30px; */
-  /* background-position: center; */
-  left: 41px;
-  margin-left: 22px;
+  
+  /* margin-left: 22px; */
+  position: relative;
+  display: inline-block;
+  left: -10px;
+  top: 2px;
 }
 .leftSideBar-sandclock::before {
   background-image: url(../../../images/leftSideBar/sandClock.svg);
@@ -17,27 +18,50 @@
   width: 20px;
   height: 18px;
   content: " ";
-  position: absolute;
-  /* right: 86%; */
-  left: 192px;
+  position: relative;
+  display: inline-block;
+  left: -10px;
+  top: 3px;
+ 
 }
 .leftSideBar-economyList {
-  list-style: none;
-  display: flex;
-  padding-left: 0;
-  margin: 0;
+      list-style: none;
+    display: flex;
+    padding-left: 0;
+  
+    margin: auto;
+    height: 100%;
+    width: 250px;
 }
+
+.leftSideBar-item{
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-right: 10px; */
+
+}
+
+.leftSideBar-item:not(:last-child){
+  margin-right: 10px;
+}
+
+
 .leftSideBar-economyContainer {
   border-bottom: 1px solid #d5e1dc;
-  padding: 23px 64px 20px;
+  /* padding: 23px 64px 20px; */
+  /* padding-left: 50px;
+  padding-right: 50px; */
+  height:10% ;
 }
-.countEconomy {
+/* .countEconomy {
   margin: 0px 0px 0px 25px;
-}
+} */
 
 .leftSideBar-economyTitle {
   font-size: 14px;
   line-height: 1.19;
   color: #bdbdbd;
-  margin: 0px 0px 15px 0px;
+  /* margin: 0px 0px 15px 0px; */
 }

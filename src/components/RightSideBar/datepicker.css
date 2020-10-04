@@ -104,7 +104,7 @@
   border-bottom: 1px solid #d5e1dc;
   border-top: 1px solid #d5e1dc;
   border-right: 1px solid transparent;
-  max-width: 379px;
+  /* max-width: 379px; */
   display: inline-block;
   position: relative;
 }
@@ -319,8 +319,8 @@
 
 .react-datepicker__month {
   max-width: 378px;
-  height: 332px;
-  margin: 35px 0 0 0;
+  height: 250px;
+  /* margin: 35px 0 0 0; */
   /* border-bottom: 1px solid #d5e1dc; */
   text-align: center;
 }
@@ -531,7 +531,7 @@
   width: 20px;
   line-height: 17px;
   text-align: center;
-  margin: 22px 17px;
+  margin: 10px 10px;
   text-transform: uppercase;
 }
 
@@ -546,7 +546,7 @@
   height: 30px;
   line-height: 17px;
   text-align: center;
-  margin: 12px;
+  margin: 6px;
 }
 
 .react-datepicker__month--selected,

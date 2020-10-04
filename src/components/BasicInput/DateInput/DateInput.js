@@ -24,7 +24,7 @@ function DateInput({
 }) {
   // если что то дропнется то в юз стейт был  => new Date()
 
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState(new Date());
 
   const handleCalendarClose = () => {
     console.log("Calendar closed");
@@ -53,6 +53,7 @@ function DateInput({
         <DatePicker
           locale="ru"
           selected={date}
+          id={forLabel}
           onChange={(date) => {
             setDate(date);
             handleChangeDate(date);

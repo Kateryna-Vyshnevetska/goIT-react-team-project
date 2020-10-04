@@ -9,7 +9,6 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
-
 function CustomHabitModal({ close, textOfHabit }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -18,12 +17,11 @@ function CustomHabitModal({ close, textOfHabit }) {
   const [iteration, setIteration] = useState("");
   const [planningTime, setPlanningTime] = useState("");
 
-
   useEffect(() => {
     if (textOfHabit) {
-     setName(textOfHabit);
-   }
-  }, [])
+      setName(textOfHabit);
+    }
+  }, [textOfHabit]);
 
   const handleChangeInput = (date) => {
     setDate(date.toLocaleDateString("en-GB"));
@@ -78,16 +76,15 @@ function CustomHabitModal({ close, textOfHabit }) {
             type={"date"}
             marginBottom={"20px"}
             handleChangeDate={handleChangeInput}
-            
           />
 
           <div className={style.row}>
-            <label className={style.label} htmlFor="date">
+            <label className={style.label} htmlFor="time">
               Время *
             </label>
             <input
               className={style.input}
-              id="date"
+              id="time"
               type="time"
               onChange={(ev) => {
                 setPlanningTime(ev.target.value);

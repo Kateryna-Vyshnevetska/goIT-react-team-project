@@ -1,10 +1,12 @@
 .achievementsPageWrapper {
   font-family: "Rubik", sans-serif;
+  width: 60%;
+  
   /* display: "flex";
   flex-direction: "column"; */
 }
 .achievementsWrapper {
-  height: 111px;
+  height: 10%;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -30,26 +32,33 @@
 .achievementsContainer {
   display: flex;
   width: 100%;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  height: 90%;
+  max-height: 800px;
+  /* padding: 20px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #f6f6f6;
+  overflow-y: scroll;
 }
 
 .achievementsPageList {
   display: flex;
   flex-wrap: wrap;
-  /* height: 750px; */
+
   width: 100%;
+  /* height: 100%; */
   justify-content: center;
   align-content: space-between;
   overflow-y: scroll;
+  margin: -20px;
 }
 
 .achievementsPageItem {
+  margin: 20px;
   display: flex;
   align-items: center;
   width: 220px;
-  height: auto;
+  height: 80px;
   background: #e0e0e0;
   box-shadow: 0px 8px 16px rgba(67, 209, 144, 0.15);
   border-radius: 10px;
@@ -57,12 +66,12 @@
   /* margin-left: 11px; */
 }
 
-.achievementsPageItem:not(:nth-child(3n)) {
+/* .achievementsPageItem:not(:nth-child(3n)) {
   margin-right: 30px;
 }
 .achievementsPageItem:not(:nth-last-child(-n + 3)) {
   margin-bottom: 30px;
-}
+} */
 
 .achievementsPageItem:hover,
 .achievementsPageItem:focus {
