@@ -23,14 +23,7 @@ export const LeftSideBar = () => {
       {firstModalForUser && <InterviewModal close={close} />}
       <section className="leftSideBar">
         <div className="leftSideBar-block">
-          <div className="logo-block">
-            <img
-              src={logo}
-              alt="logo"
-              width="145"
-              className="imageLogoLeftSideBar"
-            />
-          </div>
+          <div className="logo-block"></div>
           <UserData />
           <CounterEconomy />
           <NavigationBar />

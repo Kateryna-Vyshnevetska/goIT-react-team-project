@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
@@ -9,10 +8,12 @@ import { BasicInput } from "../BasicInput/BasicInput";
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
 import "./profilePage.css";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
+import FindAvatarById from "../../helpers/FindAvatarById";
 
 export const ProfilePageOption = () => {
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
@@ -118,43 +119,47 @@ export const ProfilePageOption = () => {
               Подтвердить изменения
             </button>
 
-            <form>
-              <div className="profilePage-inputs">
-                <BasicInput
-                  forLabel={"password"}
-                  id={"password"}
-                  labelText={"Пароль"}
-                  labelWidth={"125px"}
-                  inputWidth={"345px"}
-                  // handleChange={({ target: { value } }) => setPassword(value)}
-                />
-              </div>
+            <div className="profilePage-inputs">
+              <BasicInput
+                forLabel={"password"}
+                id={"password"}
+                labelText={"Пароль"}
+                labelWidth={"125px"}
+                inputWidth={"345px"}
+                // handleChange={({ target: { value } }) => setPassword(value)}
+              />
+            </div>
 
-              <div className="profilePage-inputs">
-                <BasicInput
-                  forLabel={"password"}
-                  id={"password"}
-                  labelText={"Повторите пароль"}
-                  labelWidth={"125px"}
-                  inputWidth={"345px"}
-                  // handleChange={({ target: { value } }) =>
-                  //   setConfirmPassword(value)
-                  // }
-                />
-              </div>
-              <button
-                type="Submit"
-                className="profilePage-subscription-btn confirmPasword"
-              >
-                Изменить пароль
-              </button>
-            </form>
+            <div className="profilePage-inputs">
+              <BasicInput
+                forLabel={"password"}
+                id={"password"}
+                labelText={"Повторите пароль"}
+                labelWidth={"125px"}
+                inputWidth={"345px"}
+                // handleChange={({ target: { value } }) =>
+                //   setConfirmPassword(value)
+                // }
+              />
+            </div>
+            <button
+              type="Submit"
+              className="profilePage-subscription-btn confirmPasword"
+            >
+              Изменить пароль
+            </button>
           </form>
           <div className="profilePage-AvatarBlock">
-            <Link to="#" className="profilePage-AvatarLink">
-              <img alt="avatar" className="profilePage-Avatar" />
+            <Link
+              to="/make-it-habit/change-avatar"
+              className="profilePage-AvatarLink"
+            >
+              {FindAvatarById(avatarById)}
             </Link>
-            <Link to="#" className="profilePage-AvatarTextLink">
+            <Link
+              to="/make-it-habit/change-avatar"
+              className="profilePage-AvatarTextLink"
+            >
               <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             </Link>
             <div className="profilePage-subscriptionArea">

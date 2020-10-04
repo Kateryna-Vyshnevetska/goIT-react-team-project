@@ -5,8 +5,10 @@ import avatar from "../../../images/avatars/Avatar-1.png";
 import "./userData.css";
 import { logOut } from "../../../redux/operations";
 import { userInfoEmail } from "../../../redux/selectors";
+import FindAvatarById from "../../../helpers/FindAvatarById";
 
 export const UserData = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
   const clickTologOut = () => {
@@ -17,7 +19,7 @@ export const UserData = () => {
       <div className="leftSideBar-userData">
         <Link to="/make-it-habit/profile" className="leftSideBar-user-link">
           <div className="leftSideBar-user-avatar">
-            <img alt="avatar" src={avatar} />
+            {FindAvatarById(avatarById)}
           </div>
           <p className="leftSideBar-user-name">
             {userInfo.firstName && userInfo.lastName
