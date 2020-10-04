@@ -10,13 +10,18 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
-function CustomHabitModal({ close }) {
+function CustomHabitModal({ close, textOfHabit }) {
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
-
   const { register, errors, handleSubmit } = useForm();
-
   const state = useSelector((state) => state);
   const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    if (textOfHabit) {
+      setName(textOfHabit);
+    }
+  }, []);
 
   const handleChangeInput = (date) => {
     setDate(date);
@@ -54,6 +59,7 @@ function CustomHabitModal({ close }) {
               name={"name"}
               labelWidth={"200px"}
               inputWidth={"400px"}
+              value={textOfHabit}
             />
           </div>
           <DateInput
