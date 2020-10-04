@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAndGetAllHabits } from "../../redux/operations";
+import style  from "./rightSideBar.module.css";
 import { authToken, userHabits, usersHabitsDates } from "../../redux/selectors";
-import {
-  calendarChecklistItem,
-  calendarChecklist,
-  calendarChecklistItemProgress,
-  calendarChecklistItemProgressDone,
-  calendarChecklistItemText,
-  calendarChecklistItemTextDone,
-  calendarChecklistItemButton,
-} from "./rightSideBar.module.css";
 
 export const CalendarChecklist = () => {
   const state = useSelector((state) => state);
@@ -21,15 +13,15 @@ export const CalendarChecklist = () => {
   };
 
   return (
-    <ul className={calendarChecklist}>
+    <ul className={style.calendarChecklist}>
       {userHabits(state).map((el) => (
-        <li key={el._id}>
-          <div className={calendarChecklistItem}>
+        <li key={el._id} className={style.calendarItem}>
+          <div className={style.calendarChecklistItem}>
             <span
               className={
                 false
-                  ? calendarChecklistItemProgress
-                  : calendarChecklistItemProgressDone
+                  ? style.calendarChecklistItemProgress
+                  : style.calendarChecklistItemProgressDone
               }
             >
               {false && "time"}
@@ -37,15 +29,15 @@ export const CalendarChecklist = () => {
             <span
               className={
                 false
-                  ? calendarChecklistItemText
-                  : calendarChecklistItemTextDone
+                  ? style.calendarChecklistItemText
+                  : style.calendarChecklistItemTextDone
               }
             >
               {el.name}
             </span>
             <button
               onClick={() => deleteHabit(el._id)}
-              className={calendarChecklistItemButton}
+              className={style.calendarChecklistItemButton}
             ></button>
           </div>
         </li>

@@ -17,7 +17,7 @@ export const UserData = () => {
       <div className="leftSideBar-userData">
         <Link to="/make-it-habit/profile" className="leftSideBar-user-link">
           <div className="leftSideBar-user-avatar">
-            <img alt="avatar" src={avatar} />
+            <img alt="avatar" src={avatar} className="avatar" />
           </div>
           <p className="leftSideBar-user-name">
             {userInfo.firstName && userInfo.lastName

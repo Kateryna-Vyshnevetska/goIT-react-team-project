@@ -1,9 +1,16 @@
 .rightSideBarContainer {
   font-family: "Rubik", sans-serif;
-  width: 381px;
-  height: 100%;
+  width: 20%;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+
   border-left: 1px solid #d5e1dc;
   border-bottom: 1px solid #d5e1dc;
+}
+
+.rightSideBarWrapper {
+  height: 100%;
 }
 
 .rightSideBarHeader {
@@ -13,7 +20,7 @@
   font-size: 26px;
   line-height: 31px;
   color: #4f4f4f;
-  height: 110px;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,16 +34,23 @@
 }
 
 .calendarChecklist {
-  margin-top: 40px;
-  padding: 0 32px;
-  max-height: 270px;
+  /* margin-top: 40px; */
+  /* padding: 0 32px; */
   overflow-y: scroll;
+  height: 40%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.calendarItem {
+  margin-bottom: 5px;
 }
 
 .calendarChecklistItem {
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .calendarChecklistItemProgress {
@@ -58,7 +72,7 @@
   display: flex;
   align-items: center;
   color: #4f4f4f;
-  max-width: 211px;
+  width: 211px;
   display: block;
   margin-left: 35px;
 }
@@ -72,10 +86,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  max-width: 211px;
+  width: 211px;
 
   display: block;
-  margin-left: 35px;
+  margin-left: 15px;
 
   text-decoration-line: line-through;
   color: #bdbdbd;

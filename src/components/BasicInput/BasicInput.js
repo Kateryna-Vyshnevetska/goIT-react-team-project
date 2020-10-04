@@ -14,10 +14,12 @@ export function BasicInput({
   inputWidth,
   type,
   marginBottom,
+ 
 }) {
   return (
     <div style={{ marginBottom: marginBottom }}>
       <label
+        
         htmlFor={forLabel}
         className={style.label}
         style={{ width: labelWidth }}

@@ -21,7 +21,7 @@ function CustomHabitModal({ close, textOfHabit }) {
     if (textOfHabit) {
       setName(textOfHabit);
     }
-  }, []);
+  }, [textOfHabit]);
 
   const handleChangeInput = (date) => {
     setDate(date);
@@ -74,7 +74,7 @@ function CustomHabitModal({ close, textOfHabit }) {
             handleChangeDate={handleChangeInput}
           />
           <div className={style.row}>
-            <label className={style.label} htmlFor="date">
+            <label className={style.label} htmlFor="time">
               Время *
             </label>
             <input
@@ -83,7 +83,7 @@ function CustomHabitModal({ close, textOfHabit }) {
               })}
               name="time"
               className={style.input}
-              id="date"
+              id="time"
               type="time"
             />
           </div>
@@ -104,7 +104,7 @@ function CustomHabitModal({ close, textOfHabit }) {
               <option value="4">ВТ, ЧТ, СБ</option>
             </select>
           </div>
-          <button className={style.btnDelete}>
+          <button disabled className={style.btnDelete}>
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>

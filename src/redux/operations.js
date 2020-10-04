@@ -148,6 +148,28 @@ export const updateOneUserHabitFromChecklistPage = (newHabit, token) => async (
   }
 };
 
+export const deleteOneHabitFromUpdateModal = (habit, token) => async (
+  dispatch
+) => {
+  dispatch(isLoadingAction(true));
+  try {
+    await axios.delete(`/habits/${habit._id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    const { data } = await axios.get("/habits", {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch(uppdateUserHabits(data.habits));
+    dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
 export const updateUserInfo = (newData, token) => async (dispatch) => {
   dispatch(isLoadingAction(true));
 

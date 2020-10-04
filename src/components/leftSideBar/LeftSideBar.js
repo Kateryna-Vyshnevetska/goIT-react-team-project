@@ -6,7 +6,7 @@ import { NavigationBar } from "./navigationBar/NavigationBar";
 import { HabitsBar } from "./habitsBar/HabitsBar";
 import "./leftSideBar.css";
 import InterviewModal from "../interviewModal/InterviewModal";
-import { quizInfo } from "../../redux/selectors";
+// import { quizInfo } from "../../redux/selectors";
 import { useSelector } from "react-redux";
 
 export const LeftSideBar = () => {

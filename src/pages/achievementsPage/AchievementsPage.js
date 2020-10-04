@@ -63,6 +63,54 @@ export const AchievementsPage = () => {
           <li className={style.achievementsPageItem}>
             <p className={style.achievementsPageText}>Сохранил 5 часов</p>
           </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
+          <li className={style.achievementsPageItem}>
+            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          </li>
         </ul>
       </div>
     </div>

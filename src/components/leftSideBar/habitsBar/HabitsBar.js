@@ -16,20 +16,22 @@ export const HabitsBar = () => {
   return (
     <>
       <div className="leftSideBar-habits">
-        <h3 className="leftSideBar-habitsTitle">Привычки</h3>
-        <ul className="leftSideBar-habits-list">
-          {userHabits.map((el) => (
-            <HabitItem nameOfHabit={el.name} elemId={el._id} key={el._id} />
-          ))}
-        </ul>
+        <div className="leftSideBar-wrapper">
+          <h3 className="leftSideBar-habitsTitle">Привычки</h3>
+          <ul className="leftSideBar-habits-list">
+            {userHabits.map((el) => (
+              <HabitItem nameOfHabit={el.name} elemId={el._id} key={el._id} />
+            ))}
+          </ul>
 
-        <button
-          onClick={() => setModalShow(true)}
-          className="leftSideBar-habits-btn"
-        >
-          Добавить привычку <span className="leftSideBar-habits-plus">+</span>
-        </button>
-        {modalShow && <HabitChoiceModal close={close} />}
+          <button
+            onClick={() => setModalShow(true)}
+            className="leftSideBar-habits-btn"
+          >
+            Добавить привычку <span className="leftSideBar-habits-plus">+</span>
+          </button>
+          {modalShow && <HabitChoiceModal close={close} />}
+        </div>
       </div>
     </>
   );
