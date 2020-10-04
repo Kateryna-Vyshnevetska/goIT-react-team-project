@@ -2,6 +2,7 @@ import React from "react";
 import style from "./basicInput.module.css";
 
 export function BasicInput({
+  readOnlyWay = "none",
   register,
   forLabel,
   id,
@@ -14,12 +15,10 @@ export function BasicInput({
   inputWidth,
   type,
   marginBottom,
- 
 }) {
   return (
     <div style={{ marginBottom: marginBottom }}>
       <label
-        
         htmlFor={forLabel}
         className={style.label}
         style={{ width: labelWidth }}

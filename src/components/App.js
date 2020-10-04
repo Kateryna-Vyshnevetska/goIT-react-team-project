@@ -3,13 +3,9 @@ import { useSelector } from "react-redux";
 import { isAuthUser } from "../redux/selectors";
 import { CheckStartPage } from "../helpers/checkStartPage";
 import { HomePage } from "../pages/homePage/HomePage";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import { MainPage } from "../pages/mainPage/MainPage";
-import { Notifiacation } from "../pages/notification/Notification";
-import Achievements from "../pages/achievementsPage/AchievementsPage";
-import { CreateHabbitDataArr } from "../helpers/createHabbitDataArr";
-import { SubscriptionsPage } from "../pages/subscriptionsPage/SubscriptionsPage";
 
 export function App() {
   const state = useSelector((state) => state);
@@ -30,7 +26,6 @@ export function App() {
       ) : (
         <HomePage />
       )}
-      {/* <SubscriptionsPage /> */}
     </>
   );
 }

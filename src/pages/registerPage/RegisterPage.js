@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import styles from "./registerPage.module.css";
 import { useDispatch } from "react-redux";

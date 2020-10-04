@@ -10,16 +10,18 @@ import { isAuthUser } from "./isAuthUser/isAuthUserReducer";
 import { isLoading } from "./isLoading/isLoadingReducer";
 import { firstModalForUser } from "./flagForFirsModal/flagFirstModalReducer";
 import { usersHabitsDates } from "./habitsDates/habitsDatesReducer";
+import { currentDay } from "./currentDay/currentDayReducer";
 
 export const rootReducer = combineReducers({
+  authToken,
   firstModalForUser,
   isAuthUser,
-  isLoading,
-  authToken,
   userInfo,
   quizInfo,
   userHabits,
   userCigarettes,
+  usersHabitsDates,
+  currentDay,
+  isLoading,
   errors: errorReducer,
-  // usersHabitsDates,
 });

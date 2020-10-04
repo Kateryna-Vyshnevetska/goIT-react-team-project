@@ -1,26 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch, useStore } from "react-redux";
 
-import { BasicInput } from "../BasicInput/BasicInput";
-import CustomButton from "../CustomButton/CustomButton";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./HabitChoiceModal.module.css";
 import HabitTemplateModal from "../Modals/HabitTemplateModal/HabitTemplateModal";
 import CustomHabitModal from "../Modals/CustomHabitModal/CustomHabitModal";
 function HabitChoiceModal({ close }) {
-  const [sigCount, setsigCount] = useState("");
-
   const [modalShowTemplate, setModalShowTemplate] = useState(false);
   const [modalShowNew, setModalShowNew] = useState(false);
 
   const closeModalTemplate = () => {
     setModalShowTemplate((prev) => !prev);
   };
+
   const closeModalNew = () => {
-    close();
     setModalShowNew((prev) => !prev);
+    close();
   };
-  
+
   return (
     <>
       <div className={styles.modalHead}>

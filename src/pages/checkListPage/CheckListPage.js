@@ -2,12 +2,28 @@ import React, { useState } from "react";
 import "./checkListPage.css";
 import { useSelector } from "react-redux";
 import { HabitItem } from "../../pages/checkListPage/HabitItem";
-import { userHabits } from "../../redux/selectors";
 import DailyResultModal from "../../components/dailyResultModal/DailyResultModal";
 export function CheckListPage() {
-  const state = useSelector((state) => state);
-
+  const dateNow = useSelector((state) => state.currentDay);
   const [modalShow, setModalShow] = useState(false);
+  const userHabits = useSelector((state) => state.userHabits);
+  const userHabitsDates = useSelector((state) => state.usersHabitsDates);
+
+  const arr = [];
+
+  userHabits.map((habites) =>
+    userHabitsDates.map((dates) => {
+      if (habites._id === dates.habitId) {
+        dates.dates.map((date) => {
+          if (dateNow === date.split("T")[0]) {
+            arr.push(habites);
+            return;
+          }
+        });
+      }
+    })
+  );
+  console.log(arr);
 
   const close = () => {
     setModalShow((prev) => !prev);
@@ -47,7 +63,7 @@ export function CheckListPage() {
           {modalShow && <DailyResultModal close={close} />}
         </div>
         <ul className="habit-list">
-          {userHabits(state).map((el) => (
+          {arr.map((el) => (
             <HabitItem
               clickDone={handleClickHabitButtonDone}
               clickMissed={handleClickHabitButtonMissed}
