@@ -28,11 +28,11 @@ export const ProfilePageOption = () => {
     dispatch(updateUserInfo(data, authToken));
   };
 
-  // const handleSubmitPass = (ev) => {
-  //   ev.preventDefault();
+  const handleSubmitPass = (ev) => {
+    ev.preventDefault();
 
-  //   // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
-  // };
+    // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
+  };
 
   return (
     <>
@@ -118,28 +118,30 @@ export const ProfilePageOption = () => {
               Подтвердить изменения
             </button>
 
-            <form>
+            <form onSubmit={handleSubmitPass}>
               <div className="profilePage-inputs">
                 <BasicInput
+                  name="password"
                   forLabel={"password"}
                   id={"password"}
                   labelText={"Пароль"}
                   labelWidth={"125px"}
                   inputWidth={"345px"}
-                  // handleChange={({ target: { value } }) => setPassword(value)}
+                  handleChange={({ target: { value } }) => setPassword(value)}
                 />
               </div>
 
               <div className="profilePage-inputs">
                 <BasicInput
+                  name="confirmPassword"
                   forLabel={"password"}
                   id={"password"}
                   labelText={"Повторите пароль"}
                   labelWidth={"125px"}
                   inputWidth={"345px"}
-                  // handleChange={({ target: { value } }) =>
-                  //   setConfirmPassword(value)
-                  // }
+                  handleChange={({ target: { value } }) =>
+                    setConfirmPassword(value)
+                  }
                 />
               </div>
               <button
