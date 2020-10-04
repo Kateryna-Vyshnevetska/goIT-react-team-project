@@ -49,16 +49,13 @@
   /* margin-bottom: 20px; */
 }
 .profilePage-AvatarLink {
-  display: flex;
-  flex-wrap: wrap;
   border-radius: 50%;
-  width: 108px;
-  height: 108px;
   margin-bottom: 10px;
 }
 .profilePage-AvatarLink:hover,
 .profilePage-AvatarLink:focus {
-  box-shadow: 0px 6px 10px rgba(14, 13, 13, 0.1);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
+  outline: none;
 }
 .profilePage-Avatar {
   width: 108px;

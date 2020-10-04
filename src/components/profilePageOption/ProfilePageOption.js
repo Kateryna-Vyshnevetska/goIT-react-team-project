@@ -154,7 +154,7 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              {FindAvatarById(avatarById)}
+              {FindAvatarById()}
             </Link>
             <Link
               to="/make-it-habit/change-avatar"

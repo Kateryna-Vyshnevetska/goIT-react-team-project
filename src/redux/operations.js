@@ -1,6 +1,6 @@
 import axios from "axios";
 import { errors } from "../redux/checkErrors/errorActions";
-import { addUserInfo } from "../redux/user/userActions";
+import { addUserInfo, updateUserAvatar } from "../redux/user/userActions";
 import { addUserQuizInfo } from "../redux/quizInfo/quizInfoActions";
 import {
   addUserHabits,
@@ -157,7 +157,8 @@ export const updateUserInfo = (newData, token) => async (dispatch) => {
         Authorization: token,
       },
     });
-
+    console.log("data", data);
+    dispatch(updateUserAvatar(data.avatar));
     dispatch(addUserInfo(data));
   } catch (error) {
     dispatch(errors(error.message));
@@ -173,6 +174,7 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
       },
     });
     console.log(data);
+
     dispatch(addUserQuizInfo(data));
     dispatch(isFirstModal(false));
   } catch (error) {
