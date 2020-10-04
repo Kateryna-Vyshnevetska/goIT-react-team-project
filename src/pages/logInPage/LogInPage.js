@@ -59,7 +59,7 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             inputWidth="345px"
             marginBottom="15px"
           />
-          <p>{errors.email?.message}</p>
+          <p className={styles.errorMessage}>{errors.email?.message}</p>
           <PasswordInput
             register={register({
               minLength: 8,
@@ -75,9 +75,9 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             name="password"
             labelWidth="120px"
             inputWidth="345px"
-            marginBottom="40px"
+            marginBottom="30px"
           />
-          <p>{errors.password?.message}</p>
+          <p className={styles.errorMessage}>{errors.password?.message}</p>
           <div className={styles.buttonContaineer}>
             <button type="Submit" className={styles.logInButton}>
               Войти

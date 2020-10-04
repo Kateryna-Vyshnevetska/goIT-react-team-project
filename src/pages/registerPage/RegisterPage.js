@@ -28,7 +28,7 @@ const RegisterPage = ({ setregisterOpenPage }) => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.wrapper}>
         <img
           src={require("../../images/logIn/logo.svg")}
           alt="logo"

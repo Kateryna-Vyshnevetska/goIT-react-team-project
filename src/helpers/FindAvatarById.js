@@ -9,7 +9,7 @@ const FindAvatarById = () => {
   return (
     <>
       {avatarById === "" ? (
-        <img src={avatarDefault} alt="avatar" width="108px" height="108px" />
+        <img src={avatarDefault} alt="avatar" className="avatar"  />
       ) : (
         <>
           {avatars.map((el) => {
@@ -19,8 +19,8 @@ const FindAvatarById = () => {
                   key={el.id}
                   src={el.avatar}
                   alt="avatar"
-                  width="108px"
-                  height="108px"
+                  className="avatar"
+                  
                 />
               );
             }

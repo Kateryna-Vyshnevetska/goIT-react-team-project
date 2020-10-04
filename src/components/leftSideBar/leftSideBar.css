@@ -1,7 +1,7 @@
 .leftSideBar {
   font-family: "Rubik", sans-serif;
   width: 20%;
- 
+
   border-left: 1px solid #d5e1dc;
   border-bottom: 1px solid #d5e1dc;
   border-right: 1px solid #d5e1dc;
@@ -11,21 +11,29 @@
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
 }
-.logo-block {
-  border-bottom: 1px solid #d5e1dc;
-  width: 100%;
+
+
+
+.logo-wrapper {
   height: 10%;
   display: flex;
-  margin: auto;
+  justify-content: center;
+  align-content: center;
 }
+
+
+.logo-block {
+    border-bottom: 1px solid #d5e1dc;
+    
+    display: flex;
+    
+}
+
+
 .imageLogoLeftSideBar {
-  display: flex;
-  margin: auto;
-  /* padding: 30px 132px 30px 100px; */
-  width: 145px;
-}
-.leftSideBar-habits {
-  /* max-height: 270px;
-  overflow-y: scroll; */
-  height: 50%;
+    display: flex;
+    
+    width: 145px;
+    align-content: center;
+    justify-content: center;
 }
