@@ -9,7 +9,7 @@
 .modalTitle {
   margin: 0;
   margin-top: 60px;
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
@@ -18,7 +18,7 @@
   text-align: center;
 }
 .modalText {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +35,7 @@
 }
 
 .modalBodyText {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;

@@ -1,13 +1,18 @@
 // import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
 
 // export const createHabbitDataArr = (habbits) => async (dispatch) => {
-//   const addOneDay = (data, arr) => {
+ 
+ 
+ 
+//     const addOneDay = (data, arr) => {
 //     const datanew = new Date(data);
 //     while (arr.length < 21) {
 //       const newData = new Date(datanew.setDate(datanew.getDate() + 1));
 //       arr.push(newData);
 //     }
-//   };
+//     };
+    
+
 
 //   const addTwoDays = (data, arr) => {
 //     const datanew = new Date(data);

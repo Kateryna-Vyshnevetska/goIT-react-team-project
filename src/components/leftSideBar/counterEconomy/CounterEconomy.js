@@ -8,11 +8,11 @@ export const CounterEconomy = (money, hours, minutes) => {
         <ul className="leftSideBar-economyList">
           <li className="leftSideBar-item">
             <p className="leftSideBar-economyTitle">Сэкономленные деньги</p>
-            <p className="leftSideBar-wallet countEconomy">0,0 ₴</p>
+            <p className="leftSideBar-wallet countEconomy">1200,0 ₴</p>
           </li>
           <li className="leftSideBar-item">
             <p className="leftSideBar-economyTitle">Сэкономленное время</p>
-            <p className="leftSideBar-sandclock countEconomy">00ч 00мин</p>
+            <p className="leftSideBar-sandclock countEconomy">02ч 00мин</p>
           </li>
         </ul>
       </div>
