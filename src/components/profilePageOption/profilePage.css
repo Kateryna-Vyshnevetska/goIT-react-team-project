@@ -12,7 +12,7 @@
 }
 
 .ProfilePage-mainTitle {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 26px;
   line-height: 1.19;
@@ -22,9 +22,10 @@
   height: 90%;
   padding: 60px 62px;
   overflow: scroll;
+  background-color: #f6f6f6;
 }
 .ProfilePage-priwetTitle {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-size: 26px;
   line-height: 1.19;
   color: #4f4f4f;
@@ -69,7 +70,7 @@
   text-decoration: none;
 }
 .profilePage-AvatarText {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -123,7 +124,7 @@
   border-radius: 5px;
   color: #43d190;
   border: 2px solid#43d190;
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;

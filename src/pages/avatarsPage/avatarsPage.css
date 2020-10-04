@@ -9,18 +9,18 @@
   width: 60%;
 }
 .avatar-container {
-  width: 100vh;
+  width: 100%;
   background-color: #f6f6f6;
 }
 .avatar-header {
   height: 10%;
   background-color: #fff;
   outline: 1px solid #d5e1dc;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 33px 60px;
+  padding: 0px 60px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 26px;
@@ -30,10 +30,13 @@
   color: #4f4f4f;
 }
 .avatar-list {
+  margin: -10px;
   height: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 .avatar-item {
   margin: 10px;

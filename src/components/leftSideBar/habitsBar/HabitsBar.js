@@ -23,15 +23,14 @@ export const HabitsBar = () => {
               <HabitItem nameOfHabit={el.name} elemId={el._id} key={el._id} />
             ))}
           </ul>
-
-          <button
-            onClick={() => setModalShow(true)}
-            className="leftSideBar-habits-btn"
-          >
-            Добавить привычку <span className="leftSideBar-habits-plus">+</span>
-          </button>
           {modalShow && <HabitChoiceModal close={close} />}
         </div>
+        <button
+          onClick={() => setModalShow(true)}
+          className="leftSideBar-habits-btn"
+        >
+          Добавить привычку <span className="leftSideBar-habits-plus">+</span>
+        </button>
       </div>
     </>
   );
