@@ -14,6 +14,7 @@ import { SubscriptionsPage } from "../pages/subscriptionsPage/SubscriptionsPage"
 export function App() {
   const state = useSelector((state) => state);
   const [page, setPage] = useState(false);
+  // console.log(state.errors);
 
   useEffect(() => {
     setPage(CheckStartPage(isAuthUser(state)));
