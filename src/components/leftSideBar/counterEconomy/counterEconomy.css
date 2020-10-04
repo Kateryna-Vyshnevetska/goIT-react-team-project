@@ -2,58 +2,77 @@
   background-image: url(../../../images/leftSideBar/wallet.svg);
   background-repeat: no-repeat;
   width: 20px;
-  height: 18px;
+  height: 20px;
   content: " ";
   position: absolute;
-  
-  /* margin-left: 22px; */
   position: relative;
   display: inline-block;
   left: -10px;
   top: 2px;
 }
+
+.leftSideBar-wallet {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+
+.leftSideBar-sandclock {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4f4f4f;
+}
+
 .leftSideBar-sandclock::before {
   background-image: url(../../../images/leftSideBar/sandClock.svg);
   background-repeat: no-repeat;
   width: 20px;
-  height: 18px;
+  height: 20px;
   content: " ";
   position: relative;
   display: inline-block;
   left: -10px;
   top: 3px;
- 
 }
 .leftSideBar-economyList {
-      list-style: none;
-    display: flex;
-    padding-left: 0;
-  
-    margin: auto;
-    height: 100%;
-    width: 250px;
+  /* list-style: none;
+  display: flex;
+  padding-left: 0;
+
+  margin: auto;
+  height: 100%;
+  width: 250px; */
+
+  display: flex;
+  margin: auto;
 }
 
-.leftSideBar-item{
-display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* margin-right: 10px; */
+.leftSideBar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  width: 125px;
 }
 
-.leftSideBar-item:not(:last-child){
+.leftSideBar-item:not(:last-child) {
   margin-right: 10px;
 }
-
 
 .leftSideBar-economyContainer {
   border-bottom: 1px solid #d5e1dc;
   /* padding: 23px 64px 20px; */
   /* padding-left: 50px;
   padding-right: 50px; */
-  height:10% ;
+  height: 10%;
+  display: flex;
 }
 /* .countEconomy {
   margin: 0px 0px 0px 25px;
@@ -63,5 +82,15 @@ display: flex;
   font-size: 14px;
   line-height: 1.19;
   color: #bdbdbd;
-  /* margin: 0px 0px 15px 0px; */
+  margin: 0px 0px 7px 0px;
+
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  /* Gray 4 */
+
+  color: #bdbdbd;
 }

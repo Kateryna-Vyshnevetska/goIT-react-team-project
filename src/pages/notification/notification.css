@@ -34,7 +34,7 @@
   color: #4f4f4f;
 }
 .notif-header-counter {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -59,7 +59,7 @@
 }
 .item-title {
   margin-bottom: 10px;
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -68,7 +68,7 @@
   color: #4f4f4f;
 }
 .item-text {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

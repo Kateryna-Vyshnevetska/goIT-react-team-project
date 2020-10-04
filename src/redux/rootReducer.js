@@ -21,5 +21,5 @@ export const rootReducer = combineReducers({
   userHabits,
   userCigarettes,
   errors: errorReducer,
-  usersHabitsDates,
+  // usersHabitsDates,
 });

@@ -12,7 +12,7 @@
 }
 
 .ProfilePage-mainTitle {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 26px;
   line-height: 1.19;
@@ -22,9 +22,10 @@
   height: 90%;
   padding: 60px 62px;
   overflow: scroll;
+  background-color: #f6f6f6;
 }
 .ProfilePage-priwetTitle {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-size: 26px;
   line-height: 1.19;
   color: #4f4f4f;
@@ -51,13 +52,16 @@
   /* margin-bottom: 20px; */
 }
 .profilePage-AvatarLink {
+  display: flex;
+  flex-wrap: wrap;
   border-radius: 50%;
+  width: 108px;
+  height: 108px;
   margin-bottom: 10px;
 }
 .profilePage-AvatarLink:hover,
 .profilePage-AvatarLink:focus {
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
-  outline: none;
+  box-shadow: 0px 6px 10px rgba(14, 13, 13, 0.1);
 }
 .profilePage-Avatar {
   width: 108px;
@@ -69,7 +73,7 @@
   text-decoration: none;
 }
 .profilePage-AvatarText {
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -123,7 +127,7 @@
   border-radius: 5px;
   color: #43d190;
   border: 2px solid#43d190;
-  font-family: Rubik;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;
@@ -139,4 +143,45 @@
 }
 .profilePage-subscription-btn.confirmPasword.email {
   margin-bottom: 20px;
+}
+
+/* Анимация инпута для подтверждения пароля */
+.confirm-password-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.confirm-password-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.confirm-password-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.confirm-password-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.profilePage-inputs .PasswordInput_passwordControl__-jrW1 {
+  top: 13px;
+  right: 20px;
+}
+
+.passwordControl {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+.passwordControl.view {
+  background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
 }

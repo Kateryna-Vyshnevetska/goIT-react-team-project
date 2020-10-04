@@ -8,10 +8,10 @@ import "./leftSideBar.css";
 import InterviewModal from "../interviewModal/InterviewModal";
 // import { quizInfo } from "../../redux/selectors";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const LeftSideBar = () => {
   const firstModalForUser = useSelector((state) => state.firstModalForUser);
-
   const [modalShow, setModalShow] = useState(firstModalForUser);
 
   const close = () => {
@@ -23,7 +23,15 @@ export const LeftSideBar = () => {
       {firstModalForUser && <InterviewModal close={close} />}
       <section className="leftSideBar">
         <div className="leftSideBar-block">
-          <div className="logo-block"></div>
+          <Link to="/" className="logo-wrapper">
+            <div className="logo-block">
+              <img
+                className="imageLogoLeftSideBar"
+                src={require("../../images/homePage/main-logo.svg")}
+                alt="Логотип кампании"
+              />
+            </div>
+          </Link>
           <UserData />
           <CounterEconomy />
           <NavigationBar />

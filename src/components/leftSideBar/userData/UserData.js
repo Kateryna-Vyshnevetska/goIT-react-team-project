@@ -26,6 +26,7 @@ export const UserData = () => {
               : "NickName"}
           </p>
         </Link>
+        
         <button
           type="button"
           onClick={clickTologOut}
