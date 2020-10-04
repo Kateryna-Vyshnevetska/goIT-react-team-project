@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
+import { createHabbitDataArr } from "../../../helpers/createHabbitDataArr";
 
 function CustomHabitModal({ close, textOfHabit }) {
   const [name, setName] = useState("");
@@ -30,7 +31,8 @@ function CustomHabitModal({ close, textOfHabit }) {
   const onSubmit = (data) => {
     data.planningTime = `${date} ${data.time} ${getRandomColor()}`;
     delete data.time;
-
+    console.log(data);
+    // dispatch(createHabbitDataArr(data));
     dispatch(createHabitAndGetAllHabits(data, authToken(state)));
     close();
   };
