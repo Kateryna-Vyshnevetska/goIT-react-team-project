@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { addUserInfo } from "./userActions";
+import { updateUserAvatar } from "./userActions";
 
 const userState = {
   firstName: "",
@@ -20,6 +21,10 @@ export const userInfo = createReducer(
       registerData: payload.registerData,
       avatar: payload.avatar,
       phone: payload.phone,
+    }),
+    [updateUserAvatar]: (state, { payload }) => ({
+      ...state,
+      avatar: payload,
     }),
   }
 );

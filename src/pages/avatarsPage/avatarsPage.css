@@ -1,13 +1,19 @@
+.avatars-img {
+  display: block;
+  width: 140px;
+  height: 140px;
+}
 .avatar-list-section {
   justify-content: stretch;
   display: flex;
+  width: 60%;
 }
 .avatar-container {
   width: 100vh;
   background-color: #f6f6f6;
 }
 .avatar-header {
-  height: 110px;
+  height: 10%;
   background-color: #fff;
   outline: 1px solid #d5e1dc;
   margin-bottom: 30px;
@@ -24,13 +30,14 @@
   color: #4f4f4f;
 }
 .avatar-list {
+  height: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .avatar-item {
+  margin: 10px;
   border-radius: 50%;
-  margin: 19px;
 }
 .avatar-item:hover {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);

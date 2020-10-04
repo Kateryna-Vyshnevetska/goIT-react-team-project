@@ -16,10 +16,10 @@
   margin: auto;
   overflow: hidden;
 }
-.leftSideBar-user-avatar img {
+/* .leftSideBar-user-avatar img {
   border-radius: 50%;
-  /* width: 100%; */
-}
+  width: 100%;
+} */
 .leftSideBar-user-avatar:hover,
 .leftSideBar-user-avatar:focus {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
