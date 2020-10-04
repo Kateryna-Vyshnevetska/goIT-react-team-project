@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
+
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
 import "./profilePage.css";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
-import FindAvatarById from "../../helpers/FindAvatarById";
+import { CSSTransition } from "react-transition-group";
+import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
+import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
 
 export const ProfilePageOption = () => {
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
-  const avatarById = useSelector((state) => state.userInfo.avatar);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
@@ -29,9 +32,9 @@ export const ProfilePageOption = () => {
     dispatch(updateUserInfo(data, authToken));
   };
 
-  // const handleSubmitPass = (ev) => {
-  //   ev.preventDefault();
-
+  const handleSubmitPass = (ev) => {
+    ev.preventDefault();
+  };
   //   // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
   // };
 
@@ -119,47 +122,70 @@ export const ProfilePageOption = () => {
               Подтвердить изменения
             </button>
 
-            <div className="profilePage-inputs">
-              <BasicInput
-                forLabel={"password"}
-                id={"password"}
-                labelText={"Пароль"}
-                labelWidth={"125px"}
-                inputWidth={"345px"}
-                // handleChange={({ target: { value } }) => setPassword(value)}
-              />
-            </div>
+            <form>
+              <div className="profilePage-inputs">
+                <PasswordInput
+                  register={register({
+                    minLength: 8,
+                    maxLength: 16,
+                    required: true,
+                    pattern: /[0-9A-F]/,
+                  })}
+                  name="password"
+                  forLabel={"password"}
+                  labelText={"Пароль"}
+                  placeholder="Введите свой пароль"
+                  type="password"
+                  id="password-input"
+                  labelWidth={"120px"}
+                  inputWidth={"345px"}
+                  marginBottom="40px"
+                  handleChange={({ target: { value } }) => setPassword(value)}
+                />
+              </div>
 
-            <div className="profilePage-inputs">
-              <BasicInput
-                forLabel={"password"}
-                id={"password"}
-                labelText={"Повторите пароль"}
-                labelWidth={"125px"}
-                inputWidth={"345px"}
-                // handleChange={({ target: { value } }) =>
-                //   setConfirmPassword(value)
-                // }
-              />
-            </div>
-            <button
-              type="Submit"
-              className="profilePage-subscription-btn confirmPasword"
-            >
-              Изменить пароль
-            </button>
+              <div className="profilePage-inputs">
+                <CSSTransition
+                  in={password.length >= 1}
+                  timeout={250}
+                  unmountOnExit
+                  classNames="confirm-password"
+                >
+                  <PasswordInputRepeat
+                    register={register({
+                      minLength: 8,
+                      maxLength: 16,
+                      required: true,
+                      pattern: /[0-9A-F]/,
+                    })}
+                    placeholder="Повторите свой пароль"
+                    type="password"
+                    name="confirmPassword"
+                    forLabel={"password"}
+                    id="password-input-repeat"
+                    labelText={"Повторите пароль"}
+                    labelWidth={"120px"}
+                    inputWidth={"345px"}
+                    marginBottom="40px"
+                    handleChange={({ target: { value } }) =>
+                      setConfirmPassword(value)
+                    }
+                  />
+                </CSSTransition>
+              </div>
+              <button
+                type="Submit"
+                className="profilePage-subscription-btn confirmPasword"
+              >
+                Изменить пароль
+              </button>
+            </form>
           </form>
           <div className="profilePage-AvatarBlock">
-            <Link
-              to="/make-it-habit/change-avatar"
-              className="profilePage-AvatarLink"
-            >
-              {FindAvatarById()}
+            <Link to="#" className="profilePage-AvatarLink">
+              <img alt="avatar" className="profilePage-Avatar" />
             </Link>
-            <Link
-              to="/make-it-habit/change-avatar"
-              className="profilePage-AvatarTextLink"
-            >
+            <Link to="#" className="profilePage-AvatarTextLink">
               <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             </Link>
             <div className="profilePage-subscriptionArea">
