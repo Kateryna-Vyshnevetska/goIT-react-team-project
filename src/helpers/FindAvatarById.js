@@ -8,7 +8,7 @@ const FindAvatarById = ({ avatarId }) => {
 
   return (
     <>
-      {avatarId === "" ? (
+      {avatarById === "" ? (
         <img src={avatarDefault} alt="avatar" />
       ) : (
         <>
