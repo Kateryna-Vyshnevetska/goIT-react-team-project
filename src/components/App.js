@@ -21,7 +21,6 @@ export function App() {
 
   return (
     <>
-      {/* <CreateHabbitDataArr /> */}
       {isAuthUser(state) ? (
         <Switch>
           <PrivateRoute path="/make-it-habit" component={MainPage} />

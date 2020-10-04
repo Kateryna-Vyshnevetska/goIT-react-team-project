@@ -72,8 +72,11 @@
   text-decoration: none;
 }
 .profilePage-AvatarText {
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
   font-size: 14px;
-  line-height: 1.19px;
+  line-height: 17px;
   color: #bdbdbd;
   margin-bottom: 20px;
   cursor: pointer;

@@ -7,6 +7,7 @@ import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteOneHabitFromUpdateModal,
+  createHabitAndGetAllHabits,
   updateOneUserHabitFromChecklistPage,
 } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
@@ -32,7 +33,6 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
 
   useEffect(() => {
     setName(habitTitle);
-
     setIteration(oneUserHabit.iteration);
 
     const timeOfstart = oneUserHabit.planningTime.split(" ")[1];
@@ -41,6 +41,10 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
     const dateOfStart = oneUserHabit.planningTime.split(" ")[0];
     // setDate(dateOfStart.toLocaleDateString("en-GB"));
   }, [habitTitle, oneUserHabit.iteration, oneUserHabit.planningTime]);
+
+//   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
+
+//   console.log(oneUserHabit._id);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -51,7 +55,6 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
         authToken(state)
       )
     );
-
     close();
   };
 

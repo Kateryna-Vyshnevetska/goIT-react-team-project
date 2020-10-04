@@ -8,6 +8,7 @@ import { userInfoEmail } from "../../../redux/selectors";
 
 export const UserData = () => {
   const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userInfo);
   const clickTologOut = () => {
     dispatch(logOut());
   };
@@ -18,7 +19,11 @@ export const UserData = () => {
           <div className="leftSideBar-user-avatar">
             <img alt="avatar" src={avatar} className="avatar" />
           </div>
-          <p className="leftSideBar-user-name">NickName</p>
+          <p className="leftSideBar-user-name">
+            {userInfo.firstName && userInfo.lastName
+              ? `${userInfo.firstName} ${userInfo.lastName}`
+              : "NickName"}
+          </p>
         </Link>
         <button
           type="button"

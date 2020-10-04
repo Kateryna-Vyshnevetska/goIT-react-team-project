@@ -12,7 +12,7 @@ import { addUserAuthToken } from "../redux/authToken/authTokenAction";
 import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
 import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
 import { isFirstModal } from "../redux/flagForFirsModal/flagFirstModalAction";
-
+import { createHabbitDataArr } from "../helpers/createHabbitDataArr";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -25,12 +25,15 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
+    console.log(data);
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(isAuthCurrentUser(true));
     dispatch(isLoadingAction(false));
+    dispatch(createHabbitDataArr(data.habits));
+
     Object.values(data.user.quizInfo).map((el) =>
       el >= 1 ? (count += 1) : ""
     );
@@ -48,7 +51,6 @@ export const signUp = (userData) => async (dispatch) => {
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
-      dispatch(getAllUserDataForState(res.data.access_token));
     })
     .catch((error) => dispatch(errors(error)));
 };
@@ -150,14 +152,12 @@ export const deleteOneHabitFromUpdateModal = (habit, token) => async (
   dispatch
 ) => {
   dispatch(isLoadingAction(true));
-
   try {
     await axios.delete(`/habits/${habit._id}`, {
       headers: {
         Authorization: token,
       },
     });
-
     const { data } = await axios.get("/habits", {
       headers: {
         Authorization: token,
@@ -170,13 +170,45 @@ export const deleteOneHabitFromUpdateModal = (habit, token) => async (
   }
 };
 
-export const updateQuizeInfo = (newHabit, token) => async (
-  dispatch,
-  getState
-) => {
+export const updateUserInfo = (newData, token) => async (dispatch) => {
   dispatch(isLoadingAction(true));
 
   try {
+    const { data } = await axios.patch("/users", newData, {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    dispatch(addUserInfo(data));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
+  try {
+    const { data } = await axios.post(`/users/updateQuizInfo`, newInfo, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log(data);
+    dispatch(addUserQuizInfo(data));
+    dispatch(isFirstModal(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const changeUserPassword = (newPassword, token) => async (dispatch) => {
+  try {
+    axios.post("/auth/updatePassword", newPassword, {
+      headers: {
+        Authorization: token,
+      },
+    });
   } catch (error) {
     dispatch(errors(error.message));
   }
