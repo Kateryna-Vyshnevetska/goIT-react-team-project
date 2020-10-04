@@ -182,12 +182,13 @@ export const ProfilePageOption = () => {
             </form>
           </form>
           <div className="profilePage-AvatarBlock">
-            <Link to="#" className="profilePage-AvatarLink">
+            <Link
+              to="/make-it-habit/change-avatar"
+              className="profilePage-AvatarLink"
+            >
               <img alt="avatar" className="profilePage-Avatar" />
             </Link>
-            <Link to="#" className="profilePage-AvatarTextLink">
-              <p className="profilePage-AvatarText">Выбрать другой аватар</p>
-            </Link>
+            <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             <div className="profilePage-subscriptionArea">
               <span className="profilePage-subscriptionText">sdddwg</span>
             </div>

@@ -165,6 +165,7 @@ export const deleteOneHabitFromUpdateModal = (habit, token) => async (
       },
     });
     dispatch(uppdateUserHabits(data.habits));
+    dispatch(userHabitsDatesDelete(habit._id));
     dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
