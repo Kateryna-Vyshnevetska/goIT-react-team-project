@@ -11,10 +11,11 @@ import { useSelector } from "react-redux";
 
 export const LeftSideBar = () => {
   const firstModalForUser = useSelector((state) => state.firstModalForUser);
+
   const [modalShow, setModalShow] = useState(firstModalForUser);
 
   const close = () => {
-    setModalShow((prev) => !prev);
+    setModalShow((prev) => false);
   };
 
   return (

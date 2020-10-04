@@ -2,27 +2,31 @@ import React, { useEffect, useState } from "react";
 import styles from "./logInPage.module.css";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
-
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { logIn } from "../../redux/operations";
 import { useDispatch } from "react-redux";
+import { yupResolver } from "@hookform/resolvers";
+import * as yup from "yup";
 
 const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
-  // const [homeOpenPage, sethomeOpenPage] = useState();
-
   const dispatch = useDispatch();
-  const userDataForLogin = {};
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    console.log(userDataForLogin);
-    dispatch(logIn(userDataForLogin));
-  };
+  const schema = yup.object().shape({
+    email: yup.string().required("Введите email"),
+    email: yup
+      .string()
+      .matches(/[@]/, "Неверный email")
+      .required("Введите email"),
+    password: yup.string().required("Пароль должен быть от 8 до 16 символов"),
 
-  const handleChange = ({ target: { name, value } }) => {
-    userDataForLogin[name] = value;
-  };
+    // password: yup.number().positive().integer().required(),
+  });
+
+  const { register, errors, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (data) => dispatch(logIn(data));
 
   return (
     <div className={styles.container}>
@@ -32,13 +36,20 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
           alt="logo"
           className={styles.logo}
         />
-        <form className={styles.form} onSubmit={handleSubmit}>
+
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h1 className={styles.title}>C возвращением!</h1>
           <p className={styles.text}>
             Введите свои данные, чтобы <br /> продолжить использовать наше
             приложение
           </p>
           <BasicInput
+            register={register({
+              minLength: 11,
+              required: true,
+              pattern: /[@]/,
+            })}
+            placeholder="Введите свой E-mail"
             type="text"
             forLabel="Логин"
             id="Логин"
@@ -47,20 +58,16 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="15px"
-            handleChange={handleChange}
           />
-          {/* <BasicInput
-            type="password"
-            forLabel="password-input"
-            id="password-input"
-            labelText="Пароль"
-            name="password"
-            labelWidth="120px"
-            inputWidth="345px"
-            marginBottom="40px"
-            handleChange={handleChange}
-          /> */}
+          <p>{errors.email?.message}</p>
           <PasswordInput
+            register={register({
+              minLength: 8,
+              maxLength: 16,
+              required: true,
+              pattern: /[0-9A-F]/,
+            })}
+            placeholder="Введите свой password"
             type="password"
             forLabel="password-input"
             id="password-input"
@@ -69,8 +76,8 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="40px"
-            handleChange={handleChange}
           />
+          <p>{errors.password?.message}</p>
           <div className={styles.buttonContaineer}>
             <button type="Submit" className={styles.logInButton}>
               Войти

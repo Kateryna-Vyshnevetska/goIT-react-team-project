@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LinearProgressWithLabel } from "../../ui/ProgressBar";
-import { getRandomColor } from "../../helpers/CheckListPage";
-import CustomHabitModal from "../../components/Modals/CustomHabitModal/CustomHabitModal";
+// import { getRandomColor } from "../../helpers/CheckListPage";
+// import CustomHabitModal from "../../components/Modals/CustomHabitModal/CustomHabitModal";
 import UpdateHabitModal from "../../components/Modals/UpdateHabitModal/UpdateHabitModal";
 import { useSelector } from "react-redux";
 import FindHabitById from "../../helpers/FindHabitById";
@@ -21,7 +21,7 @@ export const HabitItem = ({
 
   const needElementColor = FindHabitById(userHabits, id).planningTime.split(
     " "
-  )[2];
+  )[11];
 
   const close = () => {
     setModalShow((prev) => !prev);
@@ -53,7 +53,13 @@ export const HabitItem = ({
             onClick={() => setModalShow(true)}
           ></button>
 
-          {modalShow && <UpdateHabitModal close={close} idOfHabit={id} />}
+          {modalShow && (
+            <UpdateHabitModal
+              close={close}
+              idOfHabit={id}
+              habitTitle={habitTitle}
+            />
+          )}
         </div>
         <div id={id} className="habit-number-counter">
           <div className="habit-done">

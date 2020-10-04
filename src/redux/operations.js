@@ -4,6 +4,7 @@ import { addUserInfo } from "../redux/user/userActions";
 import { addUserQuizInfo } from "../redux/quizInfo/quizInfoActions";
 import {
   addUserHabits,
+  updateOneUserHabitFromSettings,
   uppdateUserHabits,
 } from "../redux/habits/habitsActions";
 import { addUserCigarettes } from "../redux/cigarettes/cigarettesActions";
@@ -11,7 +12,7 @@ import { addUserAuthToken } from "../redux/authToken/authTokenAction";
 import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
 import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
 import { isFirstModal } from "../redux/flagForFirsModal/flagFirstModalAction";
-
+import { createHabbitDataArr } from "../helpers/createHabbitDataArr";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -23,6 +24,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
         Authorization: token,
       },
     });
+    let count = 0;
     console.log(data);
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
@@ -30,27 +32,16 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(isAuthCurrentUser(true));
     dispatch(isLoadingAction(false));
+    dispatch(createHabbitDataArr(data.habits));
+
     Object.values(data.user.quizInfo).map((el) =>
-      el >= 1 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true))
+      el >= 1 ? (count += 1) : ""
     );
+    count === 4 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true));
   } catch (error) {
     dispatch(errors(error.message));
   }
 };
-// export const checkFirstModal = (token) => async (dispatch) => {
-//   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
-//   dispatch(isLoadingAction(true));
-//   try {
-//     const { data } = await axios.get("/habits", {
-//       headers: {
-//         Authorization: token,
-//       },
-//     });
-//     Object.values(data.user.quizInfo).map((el) => console.log(typeof el));
-//   } catch (error) {
-//     dispatch(errors(error.message));
-//   }
-// };
 
 export const signUp = (userData) => async (dispatch) => {
   // Регистрация и логин, вовращает токен в стейт
@@ -60,7 +51,6 @@ export const signUp = (userData) => async (dispatch) => {
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
-      dispatch(getAllUserDataForState(res.data.access_token));
     })
     .catch((error) => dispatch(errors(error)));
 };
@@ -133,6 +123,70 @@ export const deleteHabitAndGetAllHabits = (id, token) => async (dispatch) => {
     });
     dispatch(uppdateUserHabits(data.habits));
     dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateOneUserHabitFromChecklistPage = (newHabit, token) => async (
+  dispatch,
+  getState
+) => {
+  dispatch(isLoadingAction(true));
+
+  try {
+    const { data } = await axios.patch("/habits", newHabit, {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    dispatch(updateOneUserHabitFromSettings(data.updatedHabit));
+    dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateUserInfo = (newData, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
+
+  try {
+    const { data } = await axios.patch("/users", newData, {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    dispatch(addUserInfo(data));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
+  try {
+    const { data } = await axios.post(`/users/updateQuizInfo`, newInfo, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log(data);
+    dispatch(addUserQuizInfo(data));
+    dispatch(isFirstModal(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const changeUserPassword = (newPassword, token) => async (dispatch) => {
+  try {
+    axios.post("/auth/updatePassword", newPassword, {
+      headers: {
+        Authorization: token,
+      },
+    });
   } catch (error) {
     dispatch(errors(error.message));
   }

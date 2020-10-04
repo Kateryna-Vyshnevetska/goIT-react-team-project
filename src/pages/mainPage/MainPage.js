@@ -13,9 +13,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDataForState } from "../../redux/operations";
 import { authToken } from "../../redux/selectors";
 import { AvatarsPage } from "../avatarsPage/AvatarsPage";
+import { SubscriptionsPage } from "../subscriptionsPage/SubscriptionsPage";
 
 export const MainPage = () => {
+  const state = useSelector((state) => state);
   const isLoading = useSelector((state) => state.isLoading);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUserDataForState(authToken(state)));
+  }, []);
   return (
     <>
       {isLoading && <Spinner />}
@@ -49,6 +55,11 @@ export const MainPage = () => {
             component={AvatarsPage}
           />
 
+              <PrivateRoute
+            exact
+            path={`/make-it-habit/subscription`}
+            component={SubscriptionsPage}
+          />
           <Redirect to="/make-it-habit/check-list" />
         </Switch>
 

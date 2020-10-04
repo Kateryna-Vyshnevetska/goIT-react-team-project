@@ -1,45 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
-import axios from "axios";
-
+import { useForm } from "react-hook-form";
+import { updateQuizeInfo } from "../../redux/operations";
 import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDropNoClose from "../modalBackDrop/ModalBackDropNoClose";
 import styles from "./InterviewModal.module.css";
-import { addUserQuizInfo } from "../../redux/quizInfo/quizInfoActions";
+import { yupResolver } from "@hookform/resolvers";
+import * as yup from "yup";
+
 function InterviewModal({ close }) {
-  const [smokeYears, setsmokeYears] = useState("");
-  const [cigarettePerDay, setcigarettePerDay] = useState("");
-  const [cigarettePerTime, setcigarettePerTime] = useState("");
-  const [cigarettePackPrice, setcigarettePackPrice] = useState("");
+  const schema = yup.object().shape({
+    smokeYears: yup.number().positive().integer().required(),
+    cigarettePerDay: yup.number().positive().integer().required(),
+    cigarettePerTime: yup.number().positive().integer().required(),
+    cigarettePackPrice: yup.number().positive().integer().required(),
+  });
+
+  const { register, errors, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => dispatch(updateQuizeInfo(data, token));
   const dispatch = useDispatch();
   const store = useStore();
   const token = store.getState().authToken;
 
-  const updateQuizeInfo = async (sigInfo) => {
-    try {
-      await axios
-        .post(`/users/updateQuizInfo`, sigInfo, {
-          headers: {
-            Authorization: token,
-          },
-        })
-        .then(dispatch(addUserQuizInfo(sigInfo)));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  function handleSubmit(evt) {
-    close();
-    evt.preventDefault();
-    const sigInfo = {
-      smokeYears,
-      cigarettePerDay,
-      cigarettePerTime,
-      cigarettePackPrice,
-    };
-    updateQuizeInfo(sigInfo);
-  }
   return (
     <>
       <div className={styles.modalHead}>
@@ -68,52 +53,58 @@ function InterviewModal({ close }) {
               </h2>
             </li>
           </ul>
-          <form className={styles.modalBodyForm} onSubmit={handleSubmit}>
+          <form
+            className={styles.modalBodyForm}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <BasicInput
+              register={register({
+                min: 1,
+                required: true,
+              })}
               name={"smokeYears"}
-              value={smokeYears}
               placeholder={"0"}
-              handleChange={({ target: { value } }) => setsmokeYears(value)}
               inputWidth={220}
             />
+            <p>{errors.smokeYears && "Это должно быть положительное число"}</p>
             <BasicInput
+              register={register({
+                min: 1,
+                required: true,
+              })}
               name={"cigarettePerDay"}
-              value={cigarettePerDay}
               placeholder={"0"}
-              handleChange={({ target: { value } }) =>
-                setcigarettePerDay(value)
-              }
               inputWidth={220}
             />
+            <p>
+              {errors.cigarettePerDay && "Это должно быть положительное число"}
+            </p>
             <BasicInput
+              register={register({
+                min: 1,
+                required: true,
+              })}
               name={"cigarettePerTime"}
-              value={cigarettePerTime}
               placeholder={"__min"}
-              handleChange={({ target: { value } }) =>
-                setcigarettePerTime(value)
-              }
               inputWidth={220}
             />
+            <p>
+              {errors.cigarettePerTime && "Это должно быть положительное число"}
+            </p>
             <BasicInput
+              register={register({
+                min: 1,
+                required: true,
+              })}
               name={"cigarettePackPrice"}
-              value={cigarettePackPrice}
               placeholder={"__.__grn"}
-              handleChange={({ target: { value } }) =>
-                setcigarettePackPrice(value)
-              }
               inputWidth={220}
             />
-
-            <button
-              disabled={
-                !smokeYears ||
-                !cigarettePerDay ||
-                !cigarettePerTime ||
-                !cigarettePackPrice
-              }
-              type="submit"
-              className={styles.modalBodyButton}
-            >
+            <p>
+              {errors.cigarettePackPrice &&
+                "Это должно быть положительное число"}
+            </p>
+            <button type="submit" className={styles.modalBodyButton}>
               Сохранить
             </button>
           </form>

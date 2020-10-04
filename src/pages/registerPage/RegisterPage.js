@@ -3,21 +3,29 @@ import { BasicInput } from "../../components/BasicInput/BasicInput";
 import styles from "./registerPage.module.css";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/operations";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
+import { yupResolver } from "@hookform/resolvers";
+import * as yup from "yup";
 const RegisterPage = ({ setregisterOpenPage }) => {
-  // const [homeOpenPage, sethomeOpenPage] = useState(false);
   const dispatch = useDispatch();
-  const newUser = {};
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    dispatch(signUp(newUser));
-  };
+  const schema = yup.object().shape({
+    email: yup.string().required("Введите email"),
+    email: yup
+      .string()
+      .matches(/[@]/, "Неверный email")
+      .required("Введите email"),
+    password: yup.string().required("Пароль должен быть от 8 до 16 символов"),
 
-  const handleChange = ({ target: { name, value } }) => {
-    newUser[name] = value;
-  };
+    // password: yup.number().positive().integer().required(),
+  });
+  const { register, errors, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (data) => dispatch(signUp(data));
+
   return (
     <div className={styles.container}>
       <div>
@@ -27,13 +35,18 @@ const RegisterPage = ({ setregisterOpenPage }) => {
           className={styles.logo}
         />
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h1 className={styles.title}>Добро пожаловать!</h1>
           <p className={styles.text}>
             Введите свои данные, чтобы <br /> продолжить использовать наше
             приложение
           </p>
           <BasicInput
+            register={register({
+              minLength: 11,
+              required: true,
+              pattern: /[@]/,
+            })}
             placeholder="Введите свой E-mail"
             type="text"
             forLabel="E-mail"
@@ -43,20 +56,26 @@ const RegisterPage = ({ setregisterOpenPage }) => {
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="15px"
-            handleChange={handleChange}
           />
-          <BasicInput
-            placeholder="Введите свой пароль"
-            type="password  "
-            forLabel="Пароль"
-            id="Пароль"
+          <p>{errors.email?.message}</p>
+          <PasswordInput
+            register={register({
+              minLength: 8,
+              maxLength: 16,
+              required: true,
+              pattern: /[0-9A-F]/,
+            })}
+            placeholder="Введите свой password"
+            type="password"
+            forLabel="password-input"
+            id="password-input"
             labelText="Пароль"
             name="password"
             labelWidth="120px"
             inputWidth="345px"
             marginBottom="40px"
-            handleChange={handleChange}
           />
+          <p>{errors.password?.message}</p>
           <div className={styles.buttonContaineer}>
             <button type="Submit" className={styles.logInButton}>
               Зарегистрироваться

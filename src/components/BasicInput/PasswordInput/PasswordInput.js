@@ -3,6 +3,7 @@ import style from "./PasswordInput.module.css";
 import "./PasswordInput";
 
 export function PasswordInput({
+  register,
   forLabel,
   id,
   labelText,
@@ -44,6 +45,7 @@ export function PasswordInput({
         {labelText}
       </label>
       <input
+        ref={register}
         type={type}
         id={id}
         className={style.basicInput}
@@ -60,7 +62,7 @@ export function PasswordInput({
       >
         <img
           id="iconPasswordView"
-          src={"https://snipp.ru/demo/495/view.svg"}
+          src={"https://snipp.ru/demo/495/no-view.svg"}
           alt="icon-hidden"
         />
       </span>

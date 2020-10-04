@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BasicInput } from "../../BasicInput/BasicInput";
 import DateInput from "../../BasicInput/DateInput/DateInput";
 import "../../../index.css";
+import { useForm } from "react-hook-form";
 import style from "./CustomHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,37 +10,29 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
-
 function CustomHabitModal({ close, textOfHabit }) {
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
+  const { register, errors, handleSubmit } = useForm();
   const state = useSelector((state) => state);
   const [date, setDate] = useState(new Date());
-  const [name, setName] = useState("");
-  const [iteration, setIteration] = useState("");
-  const [planningTime, setPlanningTime] = useState("");
+
+  useEffect(() => {
+    if (textOfHabit) {
+      setName(textOfHabit);
+    }
+  }, []);
 
   const handleChangeInput = (date) => {
-    setDate(date.toLocaleDateString("en-GB"));
-    console.log(date);
+    setDate(date);
   };
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    dispatch(
-      createHabitAndGetAllHabits(
-        {
-          name: name,
-          planningTime: `${date} ${planningTime} ${getRandomColor()}`,
-          iteration: iteration,
-        },
-        authToken(state)
-      )
-    );
+  const onSubmit = (data) => {
+    data.planningTime = `${date} ${data.time} ${getRandomColor()}`;
+    delete data.time;
+
+    dispatch(createHabitAndGetAllHabits(data, authToken(state)));
     close();
-  };
-
-  const handleChange = ({ target: { name, value } }) => {
-    setName(value);
   };
 
   return (
@@ -48,16 +41,24 @@ function CustomHabitModal({ close, textOfHabit }) {
         <h3 className={style.title}>Настройте привычку под себя</h3>
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
 
-        <form className={style.form} onSubmit={handleSubmit}>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+          <p>
+            {errors.time || errors.name || errors.date || errors.select
+              ? "Все поля обязательны"
+              : null}
+          </p>
           <div className={style.row}>
             <BasicInput
+              register={register({
+                minLength: 6,
+                required: true,
+              })}
               forLabel={"name-of-habit"}
               id={"name-of-habit"}
               labelText={"Название *"}
-              name={"name-of-habit"}
+              name={"name"}
               labelWidth={"200px"}
               inputWidth={"400px"}
-              handleChange={handleChange}
               value={textOfHabit}
             />
           </div>
@@ -72,18 +73,18 @@ function CustomHabitModal({ close, textOfHabit }) {
             marginBottom={"20px"}
             handleChangeDate={handleChangeInput}
           />
-
           <div className={style.row}>
             <label className={style.label} htmlFor="date">
               Время *
             </label>
             <input
+              ref={register({
+                required: true,
+              })}
+              name="time"
               className={style.input}
               id="date"
               type="time"
-              onChange={(ev) => {
-                setPlanningTime(ev.target.value);
-              }}
             />
           </div>
           <div className={style.row}>
@@ -91,9 +92,10 @@ function CustomHabitModal({ close, textOfHabit }) {
               Повторение *
             </label>
             <select
-              onChange={({ target: { value } }) => {
-                setIteration(value);
-              }}
+              name="iteration"
+              ref={register({
+                required: true,
+              })}
             >
               <option></option>
               <option value="1">Ежедневно</option>
