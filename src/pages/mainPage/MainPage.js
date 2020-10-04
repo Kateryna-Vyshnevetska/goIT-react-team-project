@@ -12,6 +12,7 @@ import { Spinner } from "../../ui/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDataForState } from "../../redux/operations";
 import { authToken } from "../../redux/selectors";
+import { AvatarsPage } from "../avatarsPage/AvatarsPage";
 import { SubscriptionsPage } from "../subscriptionsPage/SubscriptionsPage";
 
 export const MainPage = () => {
@@ -49,6 +50,12 @@ export const MainPage = () => {
             component={ProfilePage}
           />
           <PrivateRoute
+            exact
+            path={`/make-it-habit/change-avatar`}
+            component={AvatarsPage}
+          />
+
+              <PrivateRoute
             exact
             path={`/make-it-habit/subscription`}
             component={SubscriptionsPage}
