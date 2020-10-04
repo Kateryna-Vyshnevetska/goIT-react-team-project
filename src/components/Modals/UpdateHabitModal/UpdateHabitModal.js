@@ -6,11 +6,12 @@ import style from "./UpdateHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteOneHabitFromUpdateModal,
   createHabitAndGetAllHabits,
   updateOneUserHabitFromChecklistPage,
 } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-import { getRandomColor } from "../../../helpers/CheckListPage";
+// import { getRandomColor } from "../../../helpers/CheckListPage";
 import FindHabitById from "../../../helpers/FindHabitById";
 
 function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
@@ -28,15 +29,22 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
     console.log(date);
   };
 
-  useEffect(() => {
-    if (habitTitle) {
-      setName(habitTitle);
-    }
-  }, []);
-
   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
 
-  console.log(oneUserHabit._id);
+  useEffect(() => {
+    setName(habitTitle);
+    setIteration(oneUserHabit.iteration);
+
+    const timeOfstart = oneUserHabit.planningTime.split(" ")[1];
+    setPlanningTime(timeOfstart);
+
+    const dateOfStart = oneUserHabit.planningTime.split(" ")[0];
+    // setDate(dateOfStart.toLocaleDateString("en-GB"));
+  }, [habitTitle, oneUserHabit.iteration, oneUserHabit.planningTime]);
+
+//   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
+
+//   console.log(oneUserHabit._id);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -82,19 +90,22 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
             inputWidth={"400px"}
             type={"date"}
             marginBottom={"20px"}
+            value={date}
             handleChangeDate={handleChangeInput}
           />
 
           <div className={style.row}>
-            <label className={style.label} htmlFor="date">
+            <label className={style.label} htmlFor="time">
               Время *
             </label>
             <input
+              value={planningTime}
               className={style.input}
-              id="date"
+              id="time"
               type="time"
               onChange={(ev) => {
                 setPlanningTime(ev.target.value);
+                console.log("время", ev.target.value);
               }}
             />
           </div>
@@ -103,6 +114,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               Повторение *
             </label>
             <select
+              value={iteration}
               onChange={({ target: { value } }) => {
                 setIteration(value);
               }}
@@ -114,7 +126,14 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               <option value="4">ВТ, ЧТ, СБ</option>
             </select>
           </div>
-          <button className={style.btnDelete}>
+          <button
+            className={style.btnDelete}
+            onClick={() =>
+              dispatch(
+                deleteOneHabitFromUpdateModal(oneUserHabit, authToken(state))
+              )
+            }
+          >
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>

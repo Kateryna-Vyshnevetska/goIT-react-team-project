@@ -1,13 +1,14 @@
 .profilePage-container {
-  width: 842px;
-  height: 900px;
+  /* width: 842px;
+  height: 900px; */
+  width: 60%;
 }
 
 .ProfilePage-header {
   border-bottom: 1px solid #d5e1dc;
   background-color: #ffffff;
-  height: 110px;
-  padding: 40px 62px;
+  height: 10%;
+  padding: 20px 62px;
 }
 
 .ProfilePage-mainTitle {
@@ -18,8 +19,9 @@
   color: #4f4f4f;
 }
 .ProfilePage-main {
-  height: 790px;
+  height: 90%;
   padding: 60px 62px;
+  overflow: scroll;
 }
 .ProfilePage-priwetTitle {
   font-family: Rubik;

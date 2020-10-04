@@ -1,21 +1,30 @@
 .notif-list-section {
-  justify-content: stretch;
-  display: flex;
+  /* min-height: 768px; */
+
+  width: 60%;
 }
-.notif-container {
-  width: 100vh;
-  padding-top: 40px 62px;
+
+.notif-content-wrapper {
+  width: 100%;
+  height: 90%;
+  max-height: 790px;
+  /* padding: 20px; */
+  padding: 40px;
   background-color: #f6f6f6;
 }
+
+.notif-container {
+  /* width: 100%; */
+}
 .notif-header {
-  max-height: 109px;
+  height: 10%;
   background-color: #fff;
   outline: 1px solid #d5e1dc;
-  margin-bottom: 30px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 33px 60px;
+  padding: 10px 60px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 26px;

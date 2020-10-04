@@ -47,7 +47,7 @@ function DailyResultModal({ close }) {
 
   function handleSubmit(evt) {
     console.log(dataDate.toDateString());
-    setDate(date.toLocaleDateString("en-GB"));
+    setDate(date.toDateString());
     close();
     evt.preventDefault();
     const sigInfo = sigCount;

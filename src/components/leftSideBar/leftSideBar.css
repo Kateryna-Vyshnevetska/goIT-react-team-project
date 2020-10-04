@@ -1,26 +1,31 @@
 .leftSideBar {
   font-family: "Rubik", sans-serif;
-  width: 378px;
-  height: 100%;
+  width: 20%;
+ 
   border-left: 1px solid #d5e1dc;
   border-bottom: 1px solid #d5e1dc;
   border-right: 1px solid #d5e1dc;
 }
 .leftSideBar-block {
+  height: 100%;
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
 }
 .logo-block {
   border-bottom: 1px solid #d5e1dc;
   width: 100%;
-  height: 111px;
+  height: 10%;
+  display: flex;
+  margin: auto;
 }
 .imageLogoLeftSideBar {
-  display: block;
-  padding: 30px 132px 30px 100px;
-  width: 100%;
+  display: flex;
+  margin: auto;
+  /* padding: 30px 132px 30px 100px; */
+  width: 145px;
 }
-/* .leftSideBar-habits {
-  max-height: 270px;
-  overflow-y: scroll;
-} */
+.leftSideBar-habits {
+  /* max-height: 270px;
+  overflow-y: scroll; */
+  height: 50%;
+}

@@ -1,66 +1,75 @@
 .leftSideBar-block-navBar {
- border-bottom: 1px solid #d5e1dc;
-  padding: 25px 79px;
+  border-bottom: 1px solid #d5e1dc;
+  /* padding: 25px 79px; */
+  height: 10%;
+  display: flex;
 }
-.leftSideBar-checkList.cup {
+
+.leftSideBar-listNavBar {
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+  margin: auto;
+}
+
+.navLink {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-color: #e9faf7;
+  
+  border-radius: 8px;
+}
+.leftSideBar-navBarItems{
+
+  margin-right: 20px;
+}
+
+.leftSideBar-navBarItems:last-child{
+margin-right: 0px;
+}
+
+.activeNavLink {
+  display: block;
+  width: 60px;
+  height: 60px;
+
+  
+  background: #cbf7e3;
+}
+
+.navLink.calendar {
   background-image: url(../../../images/leftSideBar/checkList.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
-.leftSideBar-checkList.cup.active{
+
+.activeNavLink.calendar {
   background-image: url(../../../images/leftSideBar/checkListActive.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.leftSideBar-checkList.grades {
+.navLink.cup {
   background-image: url(../../../images/leftSideBar/grades.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
-.leftSideBar-checkList.grades.active{
-  background-image: url(../../../images/leftSideBar/gradesActive.svg);
 
+.activeNavLink.cup {
+  background-image: url(../../../images/leftSideBar/gradesActive.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.leftSideBar-checkList.note {
+
+.navLink.bell {
   background-image: url(../../../images/leftSideBar/notification.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
-.leftSideBar-checkList.note.active{
-  background-image: url(../../../images/leftSideBar/notificationActive.svg)
-}
-.leftSideBar-checkList {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-}
-.leftSideBar-listNavBar{
-    list-style: none;
-    display: flex;
-    padding-left: 0;
-    margin: 0;
 
+.activeNavLink.bell {
+  background-image: url(../../../images/leftSideBar/notificationActive.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.leftSideBar-navBar-link{
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  background-color: #e9faf7;
-  border-radius: 8px;
-  margin-right: 20px;
-  
-}
-.leftSideBar-navBarList:last-child{
-margin-right: 0px;
-}
-.leftSideBar-navBar-link:hover {
-  background-color: #cbf7e3;
-}
-.leftSideBar-navBar-link:focus {
-  background-color: #cbf7e3;
-  outline: none;
-}
-
-
-
-
-

@@ -1,15 +1,17 @@
 import React from "react";
 import { Calendar } from "./Calendar";
 import { CalendarChecklist } from "./CalendarChecklist";
-import { rightSideBarContainer } from "./rightSideBar.module.css";
+import  style from "./rightSideBar.module.css";
 import { RightSideBarHeader } from "./RightSideBarHeader";
 
 export const RightSideBar = () => {
   return (
-    <div className={rightSideBarContainer}>
-      <RightSideBarHeader />
-      <Calendar />
-      <CalendarChecklist />
+    <div className={style.rightSideBarContainer}>
+      <div className={style.rightSideBarWrapper}>
+        <RightSideBarHeader />
+        <Calendar />
+        <CalendarChecklist />
+      </div>
     </div>
   );
 };
