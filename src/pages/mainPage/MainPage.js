@@ -55,7 +55,7 @@ export const MainPage = () => {
             component={AvatarsPage}
           />
 
-              <PrivateRoute
+          <PrivateRoute
             exact
             path={`/make-it-habit/subscription`}
             component={SubscriptionsPage}

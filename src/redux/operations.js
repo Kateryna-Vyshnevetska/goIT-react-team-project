@@ -92,7 +92,7 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
   //    planningTime: "andrewHabit",
   //    iteration: "andrewHabit ",
   //  }
-  dispatch(isLoadingAction(true));
+  // dispatch(isLoadingAction(true));
   try {
     await axios.post("/habits", newHabit, {
       headers: {
@@ -106,7 +106,7 @@ export const createHabitAndGetAllHabits = (newHabit, token) => async (
     });
     dispatch(uppdateUserHabits(data.habits));
     dispatch(isLoadingAction(false));
-    dispatch(userHabitsDatesUppdate());
+    // dispatch(userHabitsDatesUppdate());
 
     data.habits.forEach((el) => {
       dispatch(createHabbitDataArr(el));

@@ -12,18 +12,18 @@ export const CalendarChecklist = () => {
   const arr = [];
   const userHabits = useSelector((state) => state.userHabits);
 
-  userHabits.map((habites) =>
-    userHabitsDates.map((dates) => {
-      if (habites._id === dates.habitId) {
-        dates.dates.map((date) => {
-          if (dateNow.toDateString() === date.toDateString()) {
-            arr.push(habites);
-            return;
-          }
-        });
-      }
-    })
-  );
+  // userHabits.map((habites) =>
+  //   userHabitsDates.map((dates) => {
+  //     if (habites._id === dates.habitId) {
+  //       dates.dates.map((date) => {
+  //         if (dateNow.toDateString() === date.toDateString()) {
+  //           arr.push(habites);
+  //           return;
+  //         }
+  //       });
+  //     }
+  //   })
+  // );
   const deleteHabit = (id) => {
     dispatch(deleteHabitAndGetAllHabits(id, authToken(state)));
   };

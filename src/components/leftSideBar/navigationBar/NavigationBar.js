@@ -10,10 +10,6 @@ import {
 import "./navigation.css";
 
 export const NavigationBar = () => {
-  const match = useRouteMatch();
-  const location = useLocation();
-  const history = useHistory();
-  console.log(match);
   return (
     <nav className="leftSideBar-block-navBar">
       <ul className="leftSideBar-listNavBar">
