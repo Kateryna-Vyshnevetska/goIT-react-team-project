@@ -1,5 +1,3 @@
-import React from "react";
-import { useDispatch, useStore } from "react-redux";
 import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
 
 export const createHabbitDataArr = (habbits) => async (dispatch) => {
@@ -45,33 +43,32 @@ export const createHabbitDataArr = (habbits) => async (dispatch) => {
       }
     }
   };
-  habbits.forEach((el) => {
-    const data = el.planningTime.slice(0, 67);
-    const datanew = new Date(data);
-    let arr = [];
-    if (el.iteration == 1) {
-      arr.push(datanew);
-      addOneDay(data, arr);
-      dispatch(userHabitsDatesCreate([{ habitId: el._id, dates: arr }]));
-      arr = [];
-    }
-    if (el.iteration == 2) {
-      arr.push(datanew);
-      addTwoDays(data, arr);
-      dispatch(userHabitsDatesCreate([{ habitId: el._id, dates: arr }]));
-      arr = [];
-    }
-    if (el.iteration == 3) {
-      arr.push(datanew);
-      MonWedFri(data, arr);
-      dispatch(userHabitsDatesCreate([{ habitId: el._id, dates: arr }]));
-      arr = [];
-    }
-    if (el.iteration == 4) {
-      arr.push(datanew);
-      TueThuSat(data, arr);
-      dispatch(userHabitsDatesCreate([{ habitId: el._id, dates: arr }]));
-      arr = [];
-    }
-  });
+
+  const data = habbits.planningTime.slice(0, 67);
+  const datanew = new Date(data);
+  let arr = [];
+  if (habbits.iteration == 1) {
+    arr.push(datanew);
+    addOneDay(data, arr);
+    dispatch(userHabitsDatesCreate({ habitId: habbits._id, dates: arr }));
+    arr = [];
+  }
+  if (habbits.iteration == 2) {
+    arr.push(datanew);
+    addTwoDays(data, arr);
+    dispatch(userHabitsDatesCreate({ habitId: habbits._id, dates: arr }));
+    arr = [];
+  }
+  if (habbits.iteration == 3) {
+    arr.push(datanew);
+    MonWedFri(data, arr);
+    dispatch(userHabitsDatesCreate({ habitId: habbits._id, dates: arr }));
+    arr = [];
+  }
+  if (habbits.iteration == 4) {
+    arr.push(datanew);
+    TueThuSat(data, arr);
+    dispatch(userHabitsDatesCreate({ habitId: habbits._id, dates: arr }));
+    arr = [];
+  }
 };
