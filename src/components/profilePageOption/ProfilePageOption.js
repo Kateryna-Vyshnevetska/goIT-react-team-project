@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";

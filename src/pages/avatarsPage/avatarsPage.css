@@ -1,0 +1,38 @@
+.avatar-list-section {
+  justify-content: stretch;
+  display: flex;
+}
+.avatar-container {
+  width: 100vh;
+  background-color: #f6f6f6;
+}
+.avatar-header {
+  height: 110px;
+  background-color: #fff;
+  outline: 1px solid #d5e1dc;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 33px 60px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.19;
+}
+.avatar-header-title {
+  color: #4f4f4f;
+}
+.avatar-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.avatar-item {
+  border-radius: 50%;
+  margin: 19px;
+}
+.avatar-item:hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
