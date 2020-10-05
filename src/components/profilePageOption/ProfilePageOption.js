@@ -64,7 +64,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.firstName}
               />
-              <p>{errors.firstName && "Минимально 2 символа"}</p>
+              <p className={styles.errorMessage}>
+                {errors.firstName && "Минимально 2 символа"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -80,7 +82,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.lastName}
               />
-              <p>{errors.lastName && "Минимально 2 символа"}</p>
+              <p className={styles.errorMessage}>
+                {errors.lastName && "Минимально 2 символа"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -98,7 +102,9 @@ export const ProfilePageOption = () => {
                 labelWidth={"125px"}
                 inputWidth={"345px"}
               />
-              <p>{errors.phone && "В вашем номере должно быть 11 цифр"}</p>
+              <p className={styles.errorMessage}>
+                {errors.phone && "В вашем номере должно быть 11 цифр"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -115,6 +121,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.email}
               />
+              <p className={styles.errorMessage}>
+                {errors.email && "Введен неверный email"}
+              </p>
             </div>
             <button
               type="Submit"
@@ -129,7 +138,7 @@ export const ProfilePageOption = () => {
                   register={register({
                     minLength: 8,
                     maxLength: 16,
-                    required: true,
+                    // required: true,
                     pattern: /[0-9A-F]/,
                   })}
                   name="password"
@@ -143,6 +152,9 @@ export const ProfilePageOption = () => {
                   marginBottom="40px"
                   handleChange={({ target: { value } }) => setPassword(value)}
                 />
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
 
               <div className="profilePage-inputs">
@@ -173,6 +185,9 @@ export const ProfilePageOption = () => {
                     }
                   />
                 </CSSTransition>
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
               <button
                 type="Submit"
