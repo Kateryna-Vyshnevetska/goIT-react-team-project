@@ -22,6 +22,11 @@ export const ProfilePageOption = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
 
+  const subscriptionLevel = useSelector(
+    (state) => state.subscriptionLevel.plan
+  );
+  console.log("subscriptionLevel", subscriptionLevel);
+
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -206,7 +211,9 @@ export const ProfilePageOption = () => {
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             <div className="profilePage-subscriptionArea">
-              <span className="profilePage-subscriptionText">sdddwg</span>
+              <span className="profilePage-subscriptionText">
+                {subscriptionLevel}
+              </span>
             </div>
 
             <button type="Submit" className="profilePage-subscription-btn">

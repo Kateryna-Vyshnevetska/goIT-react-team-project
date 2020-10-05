@@ -18,6 +18,7 @@ import {
   userHabitsDatesUppdate,
 } from "../redux/habitsDates/habitsDatesAction";
 import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
+import { subscriptionAction } from "./subscription/subscriptionAction";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -30,6 +31,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
+    dispatch(subscriptionAction({ plan: data.user.subscription }));
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
@@ -213,6 +215,25 @@ export const changeUserPassword = (newPassword, token) => async (dispatch) => {
         Authorization: token,
       },
     });
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateSubscriptionLevel = (planName, token) => async (
+  dispatch,
+  getState
+) => {
+  dispatch(isLoadingAction(true));
+
+  try {
+    const data = await axios.post("/users/updateSubscription", planName, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch(subscriptionAction(planName));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
