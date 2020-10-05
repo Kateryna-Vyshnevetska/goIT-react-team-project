@@ -11,15 +11,16 @@ import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
-
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
-import "./profilePage.css";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
 import FindAvatarById from "../../helpers/FindAvatarById";
 import { quizInfo } from "../../redux/selectors";
+
+import "./profilePage.css";
+import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
 
 export const ProfilePageOption = () => {
   const avatarById = useSelector((state) => state.userInfo.avatar);
@@ -29,6 +30,11 @@ export const ProfilePageOption = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
+
+  const subscriptionLevel = useSelector(
+    (state) => state.subscriptionLevel.plan
+  );
+  console.log("subscriptionLevel", subscriptionLevel);
 
   const { register, errors, handleSubmit } = useForm();
 
@@ -74,7 +80,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.firstName}
               />
-              <p>{errors.firstName && "Минимально 2 символа"}</p>
+              <p className={styles.errorMessage}>
+                {errors.firstName && "Минимально 2 символа"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -90,7 +98,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.lastName}
               />
-              <p>{errors.lastName && "Минимально 2 символа"}</p>
+              <p className={styles.errorMessage}>
+                {errors.lastName && "Минимально 2 символа"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -108,7 +118,9 @@ export const ProfilePageOption = () => {
                 labelWidth={"125px"}
                 inputWidth={"345px"}
               />
-              <p>{errors.phone && "В вашем номере должно быть 11 цифр"}</p>
+              <p className={styles.errorMessage}>
+                {errors.phone && "В вашем номере должно быть 11 цифр"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -125,6 +137,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.email}
               />
+              <p className={styles.errorMessage}>
+                {errors.email && "Введен неверный email"}
+              </p>
             </div>
             <button
               type="Submit"
@@ -134,7 +149,7 @@ export const ProfilePageOption = () => {
             </button>
 
             <form>
-              <div className="profilePage-inputs">
+              <div className={styles.profilePageInputs}>
                 <PasswordInput
                   register={register({
                     minLength: 8,
@@ -153,6 +168,9 @@ export const ProfilePageOption = () => {
                   marginBottom="40px"
                   // handleChange={({ target: { value } }) => setPassword(value)}
                 />
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
 
               <div className="profilePage-inputs">
@@ -183,6 +201,9 @@ export const ProfilePageOption = () => {
                     // }
                   />
                 </CSSTransition>
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
               <button
                 type="Submit"
@@ -201,7 +222,9 @@ export const ProfilePageOption = () => {
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             <div className="profilePage-subscriptionArea">
-              <span className="profilePage-subscriptionText">sdddwg</span>
+              <span className="profilePage-subscriptionText">
+                {subscriptionLevel}
+              </span>
             </div>
 
             <button type="Submit" className="profilePage-subscription-btn">

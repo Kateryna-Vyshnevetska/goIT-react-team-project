@@ -70,8 +70,17 @@
   margin-bottom: 10px;
 }
 .profilePage-AvatarTextLink {
+  display: block;
+  padding: 10px 22px;
+
   text-decoration: none;
+  color: inherit;
 }
+.profilePage-AvatarTextLink:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .profilePage-AvatarText {
   font-family: "Rubik", sans-serif;
   font-style: normal;
@@ -120,8 +129,8 @@
 .profilePage-subscription-btn {
   width: 220px;
   height: 44px;
-  text-align: center;
-  line-height: 40px;
+  /* text-align: center; */
+  /* line-height: 40px; */
   text-decoration: none;
   background: white;
   border-radius: 5px;
@@ -166,11 +175,6 @@
   opacity: 0;
   transform: translateX(-100%);
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
-}
-
-.profilePage-inputs .PasswordInput_passwordControl__-jrW1 {
-  top: 13px;
-  right: 20px;
 }
 
 .passwordControl {

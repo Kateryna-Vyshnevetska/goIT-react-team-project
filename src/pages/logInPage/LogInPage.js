@@ -41,41 +41,48 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
             Введите свои данные, чтобы <br /> продолжить использовать наше
             приложение
           </p>
-          <BasicInput
-            register={register({
-              minLength: 11,
-              required: true,
-              pattern: /[@]/,
-            })}
-            placeholder="Введите свой E-mail"
-            type="text"
-            forLabel="Логин"
-            id="Логин"
-            labelText="Логин"
-            name="email"
-            labelWidth="120px"
-            inputWidth="345px"
-            marginBottom="15px"
-          />
-          <p className={styles.errorMessage}>{errors.email?.message}</p>
-          <PasswordInput
-            register={register({
-              minLength: 8,
-              maxLength: 16,
-              required: true,
-              pattern: /[0-9A-F]/,
-            })}
-            placeholder="Введите свой password"
-            type="password"
-            forLabel="password-input"
-            id="password-input"
-            labelText="Пароль"
-            name="password"
-            labelWidth="120px"
-            inputWidth="345px"
-            marginBottom="30px"
-          />
-          <p className={styles.errorMessage}>{errors.password?.message}</p>
+          <div>
+            <BasicInput
+              register={register({
+                minLength: 11,
+                required: true,
+                pattern: /[@]/,
+              })}
+              placeholder="Введите свой E-mail"
+              type="text"
+              forLabel="Логин"
+              id="Логин"
+              labelText="Логин"
+              name="email"
+              labelWidth="120px"
+              inputWidth="345px"
+              marginBottom="15px"
+            />
+            <p className={styles.errorMessageEmail}>{errors.email?.message}</p>
+          </div>
+
+          <div>
+            <PasswordInput
+              register={register({
+                minLength: 8,
+                maxLength: 16,
+                required: true,
+                pattern: /[0-9A-F]/,
+              })}
+              placeholder="Введите свой password"
+              type="password"
+              forLabel="password-input"
+              id="password-input"
+              labelText="Пароль"
+              name="password"
+              labelWidth="120px"
+              inputWidth="345px"
+              marginBottom="30px"
+            />
+            <p className={styles.errorMessagePass}>
+              {errors.password?.message}
+            </p>
+          </div>
           <div className={styles.buttonContaineer}>
             <button type="Submit" className={styles.logInButton}>
               Войти
