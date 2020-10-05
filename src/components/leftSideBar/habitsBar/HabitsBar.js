@@ -13,6 +13,7 @@ export const HabitsBar = () => {
   const [valueOfButton, setValueOfButton] = useState("");
 
   const close = () => {
+    setValueOfButton("");
     setModalShow((prev) => !prev);
   };
 
@@ -54,7 +55,7 @@ export const HabitsBar = () => {
             <CustomHabitModal
               close={closeModalNew}
               setModalShow={setModalShow}
-              textOfHabit={valueOfButton}
+              textOfHabit={valueOfButton.length > 0 ? valueOfButton : null}
               settextOfHabit={setValueOfButton}
             />
           )}

@@ -9,7 +9,7 @@ function HabitTemplateModal({
   close,
   setValueOfButton,
   setModalShowNew,
-  valueOfButton,
+  valueOfButton = "",
 }) {
   const goBack = () => {
     setModalShow(true);

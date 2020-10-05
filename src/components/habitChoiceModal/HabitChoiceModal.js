@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./HabitChoiceModal.module.css";
+
 function HabitChoiceModal({ close, setModalShowNew, setModalShowTemplate }) {
   const openModalShowTemplate = async () => {
     await close();
