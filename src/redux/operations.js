@@ -30,6 +30,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
+    console.log(data);
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
@@ -39,12 +40,12 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     });
     dispatch(userHabitsDatesUppdate(arrHabitsDates));
     dispatch(isAuthCurrentUser(true));
-    dispatch(isLoadingAction(false));
 
     Object.values(data.user.quizInfo).map((el) =>
       el >= 1 ? (count += 1) : ""
     );
     count === 4 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -52,12 +53,14 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
 
 export const signUp = (userData) => async (dispatch) => {
   // Регистрация и логин, вовращает токен в стейт
+  dispatch(isLoadingAction(true));
   axios
     .post("/auth/registration", userData)
     .then((res) => axios.post("/auth/login", userData))
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
+      dispatch(isLoadingAction(false));
     })
     .catch((error) => dispatch(errors(error)));
 };
@@ -88,6 +91,7 @@ export const logIn = (userData) => async (dispatch) => {
 export const createHabitAndGetAllHabits = (newHabit, token) => async (
   dispatch
 ) => {
+  dispatch(isLoadingAction(true));
   try {
     const habit = await axios.post("/habits", newHabit, {
       headers: {
@@ -184,6 +188,7 @@ export const updateUserInfo = (newData, token) => async (dispatch) => {
     console.log("data", data);
     dispatch(updateUserAvatar(data.avatar));
     dispatch(addUserInfo(data));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -201,6 +206,7 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
 
     dispatch(addUserQuizInfo(data));
     dispatch(isFirstModal(false));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Link,
+  BrowserRouter as Router,
+  useHistory,
+} from "react-router-dom";
 import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
@@ -17,6 +22,7 @@ import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput
 export const ProfilePageOption = () => {
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
+  const history = useHistory();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
@@ -30,10 +36,12 @@ export const ProfilePageOption = () => {
       }
     }
     dispatch(updateUserInfo(data, authToken));
+    history.push("/");
   };
 
   const handleSubmitPass = (ev) => {
     ev.preventDefault();
+    history.push("/");
   };
   //   // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
   // };
@@ -128,7 +136,7 @@ export const ProfilePageOption = () => {
                   register={register({
                     minLength: 8,
                     maxLength: 16,
-                    required: true,
+                    // required: true,
                     pattern: /[0-9A-F]/,
                   })}
                   name="password"
@@ -140,7 +148,7 @@ export const ProfilePageOption = () => {
                   labelWidth={"120px"}
                   inputWidth={"345px"}
                   marginBottom="40px"
-                  handleChange={({ target: { value } }) => setPassword(value)}
+                  // handleChange={({ target: { value } }) => setPassword(value)}
                 />
               </div>
 
@@ -155,7 +163,7 @@ export const ProfilePageOption = () => {
                     register={register({
                       minLength: 8,
                       maxLength: 16,
-                      required: true,
+                      // required: true,
                       pattern: /[0-9A-F]/,
                     })}
                     placeholder="Повторите свой пароль"
@@ -167,9 +175,9 @@ export const ProfilePageOption = () => {
                     labelWidth={"120px"}
                     inputWidth={"345px"}
                     marginBottom="40px"
-                    handleChange={({ target: { value } }) =>
-                      setConfirmPassword(value)
-                    }
+                    // handleChange={({ target: { value } }) =>
+                    //   setConfirmPassword(value)
+                    // }
                   />
                 </CSSTransition>
               </div>
