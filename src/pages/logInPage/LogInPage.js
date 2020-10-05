@@ -19,8 +19,6 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
       .matches(/[@]/, "Неверный email")
       .required("Введите email"),
     password: yup.string().required("Пароль должен быть от 8 до 16 символов"),
-
-    // password: yup.number().positive().integer().required(),
   });
 
   const { register, errors, handleSubmit } = useForm({

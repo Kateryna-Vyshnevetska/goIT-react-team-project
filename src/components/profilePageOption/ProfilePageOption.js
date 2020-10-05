@@ -18,6 +18,7 @@ import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
+import { quizInfo } from "../../redux/selectors";
 
 export const ProfilePageOption = () => {
   const userInfo = useSelector((state) => state.userInfo);

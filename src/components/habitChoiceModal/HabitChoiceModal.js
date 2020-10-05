@@ -4,6 +4,7 @@ import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./HabitChoiceModal.module.css";
 import HabitTemplateModal from "../Modals/HabitTemplateModal/HabitTemplateModal";
 import CustomHabitModal from "../Modals/CustomHabitModal/CustomHabitModal";
+
 function HabitChoiceModal({ close }) {
   const [modalShowTemplate, setModalShowTemplate] = useState(false);
   const [modalShowNew, setModalShowNew] = useState(false);
