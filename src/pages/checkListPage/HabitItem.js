@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LinearProgressWithLabel } from "../../ui/ProgressBar";
 // import { getRandomColor } from "../../helpers/CheckListPage";
 // import CustomHabitModal from "../../components/Modals/CustomHabitModal/CustomHabitModal";
@@ -10,8 +10,8 @@ export const HabitItem = ({
   clickDone,
   clickMissed,
   id,
-  habitMissedNumber = 0,
-  habitDoneNumber = 0,
+  habitMissedNumber,
+  habitDoneNumber,
   habitTitle = "Утренняя зарядка 10-15 мин",
   linearProgressValue = 10,
 }) => {
@@ -22,6 +22,9 @@ export const HabitItem = ({
   const needElementColor = FindHabitById(userHabits, id).planningTime.split(
     " "
   )[11];
+
+
+  console.log();
 
   const close = () => {
     setModalShow((prev) => !prev);

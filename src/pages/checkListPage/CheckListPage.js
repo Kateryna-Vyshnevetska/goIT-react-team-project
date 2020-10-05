@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./checkListPage.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HabitItem } from "../../pages/checkListPage/HabitItem";
 import DailyResultModal from "../../components/dailyResultModal/DailyResultModal";
+// import { now } from "moment";
+import FindHabitById from "../../helpers/FindHabitById";
+import moment from "moment";
+// import { setTrueForHabit } from '../../redux/habits/habitsActions'
+import { updateDateInUserHabit } from "../../redux/operations";
+import { authToken } from "../../redux/selectors";
+import {
+  calculateDoneCountHabits,
+  calculateMissedCountHabits,
+} from "../../helpers/counterProgressByHabit";
+
 export function CheckListPage() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
   const dateNow = useSelector((state) => state.currentDay);
   const [modalShow, setModalShow] = useState(false);
   const userHabits = useSelector((state) => state.userHabits);
@@ -28,14 +41,65 @@ export function CheckListPage() {
     setModalShow((prev) => !prev);
   };
 
+  const datanew = new Date();
+  const newDataFormat = moment(datanew).format();
+
+  const [done, setDone] = useState(0);
+  const [missed, setMissed] = useState(0);
+  const [idFromState, setIdFromState] = useState("");
+
+  useEffect(() => {
+    setDone(calculateDoneCountHabits(userHabits, idFromState));
+    // setMissed(calculateMissedCountHabits(userHabits, idFromState));
+  }, [idFromState, userHabits]);
+
+  // const [checkDone, setcheckDone] = useState()
+  // const [checkMissed, setcheckMissed] = useState();
+
+  // useEffect(() => {
+  //   setDone(calculateDoneCountHabits(userHabits, idFromState));
+  //   setcheckDone(false);
+  //   console.log("useEffect done");
+  // }, [checkDone]);
+
+  //   useEffect(() => {
+  //     setMissed(calculateMissedCountHabits(userHabits, idFromState));
+  //      setcheckMissed(false);
+  //     console.log("useEffect missed");
+  //   }, [checkMissed]);
+
   const handleClickHabitButtonDone = (id) => {
     const habitNumberCounter = document.getElementById(id);
     const buttonDoneActive = document.getElementById(`${id}done`);
     const buttonMissedActive = document.getElementById(`${id}missed`);
 
-    habitNumberCounter.classList.toggle("isVisible");
-    buttonDoneActive.classList.toggle("active");
+    habitNumberCounter.classList.add("isVisible");
+    buttonDoneActive.classList.add("active");
     buttonMissedActive.classList.remove("active");
+
+    setIdFromState(id);
+
+    console.log("кликнули на сделано");
+
+    // setcheckD one(true)
+
+    // находим даты конкретно это привычки
+    const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
+      .dates;
+    // console.log("userHabitDates", userHabitDates);
+    // ищем индекс нужного елемента для записи в массив
+
+    const indx = userHabitDates.find((el, idx) =>
+      el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+    );
+    // console.log("indx", indx);
+
+    const indexOfDate = userHabitDates.indexOf(indx);
+    // console.log("indexOfDate", indexOfDate);
+    // setIdFromState(id);
+    // console.log('klikDone')
+
+    dispatch(updateDateInUserHabit("done", id, indexOfDate, authToken(state)));
   };
 
   const handleClickHabitButtonMissed = (id) => {
@@ -43,10 +107,40 @@ export function CheckListPage() {
     const buttonMissedActive = document.getElementById(`${id}missed`);
     const buttonDoneActive = document.getElementById(`${id}done`);
 
-    habitNumberCounter.classList.toggle("isVisible");
-    buttonMissedActive.classList.toggle("active");
+    habitNumberCounter.classList.add("isVisible");
+    buttonMissedActive.classList.add("active");
     buttonDoneActive.classList.remove("active");
+    setIdFromState(id);
+
+    // setcheckMissed(true);
+    console.log("кликнули на пропущено");
+    // setIdFromState(id);
+
+    // находим даты конкретно это привычки
+    const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
+      .dates;
+
+    // ищем индекс нужного елемента для записи в массив
+
+    const indx = userHabitDates.find((el, idx) =>
+      el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+    );
+
+    const indexOfDate = userHabitDates.indexOf(indx);
+
+    dispatch(
+      updateDateInUserHabit("missed", id, indexOfDate, authToken(state))
+    );
   };
+
+  // const checkActiveButton = (arrHabits, arrOfDates) => {
+  //   console.log("arrHabits", arrHabits);
+  //   console.log("arrOfDates", arrOfDates);
+  // };
+
+  // useEffect(() => {
+  //   checkActiveButton(userHabits, userHabitsDates);
+  // }, []);
 
   return (
     <div className="check-list-section">
@@ -70,6 +164,8 @@ export function CheckListPage() {
               id={el._id}
               habitTitle={el.name}
               linearProgressValue={el.efficiency}
+              habitMissedNumber={missed}
+              habitDoneNumber={done}
             />
           ))}
         </ul>

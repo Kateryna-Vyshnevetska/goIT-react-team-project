@@ -1,7 +1,6 @@
 import React from "react";
 import "./counterEconomy.css";
 import { useSelector } from "react-redux";
-
 import { getMoney, getTime } from "../../../helpers/saveMoney";
 
 export const CounterEconomy = () => {
@@ -30,3 +29,4 @@ export const CounterEconomy = () => {
     </>
   );
 };
+
