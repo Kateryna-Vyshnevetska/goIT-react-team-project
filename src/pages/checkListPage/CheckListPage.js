@@ -23,7 +23,6 @@ export function CheckListPage() {
       }
     })
   );
-  console.log(arr);
 
   const close = () => {
     setModalShow((prev) => !prev);
