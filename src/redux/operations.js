@@ -18,8 +18,11 @@ import {
   userHabitsDatesUppdate,
 } from "../redux/habitsDates/habitsDatesAction";
 import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
+import { mainHabitDatesCreate } from "./mainHabitDates/mainHabitDatesAction";
+import { createMainHabbitDataArr } from "../helpers/createMainHabitDates";
 import { subscriptionAction } from "./subscription/subscriptionAction";
 import { addPaymentCard, updatePaymentData } from "./addPatmentCard/addPaymentCardAction";
+
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
@@ -34,15 +37,24 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     });
     let count = 0;
     dispatch(subscriptionAction({ plan: data.user.subscription }));
+
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
+
     dispatch(updatePaymentData(data.user.payments));
+
     let arrHabitsDates = data.habits.map((el) => {
       return createHabbitDataArr(el);
     });
+
     dispatch(userHabitsDatesUppdate(arrHabitsDates));
+
+    let mainHabitDates = createMainHabbitDataArr(
+      data.user.cigarettes.startedAt
+    );
+    dispatch(mainHabitDatesCreate(mainHabitDates));
     dispatch(isAuthCurrentUser(true));
 
     Object.values(data.user.quizInfo).map((el) =>

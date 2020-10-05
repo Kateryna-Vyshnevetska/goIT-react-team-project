@@ -2,7 +2,6 @@ import React from "react";
 import style from "./basicInput.module.css";
 
 export function BasicInput({
-  readOnlyWay = "none",
   register,
   forLabel,
   id,
