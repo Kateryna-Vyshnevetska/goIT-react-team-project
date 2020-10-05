@@ -6,13 +6,14 @@ import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
-
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
-import "./profilePage.css";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
+
+import "./profilePage.css";
+import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
 
 export const ProfilePageOption = () => {
   const userInfo = useSelector((state) => state.userInfo);
@@ -123,7 +124,7 @@ export const ProfilePageOption = () => {
             </button>
 
             <form>
-              <div className="profilePage-inputs">
+              <div className={styles.profilePageInputs}>
                 <PasswordInput
                   register={register({
                     minLength: 8,

@@ -168,11 +168,6 @@
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }
 
-.profilePage-inputs .PasswordInput_passwordControl__-jrW1 {
-  top: 13px;
-  right: 20px;
-}
-
 .passwordControl {
   position: absolute;
   top: 22px;
