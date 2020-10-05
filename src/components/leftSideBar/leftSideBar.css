@@ -1,6 +1,6 @@
 .leftSideBar {
   font-family: "Rubik", sans-serif;
-  width: 20%;
+  /* width: 20%; */
 
   border-left: 1px solid #d5e1dc;
   border-bottom: 1px solid #d5e1dc;
@@ -12,8 +12,6 @@
   background-color: rgb(255, 255, 255);
 }
 
-
-
 .logo-wrapper {
   height: 10%;
   display: flex;
@@ -21,19 +19,16 @@
   align-content: center;
 }
 
-
 .logo-block {
-    border-bottom: 1px solid #d5e1dc;
-    
-    display: flex;
-    
+  border-bottom: 1px solid #d5e1dc;
+
+  display: flex;
 }
 
-
 .imageLogoLeftSideBar {
-    display: flex;
-    
-    width: 145px;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+
+  width: 145px;
+  align-content: center;
+  justify-content: center;
 }

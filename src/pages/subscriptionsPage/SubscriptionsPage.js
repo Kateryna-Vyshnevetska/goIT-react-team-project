@@ -1,14 +1,26 @@
 import React, { useState } from "react";
+import { authToken } from "../../redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./SubscriptionsPage.module.css";
 import { ProfileItemCard } from "../../components/profilePageOption/profileMyCardsPage/profileItemCard/ProfileItemCard";
 import { ProfilePageHelpInfo } from "../../components/profilePageOption/profilePageHelpInfo/ProfilePageHelpInfo";
-import  AddNewCard  from "../../components/Modals/AddNewCardModal/AddNewCardModal";
+import AddNewCard from "../../components/Modals/AddNewCardModal/AddNewCardModal";
+import { updateSubscriptionLevel } from "../../redux/operations";
 
 export function SubscriptionsPage() {
   const [modalShow, setModalShow] = useState(false);
+  const state = useSelector((state) => state);
+  const cardArr = useSelector((state) => state.paymentCard);
 
   const close = () => {
     setModalShow((prev) => !prev);
+  };
+
+  const dispatch = useDispatch();
+  const handleClick = (event) => {
+    dispatch(
+      updateSubscriptionLevel({ plan: event.target.name }, authToken(state))
+    );
   };
 
   return (
@@ -21,7 +33,14 @@ export function SubscriptionsPage() {
           <p className={style.subscriptionsSectionTitle}>Тип подписки</p>
           <ul className={style.subscriptionsList}>
             <li className={style.subscriptionsItem}>
-              <p className={style.subscriptionsItemTitle}>Noob</p>
+              <button
+                onClick={handleClick}
+                type="button"
+                name="Noob"
+                className={style.subscriptionsItemTitle}
+              >
+                Noob
+              </button>
               <p className={style.subscriptionsItemDescription}>
                 30 дней —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -30,14 +49,17 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <p
+              <button
+                onClick={handleClick}
+                type="button"
+                name="Basic"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitleBasic,
                 ].join(" ")}
               >
                 Basic
-              </p>
+              </button>
               <p className={style.subscriptionsItemDescription}>
                 1 месяц —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -49,14 +71,17 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <p
+              <button
+                onClick={handleClick}
+                type="button"
+                name="Standart"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitleStandart,
                 ].join(" ")}
               >
                 Standart
-              </p>
+              </button>
               <p className={style.subscriptionsItemDescription}>
                 3 месяца —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -68,14 +93,17 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <p
+              <button
+                onClick={handleClick}
+                type="button"
+                name="Premium"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitlePremium,
                 ].join(" ")}
               >
                 Premium
-              </p>
+              </button>
               <p className={style.subscriptionsItemDescription}>
                 6 месяцев —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -87,14 +115,17 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <p
+              <button
+                onClick={handleClick}
+                type="button"
+                name="Ultra"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitleUltra,
                 ].join(" ")}
               >
                 Ultra
-              </p>
+              </button>
               <p className={style.subscriptionsItemDescription}>
                 12 месяцев —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -112,7 +143,12 @@ export function SubscriptionsPage() {
         </section>
         <section className={style.subscriptionsSectionCards}>
           <p className={style.subscriptionsSectionTitle}>Мои карты</p>
-          <ProfileItemCard />
+          {cardArr.map((el) => (
+            <ProfileItemCard
+              number={el.number}
+              timeExpiration={el.timeExpiration}
+            />
+          ))}
 
           <div className={style.subscriptionsSectionCardsButtons}>
             <button

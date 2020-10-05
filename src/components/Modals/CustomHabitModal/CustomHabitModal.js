@@ -94,9 +94,8 @@ function CustomHabitModal({
               name={"name"}
               labelWidth={"200px"}
               inputWidth={"400px"}
-              // value={textOfHabit}
-              // readOnlyWay="readOnly"
-              // onChange={({ target: { value } }) => console.log(value)}
+              value={textOfHabit}
+              readOnlyWay="readOnly"
             />
           </div>
           <DateInput

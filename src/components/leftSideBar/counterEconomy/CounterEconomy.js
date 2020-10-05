@@ -1,58 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import "./counterEconomy.css";
 import { useSelector } from "react-redux";
 
+import { getMoney, getTime } from "../../../helpers/saveMoney";
 
-export class CounterEconomy extends Component {
-  render() {
-    let hours;
-    const { money, time } = this.props;
+export const CounterEconomy = () => {
+  const guiz = useSelector((state) => state.quizInfo);
+  const array = useSelector((state) => state.userCigarettes.data);
 
-    time < 0
-      ? (hours = Math.round(time / 60))
-      : (hours = Math.floor(time / 60));
-    let minutes = time - hours * 60;
+  const money = getMoney(array, guiz, day);
+  const time = getTime(array, guiz, day);
 
-    console.log("time", time);
+  return (
+    <>
+      <div className="leftSideBar-economyContainer">
+        <ul className="leftSideBar-economyList">
+          <li className="leftSideBar-item">
+            <p className="leftSideBar-economyTitle">Сэкономленные деньги</p>
 
-    return (
-      <>
-        <div className="leftSideBar-economyContainer">
-          <ul className="leftSideBar-economyList">
-            <li className="leftSideBar-item">
-              <p className="leftSideBar-economyTitle">Сэкономленные деньги</p>
-              <p className="leftSideBar-wallet countEconomy">{money} ₴</p>
-            </li>
-            <li className="leftSideBar-item">
-              <p className="leftSideBar-economyTitle">Сэкономленное время</p>
-              <p className="leftSideBar-sandclock countEconomy">
-                {hours} ч {minutes} мин
-              </p>
-            </li>
-          </ul>
-        </div>
-      </>
-    );
-  }
-}
+            <p className="leftSideBar-wallet countEconomy">{money} ₴</p>
+          </li>
+          <li className="leftSideBar-item">
+            <p className="leftSideBar-economyTitle">Сэкономленное время</p>
+            <p className="leftSideBar-sandclock countEconomy">{time}</p>
 
-
-// export const CounterEconomy = (money, hours, minutes) => {
-//   return (
-//     <>
-//       <div className="leftSideBar-economyContainer">
-//         <ul className="leftSideBar-economyList">
-//           <li className="leftSideBar-item">
-//             <p className="leftSideBar-economyTitle">Сэкономленные деньги</p>
-//             <p className="leftSideBar-wallet countEconomy">1200,0 ₴</p>
-//           </li>
-//           <li className="leftSideBar-item">
-//             <p className="leftSideBar-economyTitle">Сэкономленное время</p>
-//             <p className="leftSideBar-sandclock countEconomy">02ч 00мин</p>
-//           </li>
-//         </ul>
-//       </div>
-//     </>
-//   );
-// };
-
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+};

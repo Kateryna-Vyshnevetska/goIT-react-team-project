@@ -1,15 +1,13 @@
 .avatars-img {
   display: block;
-  width: 140px;
-  height: 140px;
 }
 .avatar-list-section {
-  justify-content: stretch;
+  /* justify-content: stretch; */
   display: flex;
-  width: 60%;
+  /* width: 60%; */
 }
 .avatar-container {
-  width: 100%;
+  /* width: 100%; */
   background-color: #f6f6f6;
 }
 .avatar-header {
@@ -30,15 +28,17 @@
   color: #4f4f4f;
 }
 .avatar-list {
-  margin: -10px;
+  /* margin: -10px; */
   height: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  /* padding-top: 22px;
+  padding-bottom: 22px; */
 }
 .avatar-item {
+  width: 157px;
+  height: 157px;
   margin: 10px;
   border-radius: 50%;
 }

@@ -19,9 +19,11 @@ export const MainPage = () => {
   const state = useSelector((state) => state);
   const isLoading = useSelector((state) => state.isLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllUserDataForState(authToken(state)));
-  }, []);
+  }, [authToken(state)]);
+
   return (
     <>
       {isLoading && <Spinner />}

@@ -38,3 +38,6 @@ export const allCigarettes = (state) => {
 };
 export const getTimeForOneCigarette = (state) =>
   state.quizInfo.cigarettePerTime;
+
+export const cigPackPrice = (state) => state.quizInfo.cigarettePackPrice;
+export const sigPerDay = (state) => state.guizInfo.cigarettePerDay;
