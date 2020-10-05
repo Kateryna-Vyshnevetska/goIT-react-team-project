@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./counterEconomy.css";
 import { useSelector } from "react-redux";
 
-
 export class CounterEconomy extends Component {
   render() {
     let hours;
@@ -12,8 +11,6 @@ export class CounterEconomy extends Component {
       ? (hours = Math.round(time / 60))
       : (hours = Math.floor(time / 60));
     let minutes = time - hours * 60;
-
-    console.log("time", time);
 
     return (
       <>
@@ -36,7 +33,6 @@ export class CounterEconomy extends Component {
   }
 }
 
-
 // export const CounterEconomy = (money, hours, minutes) => {
 //   return (
 //     <>
@@ -55,4 +51,3 @@ export class CounterEconomy extends Component {
 //     </>
 //   );
 // };
-

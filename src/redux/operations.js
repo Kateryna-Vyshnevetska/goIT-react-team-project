@@ -4,6 +4,8 @@ import { addUserInfo, updateUserAvatar } from "../redux/user/userActions";
 import { addUserQuizInfo } from "../redux/quizInfo/quizInfoActions";
 import {
   addUserHabits,
+  setFalseForHabit,
+  setTrueForHabit,
   updateOneUserHabitFromSettings,
   uppdateUserHabits,
 } from "../redux/habits/habitsActions";
@@ -213,6 +215,43 @@ export const changeUserPassword = (newPassword, token) => async (dispatch) => {
         Authorization: token,
       },
     });
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateDateInUserHabit = (type, id, indexOfDate, token) => async (
+  dispatch,
+  getState
+) => {
+  dispatch(isLoadingAction(true));
+
+  // console.log("eeeeeeeeeeeeeeeeeeeeeeee", type);
+  if (type === "done") {
+    dispatch(setTrueForHabit({ id, indexOfDate }));
+  } else if (type === "missed") {
+    dispatch(setFalseForHabit({ id, indexOfDate }));
+  }
+  const serchHabit = getState().userHabits.find((el) =>
+    el._id === id ? el : ""
+  );
+  // console.log("Habit :>> ", serchHabit);
+
+  const habit = {
+    id: serchHabit._id,
+    name: serchHabit.name,
+    data: serchHabit.data,
+  };
+
+  try {
+    const { data } = await axios.patch("/habits", habit, {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    dispatch(updateOneUserHabitFromSettings(data.updatedHabit));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
