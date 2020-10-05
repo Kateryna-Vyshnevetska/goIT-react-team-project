@@ -2,19 +2,14 @@ import React, { useState } from "react";
 
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./HabitChoiceModal.module.css";
-import HabitTemplateModal from "../Modals/HabitTemplateModal/HabitTemplateModal";
-import CustomHabitModal from "../Modals/CustomHabitModal/CustomHabitModal";
-function HabitChoiceModal({ close }) {
-  const [modalShowTemplate, setModalShowTemplate] = useState(false);
-  const [modalShowNew, setModalShowNew] = useState(false);
-
-  const closeModalTemplate = () => {
-    setModalShowTemplate((prev) => !prev);
+function HabitChoiceModal({ close, setModalShowNew, setModalShowTemplate }) {
+  const openModalShowTemplate = async () => {
+    await close();
+    await setModalShowTemplate(true);
   };
-
-  const closeModalNew = () => {
-    setModalShowNew((prev) => !prev);
-    close();
+  const openModalShowNew = async () => {
+    await close();
+    await setModalShowNew(true);
   };
 
   return (
@@ -29,23 +24,19 @@ function HabitChoiceModal({ close }) {
 
             <button
               className={styles.modalBodyButtonChose}
-              onClick={() => setModalShowTemplate(true)}
+              onClick={() => openModalShowTemplate()}
             >
               Выбрать шаблонную привычку +
             </button>
-            {modalShowTemplate && (
-              <HabitTemplateModal close={closeModalTemplate} />
-            )}
           </div>
           <div className={styles.modalBodyItem}>
             <p className={styles.modalText}>или создать свою собственную</p>
             <button
               className={styles.modalBodyButtonAdd}
-              onClick={() => setModalShowNew(true)}
+              onClick={() => openModalShowNew()}
             >
               Добавить свою привычку +
             </button>
-            {modalShowNew && <CustomHabitModal close={closeModalNew} />}
           </div>
         </div>
         <button

@@ -5,24 +5,25 @@ import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./DailyResultModal.module.css";
 import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";
+import moment from "moment";
 
 function DailyResultModal({ close }) {
   const [sigCount, setsigCount] = useState("");
   const dispatch = useDispatch();
   const store = useStore();
   const token = store.getState().authToken;
-  const [date, setDate] = useState(new Date());
   const data = store.getState().userCigarettes.data;
   const dataDate = new Date(store.getState().userCigarettes.startedAt);
-
-  const updateCigarettesInfo = async (sigCount) => {
+  const mainHabitDateArr = store.getState().mainHabitDates;
+  const startedAt = store.getState().userCigarettes.startedAt;
+  const updateCigarettesInfo = async (arr) => {
     try {
       await axios
         .post(
           `/users/updateCigarettes`,
           {
-            startedAt: date,
-            data: [...data, sigCount],
+            startedAt: startedAt,
+            data: arr,
           },
           {
             headers: {
@@ -31,11 +32,10 @@ function DailyResultModal({ close }) {
           }
         )
         .then((dataReg) => {
-          console.log(dataReg);
           dispatch(
             addUserCigarettes({
-              startedAt: date,
-              data: [...data, sigCount],
+              startedAt: startedAt,
+              data: arr,
             })
           );
         });
@@ -44,13 +44,27 @@ function DailyResultModal({ close }) {
     }
   };
 
+  function updateDates(sigCount) {
+    let arr = data.slice();
+    const nowTime = new Date();
+    const nowTimeMoment = moment(nowTime).format("MMM Do YY");
+    Object.values(mainHabitDateArr).forEach((element) => {
+      const mainDatesMoment = moment(element).format("MMM Do YY");
+      if (mainDatesMoment.includes(nowTimeMoment)) {
+        let idx = mainHabitDateArr.indexOf(element);
+        arr[idx] = sigCount;
+        updateCigarettesInfo(arr);
+
+        return arr;
+      }
+    });
+  }
+
   function handleSubmit(evt) {
     console.log(dataDate.toDateString());
-    setDate(date.toDateString());
     close();
     evt.preventDefault();
-    const sigInfo = sigCount;
-    updateCigarettesInfo(sigCount);
+    updateDates(sigCount);
   }
   return (
     <>
@@ -84,9 +98,7 @@ function DailyResultModal({ close }) {
               </button>
               <button
                 type="submit"
-                disabled={
-                  !sigCount || dataDate.toDateString() === date.toDateString()
-                }
+                disabled={!sigCount}
                 className={styles.modalBodyButtonSubmit}
               >
                 Сохранить

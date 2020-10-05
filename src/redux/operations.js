@@ -20,6 +20,12 @@ import {
   userHabitsDatesUppdate,
 } from "../redux/habitsDates/habitsDatesAction";
 import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
+import { mainHabitDatesCreate } from "./mainHabitDates/mainHabitDatesAction";
+import { createMainHabbitDataArr } from "../helpers/createMainHabitDates";
+import { subscriptionAction } from "./subscription/subscriptionAction";
+import { addPaymentCard, updatePaymentData } from "./addPatmentCard/addPaymentCardAction";
+
+
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -32,21 +38,32 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
+    dispatch(subscriptionAction({ plan: data.user.subscription }));
+
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
+
+    dispatch(updatePaymentData(data.user.payments));
+
     let arrHabitsDates = data.habits.map((el) => {
       return createHabbitDataArr(el);
     });
+
     dispatch(userHabitsDatesUppdate(arrHabitsDates));
+
+    let mainHabitDates = createMainHabbitDataArr(
+      data.user.cigarettes.startedAt
+    );
+    dispatch(mainHabitDatesCreate(mainHabitDates));
     dispatch(isAuthCurrentUser(true));
-    dispatch(isLoadingAction(false));
 
     Object.values(data.user.quizInfo).map((el) =>
       el >= 1 ? (count += 1) : ""
     );
     count === 4 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -54,12 +71,14 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
 
 export const signUp = (userData) => async (dispatch) => {
   // Регистрация и логин, вовращает токен в стейт
+  dispatch(isLoadingAction(true));
   axios
     .post("/auth/registration", userData)
     .then((res) => axios.post("/auth/login", userData))
     .then((res) => {
       dispatch(isAuthCurrentUser(true));
       dispatch(addUserAuthToken(res.data.access_token));
+      dispatch(isLoadingAction(false));
     })
     .catch((error) => dispatch(errors(error)));
 };
@@ -90,6 +109,7 @@ export const logIn = (userData) => async (dispatch) => {
 export const createHabitAndGetAllHabits = (newHabit, token) => async (
   dispatch
 ) => {
+  dispatch(isLoadingAction(true));
   try {
     const habit = await axios.post("/habits", newHabit, {
       headers: {
@@ -186,6 +206,7 @@ export const updateUserInfo = (newData, token) => async (dispatch) => {
     console.log("data", data);
     dispatch(updateUserAvatar(data.avatar));
     dispatch(addUserInfo(data));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -203,6 +224,7 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
 
     dispatch(addUserQuizInfo(data));
     dispatch(isFirstModal(false));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -215,6 +237,40 @@ export const changeUserPassword = (newPassword, token) => async (dispatch) => {
         Authorization: token,
       },
     });
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const updateSubscriptionLevel = (planName, token) => async (
+  dispatch,
+  getState
+) => {
+  dispatch(isLoadingAction(true));
+
+  try {
+    const data = await axios.post("/users/updateSubscription", planName, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch(subscriptionAction(planName));
+    dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
+export const addCardInfo = (cardInfo, token) => async (dispatch) => {
+   dispatch(isLoadingAction(true));
+  try {
+    axios.post("/users/addPayment", cardInfo, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch(addPaymentCard(cardInfo));
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
@@ -256,3 +312,4 @@ export const updateDateInUserHabit = (type, id, indexOfDate, token) => async (
     dispatch(errors(error.message));
   }
 };
+

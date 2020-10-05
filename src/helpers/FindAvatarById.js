@@ -4,12 +4,12 @@ import avatars from "../avatars";
 
 const FindAvatarById = () => {
   const avatarById = useSelector((state) => state.userInfo.avatar);
-  const avatarDefault = avatars.avatar1;
+  const avatarDefault = avatars[0].avatar;
 
   return (
     <>
       {avatarById === "" ? (
-        <img src={avatarDefault} alt="avatar" className="avatar"  />
+        <img src={avatarDefault} alt="avatar" className="avatar" />
       ) : (
         <>
           {avatars.map((el) => {
@@ -20,7 +20,6 @@ const FindAvatarById = () => {
                   src={el.avatar}
                   alt="avatar"
                   className="avatar"
-                  
                 />
               );
             }

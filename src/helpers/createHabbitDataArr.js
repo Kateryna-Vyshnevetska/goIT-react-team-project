@@ -48,6 +48,23 @@ export const createHabbitDataArr = (habbits) => {
     }
   };
 
+  const workDays = (data, arr) => {
+    const datanew = new Date(data);
+    while (arr.length < 21) {
+      const newData = new Date(datanew.setDate(datanew.getDate() + 1));
+      if (
+        new Date(newData).getDay() === 1 ||
+        new Date(newData).getDay() === 2 ||
+        new Date(newData).getDay() === 3 ||
+        new Date(newData).getDay() === 4 ||
+        new Date(newData).getDay() === 5
+      ) {
+        const newDataFormat = moment(newData);
+        arr.push(newDataFormat.format());
+      }
+    }
+  };
+
   const data = habbits.planningTime.slice(0, 67);
   const datanew = new Date(data);
   let arr = [];
@@ -56,20 +73,47 @@ export const createHabbitDataArr = (habbits) => {
     addOneDay(data, arr);
     return { habitId: habbits._id, dates: arr };
   }
+
   if (habbits.iteration == 2) {
     arr.push(moment(datanew).format());
     addTwoDays(data, arr);
     return { habitId: habbits._id, dates: arr };
   }
+
   if (habbits.iteration == 3) {
-    arr.push(moment(datanew).format());
+    if (
+      new Date(data).getDay() === 1 ||
+      new Date(data).getDay() === 3 ||
+      new Date(data).getDay() === 5
+    ) {
+      arr.push(moment(datanew).format());
+    }
     MonWedFri(data, arr);
     return { habitId: habbits._id, dates: arr };
   }
 
   if (habbits.iteration == 4) {
-    arr.push(moment(datanew).format());
+    if (
+      new Date(data).getDay() === 2 ||
+      new Date(data).getDay() === 4 ||
+      new Date(data).getDay() === 6
+    ) {
+      arr.push(moment(datanew).format());
+    }
     TueThuSat(data, arr);
+    return { habitId: habbits._id, dates: arr };
+  }
+  if (habbits.iteration == 5) {
+    if (
+      new Date(data).getDay() === 1 ||
+      new Date(data).getDay() === 2 ||
+      new Date(data).getDay() === 3 ||
+      new Date(data).getDay() === 4 ||
+      new Date(data).getDay() === 5
+    ) {
+      arr.push(moment(datanew).format());
+    }
+    workDays(data, arr);
     return { habitId: habbits._id, dates: arr };
   }
 };
