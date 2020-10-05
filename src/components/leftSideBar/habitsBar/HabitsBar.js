@@ -3,14 +3,25 @@ import { useSelector } from "react-redux";
 import "./habitsBar.css";
 import { HabitItem } from "./habitItem/HabitItem";
 import HabitChoiceModal from "../../habitChoiceModal/HabitChoiceModal";
-
+import HabitTemplateModal from "../../Modals/HabitTemplateModal/HabitTemplateModal";
+import CustomHabitModal from "../../Modals/CustomHabitModal/CustomHabitModal";
 export const HabitsBar = () => {
   const [modalShow, setModalShow] = useState(false);
-
+  const [modalShowTemplate, setModalShowTemplate] = useState(false);
+  const [modalShowNew, setModalShowNew] = useState(false);
   const userHabits = useSelector((state) => state.userHabits);
+  const [valueOfButton, setValueOfButton] = useState("");
 
   const close = () => {
     setModalShow((prev) => !prev);
+  };
+
+  const closeModalTemplate = () => {
+    setModalShowTemplate((prev) => !prev);
+  };
+
+  const closeModalNew = () => {
+    setModalShowNew((prev) => !prev);
   };
 
   return (
@@ -23,7 +34,30 @@ export const HabitsBar = () => {
               <HabitItem nameOfHabit={el.name} elemId={el._id} key={el._id} />
             ))}
           </ul>
-          {modalShow && <HabitChoiceModal close={close} />}
+          {modalShow && (
+            <HabitChoiceModal
+              close={close}
+              setModalShowTemplate={setModalShowTemplate}
+              setModalShowNew={setModalShowNew}
+            />
+          )}
+          {modalShowTemplate && (
+            <HabitTemplateModal
+              setModalShow={setModalShow}
+              close={closeModalTemplate}
+              setValueOfButton={setValueOfButton}
+              setModalShowNew={setModalShowNew}
+              valueOfButton={valueOfButton}
+            />
+          )}
+          {modalShowNew && (
+            <CustomHabitModal
+              close={closeModalNew}
+              setModalShow={setModalShow}
+              textOfHabit={valueOfButton}
+              settextOfHabit={setValueOfButton}
+            />
+          )}
         </div>
         <button
           onClick={() => setModalShow(true)}
