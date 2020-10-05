@@ -55,8 +55,8 @@
   display: flex;
   flex-wrap: wrap;
   border-radius: 50%;
-  width: 108px;
-  height: 108px;
+  /* width: 108px;
+  height: 108px; */
   margin-bottom: 10px;
 }
 .profilePage-AvatarLink:hover,

@@ -18,9 +18,11 @@ import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
+import FindAvatarById from "../../helpers/FindAvatarById";
 import { quizInfo } from "../../redux/selectors";
 
 export const ProfilePageOption = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
   const history = useHistory();
@@ -195,7 +197,7 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              <img alt="avatar" className="profilePage-Avatar" />
+              {FindAvatarById(avatarById)}
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             <div className="profilePage-subscriptionArea">
