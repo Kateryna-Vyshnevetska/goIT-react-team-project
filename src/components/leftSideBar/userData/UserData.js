@@ -6,6 +6,7 @@ import { logOut } from "../../../redux/operations";
 import FindAvatarById from "../../../helpers/FindAvatarById";
 
 export const UserData = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
   const clickTologOut = () => {
@@ -22,7 +23,7 @@ export const UserData = () => {
               : "NickName"}
           </p>
         </Link>
-        
+
         <button
           type="button"
           onClick={clickTologOut}

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import { authToken } from "../../redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./SubscriptionsPage.module.css";
 import { ProfileItemCard } from "../../components/profilePageOption/profileMyCardsPage/profileItemCard/ProfileItemCard";
 import { ProfilePageHelpInfo } from "../../components/profilePageOption/profilePageHelpInfo/ProfilePageHelpInfo";
 import AddNewCard from "../../components/Modals/AddNewCardModal/AddNewCardModal";
-import { useDispatch, useSelector } from "react-redux";
 import { updateSubscriptionLevel } from "../../redux/operations";
-import { authToken } from "../../redux/selectors";
 
 export function SubscriptionsPage() {
   const [modalShow, setModalShow] = useState(false);
-
   const state = useSelector((state) => state);
+  const cardArr = useSelector((state) => state.paymentCard);
 
   const close = () => {
     setModalShow((prev) => !prev);
@@ -143,7 +143,12 @@ export function SubscriptionsPage() {
         </section>
         <section className={style.subscriptionsSectionCards}>
           <p className={style.subscriptionsSectionTitle}>Мои карты</p>
-          <ProfileItemCard />
+          {cardArr.map((el) => (
+            <ProfileItemCard
+              number={el.number}
+              timeExpiration={el.timeExpiration}
+            />
+          ))}
 
           <div className={style.subscriptionsSectionCardsButtons}>
             <button
