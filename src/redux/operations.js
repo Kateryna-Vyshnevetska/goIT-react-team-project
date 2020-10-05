@@ -18,6 +18,7 @@ import {
   userHabitsDatesUppdate,
 } from "../redux/habitsDates/habitsDatesAction";
 import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
+import { addPaymentCard, updatePaymentData } from "./addPatmentCard/addPaymentCardAction";
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
 export const getAllUserDataForState = (token) => async (dispatch) => {
@@ -35,6 +36,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
     dispatch(addUserCigarettes(data.user.cigarettes));
+    dispatch(updatePaymentData(data.user.payments));
     let arrHabitsDates = data.habits.map((el) => {
       return createHabbitDataArr(el);
     });
@@ -223,3 +225,19 @@ export const changeUserPassword = (newPassword, token) => async (dispatch) => {
     dispatch(errors(error.message));
   }
 };
+
+export const addCardInfo = (cardInfo, token) => async (dispatch) => {
+   dispatch(isLoadingAction(true));
+  try {
+    axios.post("/users/addPayment", cardInfo, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch(addPaymentCard(cardInfo));
+    dispatch(isLoadingAction(false));
+  } catch (error) {
+    dispatch(errors(error.message));
+  }
+};
+
