@@ -19,6 +19,7 @@ import { CSSTransition } from "react-transition-group";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
 import FindAvatarById from "../../helpers/FindAvatarById";
+import { quizInfo } from "../../redux/selectors";
 
 export const ProfilePageOption = () => {
   const avatarById = useSelector((state) => state.userInfo.avatar);
