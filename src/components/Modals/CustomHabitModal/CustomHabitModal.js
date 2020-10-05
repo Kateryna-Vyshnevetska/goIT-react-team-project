@@ -61,7 +61,6 @@ function CustomHabitModal({ close, textOfHabit }) {
               inputWidth={"400px"}
               value={textOfHabit}
               readOnlyWay="readOnly"
-              onChange={({ target: { value } }) => console.log(value)}
             />
           </div>
           <DateInput
