@@ -10,7 +10,7 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
 
-function CustomHabitModal({ close, textOfHabit }) {
+function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm();
@@ -27,10 +27,14 @@ function CustomHabitModal({ close, textOfHabit }) {
     setDate(date);
   };
 
+  const goBack = () => {
+    setModalShow(true);
+    close();
+  };
+
   const onSubmit = (data) => {
     data.planningTime = `${date} ${data.time} ${getRandomColor()}`;
     delete data.time;
-    // dispatch(createHabbitDataArr(data));
     dispatch(createHabitAndGetAllHabits(data, authToken(state)));
     close();
   };
@@ -61,7 +65,6 @@ function CustomHabitModal({ close, textOfHabit }) {
               inputWidth={"400px"}
               value={textOfHabit}
               readOnlyWay="readOnly"
-              onChange={({ target: { value } }) => console.log(value)}
             />
           </div>
           <DateInput
@@ -94,23 +97,25 @@ function CustomHabitModal({ close, textOfHabit }) {
               Повторение *
             </label>
             <select
+              className={style.select}
               name="iteration"
               ref={register({
                 required: true,
               })}
             >
-              <option></option>
+              <option aria-label="None" value="" />
               <option value="1">Ежедневно</option>
               <option value="2">Раз в 2 дня</option>
               <option value="3">ПН, СР, ПТ</option>
               <option value="4">ВТ, ЧТ, СБ</option>
+              <option value="5">По будням</option>
             </select>
           </div>
           <button disabled className={style.btnDelete}>
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>
-            <button onClick={() => close()} className={style.btnSecondary}>
+            <button onClick={() => goBack()} className={style.btnSecondary}>
               Отмена
             </button>
             <button type="Submit" className={style.btnMain}>

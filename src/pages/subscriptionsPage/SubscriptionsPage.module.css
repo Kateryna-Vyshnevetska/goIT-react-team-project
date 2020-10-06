@@ -1,3 +1,7 @@
+button {
+  border: transparent;
+}
+
 .subscriptionsContainer {
   /* padding: 60px 62px; */
   width: 60%;

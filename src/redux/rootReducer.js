@@ -12,6 +12,12 @@ import { firstModalForUser } from "./flagForFirsModal/flagFirstModalReducer";
 import { usersHabitsDates } from "./habitsDates/habitsDatesReducer";
 import { currentDay } from "./currentDay/currentDayReducer";
 
+import { mainHabitDates } from "./mainHabitDates/mainHabitDatesReducer";
+
+import { subscriptionLevel } from "../redux/subscription/subscriptionReducer";
+import { paymentCard } from "./addPatmentCard/addPaymentCardReduser";
+
+
 export const rootReducer = combineReducers({
   authToken,
   firstModalForUser,
@@ -24,4 +30,8 @@ export const rootReducer = combineReducers({
   currentDay,
   isLoading,
   errors: errorReducer,
+  mainHabitDates,
+  subscriptionLevel,
+  paymentCard,
+
 });

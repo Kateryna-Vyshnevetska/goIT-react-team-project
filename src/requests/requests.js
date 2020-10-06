@@ -115,25 +115,32 @@ const updateQuizeInfo = async () => {
     });
 };
 
-const updateCigarettesInfo = async () => {
-  await axios
-    .post(
-      `/users/updateCigarettes`,
-      {
-        startedAt: "2020-09-14T09:11:03.448Z",
-        data: [12, null],
-      },
-      {
-        headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNzQzZDQwM2E1NzQ0MDAxNzNiOTI5MCIsImlhdCI6MTYwMTQ1NTc2NiwiZXhwIjoxNjAyMDYwNTY2fQ.PDCcQieHi5omGlXVf3TXogcUmug-nfV3buqF-taAFx0",
+export const updateCigarettesInfo = async (arr, startedAt, token) => {
+  try {
+    await axios
+      .post(
+        `/users/updateCigarettes`,
+        {
+          startedAt: startedAt,
+          data: arr,
         },
-      }
-    )
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((dataReg) => {
+        // dispatch(
+        //   addUserCigarettes({
+        //     startedAt: startedAt,
+        //     data: arr,
+        //   })
+        // );
+      });
+  } catch (error) {
+    console.log(error);
+  }
 };
 const addPaymentCard = async () => {
   await axios

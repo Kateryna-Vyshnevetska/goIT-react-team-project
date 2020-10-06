@@ -1,25 +1,40 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Link,
+  BrowserRouter as Router,
+  useHistory,
+} from "react-router-dom";
 import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
-
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
-import "./profilePage.css";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { PasswordInputRepeat } from "./profilePasswordInput/ProfilePasswordInput";
+import FindAvatarById from "../../helpers/FindAvatarById";
+import { quizInfo } from "../../redux/selectors";
+
+import "./profilePage.css";
+import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
 
 export const ProfilePageOption = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
+  const history = useHistory();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
+
+  const subscriptionLevel = useSelector(
+    (state) => state.subscriptionLevel.plan
+  );
+  console.log("subscriptionLevel", subscriptionLevel);
 
   const { register, errors, handleSubmit } = useForm();
 
@@ -30,10 +45,12 @@ export const ProfilePageOption = () => {
       }
     }
     dispatch(updateUserInfo(data, authToken));
+    history.push("/");
   };
 
   const handleSubmitPass = (ev) => {
     ev.preventDefault();
+    history.push("/");
   };
   //   // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
   // };
@@ -63,7 +80,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.firstName}
               />
-              <p>{errors.firstName && "Минимально 2 символа"}</p>
+              <p className={styles.errorMessage}>
+                {errors.firstName && "Минимально 2 символа"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -79,7 +98,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.lastName}
               />
-              <p>{errors.lastName && "Минимально 2 символа"}</p>
+              <p className={styles.errorMessage}>
+                {errors.lastName && "Минимально 2 символа"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -97,7 +118,9 @@ export const ProfilePageOption = () => {
                 labelWidth={"125px"}
                 inputWidth={"345px"}
               />
-              <p>{errors.phone && "В вашем номере должно быть 11 цифр"}</p>
+              <p className={styles.errorMessage}>
+                {errors.phone && "В вашем номере должно быть 11 цифр"}
+              </p>
             </div>
 
             <div className="profilePage-inputs">
@@ -114,6 +137,9 @@ export const ProfilePageOption = () => {
                 inputWidth={"345px"}
                 placeholder={userInfo.email}
               />
+              <p className={styles.errorMessage}>
+                {errors.email && "Введен неверный email"}
+              </p>
             </div>
             <button
               type="Submit"
@@ -123,12 +149,12 @@ export const ProfilePageOption = () => {
             </button>
 
             <form>
-              <div className="profilePage-inputs">
+              <div className={styles.profilePageInputs}>
                 <PasswordInput
                   register={register({
                     minLength: 8,
                     maxLength: 16,
-                    required: true,
+                    // required: true,
                     pattern: /[0-9A-F]/,
                   })}
                   name="password"
@@ -140,8 +166,11 @@ export const ProfilePageOption = () => {
                   labelWidth={"120px"}
                   inputWidth={"345px"}
                   marginBottom="40px"
-                  handleChange={({ target: { value } }) => setPassword(value)}
+                  // handleChange={({ target: { value } }) => setPassword(value)}
                 />
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
 
               <div className="profilePage-inputs">
@@ -155,7 +184,7 @@ export const ProfilePageOption = () => {
                     register={register({
                       minLength: 8,
                       maxLength: 16,
-                      required: true,
+                      // required: true,
                       pattern: /[0-9A-F]/,
                     })}
                     placeholder="Повторите свой пароль"
@@ -167,11 +196,14 @@ export const ProfilePageOption = () => {
                     labelWidth={"120px"}
                     inputWidth={"345px"}
                     marginBottom="40px"
-                    handleChange={({ target: { value } }) =>
-                      setConfirmPassword(value)
-                    }
+                    // handleChange={({ target: { value } }) =>
+                    //   setConfirmPassword(value)
+                    // }
                   />
                 </CSSTransition>
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
               <button
                 type="Submit"
@@ -186,11 +218,13 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              <img alt="avatar" className="profilePage-Avatar" />
+              {FindAvatarById(avatarById)}
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
             <div className="profilePage-subscriptionArea">
-              <span className="profilePage-subscriptionText">sdddwg</span>
+              <span className="profilePage-subscriptionText">
+                {subscriptionLevel}
+              </span>
             </div>
 
             <button type="Submit" className="profilePage-subscription-btn">

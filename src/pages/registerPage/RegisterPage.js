@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
+import { NotificationErrors } from "../../components/notificationErrors/NotificationErrors";
 const RegisterPage = ({ setregisterOpenPage }) => {
   const dispatch = useDispatch();
 
@@ -25,9 +26,11 @@ const RegisterPage = ({ setregisterOpenPage }) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => dispatch(signUp(data));
+  const message = "Такой пользователь уже существует!"
 
   return (
     <div className={styles.container}>
+      <NotificationErrors message={message}/>
       <div className={styles.wrapper}>
         <img
           src={require("../../images/logIn/logo.svg")}
@@ -41,41 +44,48 @@ const RegisterPage = ({ setregisterOpenPage }) => {
             Введите свои данные, чтобы <br /> продолжить использовать наше
             приложение
           </p>
-          <BasicInput
-            register={register({
-              minLength: 11,
-              required: true,
-              pattern: /[@]/,
-            })}
-            placeholder="Введите свой E-mail"
-            type="text"
-            forLabel="E-mail"
-            id="e-mail"
-            labelText="E-mail"
-            name="email"
-            labelWidth="120px"
-            inputWidth="345px"
-            marginBottom="15px"
-          />
-          <p>{errors.email?.message}</p>
-          <PasswordInput
-            register={register({
-              minLength: 8,
-              maxLength: 16,
-              required: true,
-              pattern: /[0-9A-F]/,
-            })}
-            placeholder="Введите свой password"
-            type="password"
-            forLabel="password-input"
-            id="password-input"
-            labelText="Пароль"
-            name="password"
-            labelWidth="120px"
-            inputWidth="345px"
-            marginBottom="40px"
-          />
-          <p>{errors.password?.message}</p>
+          <div>
+            <BasicInput
+              register={register({
+                minLength: 11,
+                required: true,
+                pattern: /[@]/,
+              })}
+              placeholder="Введите свой E-mail"
+              type="text"
+              forLabel="E-mail"
+              id="e-mail"
+              labelText="E-mail"
+              name="email"
+              labelWidth="120px"
+              inputWidth="345px"
+              marginBottom="15px"
+            />
+            <p className={styles.errorMessageEmail}>{errors.email?.message}</p>
+          </div>
+
+          <div>
+            <PasswordInput
+              register={register({
+                minLength: 8,
+                maxLength: 16,
+                required: true,
+                pattern: /[0-9A-F]/,
+              })}
+              placeholder="Введите свой password"
+              type="password"
+              forLabel="password-input"
+              id="password-input"
+              labelText="Пароль"
+              name="password"
+              labelWidth="120px"
+              inputWidth="345px"
+              marginBottom="40px"
+            />
+            <p className={styles.errorMessagePass}>
+              {errors.password?.message}
+            </p>
+          </div>
           <div className={styles.buttonContaineer}>
             <button type="Submit" className={styles.logInButton}>
               Зарегистрироваться

@@ -4,16 +4,10 @@ import { defaultHabits } from "./habitsArrayForDraw";
 import { v4 as uuidv4 } from "uuid";
 import CustomHabitModal from "../CustomHabitModal/CustomHabitModal";
 
-function HabitTemplateModalItem() {
-  const [modalShow, setModalShow] = useState(false);
-  const [valueOfButton, setValueOfButton] = useState("");
-
-  const close = () => {
-    setModalShow((prev) => !prev);
-  };
-
+function HabitTemplateModalItem({ close, setValueOfButton, setModalShowNew }) {
   const handleClickBtn = (target) => {
-    setModalShow(true);
+    close();
+    setModalShowNew(true);
     // console.log("target.textContent", target.textContent);
     setValueOfButton(target.textContent);
   };
@@ -22,9 +16,6 @@ function HabitTemplateModalItem() {
     <ul className="habit-template-list">
       {defaultHabits.map((el) => (
         <li className="habit-template-item" key={uuidv4()}>
-          {modalShow && (
-            <CustomHabitModal close={close} textOfHabit={valueOfButton} />
-          )}
           <button
             to="#"
             className="habit-template-btn"
