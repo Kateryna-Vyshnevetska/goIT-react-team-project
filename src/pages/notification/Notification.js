@@ -1,42 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { userHabits, usersHabitsDates } from "../../redux/selectors";
-import moment from "moment";
 import "./notification.css";
 import { NotificationItem } from "./NotificationItem";
+import { checkMessagesForNote } from "../../helpers/checkNotifications";
 
 export const Notifiacation = () => {
   const state = useSelector((state) => state);
   const habitsList = userHabits(state);
   const habitsInfo = usersHabitsDates(state);
-  const userCompletedHabitsID = [];
-  const userSuccessCompletedHabitsID = [];
-  const notificationArr = [];
 
-  const dateToday = new Date();
-  const dateNow = moment(dateToday).format().substring(0, 10);
-
-  const completedHabits = habitsList.filter(
-    (habit) => habit.data.every((elem) => elem === true || elem === null) && habit
-  );
-
-  completedHabits.map((item) =>
-    item.data.every((el) => el === true)
-      ? userSuccessCompletedHabitsID.push(item["_id"])
-      : userCompletedHabitsID.push(item["_id"])
-  );
-
-  const arrayTodayCompletedHabitsID = habitsInfo
-    .filter((habit) => habit.dates[habit.dates.length - 1].split("T")[0] === dateNow)
-    .map((habit) => habit.habitId);
-
-  const setNotificationArray = (habitsArray1, habitsArray2) =>
-    arrayTodayCompletedHabitsID.map((key) => {
-      habitsArray1.map((id) => id === key && notificationArr.push("success"));
-      habitsArray2.map((id) => id === key && notificationArr.push("completed"));
-    });
-
-  setNotificationArray(userSuccessCompletedHabitsID, userCompletedHabitsID);
+  const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   return (
     <div className="notif-list-section">

@@ -15,6 +15,8 @@ const Congratulations = ({ fromCheckList, habitName, close }) => {
     setIsShowModalEmpty(true);
   };
 
+  // notificationCheck && showModal();
+
   return (
     <>
       <div id="home" className={style.congratulationWrapper}>
@@ -23,31 +25,17 @@ const Congratulations = ({ fromCheckList, habitName, close }) => {
           <p>Вы успешно освоили привычку и стали на шаг ближе к своей цели.</p>
         </div>
         <div>
-          <img
-            src={congratsPicture}
-            alt="congratulations"
-            width="450"
-            height="320"
-          />
+          <img src={congratsPicture} alt="congratulations" width="450" height="320" />
         </div>
         <div className={style.congratsBtnWrapper}>
-          <button
-            onClick={() => showModal()}
-            className={style.buttonTransparent}
-          >
+          <button onClick={() => showModal()} className={style.buttonTransparent}>
             Повторить
           </button>
-          <button
-            onClick={() => showModalEmpty()}
-            className={style.buttonTransparent}
-          >
+          <button onClick={() => showModalEmpty()} className={style.buttonTransparent}>
             Добавить новую
           </button>
         </div>
-        <button
-          onClick={() => close()}
-          className={style.modalBodyButtonclose}
-        ></button>
+        <button onClick={() => close} className={style.modalBodyButtonclose}></button>
       </div>
       {isShowModal && (
         <CustomHabitModal
