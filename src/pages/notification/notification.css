@@ -30,9 +30,15 @@
   font-size: 26px;
   line-height: 1.19;
 }
+
 .notif-header-title {
   color: #4f4f4f;
 }
+
+.notificationText {
+  margin: 0;
+}
+
 .notif-header-counter {
   font-family: "Rubik", sans-serif;
   font-style: normal;
