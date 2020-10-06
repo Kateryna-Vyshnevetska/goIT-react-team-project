@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
+import Select from "@material-ui/core/Select";
 
 function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
@@ -97,17 +98,36 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
             <label className={style.label} htmlFor="repeat">
               Повторение *
             </label>
+            {/* 
+            <Select
+              native
+              value={state.age}
+              // label="Age"
+              inputProps={{
+                name: "age",
+                id: "outlined-age-native-simple",
+              }}
+            >
+              <option aria-label="None" value="" />
+              <option value="1">Ежедневно</option>
+              <option value="2">Раз в 2 дня</option>
+              <option value="3">ПН, СР, ПТ</option>
+              <option value="4">ВТ, ЧТ, СБ</option>
+              <option value="5">По будням</option>
+            </Select> */}
             <select
+              className={style.select}
               name="iteration"
               ref={register({
                 required: true,
               })}
             >
-              <option></option>
+              <option aria-label="None" value="" />
               <option value="1">Ежедневно</option>
               <option value="2">Раз в 2 дня</option>
               <option value="3">ПН, СР, ПТ</option>
               <option value="4">ВТ, ЧТ, СБ</option>
+              <option value="5">По будням</option>
             </select>
           </div>
           <button disabled className={style.btnDelete}>
