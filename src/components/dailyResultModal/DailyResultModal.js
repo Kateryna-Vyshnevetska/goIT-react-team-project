@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
+import moment from "moment";
 import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./DailyResultModal.module.css";
@@ -18,8 +19,11 @@ function DailyResultModal({ close }) {
 
   function updateDates(sigCount) {
     let arr = data.slice();
+    const nowTime = new Date();
+    const nowTimeMoment = moment(nowTime).format("MMM Do YY");
     Object.values(mainHabitDateArr).forEach((element) => {
-      if (element.includes(currentDay)) {
+      const mainDatesMoment = moment(element).format("MMM Do YY");
+      if (mainDatesMoment.includes(nowTimeMoment)) {
         let idx = mainHabitDateArr.indexOf(element);
         if (arr[idx] !== null) {
           arr[idx] = Number(arr[idx]) + Number(sigCount);

@@ -4,6 +4,7 @@ import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";
 import { updateCigarettesInfo } from "../../requests/requests";
 import modalBackDropNoClose from "../modalBackDrop/ModalBackDropNoClose";
 import styles from "./CheckPrevDaySigs.module.css";
+import moment from "moment";
 
 function CheckPrevDaySigs({ close }) {
   const dispatch = useDispatch();
@@ -16,8 +17,11 @@ function CheckPrevDaySigs({ close }) {
 
   const didntSmoked = async () => {
     let arr = data.slice();
+    const nowTime = new Date();
+    const nowTimeMoment = moment(nowTime).format("MMM Do YY");
     Object.values(mainHabitDateArr).forEach((element) => {
-      if (element.includes(currentDay)) {
+      const mainDatesMoment = moment(element).format("MMM Do YY");
+      if (mainDatesMoment.includes(nowTimeMoment)) {
         let idx = mainHabitDateArr.indexOf(element);
         if (arr[idx - 1] === null) {
           arr[idx - 1] = 0;
@@ -37,8 +41,11 @@ function CheckPrevDaySigs({ close }) {
   };
   const smoked = async () => {
     let arr = data.slice();
+    const nowTime = new Date();
+    const nowTimeMoment = moment(nowTime).format("MMM Do YY");
     Object.values(mainHabitDateArr).forEach((element) => {
-      if (element.includes(currentDay)) {
+      const mainDatesMoment = moment(element).format("MMM Do YY");
+      if (mainDatesMoment.includes(nowTimeMoment)) {
         let idx = mainHabitDateArr.indexOf(element);
         if (arr[idx - 1] === null) {
           arr[idx - 1] = false;
