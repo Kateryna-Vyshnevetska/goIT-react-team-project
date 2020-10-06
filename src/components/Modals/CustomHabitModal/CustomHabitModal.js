@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/CheckListPage";
-import Select from "@material-ui/core/Select";
 
 function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
@@ -36,7 +35,6 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const onSubmit = (data) => {
     data.planningTime = `${date} ${data.time} ${getRandomColor()}`;
     delete data.time;
-    // dispatch(createHabbitDataArr(data));
     dispatch(createHabitAndGetAllHabits(data, authToken(state)));
     close();
   };
@@ -98,23 +96,6 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
             <label className={style.label} htmlFor="repeat">
               Повторение *
             </label>
-            {/* 
-            <Select
-              native
-              value={state.age}
-              // label="Age"
-              inputProps={{
-                name: "age",
-                id: "outlined-age-native-simple",
-              }}
-            >
-              <option aria-label="None" value="" />
-              <option value="1">Ежедневно</option>
-              <option value="2">Раз в 2 дня</option>
-              <option value="3">ПН, СР, ПТ</option>
-              <option value="4">ВТ, ЧТ, СБ</option>
-              <option value="5">По будням</option>
-            </Select> */}
             <select
               className={style.select}
               name="iteration"

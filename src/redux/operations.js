@@ -23,8 +23,10 @@ import { userHabitsDatesCreate } from "../redux/habitsDates/habitsDatesAction";
 import { mainHabitDatesCreate } from "./mainHabitDates/mainHabitDatesAction";
 import { createMainHabbitDataArr } from "../helpers/createMainHabitDates";
 import { subscriptionAction } from "./subscription/subscriptionAction";
-import { addPaymentCard, updatePaymentData } from "./addPatmentCard/addPaymentCardAction";
-
+import {
+  addPaymentCard,
+  updatePaymentData,
+} from "./addPatmentCard/addPaymentCardAction";
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
@@ -40,10 +42,10 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
     let count = 0;
     dispatch(subscriptionAction({ plan: data.user.subscription }));
 
+    dispatch(addUserCigarettes(data.user.cigarettes));
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
-    dispatch(addUserCigarettes(data.user.cigarettes));
 
     dispatch(updatePaymentData(data.user.payments));
 
@@ -262,7 +264,7 @@ export const updateSubscriptionLevel = (planName, token) => async (
 };
 
 export const addCardInfo = (cardInfo, token) => async (dispatch) => {
-   dispatch(isLoadingAction(true));
+  dispatch(isLoadingAction(true));
   try {
     axios.post("/users/addPayment", cardInfo, {
       headers: {
@@ -312,4 +314,3 @@ export const updateDateInUserHabit = (type, id, indexOfDate, token) => async (
     dispatch(errors(error.message));
   }
 };
-
