@@ -35,7 +35,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     notificationArr.length && dispatch(countNotesAction(notificationArr));
-  }, [notificationArr]);
+  });
 
   return (
     <>
