@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { PasswordInput } from "../../components/BasicInput/PasswordInput/PasswordInput";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
+import { NotificationErrors } from "../../components/notificationErrors/NotificationErrors";
 const RegisterPage = ({ setregisterOpenPage }) => {
   const dispatch = useDispatch();
 
@@ -25,9 +26,11 @@ const RegisterPage = ({ setregisterOpenPage }) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => dispatch(signUp(data));
+  const message = "Такой пользователь уже существует!"
 
   return (
     <div className={styles.container}>
+      <NotificationErrors message={message}/>
       <div className={styles.wrapper}>
         <img
           src={require("../../images/logIn/logo.svg")}

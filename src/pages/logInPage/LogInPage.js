@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { logIn } from "../../redux/operations";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers";
+import { NotificationErrors } from "../../components/notificationErrors/NotificationErrors";
 import * as yup from "yup";
 
 const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
@@ -25,9 +26,11 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => dispatch(logIn(data));
+  const message = "Введен неверный Логин или пароль!"
 
   return (
     <div className={styles.container}>
+      <NotificationErrors message={message} />
       <div>
         <img
           src={require("../../images/logIn/logo.svg")}

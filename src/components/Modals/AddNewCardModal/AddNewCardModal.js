@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { authToken } from "../../../redux/selectors";
 
 const AddNewCard = ({ close }) => {
-  const [cardNumber, setCardNumber] = useState("")
+  const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
-  const state = useSelector((state) => state)
-const dispatch = useDispatch()
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const cardInfo = {
     number: cardNumber,
     timeExpiration: expirationDate,
@@ -22,7 +22,7 @@ const dispatch = useDispatch()
     setCardNumber("");
     setExpirationDate("");
     close();
-  }
+  };
 
   return (
     <>
@@ -57,10 +57,7 @@ const dispatch = useDispatch()
             >
               Отмена
             </button>
-            <button
-              type="submit"
-              className="addNewCard-btnSave"
-            >
+            <button type="submit" className="addNewCard-btnSave">
               Сохранить
             </button>
           </div>
