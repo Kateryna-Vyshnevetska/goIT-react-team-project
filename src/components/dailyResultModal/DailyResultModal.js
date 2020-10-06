@@ -52,7 +52,13 @@ function DailyResultModal({ close }) {
       const mainDatesMoment = moment(element).format("MMM Do YY");
       if (mainDatesMoment.includes(nowTimeMoment)) {
         let idx = mainHabitDateArr.indexOf(element);
-        arr[idx] = sigCount;
+
+        if (arr[idx] !== null) {
+          arr[idx] = Number(arr[idx]) + Number(sigCount);
+        } else {
+          arr[idx] = sigCount;
+        }
+
         updateCigarettesInfo(arr);
 
         return arr;

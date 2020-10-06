@@ -10,7 +10,7 @@ import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/getRandomColor";
 
-function CustomHabitModal({ close, textOfHabit }) {
+function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm();
@@ -25,6 +25,11 @@ function CustomHabitModal({ close, textOfHabit }) {
 
   const handleChangeInput = (date) => {
     setDate(date);
+  };
+
+  const goBack = () => {
+    setModalShow(true);
+    close();
   };
 
   const onSubmit = (data) => {
@@ -109,7 +114,7 @@ function CustomHabitModal({ close, textOfHabit }) {
             <span className={style.btnDeleteIcon}></span> Удалить привычку
           </button>
           <div className={style.actionBtnContainer}>
-            <button onClick={() => close()} className={style.btnSecondary}>
+            <button onClick={() => goBack()} className={style.btnSecondary}>
               Отмена
             </button>
             <button type="Submit" className={style.btnMain}>
