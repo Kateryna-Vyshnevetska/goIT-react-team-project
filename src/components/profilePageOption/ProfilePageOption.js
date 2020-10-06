@@ -34,7 +34,6 @@ export const ProfilePageOption = () => {
   const subscriptionLevel = useSelector(
     (state) => state.subscriptionLevel.plan
   );
-  console.log("subscriptionLevel", subscriptionLevel);
 
   const { register, errors, handleSubmit } = useForm();
 

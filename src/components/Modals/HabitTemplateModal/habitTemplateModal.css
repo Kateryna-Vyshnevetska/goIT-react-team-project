@@ -90,6 +90,9 @@
 ::-webkit-scrollbar {
   border-radius: 10px;
   width: 4px;
+}
+
+.habit-template-list::-webkit-scrollbar {
   background-color: #f6f6f6;
 }
 
