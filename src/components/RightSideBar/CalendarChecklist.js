@@ -46,26 +46,21 @@ export const CalendarChecklist = () => {
   };
 
   const checkIfHabitDoneTodaay = (idOfHabit, element, arrOfAllDates) => {
-    // console.log(element);
-
     // находим даты конкретно это привычки
     const dates = arrOfAllDates.find((el) => el.habitId === idOfHabit).dates;
-
     // ищем индекс нужного елемента для записи в массив
-
     const indx = dates.find((el, idx) =>
       el.split("T")[0] === dateNow.split("T")[0] ? el[idx] : ""
     );
     const indexOfDate = dates.indexOf(indx);
-
     const trueOrFalse = arr.find((el) => el._id === idOfHabit).data[
       indexOfDate
     ];
-
     return trueOrFalse;
   };
 
   return (
+
     //       {arr.length ? (
     //         <>
     //           <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
@@ -144,5 +139,6 @@ export const CalendarChecklist = () => {
         ))}
       </TransitionGroup>
     </ul>
+
   );
 };

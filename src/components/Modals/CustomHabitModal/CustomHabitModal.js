@@ -9,9 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/getRandomColor";
+import { useHistory } from "react-router";
 
 function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm();
   const state = useSelector((state) => state);
@@ -37,6 +40,7 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
     delete data.time;
     dispatch(createHabitAndGetAllHabits(data, authToken(state)));
     close();
+    history.push("/make-it-habit/check-list");
   };
 
   return (

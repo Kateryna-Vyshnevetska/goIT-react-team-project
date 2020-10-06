@@ -332,6 +332,7 @@ table {
 }
 
 .notificationText {
+  font-family: "Rubik", sans-serif;
   font-size: 18px;
   font-weight: 450;
   color: grey;
