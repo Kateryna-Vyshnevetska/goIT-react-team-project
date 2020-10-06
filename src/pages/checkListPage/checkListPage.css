@@ -142,11 +142,8 @@ table {
 .habit-header {
   height: 10%;
   background-color: #fff;
-<<<<<<< HEAD
   border-bottom: 1px solid #d5e1dc;
-=======
-  outline: 1px solid #d5e1dc;
->>>>>>> 48b39856063575f11cea29ee724101dd650991a9
+  /* outline: 1px solid #d5e1dc; */
 
   display: flex;
   align-items: center;

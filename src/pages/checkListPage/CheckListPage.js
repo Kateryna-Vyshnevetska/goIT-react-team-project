@@ -27,7 +27,9 @@ export function CheckListPage() {
     userHabitsDates.map(
       (dates) =>
         habits._id === dates.habitId &&
-        dates.dates.map((date) => dateNow === date.split("T")[0] && arr.push(habits))
+        dates.dates.map(
+          (date) => dateNow === date.split("T")[0] && arr.push(habits)
+        )
     )
   );
 
@@ -109,32 +111,32 @@ export function CheckListPage() {
       <div className="habit-container">
         <div className="habit-header">
           <h2 className="habit-header-title">Чек-лист привычек</h2>
-          <button onClick={() => setModalShow(true)} className="habit-header-button">
+          <button
+            onClick={() => setModalShow(true)}
+            className="habit-header-button"
+          >
             + Сигареты за сегодня
           </button>
           {modalShow && <DailyResultModal close={close} />}
         </div>
         <ul className="habit-list">
-          
-// <<<<<<< notificationFinalEdition
-//           {arr.length ? (
-//             arr.map((el) => (
-//               <HabitItem
-//                 clickDone={handleClickHabitButtonDone}
-//                 clickMissed={handleClickHabitButtonMissed}
-//                 key={el._id}
-//                 id={el._id}
-//                 habitTitle={el.name}
-//                 linearProgressValue={el.efficiency}
-//               />
-//             ))
-//           ) : (
-//             <p className="notificationText">
-//               Вы пока не выбрали привычки, над которыми хотите работать
-//             </p>
-//           )}
-// =======
-          
+          {/* {arr.length ? (
+             arr.map((el) => (
+               <HabitItem
+                 clickDone={handleClickHabitButtonDone}
+                 clickMissed={handleClickHabitButtonMissed}
+                 key={el._id}
+                 id={el._id}
+                 habitTitle={el.name}
+                 linearProgressValue={el.efficiency}
+               />
+             ))
+           ) : (
+             <p className="notificationText">
+               Вы пока не выбрали привычки, над которыми хотите работать
+             </p>
+           )} */}
+
           {arr.map((el) => (
             <HabitItem
               // clickDone={handleClickHabitButtonDone}
@@ -147,7 +149,6 @@ export function CheckListPage() {
               // habitDoneNumber={done}
             />
           ))}
-
         </ul>
       </div>
     </div>
