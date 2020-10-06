@@ -11,24 +11,38 @@ import "../checkListPage/checkListPage.css";
 import { Spinner } from "../../ui/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDataForState } from "../../redux/operations";
-import { authToken } from "../../redux/selectors";
+import { authToken, userHabits, usersHabitsDates } from "../../redux/selectors";
 import { AvatarsPage } from "../avatarsPage/AvatarsPage";
 import { SubscriptionsPage } from "../subscriptionsPage/SubscriptionsPage";
+import { checkMessagesForNote } from "../../helpers/checkNotifications";
+import { countNotesAction } from "../../redux/notificationPage/notificationAction";
+import Congratulations from "../../components/congratsModal/Congratulations";
+import { notificationType } from "../../redux/selectors";
 
 export const MainPage = () => {
   const state = useSelector((state) => state);
+  const habitsList = userHabits(state);
+  const habitsInfo = usersHabitsDates(state);
   const isLoading = useSelector((state) => state.isLoading);
+  const notification = notificationType(state);
   const dispatch = useDispatch();
+
+  const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   useEffect(() => {
     dispatch(getAllUserDataForState(authToken(state)));
   }, [authToken(state)]);
+
+  useEffect(() => {
+    notificationArr.length && dispatch(countNotesAction(notificationArr));
+  });
 
   return (
     <>
       {isLoading && <Spinner />}
       <div className="main-container">
         <LeftSideBar />
+        {/* {notification.some((el) => el === "success") && <Congratulations />} */}
 
         <Switch>
           <PrivateRoute
@@ -46,11 +60,7 @@ export const MainPage = () => {
             path={`/make-it-habit/notification`}
             component={Notifiacation}
           />
-          <PrivateRoute
-            exact
-            path={`/make-it-habit/profile`}
-            component={ProfilePage}
-          />
+          <PrivateRoute exact path={`/make-it-habit/profile`} component={ProfilePage} />
           <PrivateRoute
             exact
             path={`/make-it-habit/change-avatar`}
