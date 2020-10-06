@@ -34,7 +34,8 @@ export const CalendarChecklist = () => {
       (dates) =>
         habits._id === dates.habitId &&
         dates.dates.map(
-          (date) => dateNow.split("T")[0] === date.split("T")[0] && arr.push(habits)
+          (date) =>
+            dateNow.split("T")[0] === date.split("T")[0] && arr.push(habits)
         )
     )
   );
@@ -44,101 +45,99 @@ export const CalendarChecklist = () => {
   };
 
   const checkIfHabitDoneTodaay = (idOfHabit, element, arrOfAllDates) => {
-    // console.log(element);
-
     // находим даты конкретно это привычки
     const dates = arrOfAllDates.find((el) => el.habitId === idOfHabit).dates;
-
     // ищем индекс нужного елемента для записи в массив
-
     const indx = dates.find((el, idx) =>
       el.split("T")[0] === dateNow.split("T")[0] ? el[idx] : ""
     );
     const indexOfDate = dates.indexOf(indx);
-
     const trueOrFalse = arr.find((el) => el._id === idOfHabit).data[
       indexOfDate
     ];
-
     return trueOrFalse;
   };
 
   return (
-//       {arr.length ? (
-//         <>
-//           <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
-//           <ul className={style.calendarChecklist}>
-//             {arr.map((el) => (
-//               <li key={el._id} className={style.calendarItem}>
-//                 <div className={style.calendarChecklistItem}>
-//                   <span
-//                     className={
-//                       false
-//                         ? style.calendarChecklistItemProgress
-//                         : style.calendarChecklistItemProgressDone
-//                     }
-//                   >
-//                     {false && "time"}
-//                   </span>
-//                   <span
-//                     className={
-//                       false
-//                         ? style.calendarChecklistItemText
-//                         : style.calendarChecklistItemTextDone
-//                     }
-//                   >
-//                     {el.name}
-//                   </span>
-//                   <button
-//                     onClick={() => deleteHabit(el._id)}
-//                     className={style.calendarChecklistItemButton}
-//                   ></button>
-//                 </div>
-//               </li>
-//             ))}
-//           </ul>
-//         </>
-//       ) : (
-//         <p className={style.notificationText}>
-//           Сегодня у Вас нет привычек, над которыми нужно работать
-//         </p>
-//       )}
-//     </>
+    <>
+      {arr.length ? (
+        <>
+          <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
+          <ul className={style.calendarChecklist}>
+            {arr.sort().map((el) => (
+              <li key={el._id} className={style.calendarItem}>
+                <div className={style.calendarChecklistItem}>
+                  <div className={style.iconWrapper}>
+                    <span
+                      className={
+                        checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                          ? style.calendarChecklistItemProgressDone
+                          : style.calendarChecklistItemProgress
+                      }
+                    >
+                      {checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                        ? ""
+                        : el.planningTime.split(" ")[4].slice(0, 5)}
+                    </span>
+                  </div>
+                  <span
+                    className={
+                      checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                        ? style.calendarChecklistItemTextDone
+                        : style.calendarChecklistItemText
+                    }
+                  >
+                    {el.name}
+                  </span>
+                  <button
+                    onClick={() => deleteHabit(el._id)}
+                    className={style.calendarChecklistItemButton}
+                  ></button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p className={style.notificationText}>
+          Сегодня у Вас нет привычек, над которыми нужно работать
+        </p>
+      )}
+    </>
 
-    <ul className={style.calendarChecklist}>
-      {arr.sort().map((el) => (
-        <li key={el._id} className={style.calendarItem}>
-          <div className={style.calendarChecklistItem}>
-            <div className={style.iconWrapper}>
-              <span
-                className={
-                  checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                    ? style.calendarChecklistItemProgressDone
-                    : style.calendarChecklistItemProgress
-                }
-              >
-                {checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                  ? ""
-                  : el.planningTime.split(" ")[4].slice(0, 5)}
-              </span>
-            </div>
-            <span
-              className={
-                checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                  ? style.calendarChecklistItemTextDone
-                  : style.calendarChecklistItemText
-              }
-            >
-              {el.name}
-            </span>
-            <button
-              onClick={() => deleteHabit(el._id)}
-              className={style.calendarChecklistItemButton}
-            ></button>
-          </div>
-        </li>
-      ))}
-    </ul>
-
+    // <ul className={style.calendarChecklist}>
+    //   {arr.sort().map((el) => (
+    //     <li key={el._id} className={style.calendarItem}>
+    //       <div className={style.calendarChecklistItem}>
+    //         <div className={style.iconWrapper}>
+    //           <span
+    //             className={
+    //               checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+    //                 ? style.calendarChecklistItemProgressDone
+    //                 : style.calendarChecklistItemProgress
+    //             }
+    //           >
+    //             {checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+    //               ? ""
+    //               : el.planningTime.split(" ")[4].slice(0, 5)}
+    //           </span>
+    //         </div>
+    //         <span
+    //           className={
+    //             checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+    //               ? style.calendarChecklistItemTextDone
+    //               : style.calendarChecklistItemText
+    //           }
+    //         >
+    //           {el.name}
+    //         </span>
+    //         <button
+    //           onClick={() => deleteHabit(el._id)}
+    //           className={style.calendarChecklistItemButton}
+    //         ></button>
+    //       </div>
+    //     </li>
+    //   ))}
+    // </ul>
   );
 };
