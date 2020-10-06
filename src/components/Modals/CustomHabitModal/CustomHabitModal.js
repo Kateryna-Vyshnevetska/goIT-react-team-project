@@ -8,7 +8,7 @@ import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-import { getRandomColor } from "../../../helpers/CheckListPage";
+import { getRandomColor } from "../../../helpers/getRandomColor";
 
 function CustomHabitModal({ close, textOfHabit }) {
   const [name, setName] = useState("");
