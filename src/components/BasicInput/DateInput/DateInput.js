@@ -52,6 +52,7 @@ function DateInput({
       </label>
       <div className="habitsCalendar">
         <DatePicker
+          className={style.input}
           requared
           locale="ru"
           selected={date}

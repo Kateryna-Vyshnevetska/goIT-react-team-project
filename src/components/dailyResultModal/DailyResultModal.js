@@ -56,7 +56,7 @@ function DailyResultModal({ close }) {
         if (arr[idx] !== null) {
           arr[idx] = Number(arr[idx]) + Number(sigCount);
         } else {
-          arr[idx] = sigCount;
+          arr[idx] = Number(sigCount);
         }
 
         updateCigarettesInfo(arr);

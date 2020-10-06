@@ -53,7 +53,8 @@
 
 .input {
   padding: 5px 20px 5px 20px;
-
+  width: 220px;
+  height: 44px;
   background: #ffffff;
   /* Gray 5 */
 
@@ -206,4 +207,20 @@
   position: absolute;
   right: 14px;
   top: 14px;
+}
+
+.select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  height: 44px;
+  width: 220px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
