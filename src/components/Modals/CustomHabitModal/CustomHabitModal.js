@@ -42,7 +42,7 @@ function CustomHabitModal({ close, textOfHabit }) {
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
 
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-          <p>
+          <p className={style.errorMessage}>
             {errors.time || errors.name || errors.date || errors.select
               ? "Все поля обязательны"
               : null}

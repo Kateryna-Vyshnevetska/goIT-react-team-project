@@ -8,6 +8,7 @@ import moment from "moment";
 import "./datepicker.css";
 import { useDispatch } from "react-redux";
 import { addCurrentDay } from "../../redux/currentDay/currentDayAction";
+// import { useHistory } from "react-router";
 
 registerLocale("ru", ru);
 
@@ -19,6 +20,17 @@ export const Calendar = () => {
     const currentDate = moment(startDate).format();
     dispatch(addCurrentDay(currentDate.split("T")[0]));
   }, [startDate]);
+
+  // const history = useHistory();
+  // const calendar = document.querySelector(".react-datepicker__month");
+  // console.log("calendar", calendar);
+  // const handleClick = () => {
+  //   console.log("кликнули по календарю");
+  //   history.push("/");
+  // };
+  // if (calendar !== null) {
+  //   calendar.addEventListener("click", handleClick);
+  // }
 
   return (
     <div className={style.datePickerWrapper}>
