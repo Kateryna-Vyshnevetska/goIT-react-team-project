@@ -66,6 +66,10 @@
   /* margin-left: 11px; */
 }
 
+.achievementsPageItem.active {
+  background: #43d190;
+}
+
 /* .achievementsPageItem:not(:nth-child(3n)) {
   margin-right: 30px;
 }

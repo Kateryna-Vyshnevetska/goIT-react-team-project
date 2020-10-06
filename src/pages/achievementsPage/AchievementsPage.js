@@ -1,67 +1,120 @@
-import React from "react";
-import style from "./AchievementsPage.module.css";
+import React, { useEffect, useState } from "react";
+import "./AchievementsPage.css";
+import {
+  checkAchievement,
+  checkAchievementDay,
+  checkAchievementWeek,
+} from "../../helpers/achievementCheck";
 
 export const AchievementsPage = () => {
+  const [start, setStart] = useState("");
+  const array = [
+    23,
+    null,
+    27,
+    19,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    null,
+    17,
+    15,
+  ];
+  const dayCigarette = 20;
+  useEffect(() => {
+    const oneCigarette = document.getElementById("oneCigarette");
+    const threeCigarettes = document.getElementById("threeCigarettes");
+    const fiveCigarettes = document.getElementById("fiveCigarettes");
+    const oneDay = document.getElementById("oneDay");
+    const threeDays = document.getElementById("threeDays");
+    const oneWeek = document.getElementById("oneWeek");
+    const twoWeeks = document.getElementById("twoWeeks");
+
+    if (oneCigarette) {
+      setStart(oneCigarette);
+      checkAchievement(
+        array,
+        dayCigarette,
+        oneCigarette,
+        threeCigarettes,
+        fiveCigarettes
+      );
+      checkAchievementDay(array, dayCigarette, oneDay, threeDays);
+      checkAchievementWeek(array, oneWeek, twoWeeks);
+    }
+  }, [array, start]);
+
   return (
-    <div className={style.achievementsPageWrapper}>
-      <div className={style.achievementsWrapper}>
-        <p className={style.achievementsTitle}>Достижения</p>
+    <div className="achievementsPageWrapper">
+      <div className="achievementsWrapper">
+        <p className="achievementsTitle">Достижения</p>
       </div>
-      <div className={style.achievementsContainer}>
-        <ul className={style.achievementsPageList}>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Отказ от 1 сигареты</p>
+      <div className="achievementsContainer">
+        <ul className="achievementsPageList">
+          <li id="oneCigarette" className="achievementsPageItem">
+            <p className="achievementsPageText">Отказ от 1 сигареты</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Отказ от 3 сигарет</p>
+          <li id="threeCigarettes" className="achievementsPageItem">
+            <p className="achievementsPageText">Отказ от 3 сигарет</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Отказ от 5 сигарет</p>
+          <li id="fiveCigarettes" className="achievementsPageItem">
+            <p className="achievementsPageText">Отказ от 5 сигарет</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 1 день</p>
+          <li id="oneDay" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 1 день</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 3 дня</p>
+          <li id="threeDays" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 3 дня</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 1 неделю</p>
+          <li id="oneWeek" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 1 неделю</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 2 недели</p>
+          <li id="twoWeeks" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 2 недели</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 1 месяц</p>
+          <li id="oneMonth" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 1 месяц</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 3 месяца</p>
+          <li id="threeMonths" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 3 месяца</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 6 месяцев</p>
+          <li id="sixMonths" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 6 месяцев</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Не курю 1 год</p>
+          <li id="oneYear" className="achievementsPageItem">
+            <p className="achievementsPageText">Не курю 1 год</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>+1 год без сигарет</p>
+          <li id="oneYearPlus" className="achievementsPageItem">
+            <p className="achievementsPageText">+1 год без сигарет</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>3 года без сигарет</p>
+          <li id="threeYears" className="achievementsPageItem">
+            <p className="achievementsPageText">3 года без сигарет</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Уже 5. Дай пять!</p>
+          <li id="fiveYears" className="achievementsPageItem">
+            <p className="achievementsPageText">Уже 5. Дай пять!</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Вперед к мечте!</p>
+          <li id="goToDream" className="achievementsPageItem">
+            <p className="achievementsPageText">Вперед к мечте!</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Сохранил 1 час</p>
+          <li id="savedOneHour" className="achievementsPageItem">
+            <p className="achievementsPageText">Сохранил 1 час</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Сохранил 3 часа</p>
+          <li id="savedThreeHours" className="achievementsPageItem">
+            <p className="achievementsPageText">Сохранил 3 часа</p>
           </li>
-          <li className={style.achievementsPageItem}>
-            <p className={style.achievementsPageText}>Сохранил 5 часов</p>
+          <li id="savedFiveHours" className="achievementsPageItem">
+            <p className="achievementsPageText">Сохранил 5 часов</p>
           </li>
         </ul>
       </div>

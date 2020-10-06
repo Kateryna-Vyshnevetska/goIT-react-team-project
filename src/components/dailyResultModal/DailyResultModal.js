@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
-import axios from "axios";
 import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import styles from "./DailyResultModal.module.css";
 import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";
-import moment from "moment";
-
+import { updateCigarettesInfo } from "../../requests/requests";
 function DailyResultModal({ close }) {
   const [sigCount, setsigCount] = useState("");
   const dispatch = useDispatch();
@@ -16,51 +14,26 @@ function DailyResultModal({ close }) {
   const dataDate = new Date(store.getState().userCigarettes.startedAt);
   const mainHabitDateArr = store.getState().mainHabitDates;
   const startedAt = store.getState().userCigarettes.startedAt;
-  const updateCigarettesInfo = async (arr) => {
-    try {
-      await axios
-        .post(
-          `/users/updateCigarettes`,
-          {
-            startedAt: startedAt,
-            data: arr,
-          },
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        )
-        .then((dataReg) => {
-          dispatch(
-            addUserCigarettes({
-              startedAt: startedAt,
-              data: arr,
-            })
-          );
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const currentDay = store.getState().currentDay;
 
   function updateDates(sigCount) {
     let arr = data.slice();
-    const nowTime = new Date();
-    const nowTimeMoment = moment(nowTime).format("MMM Do YY");
     Object.values(mainHabitDateArr).forEach((element) => {
-      const mainDatesMoment = moment(element).format("MMM Do YY");
-      if (mainDatesMoment.includes(nowTimeMoment)) {
+      if (element.includes(currentDay)) {
         let idx = mainHabitDateArr.indexOf(element);
-
         if (arr[idx] !== null) {
           arr[idx] = Number(arr[idx]) + Number(sigCount);
         } else {
-          arr[idx] = sigCount;
+          arr[idx] = Number(sigCount);
         }
 
-        updateCigarettesInfo(arr);
-
+        updateCigarettesInfo(arr, startedAt, token);
+        dispatch(
+          addUserCigarettes({
+            startedAt: startedAt,
+            data: arr,
+          })
+        );
         return arr;
       }
     });

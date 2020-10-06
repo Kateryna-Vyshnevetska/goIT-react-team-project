@@ -1,0 +1,71 @@
+.modalHead {
+  width: 784px;
+  height: 360px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  position: relative;
+}
+.modalTitle {
+  margin: 0;
+  margin-top: 60px;
+  font-family: "Rubik", sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.modalText {
+  margin-bottom: 15px;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #c7c7c7;
+}
+.modalBodyItem + .modalBodyItem {
+  margin-top: 30px;
+}
+.modalBodyButtonCancle {
+  background: #ffffff;
+  color: #43d190;
+  border-radius: 5px;
+  border: 2px solid #43d190;
+  margin-top: 128px;
+}
+
+.modalBodyButtonAdd {
+  background: #43d190;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  width: 310px;
+}
+.modalBodyButtonChose {
+  background: #43d190;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  width: 310px;
+}
+
+.modalBody {
+  margin-top: 25px;
+}
+
+.modalBodyButtonclose {
+  background-image: url("../../images/close/close.svg");
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}

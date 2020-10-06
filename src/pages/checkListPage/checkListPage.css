@@ -142,7 +142,11 @@ table {
 .habit-header {
   height: 10%;
   background-color: #fff;
+<<<<<<< HEAD
   border-bottom: 1px solid #d5e1dc;
+=======
+  outline: 1px solid #d5e1dc;
+>>>>>>> 48b39856063575f11cea29ee724101dd650991a9
 
   display: flex;
   align-items: center;
@@ -325,6 +329,15 @@ table {
   border-top: 1px dashed #e0e0e0;
   padding: 20px 0 20px;
 }
+
 .habit-number-counter.isVisible {
   display: flex;
+}
+
+.notificationText {
+  font-size: 18px;
+  font-weight: 450;
+  color: grey;
+  margin-top: 25px;
+  text-align: center;
 }

@@ -40,6 +40,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
+<<<<<<< HEAD
     dispatch(
       subscriptionAction({
         plan:
@@ -48,10 +49,14 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
             : data.user.subscription,
       })
     );
+=======
+    dispatch(subscriptionAction({ plan: data.user.subscription }));
+
+    dispatch(addUserCigarettes(data.user.cigarettes));
+>>>>>>> 48b39856063575f11cea29ee724101dd650991a9
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
-    dispatch(addUserCigarettes(data.user.cigarettes));
 
     dispatch(updatePaymentData(data.user.payments));
 
