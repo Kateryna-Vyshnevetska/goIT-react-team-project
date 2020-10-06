@@ -8,9 +8,7 @@ const FindAvatarById = () => {
 
   return (
     <>
-      {avatarById === "" ? (
-        <img src={avatarDefault} alt="avatar" className="avatar" />
-      ) : (
+      {avatarById === "" ? null : (
         <>
           {avatars.map((el) => {
             if (avatarById === el.id) {

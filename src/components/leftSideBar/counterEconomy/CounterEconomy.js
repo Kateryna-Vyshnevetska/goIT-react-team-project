@@ -4,14 +4,10 @@ import { useSelector } from "react-redux";
 import { getMoney, getTime } from "../../../helpers/saveMoney";
 
 export const CounterEconomy = () => {
-  // const guiz = useSelector((state) => state.quizInfo);
-  // const array = useSelector((state) => state.userCigarettes.data);
-
-  // const money = getMoney(array, guiz);
-  // const time = getTime(array, guiz);
-
-  // const money = getMoney(array, guiz, day);
-  // const time = getTime(array, guiz, day);
+  const guiz = useSelector((state) => state.quizInfo);
+  const array = useSelector((state) => state.userCigarettes.data);
+  const money = getMoney(array, guiz);
+  const time = getTime(array, guiz);
 
   return (
     <>
@@ -19,12 +15,11 @@ export const CounterEconomy = () => {
         <ul className="leftSideBar-economyList">
           <li className="leftSideBar-item">
             <p className="leftSideBar-economyTitle">Сэкономленные деньги</p>
-
-            <p className="leftSideBar-wallet countEconomy">000 ₴</p>
+            <p className="leftSideBar-wallet countEconomy">{money} ₴</p>
           </li>
           <li className="leftSideBar-item">
             <p className="leftSideBar-economyTitle">Сэкономленное время</p>
-            <p className="leftSideBar-sandclock countEconomy">000</p>
+            <p className="leftSideBar-sandclock countEconomy">{time}</p>
           </li>
         </ul>
       </div>
