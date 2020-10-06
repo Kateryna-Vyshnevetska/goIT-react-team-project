@@ -8,16 +8,17 @@ import moment from "moment";
 import "./datepicker.css";
 import { useDispatch } from "react-redux";
 import { addCurrentDay } from "../../redux/currentDay/currentDayAction";
-// import { useHistory } from "react-router";
+import { useHistory } from "react-router";
 
 registerLocale("ru", ru);
 
 export const Calendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
   useEffect(() => {
-    // history.push("/");
+    console.log("qwe");
+    history.push("/make-it-habit/check-list");
     const currentDate = moment(startDate).format();
     dispatch(addCurrentDay(currentDate.split("T")[0]));
   }, [startDate]);

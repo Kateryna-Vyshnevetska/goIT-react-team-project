@@ -23,9 +23,11 @@ export const LeftSideBar = () => {
   useEffect(() => {
     if (data) {
       let arr = store.getState().userCigarettes.data.slice();
-      console.log(mainHabitDateArr);
+      const nowTime = new Date();
+      const nowTimeMoment = moment(nowTime).format("MMM Do YY");
       Object.values(mainHabitDateArr).forEach((element) => {
-        if (element.includes(currentDay)) {
+        const mainDatesMoment = moment(element).format("MMM Do YY");
+        if (mainDatesMoment.includes(nowTimeMoment)) {
           let idx = mainHabitDateArr.indexOf(element);
           console.log(typeof idx);
           if (arr[idx - 1] === null) {
