@@ -15,13 +15,17 @@ registerLocale("ru", ru);
 export const Calendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
-
+  // const history = useHistory();
   useEffect(() => {
+    // history.push("/");
     const currentDate = moment(startDate).format();
     dispatch(addCurrentDay(currentDate.split("T")[0]));
   }, [startDate]);
 
-  // const history = useHistory();
+  // const click = () => {
+  //   console.log(startDate);
+  // };
+
   // const calendar = document.querySelector(".react-datepicker__month");
   // console.log("calendar", calendar);
   // const handleClick = () => {

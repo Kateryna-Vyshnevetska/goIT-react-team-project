@@ -1,7 +1,7 @@
 .notif-list-section {
   /* min-height: 768px; */
 
-  width: 54%;
+  width: 60%;
 }
 
 .notif-content-wrapper {
@@ -13,9 +13,6 @@
   background-color: #f6f6f6;
 }
 
-.notif-container {
-  /* width: 100%; */
-}
 .notif-header {
   height: 10%;
   background-color: #fff;
