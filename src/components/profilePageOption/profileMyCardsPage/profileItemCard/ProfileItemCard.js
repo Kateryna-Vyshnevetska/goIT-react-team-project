@@ -1,6 +1,6 @@
 import React from "react";
 import "./profileItemCard.css"
-import { useSelector } from "react-redux";
+import { getRandomColor } from "../../../../helpers/CheckListPage";
 
 export const ProfileItemCard = ({ number, timeExpiration }) => {
     const correctNumber = number.split("");
@@ -8,11 +8,14 @@ export const ProfileItemCard = ({ number, timeExpiration }) => {
     correctNumber.splice(9, 0, " ");
     correctNumber.splice(14, 0, " ");
     const correctData = timeExpiration.split("")
-    correctData.splice(2, 0, "/")
+  correctData.splice(2, 0, "/")
   return (
     <>
       <li>
-        <div className="ProfileItemCard-cardBlock">
+        <div
+          className="ProfileItemCard-cardBlock"
+          style={{ backgroundColor: getRandomColor() }}
+        >
           <h4 className="ProfileItemCard-cardName">Моя карта</h4>
           <p className="ProfileItemCard-cardNamber">{correctNumber}</p>
           <div className="ProfileItemCard-lowerCardBlock">
