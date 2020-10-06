@@ -6,6 +6,7 @@ import { ProfileItemCard } from "../../components/profilePageOption/profileMyCar
 import { ProfilePageHelpInfo } from "../../components/profilePageOption/profilePageHelpInfo/ProfilePageHelpInfo";
 import AddNewCard from "../../components/Modals/AddNewCardModal/AddNewCardModal";
 import { updateSubscriptionLevel } from "../../redux/operations";
+import { Link, NavLink } from "react-router-dom";
 
 export function SubscriptionsPage() {
   const [modalShow, setModalShow] = useState(false);
@@ -33,14 +34,17 @@ export function SubscriptionsPage() {
           <p className={style.subscriptionsSectionTitle}>Тип подписки</p>
           <ul className={style.subscriptionsList}>
             <li className={style.subscriptionsItem}>
-              <button
+              <NavLink
                 onClick={handleClick}
-                type="button"
                 name="Noob"
                 className={style.subscriptionsItemTitle}
+                to={{
+                  pathname: `/make-it-habit/profile`,
+                }}
               >
                 Noob
-              </button>
+              </NavLink>
+
               <p className={style.subscriptionsItemDescription}>
                 30 дней —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -49,17 +53,19 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <button
+              <NavLink
                 onClick={handleClick}
-                type="button"
                 name="Basic"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitleBasic,
                 ].join(" ")}
+                to={{
+                  pathname: `/make-it-habit/profile`,
+                }}
               >
                 Basic
-              </button>
+              </NavLink>
               <p className={style.subscriptionsItemDescription}>
                 1 месяц —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -71,17 +77,20 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <button
+              <NavLink
                 onClick={handleClick}
-                type="button"
                 name="Standart"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitleStandart,
                 ].join(" ")}
+                to={{
+                  pathname: `/make-it-habit/profile`,
+                }}
               >
                 Standart
-              </button>
+              </NavLink>
+
               <p className={style.subscriptionsItemDescription}>
                 3 месяца —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -93,17 +102,21 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <button
+              <NavLink
                 onClick={handleClick}
-                type="button"
                 name="Premium"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitlePremium,
                 ].join(" ")}
+                to={{
+                  pathname: `/make-it-habit/profile`,
+                }}
               >
                 Premium
-              </button>
+              </NavLink>
+
+              {/* </button> */}
               <p className={style.subscriptionsItemDescription}>
                 6 месяцев —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -115,17 +128,20 @@ export function SubscriptionsPage() {
               </p>
             </li>
             <li className={style.subscriptionsItem}>
-              <button
+              <NavLink
                 onClick={handleClick}
-                type="button"
                 name="Ultra"
                 className={[
                   style.subscriptionsItemTitle,
                   style.subscriptionsItemTitleUltra,
                 ].join(" ")}
+                activeClassName={style.subscriptionsItemTitleActive}
+                to={{
+                  pathname: `/make-it-habit/profile`,
+                }}
               >
                 Ultra
-              </button>
+              </NavLink>
               <p className={style.subscriptionsItemDescription}>
                 12 месяцев —
                 <span className={style.subscriptionsItemDescriptionPrice}>
