@@ -14,9 +14,10 @@
     inset -2px -1px 40px rgba(0, 0, 0, 0), 0 0 0px #000;
 }
 .leftSideBar-listItem-habit {
+  padding-right: 5px;
   margin: 0;
-  font-size: 14px;  
+  font-size: 14px;
   line-height: 1.21;
   width: 222px;
-  color: #BDBDBD;
+  color: #bdbdbd;
 }

@@ -8,7 +8,7 @@ import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
 import { authToken } from "../../../redux/selectors";
-import { getRandomColor } from "../../../helpers/CheckListPage";
+import { getRandomColor } from "../../../helpers/getRandomColor";
 
 function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
@@ -47,7 +47,7 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
         <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
 
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-          <p>
+          <p className={style.errorMessage}>
             {errors.time || errors.name || errors.date || errors.select
               ? "Все поля обязательны"
               : null}

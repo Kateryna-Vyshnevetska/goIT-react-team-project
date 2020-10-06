@@ -1,20 +1,14 @@
-.avatars-img {
-  display: block;
-}
 .avatar-list-section {
-  /* justify-content: stretch; */
   display: flex;
-  /* width: 60%; */
+  width: 60%;
 }
 .avatar-container {
-  /* width: 100%; */
   background-color: #f6f6f6;
 }
 .avatar-header {
   height: 10%;
   background-color: #fff;
-  outline: 1px solid #d5e1dc;
-  /* margin-bottom: 30px; */
+  border-bottom: 1px solid #d5e1dc;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,21 +22,25 @@
   color: #4f4f4f;
 }
 .avatar-list {
-  /* margin: -10px; */
+  margin: -15px;
   height: 90%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  /* padding-top: 22px;
-  padding-bottom: 22px; */
+  justify-content: space-evenly;
+  padding: 65px 67px 0 67px;
 }
 .avatar-item {
-  width: 157px;
-  height: 157px;
-  margin: 10px;
+  width: 160px;
+  height: 160px;
+  margin: 15px;
   border-radius: 50%;
 }
 .avatar-item:hover {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
   outline: none;
+}
+.avatars-img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }

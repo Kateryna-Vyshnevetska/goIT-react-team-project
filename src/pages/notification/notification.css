@@ -13,13 +13,10 @@
   background-color: #f6f6f6;
 }
 
-.notif-container {
-  /* width: 100%; */
-}
 .notif-header {
   height: 10%;
   background-color: #fff;
-  outline: 1px solid #d5e1dc;
+  border-bottom: 1px solid #d5e1dc;
 
   display: flex;
   align-items: center;

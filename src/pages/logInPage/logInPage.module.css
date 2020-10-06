@@ -5,7 +5,6 @@
   position: absolute;
 }
 
-/* <p className={styles.errorMessageEmail}>{errors.email?.message}</p> */
 .errorMessageEmail {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -16,7 +15,7 @@
   margin-top: -15px;
   margin-right: 145px;
 }
-/* <p className={styles.errorMessagePass}>{errors.password?.message}</p> */
+
 .errorMessagePass {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -24,7 +23,7 @@
   line-height: 1.125px;
   color: #fe6083;
   padding: 7px 0;
-  margin-top: -30px;
+  margin-top: -40px;
   margin-left: -25px;
 }
 

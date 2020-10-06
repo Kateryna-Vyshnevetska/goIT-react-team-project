@@ -77,7 +77,7 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
               name="password"
               labelWidth="120px"
               inputWidth="345px"
-              marginBottom="30px"
+              marginBottom="40px"
             />
             <p className={styles.errorMessagePass}>
               {errors.password?.message}

@@ -1,12 +1,11 @@
 .rightSideBarContainer {
   font-family: "Rubik", sans-serif;
-  /* width: 20%; */
-  padding-left: 5px;
-  padding-right: 5px;
+  width: 20%;
+  /* padding-left: 5px;
+  padding-right: 5px; */
   text-align: center;
 
   border-left: 1px solid #d5e1dc;
-  border-bottom: 1px solid #d5e1dc;
 }
 
 .rightSideBarWrapper {
@@ -24,6 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #d5e1dc;
 }
 
 .headerWeekDay {

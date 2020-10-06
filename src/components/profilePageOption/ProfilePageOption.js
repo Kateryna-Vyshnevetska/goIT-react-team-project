@@ -34,7 +34,6 @@ export const ProfilePageOption = () => {
   const subscriptionLevel = useSelector(
     (state) => state.subscriptionLevel.plan
   );
-  console.log("subscriptionLevel", subscriptionLevel);
 
   const { register, errors, handleSubmit } = useForm();
 
@@ -166,7 +165,7 @@ export const ProfilePageOption = () => {
                   labelWidth={"120px"}
                   inputWidth={"345px"}
                   marginBottom="40px"
-                  // handleChange={({ target: { value } }) => setPassword(value)}
+                  handleChange={({ target: { value } }) => setPassword(value)}
                 />
                 <p className={styles.errorMessagePass}>
                   {errors.password?.message}
@@ -184,7 +183,7 @@ export const ProfilePageOption = () => {
                     register={register({
                       minLength: 8,
                       maxLength: 16,
-                      // required: true,
+                      required: true,
                       pattern: /[0-9A-F]/,
                     })}
                     placeholder="Повторите свой пароль"
@@ -196,9 +195,9 @@ export const ProfilePageOption = () => {
                     labelWidth={"120px"}
                     inputWidth={"345px"}
                     marginBottom="40px"
-                    // handleChange={({ target: { value } }) =>
-                    //   setConfirmPassword(value)
-                    // }
+                    handleChange={({ target: { value } }) =>
+                      setConfirmPassword(value)
+                    }
                   />
                 </CSSTransition>
                 <p className={styles.errorMessagePass}>
