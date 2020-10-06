@@ -179,13 +179,17 @@
 
 .passwordControl {
   position: absolute;
-  top: 22px;
+  top: 26px;
   right: 20px;
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+  background: url(../../images/passwordEyes/closed-eye.svg) 0 0 no-repeat;
 }
-.passwordControl.view {
-  background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+.view {
+  top: 12px;
+  background: url(../../images/passwordEyes/open-eye.svg) 0 0 no-repeat;
+}
+.confirm-password-enter-done .view {
+  top: 20px;
 }

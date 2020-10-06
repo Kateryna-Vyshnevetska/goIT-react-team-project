@@ -23,11 +23,11 @@ export function PasswordInput({
     if (input.getAttribute("type") === "password") {
       target.classList.add("view");
 
-      icon.setAttribute("src", "https://snipp.ru/demo/495/view.svg");
+      // icon.setAttribute("src", "../../../images/passwordEyes/open-eye.svg");
       input.setAttribute("type", "text");
     } else {
       target.classList.remove("view");
-      icon.setAttribute("src", "https://snipp.ru/demo/495/no-view.svg");
+      // icon.setAttribute("src", "../../../images/passwordEyes/closed-eye.svg");
       input.setAttribute("type", "password");
     }
     return false;
@@ -60,11 +60,11 @@ export function PasswordInput({
         className={style.passwordControl}
         onClick={(event) => show_hide_password(event.target)}
       >
-        <img
+        {/* <svg
           id="iconPasswordView"
-          src={"https://snipp.ru/demo/495/no-view.svg"}
+          src={"../../../images/passwordEyes/closed-eye.svg"}
           alt="icon-hidden"
-        />
+        /> */}
       </span>
     </div>
   );
