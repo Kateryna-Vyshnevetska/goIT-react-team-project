@@ -4,25 +4,26 @@ import style from "./Congratulations.module.css";
 import modalBackDrop from "../modalBackDrop/ModalBackDrop";
 import CustomHabitModal from "../Modals/CustomHabitModal/CustomHabitModal";
 
-const Congratulations = ({ fromCheckList, habitName, close }) => {
+const Congratulations = ({ name, close }) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalEmpty, setIsShowModalEmpty] = useState(false);
 
   const showModal = () => {
     setIsShowModal(true);
   };
+
   const showModalEmpty = () => {
     setIsShowModalEmpty(true);
   };
-
-  // notificationCheck && showModal();
 
   return (
     <>
       <div id="home" className={style.congratulationWrapper}>
         <div>
           <h2 className={style.congratulationTitle}>Поздравляем!</h2>
-          <p>Вы успешно освоили привычку и стали на шаг ближе к своей цели.</p>
+          <p className={style.congratulationText}>
+            Вы успешно освоили привычку и стали на шаг ближе к своей цели.
+          </p>
         </div>
         <div>
           <img src={congratsPicture} alt="congratulations" width="450" height="320" />
@@ -35,15 +36,9 @@ const Congratulations = ({ fromCheckList, habitName, close }) => {
             Добавить новую
           </button>
         </div>
-        <button onClick={() => close} className={style.modalBodyButtonclose}></button>
+        <button onClick={() => close()} className={style.modalBodyButtonclose}></button>
       </div>
-      {isShowModal && (
-        <CustomHabitModal
-          fromCheckList={fromCheckList}
-          habitName={habitName}
-          close={close}
-        />
-      )}
+      {isShowModal && <CustomHabitModal textOfHabit={name} close={close} />}
       {isShowModalEmpty && <CustomHabitModal close={close} />}
     </>
   );
