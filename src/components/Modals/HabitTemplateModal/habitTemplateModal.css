@@ -90,7 +90,6 @@
 ::-webkit-scrollbar {
   border-radius: 10px;
   width: 4px;
-  background: #faecec8e;
 }
 
 .habit-template-list::-webkit-scrollbar {
@@ -98,58 +97,8 @@
 }
 
 /* ползунок скроллбара */
-
 ::-webkit-scrollbar-thumb {
-  /* background-color: #43d190; */
-  background: -moz-linear-gradient(
-    left,
-    rgba(93, 255, 84, 1) 0%,
-    rgba(93, 255, 84, 1) 22%,
-    rgba(67, 209, 144, 1) 54%,
-    rgba(67, 209, 144, 1) 85%,
-    rgba(67, 209, 144, 1) 100%
-  );
-  background: -webkit-gradient(
-    left top,
-    right top,
-    color-stop(0%, rgba(93, 255, 84, 1)),
-    color-stop(22%, rgba(93, 255, 84, 1)),
-    color-stop(54%, rgba(67, 209, 144, 1)),
-    color-stop(85%, rgba(67, 209, 144, 1)),
-    color-stop(100%, rgba(67, 209, 144, 1))
-  );
-  background: -webkit-linear-gradient(
-    left,
-    rgba(93, 255, 84, 1) 0%,
-    rgba(93, 255, 84, 1) 22%,
-    rgba(67, 209, 144, 1) 54%,
-    rgba(67, 209, 144, 1) 85%,
-    rgba(67, 209, 144, 1) 100%
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(93, 255, 84, 1) 0%,
-    rgba(93, 255, 84, 1) 22%,
-    rgba(67, 209, 144, 1) 54%,
-    rgba(67, 209, 144, 1) 85%,
-    rgba(67, 209, 144, 1) 100%
-  );
-  background: -ms-linear-gradient(
-    left,
-    rgba(93, 255, 84, 1) 0%,
-    rgba(93, 255, 84, 1) 22%,
-    rgba(67, 209, 144, 1) 54%,
-    rgba(67, 209, 144, 1) 85%,
-    rgba(67, 209, 144, 1) 100%
-  );
-  background: linear-gradient(
-    to right,
-    rgba(93, 255, 84, 1) 0%,
-    rgba(93, 255, 84, 1) 22%,
-    rgba(67, 209, 144, 1) 54%,
-    rgba(67, 209, 144, 1) 85%,
-    rgba(67, 209, 144, 1) 100%
-  );
+  background-color: #43d190;
   border-radius: 10px;
 }
 
