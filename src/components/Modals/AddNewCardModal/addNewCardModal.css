@@ -78,3 +78,13 @@
   right: 14px;
   top: 14px;
 }
+.errorMessageMask {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.125px;
+  color: #fe6083;
+  margin-top: 13px;
+
+  margin-left: 125px;
+}

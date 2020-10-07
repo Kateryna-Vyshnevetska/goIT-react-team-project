@@ -35,11 +35,15 @@ export const MainPage = () => {
   }, [authToken(state)]);
 
   useEffect(() => {
+    notificationArr = checkMessagesForNote(habitsList, habitsInfo);
+  }, [notificationArr]);
+
+  useEffect(() => {
+    console.log("staert");
     const dataFromStorage = localStorage.getItem("habitsId");
     const habitsStorage = JSON.parse(dataFromStorage);
     const notification = checkMessagesForNote(habitsList, habitsInfo);
     let flag = 0;
-    console.log(habitsStorage);
     if (habitsStorage) {
       const idOld = habitsStorage.map((el) => el._id);
       const idNew = notification.map((el) => el.id);
@@ -57,8 +61,11 @@ export const MainPage = () => {
       }
       if (flag === idOld.length) {
         dispatch(countNotesAction());
+      } else if (idOld.length !== idNew.length) {
+        dispatch(countNotesAction(notification));
       }
     } else {
+      console.log("else");
       dispatch(countNotesAction(notificationArr));
     }
   }, [notificationArr.length]);

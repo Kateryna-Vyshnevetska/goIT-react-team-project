@@ -14,7 +14,7 @@ const AddNewCard = ({ close }) => {
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const { register, errors, handleSubmit } = useForm();
-
+  const [checkError, setCheckError] = useState(false);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const cardInfo = {
@@ -23,11 +23,16 @@ const AddNewCard = ({ close }) => {
   };
 
   const onSubmit = (evt) => {
-    // evt.preventDefault();
-    dispatch(addCardInfo(cardInfo, authToken(state)));
-    setCardNumber("");
-    setExpirationDate("");
-    close();
+    const check = expirationDate.split("/");
+    if (Number(check[0]) <= 12 && Number(check[1]) >= 20) {
+      dispatch(addCardInfo(cardInfo, authToken(state)));
+      setCardNumber("");
+      setExpirationDate("");
+      setCheckError(false);
+      close();
+    } else {
+      setCheckError(true);
+    }
   };
 
   return (
@@ -58,12 +63,15 @@ const AddNewCard = ({ close }) => {
             maskChar={null}
             handleChange={(evt) => setCardNumber(evt.target.value)}
           />
+          {checkError && (
+            <p className="errorMessageMask">Неверный формат даты</p>
+          )}
           <BasicInputMasked
-            register={register({
-              minLength: 5,
-              maxLength: 5,
-              required: true,
-            })}
+            // register={register({
+            //   minLength: 5,
+            //   maxLength: 5,
+            //   required: true,
+            // })}
             forLabel={"name"}
             name={"timePass"}
             id={"number"}
@@ -76,11 +84,12 @@ const AddNewCard = ({ close }) => {
             value={expirationDate}
             handleChange={(evt) => setExpirationDate(evt.target.value)}
           />
+
           <div className="addNewCard-Buttons">
             <button
               type="submit"
               className="addNewCard-btn"
-              onClick={() => close()}
+              // onClick={() => close()}
             >
               Отмена
             </button>

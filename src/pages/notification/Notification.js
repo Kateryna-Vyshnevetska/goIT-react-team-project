@@ -28,7 +28,6 @@ export const Notifiacation = () => {
 
   useEffect(() => {
     dispatch(countNotesAction([]));
-    console.log("rfrfr");
     localStorage.setItem("habitsId", JSON.stringify(arrOfhabitDone));
   }, []);
 

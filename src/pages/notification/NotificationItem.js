@@ -2,12 +2,9 @@ import React from "react";
 import "./notification.css";
 
 export const NotificationItem = ({ text, id, onClick, name }) => {
-  const pushIdx = () => {
-    onClick(id);
-  };
   return (
     <>
-      <li className="section-item" onClick={pushIdx} id>
+      <li className="section-item" id>
         <div className="item">
           <h2 className="item-title">
             {text === "success"
