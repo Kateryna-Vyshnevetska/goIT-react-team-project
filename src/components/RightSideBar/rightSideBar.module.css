@@ -70,9 +70,25 @@
 }
 
 .calendarChecklistItemProgressDone {
-  width: 30px;
-  height: 30px;
   background-image: url(../images/done_icon.svg);
+  width: 35px;
+  height: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+background-size: 35px 35px;
+  border-radius: 5px;
+}
+
+.calendarChecklistItemProgressMissed {
+  width: 35px;
+  height: 35px;
+  background-image: url(../../images/checkListPage/missed2.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #fe6083;
+  
+
+  border-radius: 5px;
 }
 
 .calendarChecklistItemText {
@@ -109,13 +125,18 @@
   padding-left: 15px;
 }
 
+.calendarChecklistItemNotDoneToday {
+  text-decoration-line : none;
+  color: #43d190;
+}
+
 .calendarChecklistItemButton {
   width: 10%;
   height: 16px;
   /* margin-left: 13px; */
   border: none;
   background-color: #fff;
-  background-image: url(/static/media/trash_bin.5d942635.svg);
+  background-image: url(../images//trash_bin.svg);
   background-repeat: no-repeat;
   background-position: center;
 }

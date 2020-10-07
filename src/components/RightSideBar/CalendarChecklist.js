@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAndGetAllHabits } from "../../redux/operations";
 import style from "./rightSideBar.module.css";
@@ -29,16 +29,25 @@ export const CalendarChecklist = () => {
 
   // ниже более логичный вариант этой функции
 
-  allUserHabits.map((habits) =>
-    userHabitsDates.map(
-      (dates) =>
-        habits._id === dates.habitId &&
-        dates.dates.map(
-          (date) => dateNow.split("T")[0] === date.split("T")[0] && arr.push(habits)
-        )
-    )
-  );
 
+
+  useEffect(() => {
+    if (allUserHabits) {
+      allUserHabits.map((habits) =>
+        userHabitsDates.map(
+          (dates) =>
+            habits._id === dates.habitId &&
+            dates.dates.map(
+              (date) =>
+                dateNow.split("T")[0] === date.split("T")[0] && arr.push(habits)
+            )
+        )
+      );
+    }
+}, [allUserHabits]);
+
+
+  
   const deleteHabit = (id) => {
     dispatch(deleteHabitAndGetAllHabits(id, authToken(state)));
   };
@@ -59,51 +68,53 @@ export const CalendarChecklist = () => {
     const trueOrFalse = arr.find((el) => el._id === idOfHabit).data[
       indexOfDate
     ];
+      console.log("trueOrFalse", trueOrFalse);
 
+   
     return trueOrFalse;
   };
 
   return (
-//       {arr.length ? (
-//         <>
-//           <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
-//           <ul className={style.calendarChecklist}>
-//             {arr.map((el) => (
-//               <li key={el._id} className={style.calendarItem}>
-//                 <div className={style.calendarChecklistItem}>
-//                   <span
-//                     className={
-//                       false
-//                         ? style.calendarChecklistItemProgress
-//                         : style.calendarChecklistItemProgressDone
-//                     }
-//                   >
-//                     {false && "time"}
-//                   </span>
-//                   <span
-//                     className={
-//                       false
-//                         ? style.calendarChecklistItemText
-//                         : style.calendarChecklistItemTextDone
-//                     }
-//                   >
-//                     {el.name}
-//                   </span>
-//                   <button
-//                     onClick={() => deleteHabit(el._id)}
-//                     className={style.calendarChecklistItemButton}
-//                   ></button>
-//                 </div>
-//               </li>
-//             ))}
-//           </ul>
-//         </>
-//       ) : (
-//         <p className={style.notificationText}>
-//           Сегодня у Вас нет привычек, над которыми нужно работать
-//         </p>
-//       )}
-//     </>
+    //       {arr.length ? (
+    //         <>
+    //           <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
+    //           <ul className={style.calendarChecklist}>
+    //             {arr.map((el) => (
+    //               <li key={el._id} className={style.calendarItem}>
+    //                 <div className={style.calendarChecklistItem}>
+    //                   <span
+    //                     className={
+    //                       false
+    //                         ? style.calendarChecklistItemProgress
+    //                         : style.calendarChecklistItemProgressDone
+    //                     }
+    //                   >
+    //                     {false && "time"}
+    //                   </span>
+    //                   <span
+    //                     className={
+    //                       false
+    //                         ? style.calendarChecklistItemText
+    //                         : style.calendarChecklistItemTextDone
+    //                     }
+    //                   >
+    //                     {el.name}
+    //                   </span>
+    //                   <button
+    //                     onClick={() => deleteHabit(el._id)}
+    //                     className={style.calendarChecklistItemButton}
+    //                   ></button>
+    //                 </div>
+    //               </li>
+    //             ))}
+    //           </ul>
+    //         </>
+    //       ) : (
+    //         <p className={style.notificationText}>
+    //           Сегодня у Вас нет привычек, над которыми нужно работать
+    //         </p>
+    //       )}
+    //     </>
 
     <ul className={style.calendarChecklist}>
       {arr.sort().map((el) => (
@@ -114,12 +125,16 @@ export const CalendarChecklist = () => {
                 className={
                   checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
                     ? style.calendarChecklistItemProgressDone
-                    : style.calendarChecklistItemProgress
+                    : checkIfHabitDoneTodaay(el._id, el, userHabitsDates) ===
+                      null
+                    ? style.calendarChecklistItemNotDoneToday
+                    : style.calendarChecklistItemProgressMissed
+                  // : style.calendarChecklistItemProgress,
                 }
               >
-                {checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                  ? ""
-                  : el.planningTime.split(" ")[4].slice(0, 5)}
+                {checkIfHabitDoneTodaay(el._id, el, userHabitsDates) === null
+                  ? el.planningTime.split(" ")[4].slice(0, 5)
+                  : ""}
               </span>
             </div>
             <span
@@ -139,6 +154,5 @@ export const CalendarChecklist = () => {
         </li>
       ))}
     </ul>
-
   );
 };
