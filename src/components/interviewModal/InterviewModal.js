@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useStore } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
+
 import { updateQuizeInfo } from "../../redux/operations";
 import { BasicInput } from "../BasicInput/BasicInput";
 import modalBackDropNoClose from "../modalBackDrop/ModalBackDropNoClose";
@@ -20,10 +22,14 @@ function InterviewModal({ close }) {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => dispatch(updateQuizeInfo(data, token));
+  const onSubmit = (data) => {
+    history.push("/make-it-habit/profile");
+    dispatch(updateQuizeInfo(data, token));
+  };
   const dispatch = useDispatch();
   const store = useStore();
   const token = store.getState().authToken;
+  const history = useHistory();
 
   return (
     <>
