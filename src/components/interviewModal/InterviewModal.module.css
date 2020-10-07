@@ -69,6 +69,7 @@ form div + div {
 }
 
 .modalBodyButton {
+  font-family: "Rubik", sans-serif;
   margin-top: 80px;
   margin-left: -130px;
   background: #43d190;

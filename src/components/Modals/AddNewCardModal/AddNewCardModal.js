@@ -14,7 +14,7 @@ const AddNewCard = ({ close }) => {
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const { register, errors, handleSubmit } = useForm();
-
+  const [checkError, setCheckError] = useState(false);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const cardInfo = {
@@ -23,17 +23,22 @@ const AddNewCard = ({ close }) => {
   };
 
   const onSubmit = (evt) => {
-    // evt.preventDefault();
-    dispatch(addCardInfo(cardInfo, authToken(state)));
-    setCardNumber("");
-    setExpirationDate("");
-    close();
+    const check = expirationDate.split("/");
+    if (Number(check[0]) <= 12 && Number(check[1]) >= 20) {
+      dispatch(addCardInfo(cardInfo, authToken(state)));
+      setCardNumber("");
+      setExpirationDate("");
+      setCheckError(false);
+      close();
+    } else {
+      setCheckError(true);
+    }
   };
 
   return (
     <>
       <div className="addNewCard-head">
-        <h2 className="addNewCard-title">Введите данные ващой карты</h2>
+        <h2 className="addNewCard-title">Введите данные вашей карты</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <p className={style.errorMessage}>
             {errors.number || errors.timePass
@@ -42,9 +47,8 @@ const AddNewCard = ({ close }) => {
           </p>
           <BasicInputMasked
             register={register({
-              minLength: 16,
-              maxLength: 16,
-              pattern: /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/,
+              minLength: 19,
+              maxLength: 19,
               required: true,
             })}
             forLabel={"name"}
@@ -56,15 +60,18 @@ const AddNewCard = ({ close }) => {
             placeholder={"Введите номер"}
             value={cardNumber}
             mask={"9999 9999 9999 9999"}
+            maskChar={null}
             handleChange={(evt) => setCardNumber(evt.target.value)}
           />
+          {checkError && (
+            <p className="errorMessageMask">Неверный формат даты</p>
+          )}
           <BasicInputMasked
-            ref={register({
-              pattern: /[0-9]{4}/,
-              minLength: 4,
-              maxLength: 4,
-              required: true,
-            })}
+            // register={register({
+            //   minLength: 5,
+            //   maxLength: 5,
+            //   required: true,
+            // })}
             forLabel={"name"}
             name={"timePass"}
             id={"number"}
@@ -73,14 +80,16 @@ const AddNewCard = ({ close }) => {
             inputWidth={"125px"}
             placeholder={"__/__"}
             mask={"99/99"}
+            maskChar={null}
             value={expirationDate}
             handleChange={(evt) => setExpirationDate(evt.target.value)}
           />
+
           <div className="addNewCard-Buttons">
             <button
               type="submit"
               className="addNewCard-btn"
-              onClick={() => close()}
+              // onClick={() => close()}
             >
               Отмена
             </button>

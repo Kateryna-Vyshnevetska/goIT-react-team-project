@@ -12,7 +12,6 @@ import { isLoading } from "./isLoading/isLoadingReducer";
 import { firstModalForUser } from "./flagForFirsModal/flagFirstModalReducer";
 import { usersHabitsDates } from "./habitsDates/habitsDatesReducer";
 import { currentDay } from "./currentDay/currentDayReducer";
-import { countOfNotification } from "./idForNotification/idForNotReducer";
 import { mainHabitDates } from "./mainHabitDates/mainHabitDatesReducer";
 import { congratulationModalForUser } from "./congratulationModal/CongratulationModalReducer";
 import { subscriptionLevel } from "../redux/subscription/subscriptionReducer";
@@ -29,7 +28,6 @@ export const rootReducer = combineReducers({
   usersHabitsDates,
   currentDay,
   statusOfNotification,
-  countOfNotification,
   mainHabitDates,
   subscriptionLevel,
   paymentCard,

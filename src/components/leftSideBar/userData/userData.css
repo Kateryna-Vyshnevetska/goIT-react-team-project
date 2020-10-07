@@ -25,6 +25,10 @@
   outline: none;
 }
 
+.leftSideBar-user-avatar.profile {
+  background-color: #ffffff;
+}
+
 .leftSideBar-user-name {
   font-family: "Rubik", sans-serif;
   font-weight: 700;
@@ -36,27 +40,30 @@
   margin-top: 5px;
 }
 
-/* .leftSideBar-user-button {
-  width: 52px;
+.leftSideBar-user-button {
+  bottom: 810px;
+  left: 300px;
+  position: absolute;
+  width: 20px;
   height: 20px;
   padding: 0;
   font-size: 14px;
   line-height: 1.21;
-  color: #ffffff;
+  background-color: #fff;
   text-align: center;
-  background: #ec4541;
+
   border: none;
   outline: none;
-  border-radius: 5px; */
-/* transition: all 0.2s linear; */
-/* } */
-/* .leftSideBar-user-button:hover,
+  border-radius: 5px;
+  /* transition: all 0.2s linear; */
+}
+.leftSideBar-user-button:hover,
 .leftSideBar-user-button:focus {
-  background: linear-gradient(222.27deg, #cbf7e3 3.75%, #7cf7a3 94.69%);
+  background: linear-gradient(222.27deg, #cbf7e3 3.75%, #cc0404a9 94.69%);
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
-  color: #a09b9b;
+
   outline: none;
-} */
+}
 
 .leftSideBar-user-link {
   text-decoration: none;
@@ -92,4 +99,9 @@
 .userData-subscriptionText {
   font-size: 14px;
   line-height: 1.42;
+}
+.log-out-img {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
 }

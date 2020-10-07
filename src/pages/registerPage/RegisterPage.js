@@ -90,16 +90,16 @@ const RegisterPage = ({ setregisterOpenPage }) => {
               {errors.password?.message}
             </p>
           </div>
-          <div>
+          <div className={styles.checkbox}>
             <input
-              className={styles.checkbox}
+              className={styles.customCheckbox}
               type="checkbox"
               value="Отправить"
-              id="check"
+              id="color-1"
               name="check"
               onChange={() => setChecked((prev) => !prev)}
             />
-            <label for="check" className={styles.text}>
+            <label for="color-1" className={styles.text}>
               Я подтверждаю что мне исполнилось 18 лет!
             </label>
           </div>

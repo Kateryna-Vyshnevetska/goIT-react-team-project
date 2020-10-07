@@ -69,7 +69,7 @@ export const CalendarChecklist = () => {
               {arr.sort().map((el) => (
                 <CSSTransition
                   key={el._id}
-                  timeout={1000}
+                  timeout={500}
                   classNames="list-fade"
                 >
                   <li key={el._id} className={style.calendarItem}>
@@ -124,88 +124,5 @@ export const CalendarChecklist = () => {
         </p>
       )}
     </>
-
-    // <ul className={style.calendarChecklist}>
-    //       <TransitionGroup>
-    //   {arr.sort().map((el) => (
-    // <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
-    //     <li key={el._id} className={style.calendarItem}>
-    //       <div className={style.calendarChecklistItem}>
-    //         <div className={style.iconWrapper}>
-    //           <span
-    //             className={
-    //               checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-    //                 ? style.calendarChecklistItemProgressDone
-    //                 : checkIfHabitDoneTodaay(el._id, el, userHabitsDates) ===
-    //                   null
-    //                 ? style.calendarChecklistItemNotDoneToday
-    //                 : style.calendarChecklistItemProgressMissed
-    //               // : style.calendarChecklistItemProgress,
-    //             }
-    //           >
-    //             {checkIfHabitDoneTodaay(el._id, el, userHabitsDates) === null
-    //               ? el.planningTime.split(" ")[4].slice(0, 5)
-    //               : ""}
-    //           </span>
-    //         </div>
-    //         <span
-    //           className={
-    //             checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-    //               ? style.calendarChecklistItemTextDone
-    //               : style.calendarChecklistItemText
-    //           }
-    //         >
-    //           {el.name}
-    //         </span>
-    //         <button
-    //           onClick={() => deleteHabit(el._id)}
-    //           className={style.calendarChecklistItemButton}
-    //         ></button>
-    //       </div>
-    //     </li>
-    // </CSSTransition>
-    //   ))}
-    // </TransitionGroup>
-
-    // <TransitionGroup>
-    //    {arr.sort().map((el) => (
-    //      <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
-    //        <li key={el._id} className={style.calendarItem}>
-    //     <div className={style.calendarChecklistItem}>
-    //       <div className={style.iconWrapper}>
-    //         <span
-    //           className={
-    //             checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-    //               ? style.calendarChecklistItemProgressDone
-    //               : checkIfHabitDoneTodaay(el._id, el, userHabitsDates) ===
-    //                 null
-    //               ? style.calendarChecklistItemNotDoneToday
-    //               : style.calendarChecklistItemProgressMissed
-    //             // : style.calendarChecklistItemProgress,
-    //           }
-    //         >
-    //           {checkIfHabitDoneTodaay(el._id, el, userHabitsDates) === null
-    //             ? el.planningTime.split(" ")[4].slice(0, 5)
-    //             : ""}
-    //         </span>
-    //       </div>
-    //       <span
-    //         className={
-    //           checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-    //             ? style.calendarChecklistItemTextDone
-    //             : style.calendarChecklistItemText
-    //         }
-    //       >
-    //         {el.name}
-    //       </span>
-    //       <button
-    //         onClick={() => deleteHabit(el._id)}
-    //         className={style.calendarChecklistItemButton}
-    //       ></button>
-    //     </div>
-    //   </li>
-    //      </CSSTransition>
-    //    ))}
-    //  </TransitionGroup>
   );
 };

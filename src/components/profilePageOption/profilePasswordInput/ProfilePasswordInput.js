@@ -23,11 +23,11 @@ export function PasswordInputRepeat({
     if (input.getAttribute("type") === "password") {
       target.classList.add("view");
 
-      icon.setAttribute("src", "https://snipp.ru/demo/495/view.svg");
+      // icon.setAttribute("src", "https://snipp.ru/demo/495/view.svg");
       input.setAttribute("type", "text");
     } else {
       target.classList.remove("view");
-      icon.setAttribute("src", "https://snipp.ru/demo/495/no-view.svg");
+      // icon.setAttribute("src", "https://snipp.ru/demo/495/no-view.svg");
       input.setAttribute("type", "password");
     }
     return false;
@@ -60,11 +60,11 @@ export function PasswordInputRepeat({
         className="passwordControl"
         onClick={(event) => show_hide_password(event.target)}
       >
-        <img
+        {/* <img
           id="iconPasswordViewRepeat"
           src={"https://snipp.ru/demo/495/no-view.svg"}
           alt="icon-hidden"
-        />
+        /> */}
       </span>
     </div>
   );

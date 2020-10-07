@@ -45,6 +45,7 @@ export const ProfileMyCardsPage = () => {
           >
             {cardArr.map((el, idx) => (
               <ProfileItemCard
+                key={idx}
                 number={el.number}
                 timeExpiration={el.timeExpiration}
                 dataAction={idx}

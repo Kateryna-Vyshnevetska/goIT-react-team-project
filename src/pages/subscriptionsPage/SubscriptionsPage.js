@@ -7,6 +7,9 @@ import { ProfilePageHelpInfo } from "../../components/profilePageOption/profileP
 import AddNewCard from "../../components/Modals/AddNewCardModal/AddNewCardModal";
 import { updateSubscriptionLevel } from "../../redux/operations";
 import { Link, NavLink } from "react-router-dom";
+import { StyleRoot } from "radium";
+import Coverflow from "react-coverflow";
+import "./SubscriptionsPage.css"
 
 export function SubscriptionsPage() {
   const [modalShow, setModalShow] = useState(false);
@@ -116,7 +119,6 @@ export function SubscriptionsPage() {
                 Premium
               </NavLink>
 
-              {/* </button> */}
               <p className={style.subscriptionsItemDescription}>
                 6 месяцев —
                 <span className={style.subscriptionsItemDescriptionPrice}>
@@ -159,12 +161,42 @@ export function SubscriptionsPage() {
         </section>
         <section className={style.subscriptionsSectionCards}>
           <p className={style.subscriptionsSectionTitle}>Мои карты</p>
-          {cardArr.map((el) => (
-            <ProfileItemCard
-              number={el.number}
-              timeExpiration={el.timeExpiration}
-            />
-          ))}
+
+          {cardArr.length ? (
+            <StyleRoot>
+              <Coverflow
+                displayQuantityOfSide={1}
+                navigation={true}
+                enableScroll={false}
+                enableHeading={false}
+                // style={{ width: "100%", height: "500px", }}
+                media={{
+                  "@media (max-width: 900px)": {
+                    width: "600px",
+                    height: "300px",
+                  },
+                  "@media (min-width: 900px)": {
+                    width: "800px",
+                    height: "400px",
+                  },
+                }}
+              >
+                {cardArr.map((el, idx) => (
+                  <ProfileItemCard
+                    key={idx}
+                    number={el.number}
+                    timeExpiration={el.timeExpiration}
+                    dataAction={idx}
+                  />
+                ))}
+              </Coverflow>
+            </StyleRoot>
+          ) : (
+            <p className="ProfileMyCardsPage-title">
+              {" "}
+              У вас нет добавленных карт.{" "}
+            </p>
+          )}
 
           <div className={style.subscriptionsSectionCardsButtons}>
             <button
