@@ -15,6 +15,7 @@ export function BasicInputMasked({
   type,
   marginBottom,
   mask,
+  maskChar,
 }) {
   return (
     <div style={{ marginBottom: marginBottom }}>
@@ -26,7 +27,7 @@ export function BasicInputMasked({
         {labelText}
       </label>
       <InputMask
-        ref={register}
+        inputRef={register}
         type={type}
         id={id}
         className={style.basicInput}
@@ -36,6 +37,7 @@ export function BasicInputMasked({
         style={{ width: inputWidth }}
         onChange={handleChange}
         mask={mask}
+        maskChar={maskChar}
       />
     </div>
   );
