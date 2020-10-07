@@ -17,7 +17,6 @@ export const Calendar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    console.log("qwe");
     history.push("/make-it-habit/check-list");
     const currentDate = moment(startDate).format();
     dispatch(addCurrentDay(currentDate.split("T")[0]));

@@ -94,7 +94,6 @@ export const HabitItem = ({
             habitNumberCounter.classList.add("isVisible");
             buttonMissedActive.classList.remove("active");
             buttonDoneActive.classList.add("active");
-            console.log("true", trueOrFalse);
           }
         } else if (!trueOrFalse) {
           if (trueOrFalse !== null) {
