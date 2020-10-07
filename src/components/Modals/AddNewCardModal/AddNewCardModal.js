@@ -31,7 +31,7 @@ const AddNewCard = ({ close }) => {
   return (
     <>
       <div className="addNewCard-head">
-        <h2 className="addNewCard-title">Введите данные ващой карты</h2>
+        <h2 className="addNewCard-title">Введите данные вашей карты</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <p className={style.errorMessage}>
             {errors.number || errors.timePass
