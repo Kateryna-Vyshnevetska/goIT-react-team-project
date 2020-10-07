@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./addNewCardModal.css";
 import { BasicInput } from "../../BasicInput/BasicInput";
+import { BasicInputMasked } from "../../BasicInput/BasicInputMasked";
+
 import modalBackDrop from "../../../components/modalBackDrop/ModalBackDrop";
 import { addCardInfo } from "../../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +40,7 @@ const AddNewCard = ({ close }) => {
               ? "Введите правильные данные"
               : null}
           </p>
-          <BasicInput
+          <BasicInputMasked
             register={register({
               minLength: 16,
               maxLength: 16,
@@ -53,9 +55,10 @@ const AddNewCard = ({ close }) => {
             name={"number"}
             placeholder={"Введите номер"}
             value={cardNumber}
+            mask={"9999 9999 9999 9999"}
             handleChange={(evt) => setCardNumber(evt.target.value)}
           />
-          <BasicInput
+          <BasicInputMasked
             ref={register({
               pattern: /[0-9]{4}/,
               minLength: 4,
@@ -69,6 +72,7 @@ const AddNewCard = ({ close }) => {
             labelWidth={"125px"}
             inputWidth={"125px"}
             placeholder={"__/__"}
+            mask={"99/99"}
             value={expirationDate}
             handleChange={(evt) => setExpirationDate(evt.target.value)}
           />

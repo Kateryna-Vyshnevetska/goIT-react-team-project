@@ -23,6 +23,7 @@
     "react-datepicker": "^3.2.2",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.1",
+    "react-input-mask": "^2.0.4",
     "react-lazy": "^1.1.0",
     "react-lazy-load": "^3.1.13",
     "react-loader-spinner": "^3.1.14",
