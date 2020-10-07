@@ -9,14 +9,16 @@ export const checkAchievement = (
   elem3
 ) => {
   arrayCigarettes.map((el) => {
-    if (cigaretteDay - el === 1) {
-      elem1.classList.add("active");
-    }
-    if (cigaretteDay - el === 3) {
-      elem2.classList.add("active");
-    }
-    if (cigaretteDay - el === 5) {
-      elem3.classList.add("active");
+    if (el !== null) {
+      if (cigaretteDay - el === 1) {
+        elem1.classList.add("active");
+      }
+      if (cigaretteDay - el === 3) {
+        elem2.classList.add("active");
+      }
+      if (cigaretteDay - el === 5) {
+        elem3.classList.add("active");
+      }
     }
   });
 };

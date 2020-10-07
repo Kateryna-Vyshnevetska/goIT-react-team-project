@@ -18,38 +18,56 @@ import { checkMessagesForNote } from "../../helpers/checkNotifications";
 import { countNotesAction } from "../../redux/notificationPage/notificationAction";
 import Congratulations from "../../components/congratsModal/Congratulations";
 import { notificationType } from "../../redux/selectors";
+import { object } from "yup";
+import FindHabitById from "../../helpers/FindHabitById";
 
 export const MainPage = () => {
   const state = useSelector((state) => state);
   const habitsList = userHabits(state);
   const habitsInfo = usersHabitsDates(state);
+  const habits = userHabits(state);
   const isLoading = useSelector((state) => state.isLoading);
-  const notification = notificationType(state);
   const dispatch = useDispatch();
-  const stateNotesArr = useSelector((state) => state.countOfNotification);
-  // console.log("state", stateNotesArr);
-  const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
+  let notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   useEffect(() => {
     dispatch(getAllUserDataForState(authToken(state)));
   }, [authToken(state)]);
 
   useEffect(() => {
-    console.log("eff");
-    console.log("stateNotesArr", stateNotesArr);
-    notificationArr.length && dispatch(countNotesAction(notificationArr));
+    const dataFromStorage = localStorage.getItem("habitsId");
+    const habitsStorage = JSON.parse(dataFromStorage);
+    const notification = checkMessagesForNote(habitsList, habitsInfo);
+    let flag = 0;
+    console.log(habitsStorage);
+    if (habitsStorage) {
+      const idOld = habitsStorage.map((el) => el._id);
+      const idNew = notification.map((el) => el.id);
+      if (idOld.length === 0) {
+        const arrOfhabitDone = [];
+        notification.forEach((el) =>
+          arrOfhabitDone.push(FindHabitById(habits, el.id))
+        );
+        localStorage.setItem("habitsId", JSON.stringify(arrOfhabitDone));
+      }
+      for (let i = 0; i < idNew.length; i++) {
+        if (idNew[i] === idOld[i]) {
+          flag += 1;
+        }
+      }
+      if (flag === idOld.length) {
+        dispatch(countNotesAction());
+      }
+    } else {
+      dispatch(countNotesAction(notificationArr));
+    }
   }, [notificationArr.length]);
-
-  useEffect(() => {
-    stateNotesArr.length && console.log("stateNotesArr", stateNotesArr);
-  }, [stateNotesArr.length]);
 
   return (
     <>
       {isLoading && <Spinner />}
       <div className="main-container">
         <LeftSideBar />
-        {/* {notification.some((el) => el === "success") && <Congratulations />} */}
 
         <Switch>
           <PrivateRoute
