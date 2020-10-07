@@ -27,7 +27,6 @@ export const MainPage = () => {
   const notification = notificationType(state);
   const dispatch = useDispatch();
   const stateNotesArr = useSelector((state) => state.countOfNotification);
-  // console.log("state", stateNotesArr);
   const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   useEffect(() => {

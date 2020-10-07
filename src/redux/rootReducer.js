@@ -14,7 +14,7 @@ import { usersHabitsDates } from "./habitsDates/habitsDatesReducer";
 import { currentDay } from "./currentDay/currentDayReducer";
 import { countOfNotification } from "./idForNotification/idForNotReducer";
 import { mainHabitDates } from "./mainHabitDates/mainHabitDatesReducer";
-
+import { congratulationModalForUser } from "./congratulationModal/CongratulationModalReducer";
 import { subscriptionLevel } from "../redux/subscription/subscriptionReducer";
 import { paymentCard } from "./addPatmentCard/addPaymentCardReduser";
 
@@ -35,4 +35,5 @@ export const rootReducer = combineReducers({
   paymentCard,
   isLoading,
   errors: errorReducer,
+  congratulationModalForUser,
 });
