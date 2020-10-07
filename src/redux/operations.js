@@ -44,7 +44,7 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       subscriptionAction({
         plan:
           data.user.subscription === ""
-            ? "You have no plan yet"
+            ? "Текущий план не выбран"
             : data.user.subscription,
       })
     );
