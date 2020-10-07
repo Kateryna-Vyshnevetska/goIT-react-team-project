@@ -38,6 +38,13 @@ export const HabitItem = ({
   const datanew = new Date();
   const newDataFormat = moment(datanew).format();
 
+  useEffect(() => {
+    if (buttonMissedActive || buttonDoneActive) {
+      buttonDoneActive.classList.remove("active");
+      buttonMissedActive.classList.remove("active");
+    }
+  }, [state.currentDay]);
+
   const checkActiveBtn = (arrOfHabits) => {
     if (arrOfHabits.length > 0) {
       // находим даты конкретно это привычки

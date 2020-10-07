@@ -10,7 +10,7 @@ export const checkMessagesForNote = (habitsList, habitsInfo) => {
 
   const completedHabits = habitsList.filter(
     (habit) =>
-      habit.data.every((elem) => elem === true || elem === null) && habit
+      habit.data.every((elem) => elem === true || elem === false) && habit
   );
 
   completedHabits.map((item) =>
