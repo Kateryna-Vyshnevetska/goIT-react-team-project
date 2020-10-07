@@ -42,9 +42,8 @@ const AddNewCard = ({ close }) => {
           </p>
           <BasicInputMasked
             register={register({
-              minLength: 16,
-              maxLength: 16,
-              pattern: /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/,
+              minLength: 19,
+              maxLength: 19,
               required: true,
             })}
             forLabel={"name"}
@@ -56,13 +55,13 @@ const AddNewCard = ({ close }) => {
             placeholder={"Введите номер"}
             value={cardNumber}
             mask={"9999 9999 9999 9999"}
+            maskChar={null}
             handleChange={(evt) => setCardNumber(evt.target.value)}
           />
           <BasicInputMasked
-            ref={register({
-              pattern: /[0-9]{4}/,
-              minLength: 4,
-              maxLength: 4,
+            register={register({
+              minLength: 5,
+              maxLength: 5,
               required: true,
             })}
             forLabel={"name"}
@@ -73,6 +72,7 @@ const AddNewCard = ({ close }) => {
             inputWidth={"125px"}
             placeholder={"__/__"}
             mask={"99/99"}
+            maskChar={null}
             value={expirationDate}
             handleChange={(evt) => setExpirationDate(evt.target.value)}
           />
