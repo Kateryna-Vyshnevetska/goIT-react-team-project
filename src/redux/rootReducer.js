@@ -7,12 +7,12 @@ import { userHabits } from "./habits/habitsReducers";
 import { userCigarettes } from "./cigarettes/cigarettesReducers";
 import { authToken } from "./authToken/authTokenReducer";
 import { isAuthUser } from "./isAuthUser/isAuthUserReducer";
-import { countOfNotification } from "./notificationPage/notificationReducer";
+import { statusOfNotification } from "./notificationPage/notificationReducer";
 import { isLoading } from "./isLoading/isLoadingReducer";
 import { firstModalForUser } from "./flagForFirsModal/flagFirstModalReducer";
 import { usersHabitsDates } from "./habitsDates/habitsDatesReducer";
 import { currentDay } from "./currentDay/currentDayReducer";
-
+import { countOfNotification } from "./idForNotification/idForNotReducer";
 import { mainHabitDates } from "./mainHabitDates/mainHabitDatesReducer";
 
 import { subscriptionLevel } from "../redux/subscription/subscriptionReducer";
@@ -28,10 +28,11 @@ export const rootReducer = combineReducers({
   userCigarettes,
   usersHabitsDates,
   currentDay,
+  statusOfNotification,
   countOfNotification,
-  isLoading,
-  errors: errorReducer,
   mainHabitDates,
   subscriptionLevel,
   paymentCard,
+  isLoading,
+  errors: errorReducer,
 });
