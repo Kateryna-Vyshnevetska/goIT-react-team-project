@@ -99,7 +99,7 @@ const RegisterPage = ({ setregisterOpenPage }) => {
               name="check"
               onChange={() => setChecked((prev) => !prev)}
             />
-            <label for="check" className={styles.text}>
+            <label htmlFor="check" className={styles.text}>
               Я подтверждаю что мне исполнилось 18 лет!
             </label>
           </div>

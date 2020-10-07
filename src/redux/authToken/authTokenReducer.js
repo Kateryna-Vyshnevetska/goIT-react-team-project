@@ -3,9 +3,6 @@ import { addUserAuthToken } from "./authTokenAction";
 
 const authTokenState = "";
 
-export const authToken = createReducer(
-  { ...authTokenState },
-  {
-    [addUserAuthToken]: (state, { payload }) => payload,
-  }
-);
+export const authToken = createReducer(authTokenState, {
+  [addUserAuthToken]: (state, { payload }) => payload,
+});

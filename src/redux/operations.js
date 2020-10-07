@@ -33,6 +33,7 @@ axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 export const getAllUserDataForState = (token) => async (dispatch) => {
   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
   dispatch(isLoadingAction(true));
+  console.log("go");
   try {
     const { data } = await axios.get("/habits", {
       headers: {
@@ -40,27 +41,15 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       },
     });
     let count = 0;
-    dispatch(
-      subscriptionAction({
-        plan:
-          data.user.subscription === ""
-            ? "You have no plan yet"
-            : data.user.subscription,
-      })
-    );
 
     dispatch(addUserCigarettes(data.user.cigarettes));
-
     dispatch(addUserInfo(data.user));
     dispatch(addUserQuizInfo(data.user.quizInfo));
     dispatch(addUserHabits(data.habits));
-
     dispatch(updatePaymentData(data.user.payments));
-
     let arrHabitsDates = data.habits.map((el) => {
       return createHabbitDataArr(el);
     });
-
     dispatch(userHabitsDatesUppdate(arrHabitsDates));
 
     let mainHabitDates = createMainHabbitDataArr(
@@ -73,6 +62,15 @@ export const getAllUserDataForState = (token) => async (dispatch) => {
       el >= 1 ? (count += 1) : ""
     );
     count === 4 ? dispatch(isFirstModal(false)) : dispatch(isFirstModal(true));
+
+    dispatch(
+      subscriptionAction({
+        plan:
+          data.user.subscription === ""
+            ? "You have no plan yet"
+            : data.user.subscription,
+      })
+    );
     dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));

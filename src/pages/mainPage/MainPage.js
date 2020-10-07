@@ -26,23 +26,35 @@ export const MainPage = () => {
   const isLoading = useSelector((state) => state.isLoading);
   const notification = notificationType(state);
   const dispatch = useDispatch();
-  const stateNotesArr = useSelector((state) => state.countOfNotification);
-  // console.log("state", stateNotesArr);
-  const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
+  const stateNotesArr = useSelector((state) => state.statusOfNotification);
+  const habitsDates = useSelector((state) => state.usersHabitsDates);
+  // console.log(habitsDates);
 
   useEffect(() => {
-    dispatch(getAllUserDataForState(authToken(state)));
+    if (authToken(state)) {
+      dispatch(getAllUserDataForState(authToken(state)));
+    }
   }, [authToken(state)]);
 
-  useEffect(() => {
-    console.log("eff");
-    console.log("stateNotesArr", stateNotesArr);
-    notificationArr.length && dispatch(countNotesAction(notificationArr));
-  }, [notificationArr.length]);
+  // useEffect(() => {
+  //   if (habitsDates.length > 0) {
+  //     const notificationArr = checkMessagesForNote(
+  //       habitsList,
+  //       habitsInfo,
+  //       dispatch
+  //     );
+  //     dispatch(countNotesAction(notificationArr));
+  //   }
+  // }, [habitsDates]);
 
-  useEffect(() => {
-    stateNotesArr.length && console.log("stateNotesArr", stateNotesArr);
-  }, [stateNotesArr.length]);
+  // useEffect(() => {
+  //   notificationArr.length && dispatch(countNotesAction(notificationArr));
+  // }, [notificationArr.length]);
+
+  // useEffect(() => {
+  //   console.log("hete");
+  //   stateNotesArr.length && console.log("stateNotesArr", stateNotesArr);
+  // }, [stateNotesArr.length]);
 
   return (
     <>

@@ -11,8 +11,6 @@ import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
-import { BasicInputMasked } from "../BasicInput/BasicInputMasked";
-
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
@@ -47,6 +45,7 @@ export const ProfilePageOption = () => {
     dispatch(updateUserInfo(data, authToken));
     history.push("/");
   };
+
   const clickTologOut = () => {
     dispatch(logOut());
   };
@@ -107,7 +106,7 @@ export const ProfilePageOption = () => {
             </div>
 
             <div className="profilePage-inputs">
-              <BasicInputMasked
+              <BasicInput
                 register={register({
                   minLength: 11,
                   maxLength: 11,
@@ -117,10 +116,9 @@ export const ProfilePageOption = () => {
                 forLabel={"phone"}
                 id={"phone"}
                 labelText={"Телефон"}
-                placeholder={"+38(0__)-___-__-__" || userInfo.phone}
+                placeholder={"380__ ___ __ __" || userInfo.phone}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                mask={"+38(099)-999-99-99"}
               />
               <p className={styles.errorMessage}>
                 {errors.phone && "В вашем номере должно быть 11 цифр"}
@@ -170,7 +168,7 @@ export const ProfilePageOption = () => {
                   labelWidth={"120px"}
                   inputWidth={"345px"}
                   marginBottom="40px"
-                  handleChange={({ target: { value } }) => setPassword(value)}
+                  // handleChange={({ target: { value } }) => setPassword(value)}
                 />
                 <p className={styles.errorMessagePass}>
                   {errors.password?.message}
@@ -200,9 +198,9 @@ export const ProfilePageOption = () => {
                     labelWidth={"120px"}
                     inputWidth={"345px"}
                     marginBottom="40px"
-                    handleChange={({ target: { value } }) =>
-                      setConfirmPassword(value)
-                    }
+                    // handleChange={({ target: { value } }) =>
+                    //   setConfirmPassword(value)
+                    // }
                   />
                 </CSSTransition>
                 <p className={styles.errorMessagePass}>
@@ -247,11 +245,11 @@ export const ProfilePageOption = () => {
                 Изменить подписку
               </Link>
             </button>
-              <ProfilePageHelpInfo />
           </div>
           <Route path="#" />
         </div>
         <ProfileMyCardsPage />
+        <ProfilePageHelpInfo />
       </div>
     </>
   );

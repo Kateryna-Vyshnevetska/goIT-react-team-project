@@ -1,4 +1,5 @@
 import moment from "moment";
+import { idNot } from "../redux/idForNotification/idForNotAction";
 
 export const checkMessagesForNote = (habitsList, habitsInfo, dispatch) => {
   const notificationArr = [];
@@ -24,11 +25,20 @@ export const checkMessagesForNote = (habitsList, habitsInfo, dispatch) => {
       (habit) => habit.dates[habit.dates.length - 1].split("T")[0] === dateNow
     )
     .map((habit) => habit.habitId);
-
+  console.log("str");
   const setNotificationArray = (habitsArray1, habitsArray2) =>
     arrayTodayCompletedHabitsID.map((key) => {
-      habitsArray1.map((id) => id === key && notificationArr.push("success"));
-      habitsArray2.map((id) => id === key && notificationArr.push("completed"));
+      habitsArray1.map((id) => {
+        if (id === key) {
+          notificationArr.push("success");
+        }
+      });
+      habitsArray2.map((id) => {
+        if (id === key) {
+          notificationArr.push("completed");
+          // console.log("doit");
+        }
+      });
     });
 
   setNotificationArray(userSuccessCompletedHabitsID, userCompletedHabitsID);
