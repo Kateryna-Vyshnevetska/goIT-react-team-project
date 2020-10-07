@@ -23,15 +23,17 @@ export function CheckListPage() {
 
   const arr = [];
 
-  userHabits.map((habits) =>
-    userHabitsDates.map(
-      (dates) =>
-        habits._id === dates.habitId &&
-        dates.dates.map(
-          (date) => dateNow === date.split("T")[0] && arr.push(habits)
+ 
+      userHabits.map((habits) =>
+        userHabitsDates.map(
+          (dates) =>
+            habits._id === dates.habitId &&
+            dates.dates.map(
+              (date) => dateNow === date.split("T")[0] && arr.push(habits)
+            )
         )
-    )
-  );
+      );
+   
 
   const close = () => {
     setModalShow((prev) => !prev);

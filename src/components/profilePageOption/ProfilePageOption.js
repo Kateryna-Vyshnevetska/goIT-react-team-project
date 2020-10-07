@@ -247,11 +247,11 @@ export const ProfilePageOption = () => {
                 Изменить подписку
               </Link>
             </button>
+              <ProfilePageHelpInfo />
           </div>
           <Route path="#" />
         </div>
         <ProfileMyCardsPage />
-        <ProfilePageHelpInfo />
       </div>
     </>
   );

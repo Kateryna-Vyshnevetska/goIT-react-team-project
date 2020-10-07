@@ -26,7 +26,8 @@ export const MainPage = () => {
   const isLoading = useSelector((state) => state.isLoading);
   const notification = notificationType(state);
   const dispatch = useDispatch();
-
+  const stateNotesArr = useSelector((state) => state.countOfNotification);
+  // console.log("state", stateNotesArr);
   const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   useEffect(() => {
@@ -34,8 +35,14 @@ export const MainPage = () => {
   }, [authToken(state)]);
 
   useEffect(() => {
+    console.log("eff");
+    console.log("stateNotesArr", stateNotesArr);
     notificationArr.length && dispatch(countNotesAction(notificationArr));
   }, [notificationArr.length]);
+
+  useEffect(() => {
+    stateNotesArr.length && console.log("stateNotesArr", stateNotesArr);
+  }, [stateNotesArr.length]);
 
   return (
     <>

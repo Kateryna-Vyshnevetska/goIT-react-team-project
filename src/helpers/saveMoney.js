@@ -33,6 +33,5 @@ export const getTime = (arr = [], { cigarettePerTime, cigarettePerDay }) => {
     hours.toString().padStart(2, "0"),
     minutes.toString().padStart(2, "0"),
   ].join(" : ");
-  console.log(acconomyTime);
   return acconomyTime < 0 ? "00 : 00" : formated;
 };
