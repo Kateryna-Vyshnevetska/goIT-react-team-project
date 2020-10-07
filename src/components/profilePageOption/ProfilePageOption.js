@@ -111,8 +111,8 @@ export const ProfilePageOption = () => {
             <div className="profilePage-inputs">
               <BasicInputMasked
                 register={register({
-                  minLength: 11,
-                  maxLength: 11,
+                  minLength: 18,
+                  maxLength: 18,
                   pattern: /[0-9]/,
                 })}
                 name="phone"
@@ -244,7 +244,7 @@ export const ProfilePageOption = () => {
                 Изменить подписку
               </Link>
             </button>
-              <ProfilePageHelpInfo />
+            <ProfilePageHelpInfo />
           </div>
           <Route path="#" />
         </div>
