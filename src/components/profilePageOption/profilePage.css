@@ -189,25 +189,3 @@
 .passwordControl.view {
   background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
 }
-.profile-user-button {
-  margin-bottom: 15px;
-  width: 52px;
-  height: 20px;
-  padding: 0;
-  font-size: 14px;
-  line-height: 1.21;
-  color: #ffffff;
-  text-align: center;
-  background: #ec4541;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  /* transition: all 0.2s linear; */
-}
-.profile-user-button:hover,
-.profile-user-button:focus {
-  background: linear-gradient(222.27deg, #cbf7e3 3.75%, #7cf7a3 94.69%);
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
-  color: #a09b9b;
-  outline: none;
-}

@@ -4,7 +4,7 @@ import avatars from "../avatars";
 
 const FindAvatarById = () => {
   const avatarById = useSelector((state) => state.userInfo.avatar);
-  const avatarDefault = avatars[0].avatar;
+  // const avatarDefault = avatars[0].avatar;
 
   return (
     <>

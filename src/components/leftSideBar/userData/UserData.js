@@ -29,13 +29,16 @@ export const UserData = () => {
         <div className="userData-subscriptionArea">
           <span className="userData-subscriptionText">{subscriptionLevel}</span>
         </div>
-        {/* <button
+        <button
           type="button"
           onClick={clickTologOut}
           className="leftSideBar-user-button"
         >
-          Logout
-        </button> */}
+          <img
+            src={require("../../../images/close/logout.svg")}
+            className="log-out-img"
+          />
+        </button>
       </div>
     </>
   );

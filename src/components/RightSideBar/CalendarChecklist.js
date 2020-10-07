@@ -104,7 +104,7 @@ export const CalendarChecklist = () => {
     <ul className={style.calendarChecklist}>
       <TransitionGroup>
         {arr.sort().map((el) => (
-          <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
+          <CSSTransition key={el._id} timeout={500} classNames="list-fade">
             <li key={el._id} className={style.calendarItem}>
               <div className={style.calendarChecklistItem}>
                 <div className={style.iconWrapper}>

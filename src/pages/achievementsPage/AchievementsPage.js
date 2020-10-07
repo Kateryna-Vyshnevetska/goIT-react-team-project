@@ -5,33 +5,12 @@ import {
   checkAchievementDay,
   checkAchievementWeek,
 } from "../../helpers/achievementCheck";
+import { useSelector } from "react-redux";
 
 export const AchievementsPage = () => {
   const [start, setStart] = useState("");
-  const array = [
-    23,
-    null,
-    27,
-    19,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    null,
-    17,
-    15,
-  ];
-  const dayCigarette = 20;
+  const array = useSelector((state) => state.userCigarettes.data);
+  const dayCigarette = useSelector((state) => state.quizInfo.cigarettePerDay);
   useEffect(() => {
     const oneCigarette = document.getElementById("oneCigarette");
     const threeCigarettes = document.getElementById("threeCigarettes");

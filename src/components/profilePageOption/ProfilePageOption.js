@@ -23,6 +23,7 @@ import "./profilePage.css";
 import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
 
 export const ProfilePageOption = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
   const history = useHistory();
@@ -219,22 +220,15 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              {FindAvatarById()}
+              {FindAvatarById(avatarById)}
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 
-            {/* <div className="profilePage-subscriptionArea">
+            <div className="profilePage-subscriptionArea">
               <span className="profilePage-subscriptionText">
                 {subscriptionLevel}
               </span>
-            </div> */}
-            <button
-              type="button"
-              onClick={clickTologOut}
-              className="profile-user-button"
-            >
-              Logout
-            </button>
+            </div>
 
             <button type="Submit" className="profilePage-subscription-btn">
               <Link
