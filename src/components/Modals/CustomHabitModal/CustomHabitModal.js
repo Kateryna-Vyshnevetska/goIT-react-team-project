@@ -7,23 +7,21 @@ import style from "./CustomHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
-import { authToken } from "../../../redux/selectors";
+import { authToken, notificationType, userHabits } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/getRandomColor";
 import { useHistory } from "react-router";
 
 function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
   const history = useHistory();
+  const state = useSelector((state) => state);
 
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm();
-  const state = useSelector((state) => state);
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    if (textOfHabit) {
-      setName(textOfHabit);
-    }
+    textOfHabit && setName(textOfHabit);
   }, [textOfHabit]);
 
   const handleChangeInput = (date) => {
@@ -31,7 +29,7 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   };
 
   const goBack = () => {
-    setModalShow(true);
+    setModalShow && setModalShow(true);
     close();
   };
 
@@ -127,10 +125,7 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
             </button>
           </div>
         </form>
-        <button
-          onClick={() => close()}
-          className={style.modalBodyButtonclose}
-        ></button>
+        <button onClick={() => close()} className={style.modalBodyButtonclose}></button>
       </div>
     </>
   );

@@ -6,20 +6,24 @@ export const checkMessagesForNote = (habitsList, habitsInfo) => {
   const userSuccessCompletedHabitsID = [];
   const dateToday = new Date();
   const dateNow = moment(dateToday).format().substring(0, 10);
-  const date = "2020-11-11";
 
   const completedHabits = habitsList.filter(
+
+//     (habit) => habit.data.every((elem) => elem === true || elem === false) && habit
+
     (habit) =>
       habit.data.every((elem) => elem === true || elem === false) && habit
+
   );
 
   completedHabits.map((item) =>
-    item.data.every((el) => el === true)
+    item.data.every((el) => el === false)
       ? userSuccessCompletedHabitsID.push(item["_id"])
       : userCompletedHabitsID.push(item["_id"])
   );
 
   const arrayTodayCompletedHabitsID = habitsInfo
+
     .filter(
       (habit) => habit.dates[habit.dates.length - 1].split("T")[0] === dateNow
     )

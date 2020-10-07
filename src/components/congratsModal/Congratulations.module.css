@@ -14,9 +14,14 @@
 }
 
 .congratulationTitle {
+  font-style: "Rubic";
   line-height: 31px;
   font-size: 26px;
   padding-bottom: 8px;
+}
+
+.congratulationText {
+  font-style: "Rubik";
 }
 
 .congratsBtnWrapper {

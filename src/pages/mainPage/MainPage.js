@@ -16,10 +16,12 @@ import { AvatarsPage } from "../avatarsPage/AvatarsPage";
 import { SubscriptionsPage } from "../subscriptionsPage/SubscriptionsPage";
 import { checkMessagesForNote } from "../../helpers/checkNotifications";
 import { countNotesAction } from "../../redux/notificationPage/notificationAction";
+
 import Congratulations from "../../components/congratsModal/Congratulations";
 import { notificationType } from "../../redux/selectors";
 import { object } from "yup";
 import FindHabitById from "../../helpers/FindHabitById";
+
 
 export const MainPage = () => {
   const state = useSelector((state) => state);
@@ -93,11 +95,7 @@ export const MainPage = () => {
             path={`/make-it-habit/notification`}
             component={Notifiacation}
           />
-          <PrivateRoute
-            exact
-            path={`/make-it-habit/profile`}
-            component={ProfilePage}
-          />
+          <PrivateRoute exact path={`/make-it-habit/profile`} component={ProfilePage} />
           <PrivateRoute
             exact
             path={`/make-it-habit/change-avatar`}

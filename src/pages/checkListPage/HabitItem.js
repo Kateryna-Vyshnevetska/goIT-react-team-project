@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { LinearProgressWithLabel } from "../../ui/ProgressBar";
-// import { getRandomColor } from "../../helpers/CheckListPage";
-// import CustomHabitModal from "../../components/Modals/CustomHabitModal/CustomHabitModal";
 import UpdateHabitModal from "../../components/Modals/UpdateHabitModal/UpdateHabitModal";
 import { useDispatch, useSelector } from "react-redux";
 import FindHabitById from "../../helpers/FindHabitById";
@@ -12,10 +10,9 @@ import {
 } from "../../helpers/counterProgressByHabit";
 import { authToken } from "../../redux/selectors";
 import { updateDateInUserHabit } from "../../redux/operations";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import Congratulations from "../../components/congratsModal/Congratulations";
+
 export const HabitItem = ({
-  // clickDone,
-  // clickMissed,
   id,
   habitMissedNumber,
   habitDoneNumber,
@@ -24,12 +21,12 @@ export const HabitItem = ({
 }) => {
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
-  const userHabits = useSelector((state) => state.userHabits);
   const state = useSelector((state) => state);
+  const userHabits = useSelector((state) => state.userHabits);
+
   const userHabitsDates = useSelector((state) => state.usersHabitsDates);
-  const needElementColor = FindHabitById(userHabits, id).planningTime.split(
-    " "
-  )[11];
+  const needElementColor = FindHabitById(userHabits, id).planningTime.split(" ")[11];
+  const [modalCongratulationShow, setModalCongratulationShow] = useState(false);
 
   const habitNumberCounter = document.getElementById(id);
   const buttonDoneActive = document.getElementById(`${id}done`);
@@ -37,6 +34,11 @@ export const HabitItem = ({
 
   const datanew = new Date();
   const newDataFormat = moment(datanew).format();
+  const [habitName, setHabitName] = useState("");
+
+  const closeCongratulationModal = () => {
+    setModalCongratulationShow((prev) => !prev);
+  };
 
   useEffect(() => {
     if (buttonMissedActive || buttonDoneActive) {
@@ -48,8 +50,7 @@ export const HabitItem = ({
   const checkActiveBtn = (arrOfHabits) => {
     if (arrOfHabits.length > 0) {
       // находим даты конкретно это привычки
-      const userHabitDatess = userHabitsDates.find((el) => el.habitId === id)
-        .dates;
+      const userHabitDatess = userHabitsDates.find((el) => el.habitId === id).dates;
 
       // ищем индекс нужного елемента для записи в массив
       const indx = userHabitDatess.find((el, idx) =>
@@ -57,9 +58,7 @@ export const HabitItem = ({
       );
       const indexOfDate = userHabitDatess.indexOf(indx);
 
-      const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[
-        indexOfDate
-      ];
+      const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[indexOfDate];
 
       if (trueOrFalse) {
         const buttonDoneActive = document.getElementById(`${id}done`);
@@ -81,6 +80,40 @@ export const HabitItem = ({
 
   useEffect(() => {
     const checkActiveBtn = (arrOfHabits) => {
+
+//       if (arrOfHabits.length > 0) {
+//         // находим даты конкретно этой привычки
+//         const userHabitDatess = userHabitsDates.find((el) => el.habitId === id).dates;
+//         // ищем индекс нужного елемента для записи в массив
+
+//         const indx = userHabitDatess.find((el, idx) =>
+//           el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+//         );
+//         const indexOfDate = userHabitDatess.indexOf(indx);
+
+//         const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[indexOfDate];
+
+//         if (trueOrFalse) {
+//           if (trueOrFalse !== null) {
+//             const habitNumberCounter = document.getElementById(id);
+//             const buttonDoneActive = document.getElementById(`${id}done`);
+//             const buttonMissedActive = document.getElementById(`${id}missed`);
+
+//             habitNumberCounter.classList.add("isVisible");
+//             buttonMissedActive.classList.remove("active");
+//             buttonDoneActive.classList.add("active");
+//             console.log("true", trueOrFalse);
+//           }
+//         } else if (!trueOrFalse) {
+//           if (trueOrFalse !== null) {
+//             const habitNumberCounter = document.getElementById(id);
+//             const buttonMissedActive = document.getElementById(`${id}missed`);
+//             const buttonDoneActive = document.getElementById(`${id}done`);
+
+//             habitNumberCounter.classList.add("isVisible");
+//             buttonMissedActive.classList.add("active");
+//             buttonDoneActive.classList.remove("active");
+
       if (newDataFormat.split("T")[0] === state.currentDay) {
         if (arrOfHabits.length > 0) {
           // находим даты конкретно это привычки
@@ -154,9 +187,8 @@ export const HabitItem = ({
 
       console.log("кликнули на сделано");
 
-      // находим даты конкретно это привычки
-      const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
-        .dates;
+    const userHabitDates = userHabitsDates.find((el) => el.habitId === id).dates;
+
 
       // ищем индекс нужного елемента для записи в массив
 
@@ -166,6 +198,11 @@ export const HabitItem = ({
 
       const indexOfDate = userHabitDates.indexOf(indx);
 
+    const userHabitData = userHabits.find((el) => el._id === id).data;
+
+    userHabitData.every((el) => el === true) && setModalCongratulationShow(true);
+
+    userHabits.filter((el) => el._id === id && setHabitName(el.name));
       dispatch(
         updateDateInUserHabit("done", id, indexOfDate, authToken(state))
       );
@@ -181,11 +218,8 @@ export const HabitItem = ({
       buttonDoneActive.classList.remove("active");
       setIdFromState(id);
 
-      console.log("кликнули на пропущено");
-
-      // находим даты конкретно это привычки
-      const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
-        .dates;
+    // находим даты конкретно это привычки
+    const userHabitDates = userHabitsDates.find((el) => el.habitId === id).dates;
 
       // ищем индекс нужного елемента для записи в массив
 
@@ -205,7 +239,9 @@ export const HabitItem = ({
 
   return (
     <>
-      {/* style={{ borderColor: `${}` }} */}
+      {modalCongratulationShow && (
+        <Congratulations name={habitName} close={closeCongratulationModal} />
+      )}
 
       <li className="habit-item" style={{ borderColor: `${needElementColor}` }}>
         <div className="habit-scale-container">
@@ -225,17 +261,10 @@ export const HabitItem = ({
           </div>
           <p className="habit-scale-text">Прогресс привития привычки</p>
 
-          <button
-            className="btn-settings"
-            onClick={() => setModalShow(true)}
-          ></button>
+          <button className="btn-settings" onClick={() => setModalShow(true)}></button>
 
           {modalShow && (
-            <UpdateHabitModal
-              close={close}
-              idOfHabit={id}
-              habitTitle={habitTitle}
-            />
+            <UpdateHabitModal close={close} idOfHabit={id} habitTitle={habitTitle} />
           )}
         </div>
         <div id={id} className="habit-number-counter">
