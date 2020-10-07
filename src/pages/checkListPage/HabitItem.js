@@ -12,6 +12,7 @@ import {
 } from "../../helpers/counterProgressByHabit";
 import { authToken } from "../../redux/selectors";
 import { updateDateInUserHabit } from "../../redux/operations";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 export const HabitItem = ({
   // clickDone,
   // clickMissed,
@@ -186,6 +187,7 @@ export const HabitItem = ({
   return (
     <>
       {/* style={{ borderColor: `${}` }} */}
+
       <li className="habit-item" style={{ borderColor: `${needElementColor}` }}>
         <div className="habit-scale-container">
           <h3 className="habit-title">{habitTitle}</h3>

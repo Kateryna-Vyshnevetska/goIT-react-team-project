@@ -339,3 +339,21 @@ table {
   margin-top: 25px;
   text-align: center;
 }
+.list-fade-enter {
+  opacity: 0;
+  transform: scale(0.1);
+}
+.list-fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 1000ms linear;
+}
+.list-fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.list-fade-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 1000ms linear;
+}
