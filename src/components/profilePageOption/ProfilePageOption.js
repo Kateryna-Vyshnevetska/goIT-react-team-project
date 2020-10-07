@@ -83,7 +83,7 @@ export const ProfilePageOption = () => {
                 labelText={"Имя"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                placeholder={userInfo.firstName}
+                placeholder={userInfo.firstName || "Имя"}
               />
               <p className={styles.errorMessage}>
                 {errors.firstName && "Минимально 2 символа"}
@@ -101,7 +101,7 @@ export const ProfilePageOption = () => {
                 labelText={"Фамилия"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                placeholder={userInfo.lastName}
+                placeholder={userInfo.lastName || "Фамилия"}
               />
               <p className={styles.errorMessage}>
                 {errors.lastName && "Минимально 2 символа"}
@@ -111,18 +111,18 @@ export const ProfilePageOption = () => {
             <div className="profilePage-inputs">
               <BasicInputMasked
                 register={register({
-                  minLength: 18,
-                  maxLength: 18,
+                  minLength: 11,
+                  maxLength: 11,
                   pattern: /[0-9]/,
                 })}
                 name="phone"
                 forLabel={"phone"}
                 id={"phone"}
                 labelText={"Телефон"}
-                placeholder={"+38(0__)-___-__-__" || userInfo.phone}
+                placeholder={userInfo.phone || "80_________"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                mask={"+38(099)-999-99-99"}
+                mask={"80999999999"}
               />
               <p className={styles.errorMessage}>
                 {errors.phone && "В вашем номере должно быть 11 цифр"}
