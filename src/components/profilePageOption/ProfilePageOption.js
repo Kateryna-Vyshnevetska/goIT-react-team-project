@@ -23,6 +23,7 @@ import { quizInfo } from "../../redux/selectors";
 
 import "./profilePage.css";
 import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
+import "../leftSideBar/userData/userData.css";
 
 export const ProfilePageOption = () => {
   const avatarById = useSelector((state) => state.userInfo.avatar);
@@ -223,7 +224,9 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              {FindAvatarById(avatarById)}
+              <div className="leftSideBar-user-avatar profile">
+                {FindAvatarById()}
+              </div>
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 

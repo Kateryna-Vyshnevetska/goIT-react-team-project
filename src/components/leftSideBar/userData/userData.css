@@ -25,6 +25,10 @@
   outline: none;
 }
 
+.leftSideBar-user-avatar.profile {
+  background-color: #ffffff;
+}
+
 .leftSideBar-user-name {
   font-family: "Rubik", sans-serif;
   font-weight: 700;
