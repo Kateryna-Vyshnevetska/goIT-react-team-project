@@ -1,9 +1,12 @@
 .ProfilePageHelpInfo-infoContainer {
-  display: flex;
-  margin-bottom: 27px;
+display: flex;
+    /* margin-bottom: 27px; */
+    /* height: 200px; */
+    width: 350px;
+    margin-top: 50px;
 }
 .ProfilePageHelpInfo-infoImg {
-  width: 238px;
+  width: 40%;
   height: 150px;
   border-radius: 10px 0px 0px 10px;
   box-shadow: 0px 10px 16px rgba(254, 96, 131, 0.04);
@@ -11,19 +14,20 @@
   background-image: url(../../../images/profilePage/infoImg.svg);
   background-repeat: no-repeat;
   background-position: center;
+      background-size: 138px 95px;
 }
 .ProfilePageHelpInfo-infoSecondBlock {
-  width: 356px;
+  width: 60%;
   height: 150px;
   background: #ffffff;
   box-shadow: 0px 10px 16px rgba(254, 96, 131, 0.04);
   border-radius: 0px 10px 10px 0px;
-  padding: 20px 30px;
+  padding: 10px 10px;
 }
 .ProfilePageHelpInfo-infoText {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.17;
   color: #4f4f4f;
   margin-bottom: 10px;

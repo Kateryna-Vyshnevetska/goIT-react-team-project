@@ -20,7 +20,7 @@
 }
 .ProfilePage-main {
   height: 90%;
-  padding: 60px 62px;
+  padding: 40px 40px;
   overflow: scroll;
   background-color: #f6f6f6;
 }
@@ -45,10 +45,10 @@
 .profilePage-AvatarBlock {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: flex-start; */
   flex-direction: column;
-  width: 220px;
-  height: 236px;
+  width: 310px;
+  /* height: 236px; */
   /* margin-bottom: 20px; */
 }
 .profilePage-AvatarLink {
