@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const checkMessagesForNote = (habitsList, habitsInfo) => {
+export const checkMessagesForNote = (habitsList, habitsInfo, dispatch) => {
   const notificationArr = [];
   const userCompletedHabitsID = [];
   const userSuccessCompletedHabitsID = [];
@@ -9,7 +9,8 @@ export const checkMessagesForNote = (habitsList, habitsInfo) => {
   const date = "2020-11-11";
 
   const completedHabits = habitsList.filter(
-    (habit) => habit.data.every((elem) => elem === true || elem === null) && habit
+    (habit) =>
+      habit.data.every((elem) => elem === true || elem === null) && habit
   );
 
   completedHabits.map((item) =>
@@ -19,7 +20,9 @@ export const checkMessagesForNote = (habitsList, habitsInfo) => {
   );
 
   const arrayTodayCompletedHabitsID = habitsInfo
-    .filter((habit) => habit.dates[habit.dates.length - 1].split("T")[0] === date)
+    .filter(
+      (habit) => habit.dates[habit.dates.length - 1].split("T")[0] === dateNow
+    )
     .map((habit) => habit.habitId);
 
   const setNotificationArray = (habitsArray1, habitsArray2) =>

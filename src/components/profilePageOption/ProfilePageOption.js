@@ -11,6 +11,8 @@ import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
+import { BasicInputMasked } from "../BasicInput/BasicInputMasked";
+
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
@@ -24,6 +26,7 @@ import styles from "../../components/BasicInput/PasswordInput/PasswordInput.modu
 import "../leftSideBar/userData/userData.css";
 
 export const ProfilePageOption = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
   const history = useHistory();
@@ -106,7 +109,7 @@ export const ProfilePageOption = () => {
             </div>
 
             <div className="profilePage-inputs">
-              <BasicInput
+              <BasicInputMasked
                 register={register({
                   minLength: 11,
                   maxLength: 11,
@@ -116,9 +119,10 @@ export const ProfilePageOption = () => {
                 forLabel={"phone"}
                 id={"phone"}
                 labelText={"Телефон"}
-                placeholder={"380__ ___ __ __" || userInfo.phone}
+                placeholder={"+38(0__)-___-__-__" || userInfo.phone}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
+                mask={"+38(099)-999-99-99"}
               />
               <p className={styles.errorMessage}>
                 {errors.phone && "В вашем номере должно быть 11 цифр"}
@@ -226,18 +230,11 @@ export const ProfilePageOption = () => {
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 
-            {/* <div className="profilePage-subscriptionArea">
+            <div className="profilePage-subscriptionArea">
               <span className="profilePage-subscriptionText">
                 {subscriptionLevel}
               </span>
-            </div> */}
-            <button
-              type="button"
-              onClick={clickTologOut}
-              className="profile-user-button"
-            >
-              Logout
-            </button>
+            </div>
 
             <button type="Submit" className="profilePage-subscription-btn">
               <Link
@@ -247,11 +244,11 @@ export const ProfilePageOption = () => {
                 Изменить подписку
               </Link>
             </button>
+              <ProfilePageHelpInfo />
           </div>
           <Route path="#" />
         </div>
         <ProfileMyCardsPage />
-        <ProfilePageHelpInfo />
       </div>
     </>
   );

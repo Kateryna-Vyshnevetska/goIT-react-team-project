@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAndGetAllHabits } from "../../redux/operations";
 import style from "./rightSideBar.module.css";
@@ -60,84 +60,69 @@ export const CalendarChecklist = () => {
   };
 
   return (
-    //       {arr.length ? (
-    //         <>
-    //           <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
-    //           <ul className={style.calendarChecklist}>
-    //             {arr.map((el) => (
-    //               <li key={el._id} className={style.calendarItem}>
-    //                 <div className={style.calendarChecklistItem}>
-    //                   <span
-    //                     className={
-    //                       false
-    //                         ? style.calendarChecklistItemProgress
-    //                         : style.calendarChecklistItemProgressDone
-    //                     }
-    //                   >
-    //                     {false && "time"}
-    //                   </span>
-    //                   <span
-    //                     className={
-    //                       false
-    //                         ? style.calendarChecklistItemText
-    //                         : style.calendarChecklistItemTextDone
-    //                     }
-    //                   >
-    //                     {el.name}
-    //                   </span>
-    //                   <button
-    //                     onClick={() => deleteHabit(el._id)}
-    //                     className={style.calendarChecklistItemButton}
-    //                   ></button>
-    //                 </div>
-    //               </li>
-    //             ))}
-    //           </ul>
-    //         </>
-    //       ) : (
-    //         <p className={style.notificationText}>
-    //           Сегодня у Вас нет привычек, над которыми нужно работать
-    //         </p>
-    //       )}
-    //     </>
-
-    <ul className={style.calendarChecklist}>
-      <TransitionGroup>
-        {arr.sort().map((el) => (
-          <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
-            <li key={el._id} className={style.calendarItem}>
-              <div className={style.calendarChecklistItem}>
-                <div className={style.iconWrapper}>
-                  <span
-                    className={
-                      checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                        ? style.calendarChecklistItemProgressDone
-                        : style.calendarChecklistItemProgress
-                    }
-                  >
-                    {checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                      ? ""
-                      : el.planningTime.split(" ")[4].slice(0, 5)}
-                  </span>
-                </div>
-                <span
-                  className={
-                    checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                      ? style.calendarChecklistItemTextDone
-                      : style.calendarChecklistItemText
-                  }
+    <>
+      {arr.length ? (
+        <>
+          <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
+          <ul className={style.calendarChecklist}>
+            <TransitionGroup>
+              {arr.sort().map((el) => (
+                <CSSTransition
+                  key={el._id}
+                  timeout={500}
+                  classNames="list-fade"
                 >
-                  {el.name}
-                </span>
-                <button
-                  onClick={() => deleteHabit(el._id)}
-                  className={style.calendarChecklistItemButton}
-                ></button>
-              </div>
-            </li>
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
-    </ul>
+                  <li key={el._id} className={style.calendarItem}>
+                    <div className={style.calendarChecklistItem}>
+                      <div className={style.iconWrapper}>
+                        <span
+                          className={
+                            checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                              ? style.calendarChecklistItemProgressDone
+                              : checkIfHabitDoneTodaay(
+                                  el._id,
+                                  el,
+                                  userHabitsDates
+                                ) === null
+                              ? style.calendarChecklistItemNotDoneToday
+                              : style.calendarChecklistItemProgressMissed
+                            // : style.calendarChecklistItemProgress,
+                          }
+                        >
+                          {checkIfHabitDoneTodaay(
+                            el._id,
+                            el,
+                            userHabitsDates
+                          ) === null
+                            ? el.planningTime.split(" ")[4].slice(0, 5)
+                            : ""}
+                        </span>
+                      </div>
+                      <span
+                        className={
+                          checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                            ? style.calendarChecklistItemTextDone
+                            : style.calendarChecklistItemText
+                        }
+                      >
+                        {el.name}
+                      </span>
+                      <button
+                        onClick={() => deleteHabit(el._id)}
+                        className={style.calendarChecklistItemButton}
+                      ></button>
+                    </div>
+                  </li>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </ul>
+        </>
+      ) : (
+        <p className={style.notificationText}>
+          Сегодня у Вас нет привычек, над которыми нужно работать
+        </p>
+      )}
+    </>
   );
 };
