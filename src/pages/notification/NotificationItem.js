@@ -1,7 +1,7 @@
 import React from "react";
 import "./notification.css";
 
-export const NotificationItem = ({ text, id, onClick }) => {
+export const NotificationItem = ({ text, id, onClick, name }) => {
   const pushIdx = () => {
     onClick(id);
   };
@@ -11,8 +11,8 @@ export const NotificationItem = ({ text, id, onClick }) => {
         <div className="item">
           <h2 className="item-title">
             {text === "success"
-              ? "Привычка успешно завершена!"
-              : "Привычка завершена!"}
+              ? `Привычка ${name} успешно завершена!`
+              : `Привычка ${name} завершена!`}
           </h2>
           <p className="item-text">
             Поздравляем! Вы {text === "success" ? "успешно" : ""} завершили свою

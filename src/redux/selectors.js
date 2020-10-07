@@ -14,7 +14,7 @@ export const quizInfo = (state) => state.quizInfo;
 export const userHabits = (state) => state.userHabits;
 export const usersHabitsDates = (state) => state.usersHabitsDates;
 export const userCigarettes = (state) => state.userCigarettes;
-export const notificationType = (state) => state.countOfNotification;
+export const notificationType = (state) => state.statusOfNotification;
 
 export const checkFirstModal = createSelector([quizInfo], (items) => {
   return Object.values(items).map((el) => el !== 0);
@@ -37,7 +37,8 @@ export const allCigarettes = (state) => {
   const cig = state.cigarettes.data.filter((el) => el !== null);
   return cig;
 };
-export const getTimeForOneCigarette = (state) => state.quizInfo.cigarettePerTime;
+export const getTimeForOneCigarette = (state) =>
+  state.quizInfo.cigarettePerTime;
 
 export const cigPackPrice = (state) => state.quizInfo.cigarettePackPrice;
 export const sigPerDay = (state) => state.guizInfo.cigarettePerDay;

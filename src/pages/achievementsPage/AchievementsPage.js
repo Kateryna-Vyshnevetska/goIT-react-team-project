@@ -11,6 +11,7 @@ export const AchievementsPage = () => {
   const [start, setStart] = useState("");
   const array = useSelector((state) => state.userCigarettes.data);
   const dayCigarette = useSelector((state) => state.quizInfo.cigarettePerDay);
+
   useEffect(() => {
     const oneCigarette = document.getElementById("oneCigarette");
     const threeCigarettes = document.getElementById("threeCigarettes");
@@ -19,7 +20,6 @@ export const AchievementsPage = () => {
     const threeDays = document.getElementById("threeDays");
     const oneWeek = document.getElementById("oneWeek");
     const twoWeeks = document.getElementById("twoWeeks");
-
     if (oneCigarette) {
       setStart(oneCigarette);
       checkAchievement(
@@ -32,7 +32,7 @@ export const AchievementsPage = () => {
       checkAchievementDay(array, dayCigarette, oneDay, threeDays);
       checkAchievementWeek(array, oneWeek, twoWeeks);
     }
-  }, [array, start]);
+  }, [array]);
 
   return (
     <div className="achievementsPageWrapper">
