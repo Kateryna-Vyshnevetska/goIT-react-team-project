@@ -53,6 +53,7 @@ function DateInput({
       <div className="habitsCalendar">
         <DatePicker
           className={style.input}
+          // minDate={new Date()}
           requared
           locale="ru"
           selected={date}

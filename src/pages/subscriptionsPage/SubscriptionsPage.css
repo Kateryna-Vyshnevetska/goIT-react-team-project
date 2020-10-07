@@ -1,0 +1,33 @@
+.ProfileMyCardsPage-block .coverflow__arrow__IDi7v.coverflow__left__PhMc6 {
+  position: absolute;
+}
+
+#coverflow__arrow1__2X2XF .coverflow__arrow__IDi7v.coverflow__left__PhMc6 {
+  position: absolute;
+  width: 70px;
+  height: 80px;
+  left: 25px !important;
+  z-index: 100;
+}
+
+#coverflow__arrow1__2X2XF .coverflow__arrow__IDi7v.coverflow__right__1tzAF {
+  position: absolute;
+  width: 70px;
+  height: 80px;
+  right: 25px !important;
+  z-index: 100;
+}
+
+.ProfileMyCardsPage-block .coverflow__figure__3bk_C {
+  backface-visibility: visible;
+  width: 300px !important;
+  height: 195px !important;
+  border-radius: 5px !important;
+}
+
+.subscriptionsContainer .coverflow__figure__3bk_C {
+  backface-visibility: visible;
+  width: 300px !important;
+  height: 195px !important;
+  border-radius: 5px !important;
+}

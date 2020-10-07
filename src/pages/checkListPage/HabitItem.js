@@ -27,6 +27,11 @@ export const HabitItem = ({
   const userHabitsDates = useSelector((state) => state.usersHabitsDates);
   const needElementColor = FindHabitById(userHabits, id).planningTime.split(" ")[11];
   const [modalCongratulationShow, setModalCongratulationShow] = useState(false);
+
+  const habitNumberCounter = document.getElementById(id);
+  const buttonDoneActive = document.getElementById(`${id}done`);
+  const buttonMissedActive = document.getElementById(`${id}missed`);
+
   const datanew = new Date();
   const newDataFormat = moment(datanew).format();
   const [habitName, setHabitName] = useState("");
@@ -34,6 +39,13 @@ export const HabitItem = ({
   const closeCongratulationModal = () => {
     setModalCongratulationShow((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (buttonMissedActive || buttonDoneActive) {
+      buttonDoneActive.classList.remove("active");
+      buttonMissedActive.classList.remove("active");
+    }
+  }, [state.currentDay]);
 
   const checkActiveBtn = (arrOfHabits) => {
     if (arrOfHabits.length > 0) {
@@ -68,46 +80,93 @@ export const HabitItem = ({
 
   useEffect(() => {
     const checkActiveBtn = (arrOfHabits) => {
-      if (arrOfHabits.length > 0) {
-        // находим даты конкретно этой привычки
-        const userHabitDatess = userHabitsDates.find((el) => el.habitId === id).dates;
-        // ищем индекс нужного елемента для записи в массив
 
-        const indx = userHabitDatess.find((el, idx) =>
-          el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
-        );
-        const indexOfDate = userHabitDatess.indexOf(indx);
+//       if (arrOfHabits.length > 0) {
+//         // находим даты конкретно этой привычки
+//         const userHabitDatess = userHabitsDates.find((el) => el.habitId === id).dates;
+//         // ищем индекс нужного елемента для записи в массив
 
-        const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[indexOfDate];
+//         const indx = userHabitDatess.find((el, idx) =>
+//           el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+//         );
+//         const indexOfDate = userHabitDatess.indexOf(indx);
 
-        if (trueOrFalse) {
-          if (trueOrFalse !== null) {
-            const habitNumberCounter = document.getElementById(id);
-            const buttonDoneActive = document.getElementById(`${id}done`);
-            const buttonMissedActive = document.getElementById(`${id}missed`);
+//         const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[indexOfDate];
 
-            habitNumberCounter.classList.add("isVisible");
-            buttonMissedActive.classList.remove("active");
-            buttonDoneActive.classList.add("active");
-            console.log("true", trueOrFalse);
-          }
-        } else if (!trueOrFalse) {
-          if (trueOrFalse !== null) {
-            const habitNumberCounter = document.getElementById(id);
-            const buttonMissedActive = document.getElementById(`${id}missed`);
-            const buttonDoneActive = document.getElementById(`${id}done`);
+//         if (trueOrFalse) {
+//           if (trueOrFalse !== null) {
+//             const habitNumberCounter = document.getElementById(id);
+//             const buttonDoneActive = document.getElementById(`${id}done`);
+//             const buttonMissedActive = document.getElementById(`${id}missed`);
 
-            habitNumberCounter.classList.add("isVisible");
-            buttonMissedActive.classList.add("active");
-            buttonDoneActive.classList.remove("active");
+//             habitNumberCounter.classList.add("isVisible");
+//             buttonMissedActive.classList.remove("active");
+//             buttonDoneActive.classList.add("active");
+//             console.log("true", trueOrFalse);
+//           }
+//         } else if (!trueOrFalse) {
+//           if (trueOrFalse !== null) {
+//             const habitNumberCounter = document.getElementById(id);
+//             const buttonMissedActive = document.getElementById(`${id}missed`);
+//             const buttonDoneActive = document.getElementById(`${id}done`);
+
+//             habitNumberCounter.classList.add("isVisible");
+//             buttonMissedActive.classList.add("active");
+//             buttonDoneActive.classList.remove("active");
+
+      if (newDataFormat.split("T")[0] === state.currentDay) {
+        if (arrOfHabits.length > 0) {
+          // находим даты конкретно это привычки
+          const userHabitDatess = userHabitsDates.find(
+            (el) => el.habitId === id
+          ).dates;
+          // ищем индекс нужного елемента для записи в массив
+
+          const indx = userHabitDatess.find((el, idx) =>
+            el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+          );
+          const indexOfDate = userHabitDatess.indexOf(indx);
+
+          const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[
+            indexOfDate
+          ];
+
+          if (trueOrFalse) {
+            if (trueOrFalse !== null) {
+              const habitNumberCounter = document.getElementById(id);
+              const buttonDoneActive = document.getElementById(`${id}done`);
+              const buttonMissedActive = document.getElementById(`${id}missed`);
+
+              habitNumberCounter.classList.add("isVisible");
+              buttonMissedActive.classList.remove("active");
+              buttonDoneActive.classList.add("active");
+            }
+          } else if (!trueOrFalse) {
+            if (trueOrFalse !== null) {
+              const habitNumberCounter = document.getElementById(id);
+              const buttonMissedActive = document.getElementById(`${id}missed`);
+              const buttonDoneActive = document.getElementById(`${id}done`);
+
+              habitNumberCounter.classList.add("isVisible");
+              buttonMissedActive.classList.add("active");
+              buttonDoneActive.classList.remove("active");
+            }
           }
         }
+
+        setDone(calculateDoneCountHabits(arrOfHabits, id));
+        setMissed(calculateMissedCountHabits(arrOfHabits, id));
       }
-      setDone(calculateDoneCountHabits(arrOfHabits, id));
-      setMissed(calculateMissedCountHabits(arrOfHabits, id));
     };
     checkActiveBtn(userHabits);
-  }, [checkActiveBtn, id, newDataFormat, userHabits, userHabitsDates]);
+  }, [
+    checkActiveBtn,
+    id,
+    newDataFormat,
+    state.currentDay,
+    userHabits,
+    userHabitsDates,
+  ]);
 
   const close = () => {
     setModalShow((prev) => !prev);
@@ -119,62 +178,63 @@ export const HabitItem = ({
   }, [idFromState, userHabits]);
 
   const handleClickHabitButtonDone = (id) => {
-    const habitNumberCounter = document.getElementById(id);
-    const buttonDoneActive = document.getElementById(`${id}done`);
-    const buttonMissedActive = document.getElementById(`${id}missed`);
+    if (newDataFormat.split("T")[0] === state.currentDay) {
+      habitNumberCounter.classList.add("isVisible");
+      buttonMissedActive.classList.remove("active");
+      buttonDoneActive.classList.add("active");
 
-    habitNumberCounter.classList.add("isVisible");
-    buttonMissedActive.classList.remove("active");
-    buttonDoneActive.classList.add("active");
+      setIdFromState(id);
 
-    setIdFromState(id);
+      console.log("кликнули на сделано");
 
-    console.log("кликнули на сделано");
-
-    // находим даты конкретно это привычки
     const userHabitDates = userHabitsDates.find((el) => el.habitId === id).dates;
 
-    // ищем индекс нужного елемента для записи в массив
 
-    const indx = userHabitDates.find((el, idx) =>
-      el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
-    );
+      // ищем индекс нужного елемента для записи в массив
 
-    const indexOfDate = userHabitDates.indexOf(indx);
+      const indx = userHabitDates.find((el, idx) =>
+        el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+      );
 
-    dispatch(updateDateInUserHabit("done", id, indexOfDate, authToken(state)));
+      const indexOfDate = userHabitDates.indexOf(indx);
 
     const userHabitData = userHabits.find((el) => el._id === id).data;
 
     userHabitData.every((el) => el === true) && setModalCongratulationShow(true);
 
     userHabits.filter((el) => el._id === id && setHabitName(el.name));
+      dispatch(
+        updateDateInUserHabit("done", id, indexOfDate, authToken(state))
+      );
+    } else {
+      buttonMissedActive.classList.remove("active");
+    }
   };
 
   const handleClickHabitButtonMissed = (id) => {
-    const habitNumberCounter = document.getElementById(id);
-    const buttonMissedActive = document.getElementById(`${id}missed`);
-    const buttonDoneActive = document.getElementById(`${id}done`);
-
-    habitNumberCounter.classList.add("isVisible");
-    buttonMissedActive.classList.add("active");
-    buttonDoneActive.classList.remove("active");
-    setIdFromState(id);
-
-    console.log("кликнули на пропущено");
+    if (newDataFormat.split("T")[0] === state.currentDay) {
+      habitNumberCounter.classList.add("isVisible");
+      buttonMissedActive.classList.add("active");
+      buttonDoneActive.classList.remove("active");
+      setIdFromState(id);
 
     // находим даты конкретно это привычки
     const userHabitDates = userHabitsDates.find((el) => el.habitId === id).dates;
 
-    // ищем индекс нужного елемента для записи в массив
+      // ищем индекс нужного елемента для записи в массив
 
-    const indx = userHabitDates.find((el, idx) =>
-      el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
-    );
+      const indx = userHabitDates.find((el, idx) =>
+        el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
+      );
 
-    const indexOfDate = userHabitDates.indexOf(indx);
+      const indexOfDate = userHabitDates.indexOf(indx);
 
-    dispatch(updateDateInUserHabit("missed", id, indexOfDate, authToken(state)));
+      dispatch(
+        updateDateInUserHabit("missed", id, indexOfDate, authToken(state))
+      );
+    } else {
+      buttonDoneActive.classList.remove("active");
+    }
   };
 
   return (

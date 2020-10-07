@@ -11,7 +11,6 @@ export const createMainHabbitDataArr = (createAt) => {
   };
 
   const data = createAt;
-  console.log(createAt);
   const datanew = new Date(data);
   let arr = [];
 

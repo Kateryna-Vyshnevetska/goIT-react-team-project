@@ -12,6 +12,9 @@ import {
   calculateDoneCountHabits,
   calculateMissedCountHabits,
 } from "../../helpers/counterProgressByHabit";
+import { congratulationModal } from "../../redux/congratulationModal/CongratulationModalAction";
+import SubscriptionModal from "../../components/habitChoiceModal/subscriptionModal/SubscriptionModal";
+import CountDown from "../../ui/CountDown";
 
 export function CheckListPage() {
   const dispatch = useDispatch();
@@ -20,6 +23,33 @@ export function CheckListPage() {
   const [modalShow, setModalShow] = useState(false);
   const userHabits = useSelector((state) => state.userHabits);
   const userHabitsDates = useSelector((state) => state.usersHabitsDates);
+  const congratulationMod = useSelector(
+    (state) => state.congratulationModalForUser
+  );
+
+  const [open, getOpen] = useState(false);
+
+  let data = localStorage.getItem("subscription");
+  useEffect(() => {
+    data = localStorage.getItem("subscription");
+    const dataFromStorage = JSON.parse(data);
+    if (dataFromStorage === null || dataFromStorage !== true) {
+      localStorage.setItem("subscription", JSON.stringify(false));
+    } else {
+      getOpen(true);
+    }
+  }, [data]);
+  useEffect(() => {
+    const data = localStorage.getItem("subscription");
+    const dataFromStorage = JSON.parse(data);
+    if (userHabits.length === 1) {
+      if (dataFromStorage === false) {
+        setTimeout(() => {
+          dispatch(congratulationModal(true));
+        }, 1000);
+      }
+    }
+  }, [userHabits]);
 
   const arr = [];
 
@@ -37,80 +67,15 @@ export function CheckListPage() {
     setModalShow((prev) => !prev);
   };
 
-  // const datanew = new Date();
-  // const newDataFormat = moment(datanew).format();
-
-  // const [done, setDone] = useState(0);
-  // const [missed, setMissed] = useState(0);
-  // const [idFromState, setIdFromState] = useState("");
-
-  // useEffect(() => {
-  //   setDone(calculateDoneCountHabits(userHabits, idFromState));
-  //   setMissed(calculateMissedCountHabits(userHabits, idFromState));
-  // }, [idFromState, userHabits]);
-
-  // const handleClickHabitButtonDone = (id) => {
-  //   const habitNumberCounter = document.getElementById(id);
-  //   const buttonDoneActive = document.getElementById(`${id}done`);
-  //   const buttonMissedActive = document.getElementById(`${id}missed`);
-
-  //   habitNumberCounter.classList.add("isVisible");
-  //   buttonDoneActive.classList.add("active");
-  //   buttonMissedActive.classList.remove("active");
-
-  //   setIdFromState(id);
-
-  //   console.log("кликнули на сделано");
-
-  //   // находим даты конкретно это привычки
-  //   const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
-  //     .dates;
-
-  //   // ищем индекс нужного елемента для записи в массив
-
-  //   const indx = userHabitDates.find((el, idx) =>
-  //     el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
-  //   );
-
-  //   const indexOfDate = userHabitDates.indexOf(indx);
-
-  //   dispatch(updateDateInUserHabit("done", id, indexOfDate, authToken(state)));
-  // };
-
-  // const handleClickHabitButtonMissed = (id) => {
-  //   const habitNumberCounter = document.getElementById(id);
-  //   const buttonMissedActive = document.getElementById(`${id}missed`);
-  //   const buttonDoneActive = document.getElementById(`${id}done`);
-
-  //   habitNumberCounter.classList.add("isVisible");
-  //   buttonMissedActive.classList.add("active");
-  //   buttonDoneActive.classList.remove("active");
-  //   setIdFromState(id);
-
-  //   console.log("кликнули на пропущено");
-
-  //   // находим даты конкретно это привычки
-  //   const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
-  //     .dates;
-
-  //   // ищем индекс нужного елемента для записи в массив
-
-  //   const indx = userHabitDates.find((el, idx) =>
-  //     el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
-  //   );
-
-  //   const indexOfDate = userHabitDates.indexOf(indx);
-
-  //   dispatch(
-  //     updateDateInUserHabit("missed", id, indexOfDate, authToken(state))
-  //   );
-  // };
-
   return (
     <div className="check-list-section">
+      {congratulationMod && (
+        <SubscriptionModal close={() => dispatch(congratulationModal(false))} />
+      )}
       <div className="habit-container">
         <div className="habit-header">
           <h2 className="habit-header-title">Чек-лист привычек</h2>
+          {open && <CountDown />}
           <button
             onClick={() => setModalShow(true)}
             className="habit-header-button"

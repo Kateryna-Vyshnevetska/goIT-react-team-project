@@ -26,7 +26,7 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => dispatch(logIn(data));
-  const message = "Введен неверный Логин или пароль!"
+  const message = "Введен неверный Логин или пароль!";
 
   return (
     <div className={styles.container}>

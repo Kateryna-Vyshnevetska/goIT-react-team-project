@@ -313,7 +313,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  overflow: hidden;
   /* max-width: 378px; */
   /* float: right; */
 }

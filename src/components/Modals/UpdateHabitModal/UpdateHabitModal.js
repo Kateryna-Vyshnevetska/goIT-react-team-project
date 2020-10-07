@@ -112,6 +112,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               Повторение *
             </label>
             <select
+              className={style.select}
               value={iteration}
               onChange={({ target: { value } }) => {
                 setIteration(value);
@@ -122,6 +123,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               <option value="2">Раз в 2 дня</option>
               <option value="3">ПН, СР, ПТ</option>
               <option value="4">ВТ, ЧТ, СБ</option>
+              <option value="5">По будням</option>
             </select>
           </div>
           <button

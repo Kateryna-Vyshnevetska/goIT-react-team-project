@@ -8,7 +8,12 @@ export const checkMessagesForNote = (habitsList, habitsInfo) => {
   const dateNow = moment(dateToday).format().substring(0, 10);
 
   const completedHabits = habitsList.filter(
-    (habit) => habit.data.every((elem) => elem === true || elem === false) && habit
+
+//     (habit) => habit.data.every((elem) => elem === true || elem === false) && habit
+
+    (habit) =>
+      habit.data.every((elem) => elem === true || elem === false) && habit
+
   );
 
   completedHabits.map((item) =>
@@ -18,14 +23,21 @@ export const checkMessagesForNote = (habitsList, habitsInfo) => {
   );
 
   const arrayTodayCompletedHabitsID = habitsInfo
-    .filter((habit) => habit.dates[habit.dates.length - 1].split("T")[0] === dateNow)
+
+    .filter(
+      (habit) => habit.dates[habit.dates.length - 1].split("T")[0] === dateNow
+    )
     .map((habit) => habit.habitId);
 
   const setNotificationArray = (habitsArray1, habitsArray2) =>
     arrayTodayCompletedHabitsID.map((key) => {
-      habitsArray1.map((id) => id === key && notificationArr.push("success"));
+      habitsArray1.map(
+        (id) =>
+          id === key && notificationArr.push({ status: "success", id: id })
+      );
       habitsArray2.map(
-        (id) => id === key && notificationArr.push({ status: "completed", id })
+        (id) =>
+          id === key && notificationArr.push({ status: "completed", id: id })
       );
     });
 

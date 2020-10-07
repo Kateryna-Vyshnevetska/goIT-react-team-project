@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BasicInput } from "../../components/BasicInput/BasicInput";
 import styles from "./registerPage.module.css";
 import { useDispatch } from "react-redux";
@@ -9,9 +9,13 @@ import { PasswordInput } from "../../components/BasicInput/PasswordInput/Passwor
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
 import { NotificationErrors } from "../../components/notificationErrors/NotificationErrors";
+
+import { makeStyles } from "@material-ui/core/styles";
+import Checkbox from "@material-ui/core/Checkbox";
+
 const RegisterPage = ({ setregisterOpenPage }) => {
   const dispatch = useDispatch();
-
+  const [checked, setChecked] = useState(false);
   const schema = yup.object().shape({
     email: yup.string().required("Введите email"),
     email: yup
@@ -26,11 +30,11 @@ const RegisterPage = ({ setregisterOpenPage }) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => dispatch(signUp(data));
-  const message = "Такой пользователь уже существует!"
+  const message = "Такой пользователь уже существует!";
 
   return (
     <div className={styles.container}>
-      <NotificationErrors message={message}/>
+      <NotificationErrors message={message} />
       <div className={styles.wrapper}>
         <img
           src={require("../../images/logIn/logo.svg")}
@@ -86,8 +90,25 @@ const RegisterPage = ({ setregisterOpenPage }) => {
               {errors.password?.message}
             </p>
           </div>
+          <div className={styles.checkbox}>
+            <input
+              className={styles.customCheckbox}
+              type="checkbox"
+              value="Отправить"
+              id="color-1"
+              name="check"
+              onChange={() => setChecked((prev) => !prev)}
+            />
+            <label for="color-1" className={styles.text}>
+              Я подтверждаю что мне исполнилось 18 лет!
+            </label>
+          </div>
           <div className={styles.buttonContaineer}>
-            <button type="Submit" className={styles.logInButton}>
+            <button
+              type="Submit"
+              className={styles.logInButton}
+              disabled={!checked}
+            >
               Зарегистрироваться
             </button>
             <button className={styles.buttonGoogle}>

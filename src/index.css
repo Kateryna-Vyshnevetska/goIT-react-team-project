@@ -30,13 +30,12 @@ html {
 
 html,
 body {
- overflow: hidden;
+  overflow: hidden;
 }
 
-
-#root{
+#root {
   width: 100vw;
- height: 100vh;
+  height: 100vh;
 }
 /* Sections
    ========================================================================== */
@@ -47,7 +46,7 @@ body {
 
 body {
   margin: 0;
-  background: #F6F6F6;
+  background: #f6f6f6;
 }
 
 /**
@@ -203,6 +202,11 @@ button,
 input {
   /* 1 */
   overflow: visible;
+}
+
+input:focus,
+input:hover {
+  outline-color: #43d190;
 }
 
 /**

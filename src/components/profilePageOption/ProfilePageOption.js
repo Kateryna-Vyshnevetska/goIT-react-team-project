@@ -11,6 +11,8 @@ import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
+import { BasicInputMasked } from "../BasicInput/BasicInputMasked";
+
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
@@ -21,8 +23,10 @@ import { quizInfo } from "../../redux/selectors";
 
 import "./profilePage.css";
 import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
+import "../leftSideBar/userData/userData.css";
 
 export const ProfilePageOption = () => {
+  const avatarById = useSelector((state) => state.userInfo.avatar);
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
   const history = useHistory();
@@ -79,7 +83,7 @@ export const ProfilePageOption = () => {
                 labelText={"Имя"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                placeholder={userInfo.firstName}
+                placeholder={userInfo.firstName || "Имя"}
               />
               <p className={styles.errorMessage}>
                 {errors.firstName && "Минимально 2 символа"}
@@ -97,7 +101,7 @@ export const ProfilePageOption = () => {
                 labelText={"Фамилия"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                placeholder={userInfo.lastName}
+                placeholder={userInfo.lastName || "Фамилия"}
               />
               <p className={styles.errorMessage}>
                 {errors.lastName && "Минимально 2 символа"}
@@ -105,7 +109,7 @@ export const ProfilePageOption = () => {
             </div>
 
             <div className="profilePage-inputs">
-              <BasicInput
+              <BasicInputMasked
                 register={register({
                   minLength: 11,
                   maxLength: 11,
@@ -115,9 +119,10 @@ export const ProfilePageOption = () => {
                 forLabel={"phone"}
                 id={"phone"}
                 labelText={"Телефон"}
-                placeholder={"380__ ___ __ __" || userInfo.phone}
+                placeholder={userInfo.phone || "80_________"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
+                mask={"80999999999"}
               />
               <p className={styles.errorMessage}>
                 {errors.phone && "В вашем номере должно быть 11 цифр"}
@@ -219,22 +224,17 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              {FindAvatarById()}
+              <div className="leftSideBar-user-avatar profile">
+                {FindAvatarById()}
+              </div>
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 
-            {/* <div className="profilePage-subscriptionArea">
+            <div className="profilePage-subscriptionArea">
               <span className="profilePage-subscriptionText">
                 {subscriptionLevel}
               </span>
-            </div> */}
-            <button
-              type="button"
-              onClick={clickTologOut}
-              className="profile-user-button"
-            >
-              Logout
-            </button>
+            </div>
 
             <button type="Submit" className="profilePage-subscription-btn">
               <Link
@@ -244,11 +244,11 @@ export const ProfilePageOption = () => {
                 Изменить подписку
               </Link>
             </button>
+            <ProfilePageHelpInfo />
           </div>
           <Route path="#" />
         </div>
         <ProfileMyCardsPage />
-        <ProfilePageHelpInfo />
       </div>
     </>
   );
