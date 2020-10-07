@@ -7,7 +7,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
-import { updateUserInfo } from "../../redux/operations";
+import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
@@ -23,7 +23,6 @@ import "./profilePage.css";
 import styles from "../../components/BasicInput/PasswordInput/PasswordInput.module.css";
 
 export const ProfilePageOption = () => {
-  const avatarById = useSelector((state) => state.userInfo.avatar);
   const userInfo = useSelector((state) => state.userInfo);
   const authToken = useSelector((state) => state.authToken);
   const history = useHistory();
@@ -45,6 +44,9 @@ export const ProfilePageOption = () => {
     }
     dispatch(updateUserInfo(data, authToken));
     history.push("/");
+  };
+  const clickTologOut = () => {
+    dispatch(logOut());
   };
 
   const handleSubmitPass = (ev) => {
@@ -217,14 +219,22 @@ export const ProfilePageOption = () => {
               to="/make-it-habit/change-avatar"
               className="profilePage-AvatarLink"
             >
-              {FindAvatarById(avatarById)}
+              {FindAvatarById()}
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
-            <div className="profilePage-subscriptionArea">
+
+            {/* <div className="profilePage-subscriptionArea">
               <span className="profilePage-subscriptionText">
                 {subscriptionLevel}
               </span>
-            </div>
+            </div> */}
+            <button
+              type="button"
+              onClick={clickTologOut}
+              className="profile-user-button"
+            >
+              Logout
+            </button>
 
             <button type="Submit" className="profilePage-subscription-btn">
               <Link

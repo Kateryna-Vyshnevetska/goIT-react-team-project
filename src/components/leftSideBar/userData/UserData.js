@@ -6,7 +6,10 @@ import { logOut } from "../../../redux/operations";
 import FindAvatarById from "../../../helpers/FindAvatarById";
 
 export const UserData = () => {
-  const avatarById = useSelector((state) => state.userInfo.avatar);
+  const subscriptionLevel = useSelector(
+    (state) => state.subscriptionLevel.plan
+  );
+
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
   const clickTologOut = () => {
@@ -23,14 +26,16 @@ export const UserData = () => {
               : "NickName"}
           </p>
         </Link>
-
-        <button
+        <div className="userData-subscriptionArea">
+          <span className="userData-subscriptionText">{subscriptionLevel}</span>
+        </div>
+        {/* <button
           type="button"
           onClick={clickTologOut}
           className="leftSideBar-user-button"
         >
           Logout
-        </button>
+        </button> */}
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import { deleteHabitAndGetAllHabits } from "../../redux/operations";
 import style from "./rightSideBar.module.css";
 import { authToken, userHabits, usersHabitsDates } from "../../redux/selectors";
 import moment from "moment";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export const CalendarChecklist = () => {
   const state = useSelector((state) => state);
@@ -29,8 +30,6 @@ export const CalendarChecklist = () => {
 
   // ниже более логичный вариант этой функции
 
-
-
   useEffect(() => {
     if (allUserHabits) {
       allUserHabits.map((habits) =>
@@ -41,7 +40,6 @@ export const CalendarChecklist = () => {
               (date) =>
                 dateNow.split("T")[0] === date.split("T")[0] && arr.push(habits)
             )
-        )
       );
     }
 }, [allUserHabits]);
@@ -53,24 +51,16 @@ export const CalendarChecklist = () => {
   };
 
   const checkIfHabitDoneTodaay = (idOfHabit, element, arrOfAllDates) => {
-    // console.log(element);
-
     // находим даты конкретно это привычки
     const dates = arrOfAllDates.find((el) => el.habitId === idOfHabit).dates;
-
     // ищем индекс нужного елемента для записи в массив
-
     const indx = dates.find((el, idx) =>
       el.split("T")[0] === dateNow.split("T")[0] ? el[idx] : ""
     );
     const indexOfDate = dates.indexOf(indx);
-
     const trueOrFalse = arr.find((el) => el._id === idOfHabit).data[
       indexOfDate
     ];
-      console.log("trueOrFalse", trueOrFalse);
-
-   
     return trueOrFalse;
   };
 
@@ -117,7 +107,9 @@ export const CalendarChecklist = () => {
     //     </>
 
     <ul className={style.calendarChecklist}>
+          <TransitionGroup>
       {arr.sort().map((el) => (
+    <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
         <li key={el._id} className={style.calendarItem}>
           <div className={style.calendarChecklistItem}>
             <div className={style.iconWrapper}>
@@ -152,7 +144,46 @@ export const CalendarChecklist = () => {
             ></button>
           </div>
         </li>
+    </CSSTransition>
       ))}
+    </TransitionGroup>
+
+//       <TransitionGroup>
+//         {arr.sort().map((el) => (
+//           <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
+//             <li key={el._id} className={style.calendarItem}>
+//               <div className={style.calendarChecklistItem}>
+//                 <div className={style.iconWrapper}>
+//                   <span
+//                     className={
+//                       checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+//                         ? style.calendarChecklistItemProgressDone
+//                         : style.calendarChecklistItemProgress
+//                     }
+//                   >
+//                     {checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+//                       ? ""
+//                       : el.planningTime.split(" ")[4].slice(0, 5)}
+//                   </span>
+//                 </div>
+//                 <span
+//                   className={
+//                     checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+//                       ? style.calendarChecklistItemTextDone
+//                       : style.calendarChecklistItemText
+//                   }
+//                 >
+//                   {el.name}
+//                 </span>
+//                 <button
+//                   onClick={() => deleteHabit(el._id)}
+//                   className={style.calendarChecklistItemButton}
+//                 ></button>
+//               </div>
+//             </li>
+//           </CSSTransition>
+//         ))}
+//       </TransitionGroup>
     </ul>
   );
 };

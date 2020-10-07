@@ -1,4 +1,4 @@
-export const getMoney = (arr, { cigarettePackPrice, cigarettePerDay }) => {
+export const getMoney = (arr = [], { cigarettePackPrice, cigarettePerDay }) => {
   const oneSigarretPrice = cigarettePackPrice / 20;
   let counterDays = 0;
   let counterSumm = 0;
@@ -11,9 +11,9 @@ export const getMoney = (arr, { cigarettePackPrice, cigarettePerDay }) => {
   let spentForSigarret = oneSigarretPrice * counterSumm;
   let willBeSpentForSigarret = cigarettePerDay * oneSigarretPrice * counterDays;
   let result = willBeSpentForSigarret - spentForSigarret;
-  return result;
+  return result < 0 ? "0" : result;
 };
-export const getTime = (arr, { cigarettePerTime, cigarettePerDay }) => {
+export const getTime = (arr = [], { cigarettePerTime, cigarettePerDay }) => {
   const timeForOneSiggarett = cigarettePerTime;
   let counterTime = 0;
   let counterSumm = 0;
@@ -27,12 +27,12 @@ export const getTime = (arr, { cigarettePerTime, cigarettePerDay }) => {
     timeForOneSiggarett * cigarettePerDay * counterTime;
   let newTimeForOneSiggarett = counterSumm * timeForOneSiggarett;
   let acconomyTime = totalTimeForSiggaretts - newTimeForOneSiggarett;
-  let hours = Math.floor(acconomyTime / 60);
+  let hours = acconomyTime >= 60 ? Math.floor(acconomyTime / 60) : "0";
   let minutes = Math.floor(acconomyTime % 60);
-
   let formated = [
     hours.toString().padStart(2, "0"),
     minutes.toString().padStart(2, "0"),
-  ].join(":");
-  return formated;
+  ].join(" : ");
+  console.log(acconomyTime);
+  return acconomyTime < 0 ? "00 : 00" : formated;
 };
