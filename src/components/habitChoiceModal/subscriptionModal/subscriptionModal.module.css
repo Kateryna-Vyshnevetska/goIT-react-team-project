@@ -1,0 +1,54 @@
+.wrapper {
+  width: 784px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 60px;
+  font-family: "Rubik", sans-serif;
+  background-color: #fff;
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  position: relative;
+}
+
+.title {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.text {
+  margin-bottom: 40px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #bdbdbd;
+}
+.btnStart {
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+
+  padding: 12px 18px;
+
+  color: #43d190;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #43d190;
+  border-radius: 5px;
+
+  height: 44px;
+  width: 220px;
+}

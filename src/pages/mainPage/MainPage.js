@@ -28,6 +28,7 @@ export const MainPage = () => {
   const habits = userHabits(state);
   const isLoading = useSelector((state) => state.isLoading);
   const dispatch = useDispatch();
+  const stateNotesArr = useSelector((state) => state.countOfNotification);
   let notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   useEffect(() => {

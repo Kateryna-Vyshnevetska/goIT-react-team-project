@@ -14,6 +14,7 @@ import { addUserAuthToken } from "../redux/authToken/authTokenAction";
 import { isAuthCurrentUser } from "../redux/isAuthUser/isAuthUserAction";
 import { isLoadingAction } from "../redux/isLoading/isLoadingAction";
 import { isFirstModal } from "../redux/flagForFirsModal/flagFirstModalAction";
+import { congratulationModal } from "../redux/congratulationModal/CongratulationModalAction";
 import { createHabbitDataArr } from "../helpers/createHabbitDataArr";
 import {
   userHabitsDatesDelete,
@@ -27,10 +28,11 @@ import {
   addPaymentCard,
   updatePaymentData,
 } from "./addPatmentCard/addPaymentCardAction";
+import SubscriptionModal from "../components/habitChoiceModal/subscriptionModal/SubscriptionModal";
 
 axios.defaults.baseURL = "https://make-it-habit-api.herokuapp.com";
 
-export const getAllUserDataForState = (token) => async (dispatch) => {
+export const getAllUserDataForState = (token) => async (dispatch, getState) => {
   // Получение всей инфы по юзеру, нужно передать сюда токен из стейта
   dispatch(isLoadingAction(true));
   try {
