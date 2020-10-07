@@ -120,24 +120,26 @@ export function CheckListPage() {
           {modalShow && <DailyResultModal close={close} />}
         </div>
         <ul className="habit-list">
-          {/* {arr.length ? (
-             arr.map((el) => (
-               <HabitItem
-                 clickDone={handleClickHabitButtonDone}
-                 clickMissed={handleClickHabitButtonMissed}
-                 key={el._id}
-                 id={el._id}
-                 habitTitle={el.name}
-                 linearProgressValue={el.efficiency}
-               />
-             ))
-           ) : (
-             <p className="notificationText">
-               Вы пока не выбрали привычки, над которыми хотите работать
-             </p>
-           )} */}
+          {arr.length ? (
+            arr.map((el) => (
+              <HabitItem
+                // clickDone={handleClickHabitButtonDone}
+                // clickMissed={handleClickHabitButtonMissed}
+                key={el._id}
+                id={el._id}
+                habitTitle={el.name}
+                linearProgressValue={el.efficiency}
+                // habitMissedNumber={missed}
+                // habitDoneNumber={done}
+              />
+            ))
+          ) : (
+            <p className="notificationText">
+              Вы пока не выбрали привычки, над которыми хотите работать
+            </p>
+          )}
 
-          {arr.map((el) => (
+          {/* {arr.map((el) => (
             <HabitItem
               // clickDone={handleClickHabitButtonDone}
               // clickMissed={handleClickHabitButtonMissed}
@@ -148,7 +150,7 @@ export function CheckListPage() {
               // habitMissedNumber={missed}
               // habitDoneNumber={done}
             />
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>
