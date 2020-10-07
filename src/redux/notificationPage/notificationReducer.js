@@ -3,6 +3,6 @@ import { countNotesAction } from "./notificationAction";
 
 const notesState = [];
 
-export const countOfNotification = createReducer(notesState, {
+export const statusOfNotification = createReducer(notesState, {
   [countNotesAction]: (state, { payload }) => payload,
 });

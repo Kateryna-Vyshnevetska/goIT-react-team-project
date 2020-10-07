@@ -11,6 +11,8 @@ import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../requests/requests";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
+import { BasicInputMasked } from "../BasicInput/BasicInputMasked";
+
 import { ProfileMyCardsPage } from "./profileMyCardsPage/ProfileMyCardsPage";
 import { ProfilePageHelpInfo } from "./profilePageHelpInfo/ProfilePageHelpInfo";
 import { CSSTransition } from "react-transition-group";
@@ -106,7 +108,7 @@ export const ProfilePageOption = () => {
             </div>
 
             <div className="profilePage-inputs">
-              <BasicInput
+              <BasicInputMasked
                 register={register({
                   minLength: 11,
                   maxLength: 11,
@@ -116,9 +118,10 @@ export const ProfilePageOption = () => {
                 forLabel={"phone"}
                 id={"phone"}
                 labelText={"Телефон"}
-                placeholder={"380__ ___ __ __" || userInfo.phone}
+                placeholder={"+38(0__)-___-__-__" || userInfo.phone}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
+                mask={"+38(099)-999-99-99"}
               />
               <p className={styles.errorMessage}>
                 {errors.phone && "В вашем номере должно быть 11 цифр"}
@@ -238,11 +241,11 @@ export const ProfilePageOption = () => {
                 Изменить подписку
               </Link>
             </button>
+              <ProfilePageHelpInfo />
           </div>
           <Route path="#" />
         </div>
         <ProfileMyCardsPage />
-        <ProfilePageHelpInfo />
       </div>
     </>
   );
