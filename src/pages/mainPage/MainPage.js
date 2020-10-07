@@ -35,7 +35,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     notificationArr.length && dispatch(countNotesAction(notificationArr));
-  });
+  }, [notificationArr.length]);
 
   return (
     <>
@@ -60,7 +60,11 @@ export const MainPage = () => {
             path={`/make-it-habit/notification`}
             component={Notifiacation}
           />
-          <PrivateRoute exact path={`/make-it-habit/profile`} component={ProfilePage} />
+          <PrivateRoute
+            exact
+            path={`/make-it-habit/profile`}
+            component={ProfilePage}
+          />
           <PrivateRoute
             exact
             path={`/make-it-habit/change-avatar`}

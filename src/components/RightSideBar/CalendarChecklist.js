@@ -60,7 +60,6 @@ export const CalendarChecklist = () => {
   };
 
   return (
-
     //       {arr.length ? (
     //         <>
     //           <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
@@ -101,6 +100,7 @@ export const CalendarChecklist = () => {
     //         </p>
     //       )}
     //     </>
+
     <ul className={style.calendarChecklist}>
       <TransitionGroup>
         {arr.sort().map((el) => (
@@ -139,6 +139,5 @@ export const CalendarChecklist = () => {
         ))}
       </TransitionGroup>
     </ul>
-
   );
 };

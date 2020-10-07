@@ -9,7 +9,7 @@ import { useSelector, useStore } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import CheckPrevDaySigs from "../checkPrevDaySigs/CheckPrevDaySigs";
-import { userCigarettes } from "../../redux/selectors";
+import { authToken, userCigarettes } from "../../redux/selectors";
 export const LeftSideBar = () => {
   const firstModalForUser = useSelector((state) => state.firstModalForUser);
   const [modalShow, setModalShow] = useState(firstModalForUser);
@@ -19,10 +19,11 @@ export const LeftSideBar = () => {
   const currentDay = store.getState().currentDay;
   const mainHabitDateArr = store.getState().mainHabitDates;
   const data = userCigarettes(state);
+  const token = authToken(state);
 
   useEffect(() => {
-    if (data) {
-      let arr = store.getState().userCigarettes.data.slice();
+    if (data.length > 0) {
+      let arr = userCigarettes(state).data.slice();
       const nowTime = new Date();
       const nowTimeMoment = moment(nowTime).format("MMM Do YY");
       Object.values(mainHabitDateArr).forEach((element) => {

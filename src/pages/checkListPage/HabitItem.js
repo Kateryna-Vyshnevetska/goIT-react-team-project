@@ -41,7 +41,6 @@ export const HabitItem = ({
         .dates;
 
       // ищем индекс нужного елемента для записи в массив
-
       const indx = userHabitDatess.find((el, idx) =>
         el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
       );
@@ -75,7 +74,6 @@ export const HabitItem = ({
         // находим даты конкретно это привычки
         const userHabitDatess = userHabitsDates.find((el) => el.habitId === id)
           .dates;
-
         // ищем индекс нужного елемента для записи в массив
 
         const indx = userHabitDatess.find((el, idx) =>
@@ -115,8 +113,6 @@ export const HabitItem = ({
     };
     checkActiveBtn(userHabits);
   }, [checkActiveBtn, id, newDataFormat, userHabits, userHabitsDates]);
-
-  console.log();
 
   const close = () => {
     setModalShow((prev) => !prev);
