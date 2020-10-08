@@ -243,12 +243,14 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
 };
 
 export const changeUserPassword = (newPassword, token) => async (dispatch) => {
+  dispatch(isLoadingAction(true));
   try {
     axios.post("/auth/updatePassword", newPassword, {
       headers: {
         Authorization: token,
       },
     });
+    dispatch(isLoadingAction(false));
   } catch (error) {
     dispatch(errors(error.message));
   }
