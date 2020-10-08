@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Link, BrowserRouter as Router, useHistory } from "react-router-dom";
 import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { logOut, updateUserInfo } from "../../redux/operations";
-import { changeUserPassword } from "../../requests/requests";
+import { changeUserPassword } from "../../redux/operations";
 import { useForm } from "react-hook-form";
 import { BasicInput } from "../BasicInput/BasicInput";
 import { BasicInputMasked } from "../BasicInput/BasicInputMasked";
@@ -27,6 +27,8 @@ export const ProfilePageOption = () => {
   const history = useHistory();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorPass, setErrorPass] = useState(false);
+  const [errorEnter, setErrorEnter] = useState(false);
   const dispatch = useDispatch();
 
   const subscriptionLevel = useSelector((state) => state.subscriptionLevel.plan);
@@ -47,11 +49,34 @@ export const ProfilePageOption = () => {
   };
 
   const handleSubmitPass = (ev) => {
-    ev.preventDefault();
-    history.push("/");
+    // ev.preventDefault();
+    const newP = password.split("");
+    const newC = confirmPassword.split("");
+    console.log();
+    let counter = 0;
+    for (let i = 0; i < newP.length; i++) {
+      console.log(!Number(newC[i]));
+      if (newP[i] === newC[i]) {
+        console.log(newP[i]);
+        console.log(newC[i]);
+        counter += 1;
+      }
+    }
+    if (counter === newP.length && counter === newC.length) {
+      const change = {
+        password,
+        confirmPassword,
+      };
+      console.log(change);
+      dispatch(changeUserPassword(change, authToken));
+    } else if (password.length < 8 || confirmPassword.length < 8) {
+      setErrorEnter(true);
+      setErrorPass(false);
+    } else {
+      setErrorPass(true);
+      setErrorEnter(false);
+    }
   };
-  //   // dispatch(changeUserPassword({ password, confirmPassword }, authToken));
-  // };
 
   return (
     <>
@@ -144,7 +169,7 @@ export const ProfilePageOption = () => {
               Подтвердить изменения
             </button>
 
-            <form>
+            <form onSubmit={handleSubmitPass}>
               <div className={styles.profilePageInputs}>
                 <PasswordInput
                   register={register({
@@ -166,7 +191,14 @@ export const ProfilePageOption = () => {
                 />
                 <p className={styles.errorMessagePass}>{errors.password?.message}</p>
               </div>
-
+              {errorPass && (
+                <p className="errorMessageMask">Пароли не совпадают</p>
+              )}
+              {errorEnter && (
+                <p className="errorMessageMask">
+                  Недопустимое количество символов. Минимум 8
+                </p>
+              )}
               <div className="profilePage-inputs">
                 <CSSTransition
                   in={password.length >= 1}
@@ -209,8 +241,29 @@ export const ProfilePageOption = () => {
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 
-            <div className="profilePage-subscriptionArea">
-              <span className="profilePage-subscriptionText">{subscriptionLevel}</span>
+//             <div className="profilePage-subscriptionArea">
+//               <span className="profilePage-subscriptionText">{subscriptionLevel}</span>
+
+            <div
+              className={
+                subscriptionLevel === "Noob"
+                  ? "Noob"
+                  : subscriptionLevel === "Basic"
+                  ? "Basic"
+                  : subscriptionLevel === "Standart"
+                  ? "Standart"
+                  : subscriptionLevel === "Premium"
+                  ? "Premium"
+                  : subscriptionLevel === "Ultra"
+                  ? "Ultra"
+                  : subscriptionLevel === "Текущий план не выбран"
+                  ? "userData-subscriptionArea"
+                  : ""
+              }
+            >
+              <span className="profilePage-subscriptionText">
+                {subscriptionLevel}
+              </span>
             </div>
 
             <button type="Submit" className="profilePage-subscription-btn">

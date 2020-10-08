@@ -8,10 +8,18 @@ export const CounterEconomy = () => {
   const array = useSelector((state) => state.userCigarettes.data);
   const money = getMoney(array, guiz);
   const time = getTime(array, guiz);
-
+  console.log('money', typeof money)
+  console.log("time",  time);
+  
   return (
     <>
       <div className="leftSideBar-economyContainer">
+        {money === 0 ||
+          (time === "00 : 00" && (
+            <p className="pleaseDoNotSmoke">
+              Постарайтесь курить меньше &#128521;
+            </p>
+          ))}
         <ul className="leftSideBar-economyList">
           <li className="leftSideBar-item">
             <p className="leftSideBar-economyTitle">Сэкономленные деньги</p>

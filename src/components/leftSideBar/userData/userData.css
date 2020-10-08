@@ -99,9 +99,60 @@
 .userData-subscriptionText {
   font-size: 14px;
   line-height: 1.42;
+  
 }
 .log-out-img {
   width: 20px;
   height: 20px;
   color: #ffffff;
+}
+
+.Noob{
+ min-width: 52px;
+  height: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 8px 3px;
+  margin-bottom: 15px;
+  background-color: #43d190;
+}
+
+.Basic {
+   min-width: 52px;
+  height: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 8px 3px;
+  margin-bottom: 15px;
+  background: linear-gradient(222.27deg, #2eebda 3.75%, #7cf7a3 94.69%);
+}
+
+.Standart {
+   min-width: 52px;
+  height: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 8px 3px;
+  margin-bottom: 15px;
+  background: linear-gradient(222.27deg, #f8c102 3.75%, #fe6083 94.69%);
+}
+
+.Premium {
+   min-width: 52px;
+  height: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 8px 3px;
+  margin-bottom: 15px;
+  background: linear-gradient(222.27deg, #fe6083 3.75%, #b469fa 94.69%);
+}
+
+.Ultra {
+   min-width: 52px;
+  height: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 8px 3px;
+  margin-bottom: 15px;
+  background: linear-gradient(222.27deg, #b469fa 3.75%, #655de6 94.69%);
 }

@@ -64,25 +64,20 @@ export const Notifiacation = () => {
       </div>
       <div className="notif-content-wrapper">
         <ul className="notif-list">
-          <TransitionGroup>
-            {arrOfhabitDone.length ? (
-              arrOfhabitDone.map((elem, idx) => (
-                <CSSTransition key={idx} timeout={1000} classNames="list-fade">
-                  <NotificationItem
-                    key={idx}
-                    id={idx}
-                    name={elem.name}
-                    text={elem}
-                    // onClick={click}
-                  />
-                </CSSTransition>
-              ))
-            ) : (
-              <li>
-                <p className="notificationText">У Вас нет новых уведомлений</p>
-              </li>
-            )}
-          </TransitionGroup>
+          {arrOfhabitDone.length ? (
+            arrOfhabitDone.map((elem, idx) => (
+              <NotificationItem
+                key={idx}
+                id={idx}
+                name={elem.name}
+                text={elem}
+              />
+            ))
+          ) : (
+            <li>
+              <p className="notificationText">У Вас нет новых уведомлений</p>
+            </li>
+          )}
         </ul>
       </div>
     </div>
