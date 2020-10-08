@@ -230,7 +230,23 @@ export const ProfilePageOption = () => {
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 
-            <div className="profilePage-subscriptionArea">
+            <div
+              className={
+                subscriptionLevel === "Noob"
+                  ? "Noob"
+                  : subscriptionLevel === "Basic"
+                  ? "Basic"
+                  : subscriptionLevel === "Standart"
+                  ? "Standart"
+                  : subscriptionLevel === "Premium"
+                  ? "Premium"
+                  : subscriptionLevel === "Ultra"
+                  ? "Ultra"
+                  : subscriptionLevel === "Текущий план не выбран"
+                  ? "userData-subscriptionArea"
+                  : ""
+              }
+            >
               <span className="profilePage-subscriptionText">
                 {subscriptionLevel}
               </span>

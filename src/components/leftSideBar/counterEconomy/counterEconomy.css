@@ -94,3 +94,23 @@
 
   color: #bdbdbd;
 }
+
+
+.pleaseDoNotSmoke{
+font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    position: absolute;
+    color: red;
+    top: 252px;
+    left: 36px;
+    width: 259px;
+    height: 47px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

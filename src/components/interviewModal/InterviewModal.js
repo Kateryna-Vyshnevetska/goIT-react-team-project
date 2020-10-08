@@ -50,7 +50,7 @@ function InterviewModal({ close }) {
             </li>
             <li className={styles.modalBodyItem}>
               <h2 className={styles.modalBodyText}>
-                Сколько вемени у Вас уходит на 1 сигарету?
+                Сколько времени у Вас уходит на 1 сигарету?
               </h2>
             </li>
             <li className={styles.modalBodyItem}>
