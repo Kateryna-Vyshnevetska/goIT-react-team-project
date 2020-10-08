@@ -63,8 +63,8 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
   return (
     <>
       <div className={style.wrapper}>
-        <h3 className={style.title}>Update привычку под себя</h3>
-        <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
+        <h3 className={style.title}>Настройте привычку под себя.</h3>
+        <p className={style.text}>Так Вам будет удобнее достичь своей цели</p>
 
         <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.row}>
@@ -129,9 +129,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
           <button
             className={style.btnDelete}
             onClick={() =>
-              dispatch(
-                deleteOneHabitFromUpdateModal(oneUserHabit, authToken(state))
-              )
+              dispatch(deleteOneHabitFromUpdateModal(oneUserHabit, authToken(state)))
             }
           >
             <span className={style.btnDeleteIcon}></span> Удалить привычку
@@ -145,10 +143,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
             </button>
           </div>
         </form>
-        <button
-          onClick={() => close()}
-          className={style.modalBodyButtonclose}
-        ></button>
+        <button onClick={() => close()} className={style.modalBodyButtonclose}></button>
       </div>
     </>
   );
