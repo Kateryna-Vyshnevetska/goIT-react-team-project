@@ -10,6 +10,8 @@ export const UserData = () => {
     (state) => state.subscriptionLevel.plan
   );
 
+  console.log(subscriptionLevel);
+
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
   const clickTologOut = () => {
@@ -26,7 +28,23 @@ export const UserData = () => {
               : "NickName"}
           </p>
         </Link>
-        <div className="userData-subscriptionArea">
+        <div
+          className={
+            subscriptionLevel === "Noob"
+              ? "Noob"
+              : subscriptionLevel === "Basic"
+              ? "Basic"
+              : subscriptionLevel === "Standart"
+              ? "Standart"
+              : subscriptionLevel === "Premium"
+              ? "Premium"
+              : subscriptionLevel === "Ultra"
+              ? "Ultra"
+              : subscriptionLevel === "Текущий план не выбран"
+              ? "userData-subscriptionArea"
+              : ""
+          }
+        >
           <span className="userData-subscriptionText">{subscriptionLevel}</span>
         </div>
         <button
