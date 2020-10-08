@@ -21,7 +21,7 @@ export const UserData = () => {
         <Link to="/make-it-habit/profile" className="leftSideBar-user-link">
           <div className="leftSideBar-user-avatar">{FindAvatarById()}</div>
           <p className="leftSideBar-user-name">
-            {userInfo.firstName && userInfo.lastName
+            {userInfo.firstName || userInfo.lastName
               ? `${userInfo.firstName} ${userInfo.lastName}`
               : "NickName"}
           </p>

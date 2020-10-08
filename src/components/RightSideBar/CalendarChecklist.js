@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAndGetAllHabits } from "../../redux/operations";
 import style from "./rightSideBar.module.css";
+import "./styleList.css";
 import { authToken, userHabits, usersHabitsDates } from "../../redux/selectors";
 import moment from "moment";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -69,7 +70,7 @@ export const CalendarChecklist = () => {
               {arr.sort().map((el) => (
                 <CSSTransition
                   key={el._id}
-                  timeout={500}
+                  timeout={5000}
                   classNames="list-fade"
                 >
                   <li key={el._id} className={style.calendarItem}>
