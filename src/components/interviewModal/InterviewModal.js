@@ -44,9 +44,7 @@ function InterviewModal({ close }) {
               <h2 className={styles.modalBodyText}>Сколько лет Вы курите?</h2>
             </li>
             <li className={styles.modalBodyItem}>
-              <h2 className={styles.modalBodyText}>
-                Сколько сигарет скуриваете в день?
-              </h2>
+              <h2 className={styles.modalBodyText}>Сколько сигарет скуриваете в день?</h2>
             </li>
             <li className={styles.modalBodyItem}>
               <h2 className={styles.modalBodyText}>
@@ -54,15 +52,10 @@ function InterviewModal({ close }) {
               </h2>
             </li>
             <li className={styles.modalBodyItem}>
-              <h2 className={styles.modalBodyText}>
-                Сколько стоит одна пачка сигарет?
-              </h2>
+              <h2 className={styles.modalBodyText}>Сколько стоит одна пачка сигарет?</h2>
             </li>
           </ul>
-          <form
-            className={styles.modalBodyForm}
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className={styles.modalBodyForm} onSubmit={handleSubmit(onSubmit)}>
             <BasicInput
               register={register({
                 min: 1,
@@ -82,9 +75,7 @@ function InterviewModal({ close }) {
               placeholder={"0"}
               inputWidth={220}
             />
-            <p>
-              {errors.cigarettePerDay && "Это должно быть положительное число"}
-            </p>
+            <p>{errors.cigarettePerDay && "Это должно быть положительное число"}</p>
             <BasicInput
               register={register({
                 min: 1,
@@ -94,9 +85,7 @@ function InterviewModal({ close }) {
               placeholder={"__min"}
               inputWidth={220}
             />
-            <p>
-              {errors.cigarettePerTime && "Это должно быть положительное число"}
-            </p>
+            <p>{errors.cigarettePerTime && "Это должно быть положительное число"}</p>
             <BasicInput
               register={register({
                 min: 1,
@@ -106,10 +95,7 @@ function InterviewModal({ close }) {
               placeholder={"__.__grn"}
               inputWidth={220}
             />
-            <p>
-              {errors.cigarettePackPrice &&
-                "Это должно быть положительное число"}
-            </p>
+            <p>{errors.cigarettePackPrice && "Это должно быть положительное число"}</p>
             <button type="submit" className={styles.modalBodyButton}>
               Сохранить
             </button>

@@ -6,8 +6,11 @@ import CustomHabitModal from "../CustomHabitModal/CustomHabitModal";
 import { useSelector } from "react-redux";
 
 function HabitTemplateModalItem({ close, setValueOfButton, setModalShowNew }) {
-  const userHabitsName = useSelector((state) => state.userHabits.map((el) => el.name));
-  const TemplateHabits = defaultHabits.filter((habit) => !userHabitsName.includes(habit));
+  const userHabits = useSelector((state) => state.userHabits);
+  const isActiveHabits = userHabits
+    .filter((habit) => habit.data.some((el) => el === null))
+    .map((el) => el.name);
+  console.log(isActiveHabits);
 
   const handleClickBtn = (target) => {
     close();
@@ -20,7 +23,7 @@ function HabitTemplateModalItem({ close, setValueOfButton, setModalShowNew }) {
       {defaultHabits.map((el) => (
         <li
           className={
-            userHabitsName.includes(el)
+            isActiveHabits.includes(el)
               ? "habit-template-item-disabled"
               : "habit-template-item"
           }
@@ -29,7 +32,7 @@ function HabitTemplateModalItem({ close, setValueOfButton, setModalShowNew }) {
           <button
             to="#"
             className={
-              userHabitsName.includes(el)
+              isActiveHabits.includes(el)
                 ? "habit-template-btn-disabled"
                 : "habit-template-btn"
             }

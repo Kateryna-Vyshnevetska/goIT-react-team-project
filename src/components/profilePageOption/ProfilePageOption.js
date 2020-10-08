@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Route,
-  Link,
-  BrowserRouter as Router,
-  useHistory,
-} from "react-router-dom";
+import { Route, Link, BrowserRouter as Router, useHistory } from "react-router-dom";
 import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../redux/operations";
@@ -36,9 +31,7 @@ export const ProfilePageOption = () => {
   const [errorEnter, setErrorEnter] = useState(false);
   const dispatch = useDispatch();
 
-  const subscriptionLevel = useSelector(
-    (state) => state.subscriptionLevel.plan
-  );
+  const subscriptionLevel = useSelector((state) => state.subscriptionLevel.plan);
 
   const { register, errors, handleSubmit } = useForm();
 
@@ -93,10 +86,7 @@ export const ProfilePageOption = () => {
       <div className="ProfilePage-main">
         <h3 className="ProfilePage-priwetTitle">Личная информация</h3>
         <div className="profilePage-formAvatar-block">
-          <form
-            className="profilePage-formBlock"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="profilePage-formBlock" onSubmit={handleSubmit(onSubmit)}>
             <div className="profilePage-inputs">
               <BasicInput
                 register={register({
@@ -144,7 +134,7 @@ export const ProfilePageOption = () => {
                 forLabel={"phone"}
                 id={"phone"}
                 labelText={"Телефон"}
-                placeholder={userInfo.phone || "80_________"}
+                placeholder={userInfo.phone || "+38 0_________"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
                 mask={"80999999999"}
@@ -199,9 +189,7 @@ export const ProfilePageOption = () => {
                   marginBottom="40px"
                   handleChange={({ target: { value } }) => setPassword(value)}
                 />
-                <p className={styles.errorMessagePass}>
-                  {errors.password?.message}
-                </p>
+                <p className={styles.errorMessagePass}>{errors.password?.message}</p>
               </div>
               {errorPass && (
                 <p className="errorMessageMask">Пароли не совпадают</p>
@@ -234,14 +222,10 @@ export const ProfilePageOption = () => {
                     labelWidth={"120px"}
                     inputWidth={"345px"}
                     marginBottom="40px"
-                    handleChange={({ target: { value } }) =>
-                      setConfirmPassword(value)
-                    }
+                    handleChange={({ target: { value } }) => setConfirmPassword(value)}
                   />
                 </CSSTransition>
-                <p className={styles.errorMessagePass}>
-                  {errors.password?.message}
-                </p>
+                <p className={styles.errorMessagePass}>{errors.password?.message}</p>
               </div>
               <button
                 type="Submit"
@@ -252,15 +236,13 @@ export const ProfilePageOption = () => {
             </form>
           </form>
           <div className="profilePage-AvatarBlock">
-            <Link
-              to="/make-it-habit/change-avatar"
-              className="profilePage-AvatarLink"
-            >
-              <div className="leftSideBar-user-avatar profile">
-                {FindAvatarById()}
-              </div>
+            <Link to="/make-it-habit/change-avatar" className="profilePage-AvatarLink">
+              <div className="leftSideBar-user-avatar profile">{FindAvatarById()}</div>
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
+
+//             <div className="profilePage-subscriptionArea">
+//               <span className="profilePage-subscriptionText">{subscriptionLevel}</span>
 
             <div
               className={

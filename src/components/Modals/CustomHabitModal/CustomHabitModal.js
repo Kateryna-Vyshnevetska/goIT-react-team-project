@@ -7,7 +7,7 @@ import style from "./CustomHabitModal.module.css";
 import modalBackDrop from "../../modalBackDrop/ModalBackDrop";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAndGetAllHabits } from "../../../redux/operations";
-import { authToken, notificationType, userHabits } from "../../../redux/selectors";
+import { authToken } from "../../../redux/selectors";
 import { getRandomColor } from "../../../helpers/getRandomColor";
 import { useHistory } from "react-router";
 
@@ -44,8 +44,8 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   return (
     <>
       <div className={style.wrapper}>
-        <h3 className={style.title}>Настройте привычку под себя</h3>
-        <p className={style.text}>так Вам будет удобнее достичь своей цели</p>
+        <h3 className={style.title}>Настройте привычку под себя.</h3>
+        <p className={style.text}>Так Вам будет удобнее достичь своей цели</p>
 
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
           <p className={style.errorMessage}>
