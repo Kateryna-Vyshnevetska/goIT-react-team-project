@@ -22,7 +22,6 @@ import { notificationType } from "../../redux/selectors";
 import { object } from "yup";
 import FindHabitById from "../../helpers/FindHabitById";
 
-
 export const MainPage = () => {
   const state = useSelector((state) => state);
   const habitsList = userHabits(state);
@@ -42,7 +41,6 @@ export const MainPage = () => {
   }, [notificationArr]);
 
   useEffect(() => {
-    console.log("staert");
     const dataFromStorage = localStorage.getItem("habitsId");
     const habitsStorage = JSON.parse(dataFromStorage);
     const notification = checkMessagesForNote(habitsList, habitsInfo);
@@ -68,7 +66,6 @@ export const MainPage = () => {
         dispatch(countNotesAction(notification));
       }
     } else {
-      console.log("else");
       dispatch(countNotesAction(notificationArr));
     }
   }, [notificationArr.length]);
@@ -95,7 +92,11 @@ export const MainPage = () => {
             path={`/make-it-habit/notification`}
             component={Notifiacation}
           />
-          <PrivateRoute exact path={`/make-it-habit/profile`} component={ProfilePage} />
+          <PrivateRoute
+            exact
+            path={`/make-it-habit/profile`}
+            component={ProfilePage}
+          />
           <PrivateRoute
             exact
             path={`/make-it-habit/change-avatar`}

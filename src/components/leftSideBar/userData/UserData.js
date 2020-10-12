@@ -10,8 +10,6 @@ export const UserData = () => {
     (state) => state.subscriptionLevel.plan
   );
 
-  console.log(subscriptionLevel);
-
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
   const clickTologOut = () => {

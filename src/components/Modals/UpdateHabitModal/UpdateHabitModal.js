@@ -17,7 +17,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
   const state = useSelector((state) => state);
   const userHabits = useSelector((state) => state.userHabits);
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState("--:--:--");
   const [name, setName] = useState("");
   const [iteration, setIteration] = useState("");
   const [planningTime, setPlanningTime] = useState("");
@@ -39,10 +39,6 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
     const dateOfStart = oneUserHabit.planningTime.split(" ")[0];
     // setDate(dateOfStart.toLocaleDateString("en-GB"));
   }, [habitTitle, oneUserHabit.iteration, oneUserHabit.planningTime]);
-
-  //   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
-
-  //   console.log(oneUserHabit._id);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -80,6 +76,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
             />
           </div>
           <DateInput
+            disabledFor="disabled"
             forLabel={"date"}
             id={"date"}
             labelText={"Дата начала *"}
@@ -97,6 +94,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               Время *
             </label>
             <input
+              disabled
               value={planningTime}
               className={style.input}
               id="time"
@@ -112,6 +110,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               Повторение *
             </label>
             <select
+              disabled
               className={style.select}
               value={iteration}
               onChange={({ target: { value } }) => {
@@ -129,7 +128,9 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
           <button
             className={style.btnDelete}
             onClick={() =>
-              dispatch(deleteOneHabitFromUpdateModal(oneUserHabit, authToken(state)))
+              dispatch(
+                deleteOneHabitFromUpdateModal(oneUserHabit, authToken(state))
+              )
             }
           >
             <span className={style.btnDeleteIcon}></span> Удалить привычку
@@ -143,7 +144,10 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
             </button>
           </div>
         </form>
-        <button onClick={() => close()} className={style.modalBodyButtonclose}></button>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
     </>
   );
