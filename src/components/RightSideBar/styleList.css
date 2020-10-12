@@ -1,6 +1,6 @@
 .list-fade-enter {
   opacity: 0;
-  transform: scale(0.1);
+  transform: scale(0.1) linear 500ms;
 }
 .list-fade-enter-active {
   opacity: 1;
@@ -9,10 +9,32 @@
 }
 .list-fade-exit {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) linear 500ms;;
 }
 .list-fade-exit-active {
   opacity: 0;
   transform: translateX(-100%);
   transition: all 500ms linear;
+}
+
+
+
+.not-title-appear {
+  transform: translateX(100%);
+}
+
+.not-title-appear-active {
+  transform: translateX(0);
+  transition: transform 1000ms;
+}
+
+
+
+.habit-title-appear {
+  transform: translateX(100%)  linear 500ms;
+}
+
+.habit-title-appear-active {
+  transform: translateX(0);
+  transition: transform 1000ms  linear 500ms;
 }

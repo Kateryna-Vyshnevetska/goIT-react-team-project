@@ -266,7 +266,9 @@ export const ProfilePageOption = () => {
             {/* <div className="profilePage-subscriptionArea">
                <span className="profilePage-subscriptionText">{subscriptionLevel}</span> */}
 
-            <div
+            <div className="subscription-wrapper">
+
+              <div
               className={
                 subscriptionLevel === "Noob"
                   ? "Noob"
@@ -282,12 +284,14 @@ export const ProfilePageOption = () => {
                   ? "userData-subscriptionArea"
                   : ""
               }
-            >
+              >
               <span className="profilePage-subscriptionText">
                 {subscriptionLevel}
               </span>
             </div>
 
+            </div>
+            
             <button type="Submit" className="profilePage-subscription-btn">
               <Link
                 to="/make-it-habit/subscription"

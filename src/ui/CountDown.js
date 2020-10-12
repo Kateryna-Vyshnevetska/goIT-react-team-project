@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
-// import cn from 'classnames/bind'
 import "./countdown.css";
 
-//const cx = cn.bind(styles)
+
 
 class CountDown extends Component {
   constructor(props) {
@@ -56,11 +55,16 @@ class CountDown extends Component {
     this.x = setInterval(this.count, 1000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.x);
+    this.deadline = null;
+  }
+
   render() {
     const { days, seconds, hours, minutes, time_up } = this.state;
     return (
       <div className="clock-section">
-        <h1 className="title-clock">Ваша подписка истекает через</h1>
+        <h4 className="title-clock">Ваша подписка истекает через</h4>
         <div id="clockdiv">
           <div>
             <span className="days" id="day">

@@ -16,7 +16,7 @@
   font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 26px;
+  font-size: 21px;
   line-height: 31px;
   color: #4f4f4f;
   height: 10%;
@@ -51,7 +51,7 @@
 .calendarItem:not(:last-child)::after {
   content: " ";
   position: relative;
-  right: 130px;
+  right: 115px;
   bottom: -7px;
   border-left: 2px dashed #e0e0e0;
   height: 36px;

@@ -1,4 +1,5 @@
 .leftSideBar-userData {
+  position: relative;
   border-bottom: 1px solid #d5e1dc;
 
   height: 20%;
@@ -43,9 +44,9 @@
 .leftSideBar-user-button {
   /* bottom: 810px;
   left: 300px; */
-  top: -135px;
-  right: -135px;
-  position: relative;
+  top: 10px;
+  right: 10px;
+  position: absolute;
   width: 20px;
   height: 20px;
   padding: 0;

@@ -31,17 +31,17 @@ export const ProfileMyCardsPage = () => {
             navigation={true}
             enableScroll={false}
             enableHeading={false}
-            // style={{ width: "100%", height: "500px", }}
-            media={{
-              "@media (max-width: 900px)": {
-                width: "600px",
-                height: "300px",
-              },
-              "@media (min-width: 900px)": {
-                width: "800px",
-                height: "400px",
-              },
-            }}
+            style={{ width: "500px", height: "500px", }}
+            // media={{
+            //   "@media (max-width: 900px)": {
+            //     width: "600px",
+            //     height: "300px",
+            //   },
+            //   "@media (min-width: 900px)": {
+            //     width: "800px",
+            //     height: "400px",
+            //   },
+            // }}
           >
             {cardArr.map((el, idx) => (
               <ProfileItemCard

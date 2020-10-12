@@ -1,4 +1,3 @@
-import React from "react";
 import "../pages/achievementsPage/AchievementsPage.css";
 
 export const checkAchievement = (
@@ -10,13 +9,14 @@ export const checkAchievement = (
 ) => {
   arrayCigarettes.map((el) => {
     if (el !== null) {
-      if (cigaretteDay - el === 1) {
+
+      if (cigaretteDay - el === 1 || el < cigaretteDay) {
         elem1.classList.add("active");
       }
-      if (cigaretteDay - el === 3) {
+      if (cigaretteDay - el === 3 || el < cigaretteDay) {
         elem2.classList.add("active");
       }
-      if (cigaretteDay - el === 5) {
+      if (cigaretteDay - el === 5 || el < cigaretteDay) {
         elem3.classList.add("active");
       }
     }
@@ -36,16 +36,16 @@ export const checkAchievementDay = (
     }
   });
 
-  if (counter === 1) {
+  if (counter === 1 || counter === 2) {
     elem1.classList.add("active");
   }
-  if (counter === 3 || counter > 3) {
+  if (counter >= 3 && counter <= 6) {
     elem1.classList.add("active");
     elem2.classList.add("active");
   }
 };
 
-export const checkAchievementWeek = (arrayCigarettes, elem1, elem2) => {
+export const checkAchievementWeek = (arrayCigarettes, elem1, elem2, elem3, elem4) => {
   let counter = 1;
   for (let idx = 0; idx < arrayCigarettes.length; idx++) {
     if (arrayCigarettes[idx] === 0 && arrayCigarettes[idx + 1] === 0) {
@@ -54,9 +54,13 @@ export const checkAchievementWeek = (arrayCigarettes, elem1, elem2) => {
   }
   if (counter === 7 || counter > 7) {
     elem1.classList.add("active");
+    elem3.classList.add("active")
+    elem4.classList.add("active")
   }
   if (counter === 14 || counter > 14) {
     elem1.classList.add("active");
     elem2.classList.add("active");
+    elem3.classList.add("active")
+    elem4.classList.add("active")
   }
 };
