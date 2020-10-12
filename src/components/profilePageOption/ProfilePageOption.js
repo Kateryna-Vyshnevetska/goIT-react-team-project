@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Link, BrowserRouter as Router, useHistory } from "react-router-dom";
+import {
+  Route,
+  Link,
+  BrowserRouter as Router,
+  useHistory,
+} from "react-router-dom";
 import { AvatarsPage } from "../../pages/avatarsPage/AvatarsPage";
 import { logOut, updateUserInfo } from "../../redux/operations";
 import { changeUserPassword } from "../../redux/operations";
@@ -31,7 +36,9 @@ export const ProfilePageOption = () => {
   const [errorEnter, setErrorEnter] = useState(false);
   const dispatch = useDispatch();
 
-  const subscriptionLevel = useSelector((state) => state.subscriptionLevel.plan);
+  const subscriptionLevel = useSelector(
+    (state) => state.subscriptionLevel.plan
+  );
 
   const { register, errors, handleSubmit } = useForm();
 
@@ -49,10 +56,10 @@ export const ProfilePageOption = () => {
   };
 
   const handleSubmitPass = (ev) => {
-    // ev.preventDefault();
+    ev.preventDefault();
     const newP = password.split("");
     const newC = confirmPassword.split("");
-    console.log();
+
     let counter = 0;
     for (let i = 0; i < newP.length; i++) {
       console.log(!Number(newC[i]));
@@ -67,8 +74,9 @@ export const ProfilePageOption = () => {
         password,
         confirmPassword,
       };
-      console.log(change);
+
       dispatch(changeUserPassword(change, authToken));
+      history.push("/");
     } else if (password.length < 8 || confirmPassword.length < 8) {
       setErrorEnter(true);
       setErrorPass(false);
@@ -86,7 +94,10 @@ export const ProfilePageOption = () => {
       <div className="ProfilePage-main">
         <h3 className="ProfilePage-priwetTitle">Личная информация</h3>
         <div className="profilePage-formAvatar-block">
-          <form className="profilePage-formBlock" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="profilePage-formBlock"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="profilePage-inputs">
               <BasicInput
                 register={register({
@@ -189,7 +200,9 @@ export const ProfilePageOption = () => {
                   marginBottom="40px"
                   handleChange={({ target: { value } }) => setPassword(value)}
                 />
-                <p className={styles.errorMessagePass}>{errors.password?.message}</p>
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
               {errorPass && (
                 <p className="errorMessageMask">Пароли не совпадают</p>
@@ -222,10 +235,14 @@ export const ProfilePageOption = () => {
                     labelWidth={"120px"}
                     inputWidth={"345px"}
                     marginBottom="40px"
-                    handleChange={({ target: { value } }) => setConfirmPassword(value)}
+                    handleChange={({ target: { value } }) =>
+                      setConfirmPassword(value)
+                    }
                   />
                 </CSSTransition>
-                <p className={styles.errorMessagePass}>{errors.password?.message}</p>
+                <p className={styles.errorMessagePass}>
+                  {errors.password?.message}
+                </p>
               </div>
               <button
                 type="Submit"
@@ -236,13 +253,18 @@ export const ProfilePageOption = () => {
             </form>
           </form>
           <div className="profilePage-AvatarBlock">
-            <Link to="/make-it-habit/change-avatar" className="profilePage-AvatarLink">
-              <div className="leftSideBar-user-avatar profile">{FindAvatarById()}</div>
+            <Link
+              to="/make-it-habit/change-avatar"
+              className="profilePage-AvatarLink"
+            >
+              <div className="leftSideBar-user-avatar profile">
+                {FindAvatarById()}
+              </div>
             </Link>
             <p className="profilePage-AvatarText">Выбрать другой аватар</p>
 
-//             <div className="profilePage-subscriptionArea">
-//               <span className="profilePage-subscriptionText">{subscriptionLevel}</span>
+            {/* <div className="profilePage-subscriptionArea">
+               <span className="profilePage-subscriptionText">{subscriptionLevel}</span> */}
 
             <div
               className={

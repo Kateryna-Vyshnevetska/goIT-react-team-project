@@ -10,6 +10,7 @@ import style from "./DateInput.module.css";
 registerLocale("ru", ru);
 
 function DateInput({
+  disabledFor,
   register,
   forLabel,
   id,
@@ -52,6 +53,7 @@ function DateInput({
       </label>
       <div className="habitsCalendar">
         <DatePicker
+          disabled={disabledFor}
           className={style.input}
           // minDate={new Date()}
           requared

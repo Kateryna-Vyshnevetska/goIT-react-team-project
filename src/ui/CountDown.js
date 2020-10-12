@@ -50,7 +50,6 @@ class CountDown extends Component {
     dayFor.setDate(dayFor.getDate() + 14);
     moment.locale("en");
     const dayForStart = moment(dayFor).format("LLL");
-    console.log(dayForStart);
 
     this.deadline = new Date("oct 22, 2020 00:00:00").getTime();
 
