@@ -44,7 +44,6 @@ function DailyResultModal({ close }) {
   }
 
   function handleSubmit(evt) {
-    console.log(dataDate.toDateString());
     close();
     evt.preventDefault();
     updateDates(sigCount);

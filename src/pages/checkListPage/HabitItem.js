@@ -25,7 +25,10 @@ export const HabitItem = ({
   const userHabits = useSelector((state) => state.userHabits);
 
   const userHabitsDates = useSelector((state) => state.usersHabitsDates);
-  const needElementColor = FindHabitById(userHabits, id).planningTime.split(" ")[11];
+  const needElementColor = FindHabitById(userHabits, id).planningTime.split(
+    " "
+  )[11];
+  const oneHabit = FindHabitById(userHabits, id);
   const [modalCongratulationShow, setModalCongratulationShow] = useState(false);
 
   const habitNumberCounter = document.getElementById(id);
@@ -50,7 +53,8 @@ export const HabitItem = ({
   const checkActiveBtn = (arrOfHabits) => {
     if (arrOfHabits.length > 0) {
       // находим даты конкретно это привычки
-      const userHabitDatess = userHabitsDates.find((el) => el.habitId === id).dates;
+      const userHabitDatess = userHabitsDates.find((el) => el.habitId === id)
+        .dates;
 
       // ищем индекс нужного елемента для записи в массив
       const indx = userHabitDatess.find((el, idx) =>
@@ -58,7 +62,9 @@ export const HabitItem = ({
       );
       const indexOfDate = userHabitDatess.indexOf(indx);
 
-      const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[indexOfDate];
+      const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[
+        indexOfDate
+      ];
 
       if (trueOrFalse) {
         const buttonDoneActive = document.getElementById(`${id}done`);
@@ -80,40 +86,6 @@ export const HabitItem = ({
 
   useEffect(() => {
     const checkActiveBtn = (arrOfHabits) => {
-
-//       if (arrOfHabits.length > 0) {
-//         // находим даты конкретно этой привычки
-//         const userHabitDatess = userHabitsDates.find((el) => el.habitId === id).dates;
-//         // ищем индекс нужного елемента для записи в массив
-
-//         const indx = userHabitDatess.find((el, idx) =>
-//           el.split("T")[0] === newDataFormat.split("T")[0] ? el[idx] : ""
-//         );
-//         const indexOfDate = userHabitDatess.indexOf(indx);
-
-//         const trueOrFalse = arrOfHabits.find((el) => el._id === id).data[indexOfDate];
-
-//         if (trueOrFalse) {
-//           if (trueOrFalse !== null) {
-//             const habitNumberCounter = document.getElementById(id);
-//             const buttonDoneActive = document.getElementById(`${id}done`);
-//             const buttonMissedActive = document.getElementById(`${id}missed`);
-
-//             habitNumberCounter.classList.add("isVisible");
-//             buttonMissedActive.classList.remove("active");
-//             buttonDoneActive.classList.add("active");
-//             console.log("true", trueOrFalse);
-//           }
-//         } else if (!trueOrFalse) {
-//           if (trueOrFalse !== null) {
-//             const habitNumberCounter = document.getElementById(id);
-//             const buttonMissedActive = document.getElementById(`${id}missed`);
-//             const buttonDoneActive = document.getElementById(`${id}done`);
-
-//             habitNumberCounter.classList.add("isVisible");
-//             buttonMissedActive.classList.add("active");
-//             buttonDoneActive.classList.remove("active");
-
       if (newDataFormat.split("T")[0] === state.currentDay) {
         if (arrOfHabits.length > 0) {
           // находим даты конкретно это привычки
@@ -184,11 +156,8 @@ export const HabitItem = ({
       buttonDoneActive.classList.add("active");
 
       setIdFromState(id);
-
-      console.log("кликнули на сделано");
-
-    const userHabitDates = userHabitsDates.find((el) => el.habitId === id).dates;
-
+      const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
+        .dates;
 
       // ищем индекс нужного елемента для записи в массив
 
@@ -198,11 +167,12 @@ export const HabitItem = ({
 
       const indexOfDate = userHabitDates.indexOf(indx);
 
-    const userHabitData = userHabits.find((el) => el._id === id).data;
+      const userHabitData = userHabits.find((el) => el._id === id).data;
 
-    userHabitData.every((el) => el === true) && setModalCongratulationShow(true);
+      userHabitData.every((el) => el === true) &&
+        setModalCongratulationShow(true);
 
-    userHabits.filter((el) => el._id === id && setHabitName(el.name));
+      userHabits.filter((el) => el._id === id && setHabitName(el.name));
       dispatch(
         updateDateInUserHabit("done", id, indexOfDate, authToken(state))
       );
@@ -218,8 +188,9 @@ export const HabitItem = ({
       buttonDoneActive.classList.remove("active");
       setIdFromState(id);
 
-    // находим даты конкретно это привычки
-    const userHabitDates = userHabitsDates.find((el) => el.habitId === id).dates;
+      // находим даты конкретно это привычки
+      const userHabitDates = userHabitsDates.find((el) => el.habitId === id)
+        .dates;
 
       // ищем индекс нужного елемента для записи в массив
 
@@ -261,10 +232,18 @@ export const HabitItem = ({
           </div>
           <p className="habit-scale-text">Прогресс привития привычки</p>
 
-          <button className="btn-settings" onClick={() => setModalShow(true)}></button>
+          <button
+            className="btn-settings"
+            onClick={() => setModalShow(true)}
+          ></button>
 
           {modalShow && (
-            <UpdateHabitModal close={close} idOfHabit={id} habitTitle={habitTitle} />
+            <UpdateHabitModal
+              close={close}
+              idOfHabit={id}
+              habitTitle={habitTitle}
+              oneHabit={oneHabit}
+            />
           )}
         </div>
         <div id={id} className="habit-number-counter">

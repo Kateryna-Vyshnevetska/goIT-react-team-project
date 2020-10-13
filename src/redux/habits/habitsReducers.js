@@ -23,10 +23,7 @@ export const userHabits = createReducer(userHabitsState, {
       }
     });
 
-    // state[index].data.map((el, idx) => console.log('el', el) )
-
     for (let i = 0; i < payload.indexOfDate; i++) {
-      console.log("state[index].data", state[index].data[i]);
       if (state[index].data[i] === null) {
         state[index].data[i] = false;
       }
@@ -44,7 +41,6 @@ export const userHabits = createReducer(userHabitsState, {
     });
 
     for (let i = 0; i < payload.indexOfDate; i++) {
-      console.log("state[index].data", state[index].data[i]);
       if (state[index].data[i] === null) {
         state[index].data[i] = false;
       }

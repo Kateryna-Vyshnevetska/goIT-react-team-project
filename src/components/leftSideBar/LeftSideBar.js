@@ -30,7 +30,6 @@ export const LeftSideBar = () => {
         const mainDatesMoment = moment(element).format("MMM Do YY");
         if (mainDatesMoment.includes(nowTimeMoment)) {
           let idx = mainHabitDateArr.indexOf(element);
-          console.log(typeof idx);
           if (arr[idx - 1] === null) {
             setmodalPrevCheckShow(true);
           }

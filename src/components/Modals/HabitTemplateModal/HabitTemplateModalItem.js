@@ -10,7 +10,6 @@ function HabitTemplateModalItem({ close, setValueOfButton, setModalShowNew }) {
   const isActiveHabits = userHabits
     .filter((habit) => habit.data.some((el) => el === null))
     .map((el) => el.name);
-  console.log(isActiveHabits);
 
   const handleClickBtn = (target) => {
     close();

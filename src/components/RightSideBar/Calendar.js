@@ -22,20 +22,6 @@ export const Calendar = () => {
     dispatch(addCurrentDay(currentDate.split("T")[0]));
   }, [startDate]);
 
-  // const click = () => {
-  //   console.log(startDate);
-  // };
-
-  // const calendar = document.querySelector(".react-datepicker__month");
-  // console.log("calendar", calendar);
-  // const handleClick = () => {
-  //   console.log("кликнули по календарю");
-  //   history.push("/");
-  // };
-  // if (calendar !== null) {
-  //   calendar.addEventListener("click", handleClick);
-  // }
-
   return (
     <div className={style.datePickerWrapper}>
       <DatePicker
