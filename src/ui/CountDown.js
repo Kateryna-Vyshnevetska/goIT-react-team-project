@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
-// import cn from 'classnames/bind'
 import "./countdown.css";
 
-//const cx = cn.bind(styles)
+
 
 class CountDown extends Component {
   constructor(props) {
@@ -21,7 +20,9 @@ class CountDown extends Component {
 
   count() {
     var now = new Date().getTime();
+   
     var t = this.deadline - now;
+
     var days = Math.floor(t / (1000 * 60 * 60 * 24))
       .toString()
       .padStart(2, "0");
@@ -35,6 +36,7 @@ class CountDown extends Component {
       .toString()
       .padStart(2, "0");
     this.setState({ days, minutes, hours, seconds });
+
     if (t < 0) {
       clearInterval(this.x);
       this.setState({
@@ -48,19 +50,26 @@ class CountDown extends Component {
   componentDidMount() {
     const dayFor = new Date();
     dayFor.setDate(dayFor.getDate() + 14);
-    moment.locale("en");
-    const dayForStart = moment(dayFor).format("LLL");
-
-    this.deadline = new Date("oct 22, 2020 00:00:00").getTime();
+     dayFor.setHours(dayFor.getHours() - 1);
+    console.log('dayFor', dayFor)
+    // moment.locale("en");
+    // const dayForStart = moment(dayFor).format("LLL");
+    
+    this.deadline = new Date(dayFor).getTime();
 
     this.x = setInterval(this.count, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.x);
+    this.deadline = null;
   }
 
   render() {
     const { days, seconds, hours, minutes, time_up } = this.state;
     return (
       <div className="clock-section">
-        <h1 className="title-clock">Ваша подписка истекает через</h1>
+        <h4 className="title-clock">Ваша подписка истекает через</h4>
         <div id="clockdiv">
           <div>
             <span className="days" id="day">

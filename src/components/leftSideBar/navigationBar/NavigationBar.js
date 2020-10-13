@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import "./navigation.css";
 import { useSelector } from "react-redux";
-import { notificationType } from "../../../redux/selectors";
+import {
+  notificationType,
+  userHabits,
+  usersHabitsDates,
+} from "../../../redux/selectors";
 import { withStyles } from "@material-ui/core/styles";
+import { checkMessagesForNote } from "../../../helpers/checkNotifications";
+import FindHabitById from "../../../helpers/FindHabitById";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -17,7 +23,25 @@ const StyledBadge = withStyles((theme) => ({
 
 export const NavigationBar = () => {
   const state = useSelector((state) => state);
-  const notification = notificationType(state);
+  const habitsList = userHabits(state);
+  const habitsInfo = usersHabitsDates(state);
+  const [countS, setCountS] = useState(0);
+
+  const arrOfhabitDone = [];
+
+  const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
+  notificationArr.forEach((el) =>
+    arrOfhabitDone.push(FindHabitById(habitsList, el.id))
+  );
+
+  useEffect(() => {
+    const dataFromStorage = localStorage.getItem("habitsId");
+    const habitsStorage = JSON.parse(dataFromStorage);
+    if (habitsStorage && notificationArr.length > 0) {
+      setCountS(notificationArr.length - habitsStorage.length);
+    }
+  }, [notificationArr]);
+
   return (
     <nav className="leftSideBar-block-navBar">
       <ul className="leftSideBar-listNavBar">
@@ -40,7 +64,7 @@ export const NavigationBar = () => {
           ></NavLink>
         </li>
         <li className="leftSideBar-navBarItems">
-          <StyledBadge badgeContent={notification.length} color="secondary">
+          <StyledBadge badgeContent={countS > 0 ? countS : 0} color="secondary">
             <NavLink
               to={{
                 pathname: `/make-it-habit/notification`,

@@ -62,68 +62,57 @@ export const CalendarChecklist = () => {
 
   return (
     <>
-      {arr.length ? (
-        <>
-          <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
-          <ul className={style.calendarChecklist}>
-            <TransitionGroup>
-              {arr.sort().map((el) => (
-                <CSSTransition
-                  key={el._id}
-                  timeout={5000}
-                  classNames="list-fade"
-                >
-                  <li key={el._id} className={style.calendarItem}>
-                    <div className={style.calendarChecklistItem}>
-                      <div className={style.iconWrapper}>
-                        <span
-                          className={
-                            checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                              ? style.calendarChecklistItemProgressDone
-                              : checkIfHabitDoneTodaay(
-                                  el._id,
-                                  el,
-                                  userHabitsDates
-                                ) === null
-                              ? style.calendarChecklistItemNotDoneToday
-                              : style.calendarChecklistItemProgressMissed
-                            // : style.calendarChecklistItemProgress,
-                          }
-                        >
-                          {checkIfHabitDoneTodaay(
+      <p className={style.calendarHabitsHeader}>
+        {" "}
+        {arr.length
+          ? "Привычки на сегодня"
+          : "Сегодня у Вас нет привычек, над которыми нужно работать"}
+      </p>
+      <TransitionGroup component="ul" className={style.calendarChecklist}>
+        {arr.sort().map((el) => (
+          <CSSTransition key={el._id} timeout={1000} classNames="list-fade">
+            <li key={el._id} className={style.calendarItem}>
+              <div className={style.calendarChecklistItem}>
+                <div className={style.iconWrapper}>
+                  <span
+                    className={
+                      checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                        ? style.calendarChecklistItemProgressDone
+                        : checkIfHabitDoneTodaay(
                             el._id,
                             el,
                             userHabitsDates
                           ) === null
-                            ? el.planningTime.split(" ")[4].slice(0, 5)
-                            : ""}
-                        </span>
-                      </div>
-                      <span
-                        className={
-                          checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
-                            ? style.calendarChecklistItemTextDone
-                            : style.calendarChecklistItemText
-                        }
-                      >
-                        {el.name}
-                      </span>
-                      <button
-                        onClick={() => deleteHabit(el._id)}
-                        className={style.calendarChecklistItemButton}
-                      ></button>
-                    </div>
-                  </li>
-                </CSSTransition>
-              ))}
-            </TransitionGroup>
-          </ul>
-        </>
-      ) : (
-        <p className={style.notificationText}>
-          Сегодня у Вас нет привычек, над которыми нужно работать
-        </p>
-      )}
+                        ? style.calendarChecklistItemNotDoneToday
+                        : style.calendarChecklistItemProgressMissed
+                      // : style.calendarChecklistItemProgress,
+                    }
+                  >
+                    {checkIfHabitDoneTodaay(el._id, el, userHabitsDates) ===
+                    null
+                      ? // ? el.planningTime.split(" ")[4].slice(0, 5)
+                        el.planningTime.split(" ")[10]
+                      : ""}
+                  </span>
+                </div>
+                <span
+                  className={
+                    checkIfHabitDoneTodaay(el._id, el, userHabitsDates)
+                      ? style.calendarChecklistItemTextDone
+                      : style.calendarChecklistItemText
+                  }
+                >
+                  {el.name}
+                </span>
+                <button
+                  onClick={() => deleteHabit(el._id)}
+                  className={style.calendarChecklistItemButton}
+                ></button>
+              </div>
+            </li>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
     </>
   );
 };

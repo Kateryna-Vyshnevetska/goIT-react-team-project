@@ -65,10 +65,7 @@ export const ProfilePageOption = () => {
 
     let counter = 0;
     for (let i = 0; i < newP.length; i++) {
-      console.log(!Number(newC[i]));
       if (newP[i] === newC[i]) {
-        console.log(newP[i]);
-        console.log(newC[i]);
         counter += 1;
       }
     }
@@ -287,26 +284,28 @@ export const ProfilePageOption = () => {
             {/* <div className="profilePage-subscriptionArea">
                <span className="profilePage-subscriptionText">{subscriptionLevel}</span> */}
 
-            <div
-              className={
-                subscriptionLevel === "Noob"
-                  ? "Noob"
-                  : subscriptionLevel === "Basic"
-                  ? "Basic"
-                  : subscriptionLevel === "Standart"
-                  ? "Standart"
-                  : subscriptionLevel === "Premium"
-                  ? "Premium"
-                  : subscriptionLevel === "Ultra"
-                  ? "Ultra"
-                  : subscriptionLevel === "Текущий план не выбран"
-                  ? "userData-subscriptionArea"
-                  : ""
-              }
-            >
-              <span className="profilePage-subscriptionText">
-                {subscriptionLevel}
-              </span>
+            <div className="subscription-wrapper">
+              <div
+                className={
+                  subscriptionLevel === "Noob"
+                    ? "Noob"
+                    : subscriptionLevel === "Basic"
+                    ? "Basic"
+                    : subscriptionLevel === "Standart"
+                    ? "Standart"
+                    : subscriptionLevel === "Premium"
+                    ? "Premium"
+                    : subscriptionLevel === "Ultra"
+                    ? "Ultra"
+                    : subscriptionLevel === "Текущий план не выбран"
+                    ? "userData-subscriptionArea"
+                    : ""
+                }
+              >
+                <span className="profilePage-subscriptionText">
+                  {subscriptionLevel}
+                </span>
+              </div>
             </div>
 
             <button type="Submit" className="profilePage-subscription-btn">

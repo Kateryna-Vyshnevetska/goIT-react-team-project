@@ -3,7 +3,7 @@
   color: #4f4f4f;
   display: inline-block;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 #clockdiv > div {
   padding: 5px;
@@ -24,8 +24,9 @@
 }
 .title-clock {
   margin: 0;
+  margin-bottom: 5px;
   font-family: "Rubik", sans-serif;
-  font-size: 18px;
+  font-size: 14px;
 
   color: #4f4f4f;
   text-align: center;
