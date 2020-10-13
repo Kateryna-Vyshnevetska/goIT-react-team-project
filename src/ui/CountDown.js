@@ -20,7 +20,9 @@ class CountDown extends Component {
 
   count() {
     var now = new Date().getTime();
+   
     var t = this.deadline - now;
+
     var days = Math.floor(t / (1000 * 60 * 60 * 24))
       .toString()
       .padStart(2, "0");
@@ -34,6 +36,7 @@ class CountDown extends Component {
       .toString()
       .padStart(2, "0");
     this.setState({ days, minutes, hours, seconds });
+
     if (t < 0) {
       clearInterval(this.x);
       this.setState({
@@ -47,10 +50,12 @@ class CountDown extends Component {
   componentDidMount() {
     const dayFor = new Date();
     dayFor.setDate(dayFor.getDate() + 14);
-    moment.locale("en");
-    const dayForStart = moment(dayFor).format("LLL");
-
-    this.deadline = new Date("oct 22, 2020 00:00:00").getTime();
+     dayFor.setHours(dayFor.getHours() - 1);
+    console.log('dayFor', dayFor)
+    // moment.locale("en");
+    // const dayForStart = moment(dayFor).format("LLL");
+    
+    this.deadline = new Date(dayFor).getTime();
 
     this.x = setInterval(this.count, 1000);
   }

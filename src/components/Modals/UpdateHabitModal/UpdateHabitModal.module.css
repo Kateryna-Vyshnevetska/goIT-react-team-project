@@ -12,12 +12,13 @@
 }
 
 .title {
-  font-family: "Rubik", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 26px;
-  line-height: 32px;
-  text-align: center;
+      font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: center;
+    color: black;
 }
 
 .text {
