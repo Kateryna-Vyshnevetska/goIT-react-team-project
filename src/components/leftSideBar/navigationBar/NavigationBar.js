@@ -26,7 +26,7 @@ export const NavigationBar = () => {
   const habitsList = userHabits(state);
   const habitsInfo = usersHabitsDates(state);
   const [countS, setCountS] = useState(0);
-
+  const [some, setsome] = useState();
   const arrOfhabitDone = [];
 
   const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
