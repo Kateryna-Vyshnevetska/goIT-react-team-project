@@ -10,9 +10,6 @@ import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
 import { NotificationErrors } from "../../components/notificationErrors/NotificationErrors";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-
 const RegisterPage = ({ setregisterOpenPage }) => {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
