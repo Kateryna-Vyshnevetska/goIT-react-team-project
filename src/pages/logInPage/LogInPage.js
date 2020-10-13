@@ -15,29 +15,25 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
 
   const schema = yup.object().shape({
     email: yup.string().required("Введите email"),
-    email: yup
-      .string()
-      .matches(/[@]/, "Неверный email")
-      .required("Введите email"),
-    password: yup.string().required("Пароль должен быть от 8 до 16 символов"),
+    email: yup.string().required("Введите email").email("Неверный email"),
+    password: yup.string().required("Неверный пароль!"),
   });
 
   const { register, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => dispatch(logIn(data));
-  const message = "Введен неверный Логин или пароль!";
+  const message = "Введен неверный логин или пароль!";
 
   return (
     <div className={styles.container}>
-      <NotificationErrors message={message} />
       <div>
         <img
           src={require("../../images/logIn/logo.svg")}
           alt="logo"
           className={styles.logo}
         />
-
+        <NotificationErrors message={message} />
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h1 className={styles.title}>C возвращением!</h1>
           <p className={styles.text}>
@@ -82,6 +78,7 @@ const LogInPage = ({ logInOpenPage, setlogInOpenPage }) => {
               inputWidth="345px"
               marginBottom="40px"
             />
+
             <p className={styles.errorMessagePass}>
               {errors.password?.message}
             </p>

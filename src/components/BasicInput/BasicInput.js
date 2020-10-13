@@ -2,6 +2,8 @@ import React from "react";
 import style from "./basicInput.module.css";
 
 export function BasicInput({
+  minLength,
+  maxLength,
   register,
   forLabel,
   id,
@@ -34,6 +36,8 @@ export function BasicInput({
         placeholder={placeholder}
         style={{ width: inputWidth }}
         onChange={handleChange}
+        maxLength={maxLength}
+        minLength={minLength}
       />
     </div>
   );

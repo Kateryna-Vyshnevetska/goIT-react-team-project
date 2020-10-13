@@ -22,15 +22,17 @@ export const LeftSideBar = () => {
   const token = authToken(state);
 
   useEffect(() => {
-    if (data.length > 0) {
+    console.log(data);
+    console.log(mainHabitDateArr);
+    if (mainHabitDateArr.length > 0) {
       let arr = userCigarettes(state).data.slice();
       const nowTime = new Date();
       const nowTimeMoment = moment(nowTime).format("MMM Do YY");
       Object.values(mainHabitDateArr).forEach((element) => {
         const mainDatesMoment = moment(element).format("MMM Do YY");
         if (mainDatesMoment.includes(nowTimeMoment)) {
+          console.log(data);
           let idx = mainHabitDateArr.indexOf(element);
-          console.log(typeof idx);
           if (arr[idx - 1] === null) {
             setmodalPrevCheckShow(true);
           }

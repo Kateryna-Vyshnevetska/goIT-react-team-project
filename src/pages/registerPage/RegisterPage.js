@@ -18,11 +18,11 @@ const RegisterPage = ({ setregisterOpenPage }) => {
   const [checked, setChecked] = useState(false);
   const schema = yup.object().shape({
     email: yup.string().required("Введите email"),
-    email: yup
+    email: yup.string().required("Введите email").email("Неверный email"),
+    password: yup
       .string()
-      .matches(/[@]/, "Неверный email")
-      .required("Введите email"),
-    password: yup.string().required("Пароль должен быть от 8 до 16 символов"),
+      .required("Please Enter your password")
+      .min(8, "Введите минимум 8 символов"),
 
     // password: yup.number().positive().integer().required(),
   });
@@ -34,7 +34,6 @@ const RegisterPage = ({ setregisterOpenPage }) => {
 
   return (
     <div className={styles.container}>
-      <NotificationErrors message={message} />
       <div className={styles.wrapper}>
         <img
           src={require("../../images/logIn/logo.svg")}
@@ -86,9 +85,11 @@ const RegisterPage = ({ setregisterOpenPage }) => {
               inputWidth="345px"
               marginBottom="40px"
             />
+
             <p className={styles.errorMessagePass}>
               {errors.password?.message}
             </p>
+            <NotificationErrors message={message} />
           </div>
           <div className={styles.checkbox}>
             <input
@@ -99,6 +100,7 @@ const RegisterPage = ({ setregisterOpenPage }) => {
               name="check"
               onChange={() => setChecked((prev) => !prev)}
             />
+
             <label for="color-1" className={styles.text}>
               Я подтверждаю что мне исполнилось 18 лет!
             </label>

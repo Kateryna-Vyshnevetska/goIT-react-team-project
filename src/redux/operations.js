@@ -297,7 +297,7 @@ export const updateDateInUserHabit = (type, id, indexOfDate, token) => async (
 ) => {
   dispatch(isLoadingAction(true));
 
-  // console.log("eeeeeeeeeeeeeeeeeeeeeeee", type);
+  console.log("eeeeeeeeeeeeeeeeeeeeeeee", type);
   if (type === "done") {
     dispatch(setTrueForHabit({ id, indexOfDate }));
   } else if (type === "missed") {
