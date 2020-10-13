@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./addNewCardModal.css";
-import { BasicInput } from "../../BasicInput/BasicInput";
 import { BasicInputMasked } from "../../BasicInput/BasicInputMasked";
-
 import modalBackDrop from "../../../components/modalBackDrop/ModalBackDrop";
 import { addCardInfo } from "../../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { authToken } from "../../../redux/selectors";
-import style from "../CustomHabitModal/CustomHabitModal.module.css";
 
 const AddNewCard = ({ close }) => {
   const [cardNumber, setCardNumber] = useState("");
@@ -39,18 +36,8 @@ const AddNewCard = ({ close }) => {
     <>
       <div className="addNewCard-head">
         <h2 className="addNewCard-title">Введите данные вашей карты</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <p className={style.errorMessage}>
-            {errors.number || errors.timePass
-              ? "Введите правильные данные"
-              : null}
-          </p>
+        <form className="formCard" onSubmit={handleSubmit(onSubmit)}>
           <BasicInputMasked
-            register={register({
-              minLength: 19,
-              maxLength: 19,
-              required: true,
-            })}
             forLabel={"name"}
             id={"number"}
             labelText={"Номер Карты"}
@@ -63,15 +50,10 @@ const AddNewCard = ({ close }) => {
             maskChar={null}
             handleChange={(evt) => setCardNumber(evt.target.value)}
           />
-          {checkError && (
-            <p className="errorMessageMask">Неверный формат даты</p>
-          )}
+          <p className={"errorMessageMaskNumb"}>
+            {errors.number || errors.timePass ? "Неверный номер карты" : null}
+          </p>
           <BasicInputMasked
-            // register={register({
-            //   minLength: 5,
-            //   maxLength: 5,
-            //   required: true,
-            // })}
             forLabel={"name"}
             name={"timePass"}
             id={"number"}
@@ -84,25 +66,26 @@ const AddNewCard = ({ close }) => {
             value={expirationDate}
             handleChange={(evt) => setExpirationDate(evt.target.value)}
           />
-
+          {checkError && (
+            <p className="errorMessageMaskDate">Неверный формат даты</p>
+          )}
           <div className="addNewCard-Buttons">
-            <button
-              type="submit"
-              className="addNewCard-btn"
-              // onClick={() => close()}
-            >
+            <button className="addNewCard-btn" onClick={() => close()}>
               Отмена
             </button>
-            <button type="submit" className="addNewCard-btnSave">
+            <button
+              disabled={cardNumber.length < 19 || expirationDate.length < 5}
+              type="submit"
+              className="addNewCard-btnSave"
+            >
               Сохранить
             </button>
           </div>
-
-          <button
-            onClick={() => close()}
-            className="addNewCard-modalCloseBtn"
-          ></button>
         </form>
+        <button
+          onClick={() => close()}
+          className="addNewCard-modalCloseBtn"
+        ></button>
       </div>
     </>
   );

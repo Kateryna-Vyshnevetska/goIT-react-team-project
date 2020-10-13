@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
 import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";
 import { updateCigarettesInfo } from "../../requests/requests";
 import modalBackDropNoClose from "../modalBackDrop/ModalBackDropNoClose";
 import styles from "./CheckPrevDaySigs.module.css";
+import { BasicInput } from "../BasicInput/BasicInput";
+
 import moment from "moment";
 
 function CheckPrevDaySigs({ close }) {
@@ -14,6 +16,7 @@ function CheckPrevDaySigs({ close }) {
   const mainHabitDateArr = store.getState().mainHabitDates;
   const startedAt = store.getState().userCigarettes.startedAt;
   const currentDay = store.getState().currentDay;
+  const [sigCount, setsigCount] = useState("");
 
   const didntSmoked = async () => {
     let arr = data.slice();
@@ -48,7 +51,7 @@ function CheckPrevDaySigs({ close }) {
       if (mainDatesMoment.includes(nowTimeMoment)) {
         let idx = mainHabitDateArr.indexOf(element);
         if (arr[idx - 1] === null) {
-          arr[idx - 1] = false;
+          arr[idx - 1] = Number(sigCount);
         }
         updateCigarettesInfo(arr, startedAt, token);
         dispatch(
@@ -62,6 +65,11 @@ function CheckPrevDaySigs({ close }) {
     });
     await close();
   };
+
+  function handleInput(value) {
+    const valueIn = value.replace(/\D/, "");
+    setsigCount(valueIn);
+  }
 
   return (
     <>
@@ -81,12 +89,25 @@ function CheckPrevDaySigs({ close }) {
           <p className={styles.modalText}>Или</p>
 
           <div className={styles.modalBodyItem}>
-            <button
-              className={styles.modalBodyButtonAdd}
-              onClick={() => smoked()}
-            >
-              Я курил вчера но забыл
-            </button>
+            <form className={styles.modalBodyForm} onSubmit={smoked}>
+              <BasicInput
+                name={"sigCount"}
+                value={sigCount}
+                placeholder={"__шт"}
+                handleChange={({ target: { value } }) => handleInput(value)}
+                inputWidth={220}
+                maxLength={"2"}
+              />
+              <div className={styles.modalButtons}>
+                <button
+                  type="submit"
+                  disabled={!sigCount}
+                  className={styles.modalBodyButtonSubmit}
+                >
+                  Сохранить
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

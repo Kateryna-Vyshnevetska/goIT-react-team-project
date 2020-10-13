@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
@@ -10,13 +10,17 @@ import styles from "./InterviewModal.module.css";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
 
-function InterviewModal({ close }) {
+function InterviewModal() {
   const schema = yup.object().shape({
     smokeYears: yup.number().positive().integer().required(),
     cigarettePerDay: yup.number().positive().integer().required(),
     cigarettePerTime: yup.number().positive().integer().required(),
-    cigarettePackPrice: yup.number().positive().integer().required(),
+    cigarettePackPrice: yup.string().required(),
   });
+  const [smokeYears, setsmokeYears] = useState("");
+  const [cigarettePerDay, setcigarettePerDay] = useState("");
+  const [cigarettePerTime, setcigarettePerTime] = useState("");
+  const [cigarettePackPrice, setcigarettePackPrice] = useState("");
 
   const { register, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema),
@@ -31,6 +35,26 @@ function InterviewModal({ close }) {
   const token = store.getState().authToken;
   const history = useHistory();
 
+  function handleInputcigarettePerDay(value) {
+    const valueIn = value.replace(/\D/, "");
+    setcigarettePerDay(valueIn);
+  }
+
+  function handleInputsmokeYears(value) {
+    const valueIn = value.replace(/\D/, "");
+    setsmokeYears(valueIn);
+  }
+
+  function handleInputcigarettePerTime(value) {
+    const valueIn = value.replace(/\D/, "");
+    setcigarettePerTime(valueIn);
+  }
+
+  function handleInputcigarettePackPrice(value) {
+    const valueIn = value.replace(/[^0-9.]+/g, "");
+    setcigarettePackPrice(valueIn);
+  }
+
   return (
     <>
       <div className={styles.modalHead}>
@@ -44,7 +68,9 @@ function InterviewModal({ close }) {
               <h2 className={styles.modalBodyText}>Сколько лет Вы курите?</h2>
             </li>
             <li className={styles.modalBodyItem}>
-              <h2 className={styles.modalBodyText}>Сколько сигарет скуриваете в день?</h2>
+              <h2 className={styles.modalBodyText}>
+                Сколько сигарет скуриваете в день?
+              </h2>
             </li>
             <li className={styles.modalBodyItem}>
               <h2 className={styles.modalBodyText}>
@@ -52,10 +78,15 @@ function InterviewModal({ close }) {
               </h2>
             </li>
             <li className={styles.modalBodyItem}>
-              <h2 className={styles.modalBodyText}>Сколько стоит одна пачка сигарет?</h2>
+              <h2 className={styles.modalBodyText}>
+                Сколько стоит одна пачка сигарет?
+              </h2>
             </li>
           </ul>
-          <form className={styles.modalBodyForm} onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className={styles.modalBodyForm}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <BasicInput
               register={register({
                 min: 1,
@@ -64,8 +95,15 @@ function InterviewModal({ close }) {
               name={"smokeYears"}
               placeholder={"0"}
               inputWidth={220}
+              maxLength={"2"}
+              value={smokeYears}
+              handleChange={({ target: { value } }) =>
+                handleInputsmokeYears(value)
+              }
             />
-            <p>{errors.smokeYears && "Это должно быть положительное число"}</p>
+            <p className={styles.errMesage}>
+              {errors.smokeYears && "Введите число"}
+            </p>
             <BasicInput
               register={register({
                 min: 1,
@@ -74,8 +112,15 @@ function InterviewModal({ close }) {
               name={"cigarettePerDay"}
               placeholder={"0"}
               inputWidth={220}
+              maxLength={"2"}
+              value={cigarettePerDay}
+              handleChange={({ target: { value } }) =>
+                handleInputcigarettePerDay(value)
+              }
             />
-            <p>{errors.cigarettePerDay && "Это должно быть положительное число"}</p>
+            <p className={styles.errMesage}>
+              {errors.cigarettePerDay && "Введите число"}
+            </p>
             <BasicInput
               register={register({
                 min: 1,
@@ -84,8 +129,15 @@ function InterviewModal({ close }) {
               name={"cigarettePerTime"}
               placeholder={"__min"}
               inputWidth={220}
+              maxLength={"2"}
+              value={cigarettePerTime}
+              handleChange={({ target: { value } }) =>
+                handleInputcigarettePerTime(value)
+              }
             />
-            <p>{errors.cigarettePerTime && "Это должно быть положительное число"}</p>
+            <p className={styles.errMesage}>
+              {errors.cigarettePerTime && "Введите число"}
+            </p>
             <BasicInput
               register={register({
                 min: 1,
@@ -94,8 +146,14 @@ function InterviewModal({ close }) {
               name={"cigarettePackPrice"}
               placeholder={"__.__grn"}
               inputWidth={220}
+              value={cigarettePackPrice}
+              handleChange={({ target: { value } }) =>
+                handleInputcigarettePackPrice(value)
+              }
             />
-            <p>{errors.cigarettePackPrice && "Это должно быть положительное число"}</p>
+            <p className={styles.errMesage}>
+              {errors.cigarettePackPrice && "Введите число"}
+            </p>
             <button type="submit" className={styles.modalBodyButton}>
               Сохранить
             </button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 import moment from "moment";
 import { BasicInput } from "../BasicInput/BasicInput";
@@ -8,6 +8,8 @@ import { addUserCigarettes } from "../../redux/cigarettes/cigarettesActions";
 import { updateCigarettesInfo } from "../../requests/requests";
 function DailyResultModal({ close }) {
   const [sigCount, setsigCount] = useState("");
+  const [errShow, seterrShow] = useState(false);
+
   const dispatch = useDispatch();
   const store = useStore();
   const token = store.getState().authToken;
@@ -15,7 +17,6 @@ function DailyResultModal({ close }) {
   const dataDate = new Date(store.getState().userCigarettes.startedAt);
   const mainHabitDateArr = store.getState().mainHabitDates;
   const startedAt = store.getState().userCigarettes.startedAt;
-  const currentDay = store.getState().currentDay;
 
   function updateDates(sigCount) {
     let arr = data.slice();
@@ -48,6 +49,23 @@ function DailyResultModal({ close }) {
     evt.preventDefault();
     updateDates(sigCount);
   }
+
+  useEffect(() => {
+    sigCount.length === 0 && seterrShow(true);
+    sigCount.length !== 0 && seterrShow(false);
+    console.log("qwe");
+  }, [sigCount]);
+  useEffect(() => {
+    seterrShow(false);
+    console.log("qwe1");
+  }, []);
+
+  function handleInput(value) {
+    const valueIn = value.replace(/\D/, "");
+    setsigCount(valueIn);
+    sigCount.length === 0 && seterrShow(true);
+  }
+
   return (
     <>
       <div className={styles.modalHead}>
@@ -68,9 +86,12 @@ function DailyResultModal({ close }) {
               name={"sigCount"}
               value={sigCount}
               placeholder={"__шт"}
-              handleChange={({ target: { value } }) => setsigCount(value)}
+              handleChange={({ target: { value } }) => handleInput(value)}
               inputWidth={220}
+              maxLength={"2"}
             />
+            {errShow && <p className={styles.errMesage}>Введите число</p>}
+
             <div className={styles.modalButtons}>
               <button
                 className={styles.modalBodyButtonCancle}
@@ -85,12 +106,12 @@ function DailyResultModal({ close }) {
               >
                 Сохранить
               </button>
-              <button
-                onClick={() => close()}
-                className={styles.modalBodyButtonclose}
-              ></button>
             </div>
           </form>
+          <button
+            onClick={() => close()}
+            className={styles.modalBodyButtonclose}
+          ></button>
         </div>
       </div>
     </>

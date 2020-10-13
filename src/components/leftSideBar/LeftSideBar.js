@@ -22,13 +22,16 @@ export const LeftSideBar = () => {
   const token = authToken(state);
 
   useEffect(() => {
-    if (data.length > 0) {
-      let arr = userCigarettes(state).data.slice();
+    console.log(data);
+    console.log(mainHabitDateArr);
+    if (data.data !== undefined) {
+      let arr = data.data.slice();
       const nowTime = new Date();
       const nowTimeMoment = moment(nowTime).format("MMM Do YY");
       Object.values(mainHabitDateArr).forEach((element) => {
         const mainDatesMoment = moment(element).format("MMM Do YY");
         if (mainDatesMoment.includes(nowTimeMoment)) {
+          console.log(data);
           let idx = mainHabitDateArr.indexOf(element);
           if (arr[idx - 1] === null) {
             setmodalPrevCheckShow(true);
@@ -36,7 +39,7 @@ export const LeftSideBar = () => {
         }
       });
     }
-  }, [data]);
+  }, [mainHabitDateArr]);
 
   const close = () => {
     setModalShow((prev) => false);

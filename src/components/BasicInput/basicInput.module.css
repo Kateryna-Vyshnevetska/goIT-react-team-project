@@ -28,3 +28,7 @@
   line-height: 21px;
   color: #4f4f4f;
 }
+
+.basicInput:invalid {
+  border: 1px solid red;
+}

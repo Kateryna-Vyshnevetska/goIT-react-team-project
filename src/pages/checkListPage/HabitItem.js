@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LinearProgressWithLabel } from "../../ui/ProgressBar";
 import UpdateHabitModal from "../../components/Modals/UpdateHabitModal/UpdateHabitModal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import FindHabitById from "../../helpers/FindHabitById";
 import moment from "moment";
 import {
@@ -20,14 +20,16 @@ export const HabitItem = ({
   linearProgressValue = 10,
 }) => {
   const dispatch = useDispatch();
+  const store = useStore();
   const [modalShow, setModalShow] = useState(false);
   const state = useSelector((state) => state);
-  const userHabits = useSelector((state) => state.userHabits);
+  let userHabits = useSelector((state) => state.userHabits);
 
   const userHabitsDates = useSelector((state) => state.usersHabitsDates);
   const needElementColor = FindHabitById(userHabits, id).planningTime.split(
     " "
   )[11];
+
   const oneHabit = FindHabitById(userHabits, id);
   const [modalCongratulationShow, setModalCongratulationShow] = useState(false);
 
@@ -149,7 +151,7 @@ export const HabitItem = ({
     setMissed(calculateMissedCountHabits(userHabits, idFromState));
   }, [idFromState, userHabits]);
 
-  const handleClickHabitButtonDone = (id) => {
+  const handleClickHabitButtonDone = async (id) => {
     if (newDataFormat.split("T")[0] === state.currentDay) {
       habitNumberCounter.classList.add("isVisible");
       buttonMissedActive.classList.remove("active");
@@ -166,7 +168,6 @@ export const HabitItem = ({
       );
 
       const indexOfDate = userHabitDates.indexOf(indx);
-
       const userHabitData = userHabits.find((el) => el._id === id).data;
 
       userHabitData.every((el) => el === true) &&
@@ -176,6 +177,15 @@ export const HabitItem = ({
       dispatch(
         updateDateInUserHabit("done", id, indexOfDate, authToken(state))
       );
+      const userHabits = store.getState().userHabits;
+
+      userHabits.filter((el) => el._id === id && setHabitName(el.name));
+
+      const userHabitData = userHabits.find((el) => el._id === id).data;
+
+      userHabitData.every((el) => el === true) &&
+        setModalCongratulationShow(true);
+      console.log(userHabitData);
     } else {
       buttonMissedActive.classList.remove("active");
     }

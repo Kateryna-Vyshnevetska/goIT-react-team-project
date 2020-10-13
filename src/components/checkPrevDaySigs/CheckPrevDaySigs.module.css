@@ -53,6 +53,7 @@
   color: #fff;
   border: none;
   width: 310px;
+  margin-bottom: 15px;
 }
 
 .modalBody {
@@ -68,4 +69,27 @@
   position: absolute;
   right: 14px;
   top: 14px;
+}
+
+.modalBodyForm {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  margin-left: 40px;
+}
+
+.modalButtons {
+  margin-top: 0;
+}
+
+.modalBodyButtonSubmit {
+  background: #43d190;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 15px;
+  border: none;
+}
+
+.modalBodyButtonSubmit:disabled {
+  background-color: #e0e0e0;
 }

@@ -32,6 +32,9 @@ export const ProfilePageOption = () => {
   const history = useHistory();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setname] = useState("");
+  const [lastName, setlastName] = useState("");
+
   const [errorPass, setErrorPass] = useState(false);
   const [errorEnter, setErrorEnter] = useState(false);
   const dispatch = useDispatch();
@@ -83,6 +86,15 @@ export const ProfilePageOption = () => {
     }
   };
 
+  function handleInputName(value) {
+    const valueIn = value.replace(/[^a-zA-ZА-Яа-яЁё]/gi, "");
+    setname(valueIn);
+  }
+  function handleInputLastName(value) {
+    const valueIn = value.replace(/[^a-zA-ZА-Яа-яЁё]/gi, "");
+    setlastName(valueIn);
+  }
+
   return (
     <>
       <div className="ProfilePage-header">
@@ -98,44 +110,52 @@ export const ProfilePageOption = () => {
             <div className="profilePage-inputs">
               <BasicInput
                 register={register({
-                  minLength: 2,
+                  minLength: 3,
                 })}
                 forLabel={"name"}
+                value={name}
                 id={"name"}
                 name="firstName"
                 labelText={"Имя"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
                 placeholder={userInfo.firstName || "Имя"}
+                maxLength={"12"}
+                handleChange={({ target: { value } }) => handleInputName(value)}
               />
               <p className={styles.errorMessage}>
-                {errors.firstName && "Минимально 2 символа"}
+                {errors.firstName && "Минимально 3 символа"}
               </p>
             </div>
 
             <div className="profilePage-inputs">
               <BasicInput
                 register={register({
-                  minLength: 2,
+                  minLength: 3,
                 })}
                 name="lastName"
                 forLabel={"surname"}
                 id={"surname"}
+                value={lastName}
                 labelText={"Фамилия"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
                 placeholder={userInfo.lastName || "Фамилия"}
+                maxLength={"12"}
+                handleChange={({ target: { value } }) =>
+                  handleInputLastName(value)
+                }
               />
               <p className={styles.errorMessage}>
-                {errors.lastName && "Минимально 2 символа"}
+                {errors.lastName && "Минимально 3 символа"}
               </p>
             </div>
 
             <div className="profilePage-inputs">
               <BasicInputMasked
                 register={register({
-                  minLength: 11,
-                  maxLength: 11,
+                  minLength: 12,
+                  maxLength: 12,
                   pattern: /[0-9]/,
                 })}
                 name="phone"
@@ -145,7 +165,7 @@ export const ProfilePageOption = () => {
                 placeholder={userInfo.phone || "+38 0_________"}
                 labelWidth={"125px"}
                 inputWidth={"345px"}
-                mask={"80999999999"}
+                mask={"380999999999"}
               />
               <p className={styles.errorMessage}>
                 {errors.phone && "В вашем номере должно быть 11 цифр"}
@@ -158,6 +178,7 @@ export const ProfilePageOption = () => {
                   minLength: 11,
                   pattern: /[@]/,
                 })}
+                type={"email"}
                 name="email"
                 forLabel={"mail"}
                 id={"mail"}

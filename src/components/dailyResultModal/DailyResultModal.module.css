@@ -53,6 +53,7 @@
 }
 
 .modalBodyForm {
+  position: relative;
   margin-top: -40px;
   margin-left: 20px;
   width: 220px;
@@ -103,4 +104,13 @@
   position: absolute;
   right: 14px;
   top: 14px;
+}
+
+.errMesage {
+  position: fixed;
+  color: red;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0em;
 }

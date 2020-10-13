@@ -13,12 +13,12 @@ import { useHistory } from "react-router";
 
 function CustomHabitModal({ close, textOfHabit, setModalShow }) {
   const [name, setName] = useState("");
+  const [date, setDate] = useState(new Date());
   const history = useHistory();
   const state = useSelector((state) => state);
 
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm();
-  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     textOfHabit && setName(textOfHabit);
