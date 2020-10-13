@@ -125,7 +125,10 @@ function CustomHabitModal({ close, textOfHabit, setModalShow }) {
             </button>
           </div>
         </form>
-        <button onClick={() => close()} className={style.modalBodyButtonclose}></button>
+        <button
+          onClick={() => close()}
+          className={style.modalBodyButtonclose}
+        ></button>
       </div>
     </>
   );

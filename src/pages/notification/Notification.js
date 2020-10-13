@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   notificationType,
@@ -18,13 +18,9 @@ export const Notifiacation = () => {
   const habitsList = userHabits(state);
   const habitsInfo = usersHabitsDates(state);
   const dispatch = useDispatch();
-  const habits = userHabits(state);
+
   const arrOfhabitDone = [];
-  const notificationArr = checkMessagesForNote(
-    habitsList,
-    habitsInfo,
-    dispatch
-  );
+  const notificationArr = checkMessagesForNote(habitsList, habitsInfo);
 
   useEffect(() => {
     dispatch(countNotesAction([]));
@@ -33,28 +29,8 @@ export const Notifiacation = () => {
 
   const status = notificationType(state);
   notificationArr.forEach((el) =>
-    arrOfhabitDone.push(FindHabitById(habits, el.id))
+    arrOfhabitDone.push(FindHabitById(habitsList, el.id))
   );
-  //
-  // useEffect(() => {
-  //   console.log("doef");
-  //   const dataFromStorage = localStorage.getItem("habitsId");
-  //   const habitsStorage = JSON.parse(dataFromStorage);
-  //   if (habitsStorage) {
-  //     console.log(habitsStorage);
-  //   }
-  // }, []);
-
-  // const click = (idx) => {
-  //   notificationArr.splice(idx, 1);
-  //   dispatch(countNotesAction(notificationArr));
-  // };
-
-  // useEffect(() => {
-  //   console.log("effect");
-  //   notificationArr = checkMessagesForNote(habitsList, habitsInfo);
-  //   console.log(notificationArr);
-  // }, [notificationArr]);
 
   return (
     <div className="notif-list-section">

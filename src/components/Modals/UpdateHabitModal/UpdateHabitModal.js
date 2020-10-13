@@ -12,32 +12,33 @@ import {
 import { authToken } from "../../../redux/selectors";
 import FindHabitById from "../../../helpers/FindHabitById";
 
-function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
+function UpdateHabitModal({ close, idOfHabit, habitTitle, oneHabit }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const userHabits = useSelector((state) => state.userHabits);
 
-  const [date, setDate] = useState("--:--:--");
+  const [date, setDate] = useState(new Date());
   const [name, setName] = useState("");
   const [iteration, setIteration] = useState("");
-  const [planningTime, setPlanningTime] = useState("");
+  const [planningTime, setPlanningTime] = useState();
 
   const handleChangeInput = (date) => {
     setDate(date.toLocaleDateString("en-GB"));
-    console.log(date);
   };
-
   const oneUserHabit = FindHabitById(userHabits, idOfHabit);
 
   useEffect(() => {
     setName(habitTitle);
     setIteration(oneUserHabit.iteration);
 
-    const timeOfstart = oneUserHabit.planningTime.split(" ")[1];
+    const timeOfstart = oneUserHabit.planningTime.split(" ")[10];
     setPlanningTime(timeOfstart);
 
-    const dateOfStart = oneUserHabit.planningTime.split(" ")[0];
-    // setDate(dateOfStart.toLocaleDateString("en-GB"));
+    const dateOfStart = oneUserHabit.planningTime
+      .split(" ")
+      .slice(0, 10)
+      .join(" ");
+    setDate(new Date(dateOfStart).toLocaleDateString("en-US"));
   }, [habitTitle, oneUserHabit.iteration, oneUserHabit.planningTime]);
 
   const handleSubmit = (ev) => {
@@ -86,7 +87,7 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
             type={"date"}
             marginBottom={"20px"}
             value={date}
-            handleChangeDate={handleChangeInput}
+            // handleChangeDate={handleChangeInput}
           />
 
           <div className={style.row}>
@@ -101,7 +102,6 @@ function UpdateHabitModal({ close, idOfHabit, habitTitle }) {
               type="time"
               onChange={(ev) => {
                 setPlanningTime(ev.target.value);
-                console.log("время", ev.target.value);
               }}
             />
           </div>

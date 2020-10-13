@@ -28,12 +28,8 @@ function DateInput({
 
   const [date, setDate] = useState(new Date());
 
-  const handleCalendarClose = () => {
-    console.log("Calendar closed");
-  };
-  const handleCalendarOpen = () => {
-    console.log("Calendar opened");
-  };
+  const handleCalendarClose = () => {};
+  const handleCalendarOpen = () => {};
 
   return (
     <div
@@ -64,6 +60,7 @@ function DateInput({
             setDate(date);
             handleChangeDate(date);
           }}
+          value={value}
           onCalendarClose={handleCalendarClose}
           onCalendarOpen={handleCalendarOpen}
           placeholderText="Select a weekday"

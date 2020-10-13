@@ -215,7 +215,6 @@ export const updateUserInfo = (newData, token) => async (dispatch) => {
         Authorization: token,
       },
     });
-    console.log("data", data);
     dispatch(updateUserAvatar(data.avatar));
     dispatch(addUserInfo(data));
     dispatch(isLoadingAction(false));
@@ -232,7 +231,6 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
         Authorization: token,
       },
     });
-    console.log(data);
 
     dispatch(addUserQuizInfo(data));
     dispatch(isFirstModal(false));
@@ -244,7 +242,6 @@ export const updateQuizeInfo = (newInfo, token) => async (dispatch) => {
 
 export const changeUserPassword = (newPassword, token) => async (dispatch) => {
   dispatch(isLoadingAction(true));
-  console.log("done");
   try {
     axios.post("/auth/updatePassword", newPassword, {
       headers: {
@@ -297,7 +294,6 @@ export const updateDateInUserHabit = (type, id, indexOfDate, token) => async (
 ) => {
   dispatch(isLoadingAction(true));
 
-  // console.log("eeeeeeeeeeeeeeeeeeeeeeee", type);
   if (type === "done") {
     dispatch(setTrueForHabit({ id, indexOfDate }));
   } else if (type === "missed") {
@@ -306,7 +302,6 @@ export const updateDateInUserHabit = (type, id, indexOfDate, token) => async (
   const serchHabit = getState().userHabits.find((el) =>
     el._id === id ? el : ""
   );
-  // console.log("Habit :>> ", serchHabit);
 
   const habit = {
     id: serchHabit._id,
