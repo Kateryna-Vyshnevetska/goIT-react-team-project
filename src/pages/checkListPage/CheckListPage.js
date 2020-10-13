@@ -3,15 +3,15 @@ import "./checkListPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { HabitItem } from "../../pages/checkListPage/HabitItem";
 import DailyResultModal from "../../components/dailyResultModal/DailyResultModal";
-import FindHabitById from "../../helpers/FindHabitById";
-import moment from "moment";
+// import FindHabitById from "../../helpers/FindHabitById";
+// import moment from "moment";
 
-import { updateDateInUserHabit } from "../../redux/operations";
-import { authToken } from "../../redux/selectors";
-import {
-  calculateDoneCountHabits,
-  calculateMissedCountHabits,
-} from "../../helpers/counterProgressByHabit";
+// import { updateDateInUserHabit } from "../../redux/operations";
+// import { authToken } from "../../redux/selectors";
+// import {
+//   calculateDoneCountHabits,
+//   calculateMissedCountHabits,
+// } from "../../helpers/counterProgressByHabit";
 import { congratulationModal } from "../../redux/congratulationModal/CongratulationModalAction";
 import SubscriptionModal from "../../components/habitChoiceModal/subscriptionModal/SubscriptionModal";
 import CountDown from "../../ui/CountDown";

@@ -22,12 +22,12 @@
   color: #4f4f4f;
 }
 .avatar-list {
-  margin: -15px;
   height: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 65px 67px 0 67px;
+  padding: 20px;
+  overflow-y: scroll;
 }
 .avatar-item {
   width: 160px;

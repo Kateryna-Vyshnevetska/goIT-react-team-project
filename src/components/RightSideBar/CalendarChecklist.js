@@ -62,15 +62,13 @@ export const CalendarChecklist = () => {
 
   return (
     <>
-      {arr.length ? (
-        <>
-          <p className={style.calendarHabitsHeader}>Привычки на сегодня</p>
-          <ul className={style.calendarChecklist}>
-            <TransitionGroup>
+     
+          <p className={style.calendarHabitsHeader}> {arr.length? "Привычки на сегодня" : "Сегодня у Вас нет привычек, над которыми нужно работать"}</p>
+            <TransitionGroup component="ul" className={style.calendarChecklist} >
               {arr.sort().map((el) => (
                 <CSSTransition
                   key={el._id}
-                  timeout={5000}
+                  timeout={1000}
                   classNames="list-fade"
                 >
                   <li key={el._id} className={style.calendarItem}>
@@ -117,13 +115,10 @@ export const CalendarChecklist = () => {
                 </CSSTransition>
               ))}
             </TransitionGroup>
-          </ul>
-        </>
-      ) : (
-        <p className={style.notificationText}>
-          Сегодня у Вас нет привычек, над которыми нужно работать
-        </p>
-      )}
+            
+     
     </>
   );
 };
+
+

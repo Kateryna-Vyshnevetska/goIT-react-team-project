@@ -8,11 +8,14 @@ import {
 import { useSelector } from "react-redux";
 
 export const AchievementsPage = () => {
-  const [start, setStart] = useState("");
+
+  // const [start, setStart] = useState("");
   const array = useSelector((state) => state.userCigarettes.data);
   const dayCigarette = useSelector((state) => state.quizInfo.cigarettePerDay);
 
+
   useEffect(() => {
+
     const oneCigarette = document.getElementById("oneCigarette");
     const threeCigarettes = document.getElementById("threeCigarettes");
     const fiveCigarettes = document.getElementById("fiveCigarettes");
@@ -20,8 +23,9 @@ export const AchievementsPage = () => {
     const threeDays = document.getElementById("threeDays");
     const oneWeek = document.getElementById("oneWeek");
     const twoWeeks = document.getElementById("twoWeeks");
+
     if (oneCigarette) {
-      setStart(oneCigarette);
+
       checkAchievement(
         array,
         dayCigarette,
@@ -29,10 +33,14 @@ export const AchievementsPage = () => {
         threeCigarettes,
         fiveCigarettes
       );
+
       checkAchievementDay(array, dayCigarette, oneDay, threeDays);
-      checkAchievementWeek(array, oneWeek, twoWeeks);
+
+      checkAchievementWeek(array, oneWeek, twoWeeks , oneDay, threeDays );
     }
-  }, [array]);
+
+
+  }, [array, dayCigarette]);
 
   return (
     <div className="achievementsPageWrapper">
