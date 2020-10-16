@@ -72,14 +72,14 @@
 }
 
 .modalBodyForm {
-  margin: 0 auto;
   text-align: center;
   align-items: center;
   display: flex;
+  margin-left: 40px;
 }
-input {
-  margin-left: 20px;
-  margin-top: 15px;
+
+.modalButtons {
+  margin-top: 0;
 }
 
 .modalBodyButtonSubmit {

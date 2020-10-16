@@ -24,8 +24,8 @@ export const LeftSideBar = () => {
   useEffect(() => {
     console.log(data);
     console.log(mainHabitDateArr);
-    if (mainHabitDateArr.length > 0) {
-      let arr = userCigarettes(state).data.slice();
+    if (data.data !== undefined) {
+      let arr = data.data.slice();
       const nowTime = new Date();
       const nowTimeMoment = moment(nowTime).format("MMM Do YY");
       Object.values(mainHabitDateArr).forEach((element) => {
@@ -39,7 +39,7 @@ export const LeftSideBar = () => {
         }
       });
     }
-  }, [data]);
+  }, [mainHabitDateArr]);
 
   const close = () => {
     setModalShow((prev) => false);
